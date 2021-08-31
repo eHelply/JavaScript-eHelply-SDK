@@ -1,7 +1,7 @@
-import config from "../../../secret.json";
-// import axios from  "axios"
-const axios = require("axios")
-import json from "@rollup/plugin-json";
+import config from "../../secret.json";
+
+import axios from "axios";
+
 export class Users {
     logIn(email: string, password: string) {
          let data = {
