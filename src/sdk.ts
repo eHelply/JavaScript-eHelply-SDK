@@ -8,4 +8,3 @@ export class eHelply {
 
 let ehelplyClient: eHelply = new eHelply()
 ehelplyClient.users.logIn("wilson.nie13@gmail.com", "Mdrad9qfwA46JkD9zMR0")
-console.log("TEST WHETHER THIS GETS COMPILED INTO THE BUNDLE");
