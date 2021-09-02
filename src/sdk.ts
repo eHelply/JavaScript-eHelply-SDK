@@ -1,4 +1,4 @@
-import {Users} from "./services/users/users";
+import Users from "./services/users/users";
 export class eHelply {
     users: Users;
     constructor() {
