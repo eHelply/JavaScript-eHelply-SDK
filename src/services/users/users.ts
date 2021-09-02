@@ -1,4 +1,4 @@
-import * as config from "../../secret.json";
+// import * as config from "../../secret.json";
 
 import axios from "axios";
 
@@ -10,9 +10,9 @@ export default class Users {
                 "password": password
             }
         }
-        axios.post(`${config.baseURL}/users/auth/login`, data).then((res: any) => {
-            console.log(res)
-        })
+        // axios.post(`${config.baseURL}/users/auth/login`, data).then((res: any) => {
+        //     console.log(res)
+        // })
     }
     add(a: number, b: number){
         return a + b

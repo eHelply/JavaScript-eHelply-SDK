@@ -1,17 +1,27 @@
-import json from "@rollup/plugin-json";
-import {nodeResolve} from '@rollup/plugin-node-resolve';
+// import json from "@rollup/plugin-json";
+// import {nodeResolve} from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
-import buble from '@rollup/plugin-buble';
-
+// import commonjs from '@rollup/plugin-commonjs';
+// import buble from '@rollup/plugin-buble';
 
 export default {
   input: './src/sdk.ts',
-  output: {
-    file: './dist/bundle.js',
-    // Also note 'es' not 'iife', since a library exports something, unlike an application.
-    format: 'es'
-  },
+  output: [
+    {
+      file: './dist/bundle.js',
+      // Also note 'es' not 'iife', since a library exports something, unlike an application.
+      format: 'es',
+      name: 'bundle',
+      sourcemap: 'inline'
+    },
+    {
+      file: './dist/bundle.common.cjs',
+      // Also note 'es' not 'iife', since a library exports something, unlike an application.
+      format: 'cjs',
+      name: 'bundle',
+      sourcemap: 'inline'
+    }
+  ],
   plugins: [
     typescript({
       lib: ["es5", "es6", "dom"],
@@ -21,13 +31,13 @@ export default {
       esModuleInterop: true,
       allowSyntheticDefaultImports: true,
     }),
-    nodeResolve({
-      jsnext: true,
-      preferBuiltins: true,
-      browser: true
-    }),
-    json(),
-    commonjs(),
-    buble()
+    // nodeResolve({
+    //   jsnext: true,
+    //   preferBuiltins: true,
+    //   browser: true
+    // }),
+    // json(),
+    // commonjs(),
+    // buble(),
   ]
 };
