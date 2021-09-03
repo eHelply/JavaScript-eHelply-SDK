@@ -1,8 +1,8 @@
-// import * as config from "../../secret.json";
+import * as config from "../../secret.json";
 
 import axios from "axios";
 
-export default class Users {
+export default class UserService {
     logIn(email: string, password: string) {
          let data = {
             "user_login_data": {
@@ -10,9 +10,9 @@ export default class Users {
                 "password": password
             }
         }
-        // axios.post(`${config.baseURL}/users/auth/login`, data).then((res: any) => {
-        //     console.log(res)
-        // })
+        axios.post(`${config.baseURL}/users/auth/login`, data).then((res: any) => {
+            console.log(res)
+        })
     }
     add(a: number, b: number){
         return a + b
