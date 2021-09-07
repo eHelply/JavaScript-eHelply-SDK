@@ -14,7 +14,4 @@ export default class UserService {
             console.log(res)
         })
     }
-    add(a: number, b: number){
-        return a + b
-    }
 }
