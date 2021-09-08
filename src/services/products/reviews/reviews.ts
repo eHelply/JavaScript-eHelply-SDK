@@ -1,34 +1,39 @@
-import * as config from "../../../secret.json";
-import { reviewSchema } from  "./reviewTypes"
+import {createReviewRequest, updateReviewRequest } from  "./reviewTypes"
 import axios from "axios";
 
 export default class ReviewSdk {
-  axisoClient: any
-  constructor(axisoClient: any) {
-    this.axisoClient = axisoClient
+  axiosClient: any
+  constructor(axiosClient: any) {
+    this.axiosClient = axiosClient
   }
-  create( rating: number, maxRating: number, reviewText: string ): void {
-    let data: reviewSchema = {
-      review: {review_text: reviewText, rating: rating, max_rating: maxRating}
-    };
-    data.review.review_text = reviewText
-    data.review.max_rating = maxRating
-    data.review.rating = rating
-    this.axisoClient.post("/products/reviews/types/type_name/entities/uuid1236", data).then((res: any) => {
-      console.log(res)
+  create(payload: createReviewRequest, type: string, entity: string ): void {
+    this.axiosClient.post(`/products/reviews/types/${type}/entities/${entity}`, payload).then((res: any) => {
+      console.log("create")
+      console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      console.log(res.data)
     })
   }
-  // update(reviewUuid: string, rating: number, reviewText: string ): void{
-  //
-  // }
-  // get(reviewUuid: string){
-  //
-  // }
-  // delete(reviewUuid: string){
-  //
-  // }
-  // search() {
-  //
-  // }
+  update(payload: updateReviewRequest, reviewUuid: string, type: string, entity: string ): void{
+    this.axiosClient.put(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`, payload).then((res: any) => {
+      console.log("update")
+      console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      console.log(res.data)
+    })
+  }
+  get(reviewUuid: string, type: string, entity: string ){
+    this.axiosClient.get(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
+      console.log("get")
+      console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      console.log(res.data)
+    })
 
+  }
+  delete(reviewUuid: string, type: string, entity: string){
+    console.log("delete")
+    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    this.axiosClient.delete(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
+      console.log(res.data)
+    })
+
+  }
 }
