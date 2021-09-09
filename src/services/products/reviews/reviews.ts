@@ -1,6 +1,4 @@
 import {createReviewRequest, updateReviewRequest } from  "./reviewTypes"
-import axios from "axios";
-
 export default class ReviewSdk {
   axiosClient: any
   constructor(axiosClient: any) {

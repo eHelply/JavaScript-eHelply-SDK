@@ -1,7 +1,6 @@
 import UserService from "./services/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import axios from "axios";
-import * as config from "./secret.json";
 import {createReviewRequest, updateReviewRequest} from "./services/products/reviews/reviewTypes";
 
 export class eHelplySDK {
@@ -14,8 +13,9 @@ export class eHelplySDK {
     axiosClient: any;
     constructor() {
         this.axiosClient =  axios.create({
-            baseURL: config.baseURL
+            baseURL: "https://api.test.ehelply.com"
         })
+        this.axiosClient.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
         this.userService = new UserService();
         this.reviewSdk = new ReviewSdk(this.axiosClient);
     }
@@ -28,13 +28,11 @@ export class eHelplySDK {
     }
     setSecretToken(secretToken: string): void{
         this.secretToken = secretToken;
-        this.axiosClient.defaults.headers.common["x-secret-token"] = secretToken;
+        this.axiosClient.defaults.headers.common["X-Secret-Token"] = secretToken;
     }
     setAccessToken(accessToken: string): void{
         this.accessToken = accessToken;
-        this.axiosClient.defaults.headers.common["x-access-token"] = accessToken;
+        this.axiosClient.defaults.headers.common["X-Access-Token"] = accessToken;
 
     }
 }
-declare const ehelplyClient: eHelplySDK;
-export default ehelplyClient;

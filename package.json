@@ -1,11 +1,15 @@
 {
-  "name": "ehelply-sdk",
-  "version": "0.0.1",
+  "name": "@ehelply/superstack-sdk",
+  "version": "0.0.9",
   "description": "eHelply JavaScript SDK",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "build": "rimraf dist && node ./compiler.js"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "repository": {
     "type": "git",
