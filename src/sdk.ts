@@ -1,10 +1,10 @@
-import UserService from "./services/users/users";
+import UserSdk from "./services/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import axios from "axios";
 import {createReviewRequest, updateReviewRequest} from "./services/products/reviews/reviewTypes";
 
 export class eHelplySDK {
-    userService: UserService;
+    userSdk: UserSdk;
     reviewSdk: ReviewSdk;
     apiKey: string;
     projectUuid: string;
@@ -15,8 +15,8 @@ export class eHelplySDK {
         this.axiosClient =  axios.create({
             baseURL: "https://api.test.ehelply.com"
         })
-        this.axiosClient.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-        this.userService = new UserService();
+        // this.axiosClient.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+        this.userSdk = new UserSdk(this.axiosClient);
         this.reviewSdk = new ReviewSdk(this.axiosClient);
     }
     setApiKey(apiKey: string): void {

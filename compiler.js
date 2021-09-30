@@ -1,26 +1,37 @@
 import {rollup} from "rollup";
 import json from "@rollup/plugin-json";
 import {nodeResolve} from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import commonjs from '@rollup/plugin-commonjs';
 import buble from '@rollup/plugin-buble';
 
 const inputOptions = {
   input: './src/sdk.ts',
+  external: [
+    'axios'
+  ],
   plugins: [
-    typescript({
-      lib: ["es5", "es6", "dom"],
-      target: "es5",
-      resolveJsonModule: true,
-      moduleResolution: 'node',
-      esModuleInterop: true,
-      allowSyntheticDefaultImports: true
-    }),
     nodeResolve({
       jsnext: true,
       preferBuiltins: true,
       browser: true
     }),
+    typescript(
+      {
+        tsconfigOverride: {
+          compilerOptions: {
+            lib: ["es5", "es6", "dom"],
+            target: "es5",
+            resolveJsonModule: true,
+            moduleResolution: 'node',
+            esModuleInterop: true,
+            allowSyntheticDefaultImports: true,
+            declaration: true
+          }
+        },
+        tsconfig: "./tsconfig.json"
+      }
+    ),
     json(),
     commonjs(),
     buble()
