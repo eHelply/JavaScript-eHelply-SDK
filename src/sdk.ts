@@ -33,7 +33,6 @@ export class eHelplySDK {
         this.setupSdk(configuration)
     }
 
-
     set configuration(configuration: Configuration) {
         this.setupSdk(configuration)
     }
