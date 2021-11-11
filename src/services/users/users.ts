@@ -1,17 +1,23 @@
-import * as config from "../../secret.json";
+import {Logger} from "../../utils/logger";
 
-import axios from "axios";
+export default class UserSdk {
+    axiosClient: any
+    logger: Logger
 
-export default class UserService {
-    logIn(email: string, password: string) {
-         let data = {
+    constructor(axiosClient: any, logger: Logger) {
+        this.axiosClient = axiosClient;
+        this.logger = logger;
+    }
+
+    login(email: string, password: string) {
+        let data = {
             "user_login_data": {
                 "username": email,
                 "password": password
             }
         }
-        axios.post(`${config.baseURL}/users/auth/login`, data).then((res: any) => {
-            console.log(res)
-        })
+        return this.axiosClient.post(`/users/auth/login`, data).then((res: any) => {
+            this.logger.debug(res);
+        });
     }
 }
