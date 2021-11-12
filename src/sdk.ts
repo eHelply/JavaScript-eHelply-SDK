@@ -30,6 +30,7 @@ export class eHelplySDK {
     private _axiosClient: any;
 
     constructor(configuration: Configuration) {
+        this._authentication = {};
         this.setupSdk(configuration)
     }
 
@@ -37,13 +38,13 @@ export class eHelplySDK {
         this.setupSdk(configuration)
     }
 
-    setAuthorizationToken(apiKey: string): void {
-        this._authentication.authorizationToken = apiKey;
+    setProjectUuid(projectUuid: string): void {
+        this._projectUuid = projectUuid;
         this.setupSdk(this._configuration);
     }
 
-    setProjectUuid(projectUuid: string): void {
-        this._projectUuid = projectUuid;
+    setAuthorizationToken(apiKey: string): void {
+        this._authentication.authorizationToken = apiKey;
         this.setupSdk(this._configuration);
     }
 
@@ -73,15 +74,10 @@ export class eHelplySDK {
     }
 
     private createAxiosClient(): void {
-        this._axiosClient =  axios.create({
+        this._axiosClient = axios.create({
             baseURL: this._configuration.baseUrl.valueOf(),
             timeout: this._configuration.timeout.valueOf()
         });
-    }
-
-    private createServices(): void {
-        this.services.users = new UserSdk(this._axiosClient, this._logger);
-        this.services.reviews = new ReviewSdk(this._axiosClient, this._logger);
     }
 
     private setAxiosClientHeaders(): void {
@@ -95,5 +91,10 @@ export class eHelplySDK {
         } else {
             this._logger.debug("No valid authentication provided");
         }
+    }
+
+    private createServices(): void {
+        this.services.users = new UserSdk(this._axiosClient, this._logger);
+        this.services.reviews = new ReviewSdk(this._axiosClient, this._logger);
     }
 }
