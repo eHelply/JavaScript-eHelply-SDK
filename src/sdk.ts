@@ -3,6 +3,8 @@ import ReviewSdk from "./services/products/reviews/reviews";
 import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
 
+export {LogLevel};
+
 export interface Configuration {
     logLevel: LogLevel
     baseUrl?: String,
