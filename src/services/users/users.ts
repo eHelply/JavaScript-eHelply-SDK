@@ -1,5 +1,4 @@
 import {Logger} from "../../utils/logger";
-import axios from "axios";
 
 export default class UserSdk {
     axiosClient: any
@@ -17,9 +16,7 @@ export default class UserSdk {
                 "password": password
             }
         }
-        // Uses a new axios client as endpoint doesnt support the eHelply headers yet
-        // TODO: After the users refactor, this can likely be switched back to using this.axiosClient
-        return axios.post(`/users/auth/login`, data).then((res: any) => {
+        return this.axiosClient.post(`/users/auth/login`, data).then((res: any) => {
             this.logger.debug(res);
         });
     }
