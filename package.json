@@ -6,7 +6,8 @@
   "types": "./dist/sdk.d.ts",
   "scripts": {
     "test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "build": "rimraf dist && node ./compiler.js"
+    "build": "rimraf dist && node ./compiler.js",
+    "publish": "npm run test && npm publish"
   },
   "files": [
     "dist"
