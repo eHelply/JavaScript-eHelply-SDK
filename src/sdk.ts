@@ -96,7 +96,9 @@ export class eHelplySDK {
     }
 
     private createServices(): void {
-        this.services.users = new UserSdk(this._axiosClient, this._logger);
-        this.services.reviews = new ReviewSdk(this._axiosClient, this._logger);
+        this.services = {
+            users: new UserSdk(this._axiosClient, this._logger),
+            reviews: new ReviewSdk(this._axiosClient, this._logger)
+        };
     }
 }
