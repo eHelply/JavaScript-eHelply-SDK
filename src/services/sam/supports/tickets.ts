@@ -1,6 +1,7 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance} from "axios";
 import {makeAxiosClientHeaderless} from "../../../utils/axiosClient";
+import {createTicketRequest, createContactRequest} from "./ticketTypes";
 
 export default class SupportSdk {
   axiosClient: AxiosInstance
@@ -11,54 +12,27 @@ export default class SupportSdk {
     this.axiosClientHeaderless = makeAxiosClientHeaderless(axiosClient);
     this.logger = logger;
   }
-  create_ticket(payload) {
-    let payload = {
-      ticket: {
-        subject: this.ticket.subject,
-        priority: this.ticket.priority.toUpperCase()
-      }
-    };
-    let self = this;
-    // TODO: need to change monitor into support instead currently not supported
-    // TODO: when a newest ticket being created sort them by created date so the newest will be at the front of the page rather last
-    this.$qecl.$axios.post(`${this.$qecl.facts.get_service_endpoint("monitor")}/support/projects/${this.projectUuid}/members/${this.activeMemberId}/tickets`, payload).then((response) => {
-      self.$emit("ok", response.data);
-      self.loading = false;
-      self.hide();
+  create_ticket(payload: createTicketRequest, projectUuid: string, activeMemberId: string) {
+    this.axiosClient.post(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`, payload).then((res: any) => {
+      this.logger.debug(res);
     });
   }
-  list_tickets() {
-    let self = this;
-    let projectUuid = this.$route.params.project;
-    let activeParticipantUUID = this.$store.getters["user/getMe"].uuid;
-    this.$qecl.$axios.get(`${this.$qecl.facts.get_service_endpoint("monitor")}/support/projects/${projectUuid}/members/${activeParticipantUUID}/tickets`).then((response) => {
-      self.tickets = response.data;
-      self.loading = false;
+  list_tickets(projectUuid: string,  activeMemberId: string) {
+
+    this.axiosClient.get(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`, payload).then((res: any) => {
+      this.logger.debug(res);
     });
   }
-  create_contact(){
-    let participantData = this.$store.getters["user/getMe"]
-    let payload = {
-      "email": participantData.email.address,
-      "first_name": participantData.first_name,
-      "last_name": participantData.last_name,
-      "phone_number": participantData.phone_number
-    }
-    this.$qecl.$axios.post(`${this.$qecl.facts.get_service_endpoint("monitor")}/support/contact`, payload).then((response) => {
-    }).catch(error =>{
-      if (error.response.status === 409) {
-        console.log("Contact already exists")
-      }
+  create_contact(payload: createContactRequest){
+    this.axiosClient.post(`sam/support/contact`, payload).then((res: any) => {
+      this.logger.debug(res)
     });
   }
-  update_ticket () {
+  get_ticket(projectUuid: string, activeMemberId: string, ticketId: string) {
 
-  }
-  delete_ticket () {
-
-  }
-  get_ticket() {
-
+    this.axiosClient.get(`sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets/${ticketId}`).then((res: any ) => {
+      this.logger.debug(res)
+    });
   }
 
 }
