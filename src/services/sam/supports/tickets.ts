@@ -19,7 +19,7 @@ export default class SupportSdk {
   }
   list_tickets(projectUuid: string,  activeMemberId: string) {
 
-    this.axiosClient.get(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`, payload).then((res: any) => {
+    this.axiosClient.get(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`).then((res: any) => {
       this.logger.debug(res);
     });
   }
