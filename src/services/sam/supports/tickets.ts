@@ -1,7 +1,7 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance} from "axios";
 import {makeAxiosClientHeaderless} from "../../../utils/axiosClient";
-import {createTicketRequest, createContactRequest} from "./ticketTypes";
+import {createTicketRequest, createContactRequest, ticketResponse} from "./ticketTypes";
 
 export default class SupportSdk {
   axiosClient: AxiosInstance
@@ -12,26 +12,32 @@ export default class SupportSdk {
     this.axiosClientHeaderless = makeAxiosClientHeaderless(axiosClient);
     this.logger = logger;
   }
-  create_ticket(payload: createTicketRequest, projectUuid: string, activeMemberId: string) {
+  create_ticket(payload: createTicketRequest, projectUuid: string, activeMemberId: string): any {
     this.axiosClient.post(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`, payload).then((res: any) => {
-      this.logger.debug(res);
+      const response: ticketResponse = {
+        ticket_id: res.data.ticket_id,
+        subject: res.data.subject,
+        priority: res.data.priority
+      }
+      return response
     });
+
   }
-  list_tickets(projectUuid: string,  activeMemberId: string) {
+  list_tickets(projectUuid: string,  activeMemberId: string): any{
 
     this.axiosClient.get(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`).then((res: any) => {
-      this.logger.debug(res);
+      return res
     });
   }
-  create_contact(payload: createContactRequest){
+  create_contact(payload: createContactRequest): any{
     this.axiosClient.post(`sam/support/contact`, payload).then((res: any) => {
-      this.logger.debug(res)
+      return res
     });
   }
-  get_ticket(projectUuid: string, activeMemberId: string, ticketId: string) {
+  get_ticket(projectUuid: string, activeMemberId: string, ticketId: string): any {
 
     this.axiosClient.get(`sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets/${ticketId}`).then((res: any ) => {
-      this.logger.debug(res)
+      return res
     });
   }
 

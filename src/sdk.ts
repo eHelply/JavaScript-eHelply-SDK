@@ -1,5 +1,6 @@
 import UserSdk from "./services/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
+import SupportSdk from "./services/sam/supports/tickets";
 import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
 
@@ -13,7 +14,8 @@ export interface Configuration {
 
 export interface Services {
     users: UserSdk,
-    reviews: ReviewSdk
+    reviews: ReviewSdk,
+    supports: SupportSdk,
 }
 
 export interface Authentication {
@@ -98,7 +100,8 @@ export class eHelplySDK {
     private createServices(): void {
         this.services = {
             users: new UserSdk(this._axiosClient, this._logger),
-            reviews: new ReviewSdk(this._axiosClient, this._logger)
+            reviews: new ReviewSdk(this._axiosClient, this._logger),
+            supports: new SupportSdk(this._axiosClient, this._logger)
         };
     }
 }

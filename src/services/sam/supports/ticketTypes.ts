@@ -11,3 +11,9 @@ export interface createContactRequest {
   phone_number: string
 
 }
+
+export interface ticketResponse{
+  ticket_id: string,
+  subject: string,
+  priority: string
+}
