@@ -16,7 +16,7 @@ export default class BillingSdk {
   }
 
   getSecret(): void {
-    return this.axiosClient.get(`/products/billing/retrieve_secret`, payload).then((res: any) => {
+    return this.axiosClient.get(`/products/billing/retrieve_secret`).then((res: any) => {
       this.logger.debug(res);
     });
   }
