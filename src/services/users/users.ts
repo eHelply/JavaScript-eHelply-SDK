@@ -2,6 +2,7 @@ import {Logger} from "../../utils/logger";
 import {AxiosInstance} from "axios";
 import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
 import querystring from "querystring";
+import {authCodeRequest, createUserRequest} from "./userTypes";
 
 export default class UserSdk {
     axiosClient: AxiosInstance
@@ -25,88 +26,35 @@ export default class UserSdk {
             this.logger.debug(res);
         });
     }
-    signup(
-      email: string,
-      password: string,
-      firstName: string,
-      lastName: string,
-      phoneNumber: string,
-      country: string,
-      verifiedLegalTerms: boolean
-    )
+    signup(payload: createUserRequest)
     {
-        let api_payload = {
-            user_signup_data: {
-                username: email,
-                password: password,
-                email: email,
-                first_name: firstName,
-                last_name: lastName,
-                phone_number: phoneNumber,
-                country: country,
-                verified_legal_terms: verifiedLegalTerms,
-            }
-        };
-        return this.axiosClientHeaderless.post(`/users/auth/signup`, api_payload).then((res: any) => {
+        return this.axiosClientHeaderless.post(`/users/auth/signup`, payload).then((res: any) => {
             this.logger.debug(res);
         });
-
-
     }
-    login_callback(redirect: any, redirect_path: string) {
-        let self = this;
-
-        let users_endpoint = this.facts.get_service_endpoint("users");
-
-        this.$store.commit("auth/setAppClient", {app_client: this.$stack.cognito.app_client_id});
-
-        let code = this.$router.currentRoute.query.code;
-
-        let redirect_url = window.location.origin + redirect_path;
-        let endpoint = this.$stack.cognito.endpoint;
-        let app_client_id = this.$store.getters["auth/getAppClient"];
-
-        let auth_code_payload = {
-            grant_type: "authorization_code",
-            client_id: app_client_id,
-            code: code,
-            redirect_uri: redirect_url
-        };
+    login_callback(payload: authCodeRequest) {
         const headers = {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
-        };
-
-        if (code != null) {
-
-            let my_axios = axios.create({
-                transformRequest: [(data, headers) => {
-                    delete headers.common.Authorization;
-                    delete headers.common['EHELPLY-Active-Participant'];
-                    return data;
-                }]
-            });
-
-            my_axios.post(`${endpoint}/oauth2/token`, querystring.stringify(auth_code_payload), headers).then((response_auth_code) => {
-                response_auth_code = response_auth_code.data;
-
-                let refresh_token = response_auth_code.refresh_token;
-                let access_token = response_auth_code.access_token;
-                let identity_token = response_auth_code.id_token;
-
-                this.complete_login(refresh_token, access_token, identity_token, redirect);
-            }).catch((err) => {
-                console.log(err)
-            });
         }
+        let my_axios = axios.create({
+            transformRequest: [(data, headers) => {
+                delete headers.common.Authorization;
+                delete headers.common['EHELPLY-Active-Participant'];
+                return data;
+            }]
+        });
+        my_axios.post(`/users/auth/oauth2/token`, querystring.stringify(payload), headers).then((res:any ) => {
+            this.complete_login(res.refresh_token, res.access_token, res.identity_token, payload.redirect_uri);
+        })
     }
-    complete_login (){
+    complete_login (refresh_token: string, access_token: string, identity_token: string, redirect: string, ){
         let self = this;
 
         let users_endpoint = this.facts.get_service_endpoint("users");
 
-        axios.post(`${users_endpoint}/users`, {}, {headers: {Authorization: identity_token}}).then(async function (response_users) {
+        this.axiosClientHeaderless.post(`/users/auth/users`, {}, {headers: {Authorization: identity_token}}).then(async function (response_users) {
             response_users = response_users.data;
 
             let active_participant = response_users.participants[0].uuid;
@@ -168,8 +116,6 @@ export default class UserSdk {
             }
 
             Sentry.setUser(sentry_user);
-
-            self.$router.push(redirect);
         });
     }
 }
