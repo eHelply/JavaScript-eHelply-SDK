@@ -15,32 +15,32 @@ export default class SupportSdk {
   create_ticket(payload: createTicketRequest, projectUuid: string, activeMemberId: string) {
 
     this.axiosClient.post(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`, payload).then((res: any) => {
-      console.log(res)
+      this.logger.debug(res);
     }).catch(error => {
-
+      throw error
     })
 
   }
   list_tickets(projectUuid: string,  activeMemberId: string){
 
     this.axiosClient.get(`/sam/support/project/${projectUuid}/members/${activeMemberId}/tickets`).then((res: any) => {
-      console.log(res)
+      this.logger.debug(res);
     }).catch(error => {
-
+      throw error
     })
   }
   create_contact(payload: createContactRequest){
-    this.axiosClient.post(`sam/support/contact`, payload).then((res: any) => {
-      console.log(res)
+    this.axiosClient.post(`/sam/support/contact`, payload).then((res: any) => {
+      this.logger.debug(res);
     }).catch(error => {
-
+      throw error
     })
   }
   get_ticket(projectUuid: string, activeMemberId: string, ticketId: string) {
-    this.axiosClient.get(`sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets/${ticketId}`).then((res: any ) => {
-      console.log(res)
+    this.axiosClient.get(`/sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets/${ticketId}`).then((res: any ) => {
+      this.logger.debug(res);
     }).catch(error => {
-
+      throw error
     })
   }
 
