@@ -1,47 +1,59 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {CreateTicketRequest, CreateContactRequest, TicketResponse, ContactResponse} from "./ticketTypes";
+import {
+  CreateTicketRequest,
+  UpdateTicketResponse,
+  CreateTicketResponse,
+  CreateContactRequest,
+  GetTicketResponse,
+  CreateContactResponse
+} from "./ticketTypes";
 
 export default class SupportSdk {
   axiosClient: AxiosInstance
   logger: Logger
+
   constructor(axiosClient: AxiosInstance, logger: Logger) {
     this.axiosClient = axiosClient;
     this.logger = logger;
   }
-  create_ticket(projectUuid: string, activeMemberId: string, payload: CreateTicketRequest ): Promise<TicketResponse> {
-    return this.axiosClient.post<TicketResponse>(
+
+  createTicket(projectUuid: string, activeMemberId: string, payload: CreateTicketRequest): Promise<CreateTicketResponse> {
+    return this.axiosClient.post<CreateTicketResponse>(
       `/sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets`,
       payload
-    ).then((res: AxiosResponse<TicketResponse>) => {
+    ).then((res: AxiosResponse<CreateTicketResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
 
   }
-  list_tickets(projectUuid: string,  activeMemberId: string): Promise<Array<TicketResponse>>{
-    return this.axiosClient.get<Array<TicketResponse>>(
+
+  listTickets(projectUuid: string, activeMemberId: string): Promise<Array<GetTicketResponse>> {
+    return this.axiosClient.get<Array<GetTicketResponse>>(
       `/sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets`
-    ).then((res:AxiosResponse<Array<TicketResponse>> ) => {
+    ).then((res: AxiosResponse<Array<GetTicketResponse>>) => {
       this.logger.debug(res)
       return res.data;
     });
   }
-  create_contact(payload: CreateContactRequest): Promise<ContactResponse>{
-    return this.axiosClient.post<ContactResponse>(
+
+  createContact(payload: CreateContactRequest): Promise<CreateContactResponse> {
+    return this.axiosClient.post<CreateContactResponse>(
       `/sam/support/contact`,
       payload
-    ).then((res: AxiosResponse<ContactResponse>) => {
+    ).then((res: AxiosResponse<CreateContactResponse>) => {
       this.logger.debug(res)
       return res.data;
     })
   }
-  get_ticket(projectUuid: string, activeMemberId: string, ticketId: string): Promise<TicketResponse> {
-    return this.axiosClient.get<TicketResponse>(
+
+  getTicket(projectUuid: string, activeMemberId: string, ticketId: string): Promise<GetTicketResponse> {
+    return this.axiosClient.get<GetTicketResponse>(
       `/sam/support/projects/${projectUuid}/members/${activeMemberId}/tickets/${ticketId}`
-    ).then((res: AxiosResponse<TicketResponse> ) => {
+    ).then((res: AxiosResponse<GetTicketResponse>) => {
       this.logger.debug(res)
       return res.data
-    })
+    });
   }
 }

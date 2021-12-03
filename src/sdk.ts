@@ -15,7 +15,7 @@ export interface Configuration {
 export interface Services {
     users: UserSdk,
     reviews: ReviewSdk,
-    supports: SupportSdk,
+    support: SupportSdk,
 }
 
 export interface Authentication {
@@ -101,7 +101,7 @@ export class eHelplySDK {
         this.services = {
             users: new UserSdk(this._axiosClient, this._logger),
             reviews: new ReviewSdk(this._axiosClient, this._logger),
-            supports: new SupportSdk(this._axiosClient, this._logger)
-        };
+            support: new SupportSdk(this._axiosClient, this._logger)
+    };
     }
 }
