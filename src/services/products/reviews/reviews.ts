@@ -1,37 +1,57 @@
-import {createReviewRequest, updateReviewRequest} from "./reviewTypes"
+import {
+    CreateReviewRequest,
+    CreateReviewResponse,
+    GetReviewResponse,
+    UpdateReviewRequest,
+    UpdateReviewResponse
+} from "./reviewTypes"
 import {Logger} from "../../../utils/logger";
+import {AxiosInstance, AxiosResponse} from "axios";
 
 export default class ReviewSdk {
-    axiosClient: any
+    axiosClient: AxiosInstance
     logger: Logger
 
-    constructor(axiosClient: any, logger: Logger) {
+    constructor(axiosClient: AxiosInstance , logger: Logger) {
         this.axiosClient = axiosClient;
         this.logger = logger;
     }
 
-    create(payload: createReviewRequest, type: string, entity: string): void {
-        return this.axiosClient.post(`/products/reviews/types/${type}/entities/${entity}`, payload).then((res: any) => {
+    create(type: string, entity: string, payload: CreateReviewRequest): Promise<CreateReviewResponse> {
+        return this.axiosClient.post<CreateReviewResponse>(
+          `/products/reviews/types/${type}/entities/${entity}`,
+          payload
+        ).then((res: AxiosResponse<CreateReviewResponse>) => {
             this.logger.debug(res);
+            return res.data
         });
     }
 
-    update(payload: updateReviewRequest, reviewUuid: string, type: string, entity: string): void {
-        return this.axiosClient.put(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`, payload).then((res: any) => {
+    update(reviewUuid: string, type: string, entity: string, payload: UpdateReviewRequest): Promise<UpdateReviewResponse> {
+        return this.axiosClient.put<UpdateReviewResponse>(
+          `/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`,
+          payload
+        ).then((res: AxiosResponse<UpdateReviewResponse>) => {
             this.logger.debug(res);
+            return res.data
         });
     }
 
-    get(reviewUuid: string, type: string, entity: string) {
-        return this.axiosClient.get(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
+    get(reviewUuid: string, type: string, entity: string): Promise<GetReviewResponse> {
+        return this.axiosClient.get<GetReviewResponse>(
+          `/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`
+        ).then((res: AxiosResponse<GetReviewResponse>) => {
             this.logger.debug(res);
+            return res.data;
         });
     }
 
-    delete(reviewUuid: string, type: string, entity: string) {
-        return this.axiosClient.delete(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
+    delete(reviewUuid: string, type: string, entity: string): Promise<string> {
+        return this.axiosClient.delete<string>(
+          `/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`
+        ).then((res: AxiosResponse<string>) => {
             this.logger.debug(res);
+            return res.data
         });
-
     }
 }

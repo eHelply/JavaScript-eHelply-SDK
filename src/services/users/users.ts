@@ -22,6 +22,8 @@ export default class UserSdk {
         }
         return this.axiosClientHeaderless.post(`/users/auth/login`, data).then((res: any) => {
             this.logger.debug(res);
+        }).catch(error => {
+            throw error
         });
     }
 }
