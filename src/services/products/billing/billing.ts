@@ -1,4 +1,6 @@
 import {Logger} from "../../../utils/logger";
+import {BillingAccountResponse} from "./billingTypes";
+import {AxiosResponse} from "axios";
 
 export default class BillingSdk {
   axiosClient: any
@@ -8,10 +10,12 @@ export default class BillingSdk {
     this.axiosClient = axiosClient;
     this.logger = logger;
   }
-
-  createBillingAccount(): void {
-    return this.axiosClient.post(`/products/billing/create_billing_account`).then((res: any) => {
+  createBillingAccount(): Promise<BillingAccountResponse> {
+    return this.axiosClient.post<BillingAccountResponse>(
+      `/products/billing/create_billing_account`
+    ).then((res: AxiosResponse<BillingAccountResponse>) => {
       this.logger.debug(res);
+      return res.data
     });
   }
 
