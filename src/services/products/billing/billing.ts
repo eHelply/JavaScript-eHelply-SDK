@@ -2,6 +2,7 @@ import {Logger} from "../../../utils/logger";
 import {BillingAccountResponse, GetPaymentResponse, GetSecretResponse} from "./types/billingResponseTypes";
 import {AxiosInstance, AxiosResponse} from "axios";
 
+
 export default class BillingSdk {
   axiosClient: AxiosInstance
   logger: Logger
