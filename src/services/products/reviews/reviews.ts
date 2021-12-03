@@ -40,6 +40,5 @@ export default class ReviewSdk {
         }).catch(error => {
             throw error
         });
-
     }
 }
