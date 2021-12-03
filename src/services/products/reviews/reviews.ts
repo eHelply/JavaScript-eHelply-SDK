@@ -1,11 +1,12 @@
 import {createReviewRequest, updateReviewRequest} from "./reviewTypes"
 import {Logger} from "../../../utils/logger";
+import {AxiosInstance} from "axios";
 
 export default class ReviewSdk {
-    axiosClient: any
+    axiosClient: AxiosInstance
     logger: Logger
 
-    constructor(axiosClient: any, logger: Logger) {
+    constructor(axiosClient: AxiosInstance , logger: Logger) {
         this.axiosClient = axiosClient;
         this.logger = logger;
     }
@@ -34,11 +35,10 @@ export default class ReviewSdk {
         });
     }
 
-    delete(reviewUuid: string, type: string, entity: string) {
-        return this.axiosClient.delete(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
+    delete(reviewUuid: string, type: string, entity: string): Promise<string> {
+        return this.axiosClient.delete<string>(`/products/reviews/types/${type}/entities/${entity}/reviews/${reviewUuid}`).then((res: any) => {
             this.logger.debug(res);
-        }).catch(error => {
-            throw error
+            return res.data
         });
     }
 }

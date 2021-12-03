@@ -1,3 +1,5 @@
+import {AxiosResponse} from "axios";
+
 export enum LogLevel {
     INFO,
     DEBUG
@@ -14,13 +16,15 @@ export class Logger {
         this._logLevel = value;
     }
 
-    debug(message: string) {
+    debug(message: string | AxiosResponse) {
         if(this._logLevel >= LogLevel.DEBUG) {
             console.log(`[eHelply SDK] ${message}`)
         }
     }
 
-    info(message: string) {
+
+
+    info(message: string | AxiosResponse) {
         if(this._logLevel >= LogLevel.INFO) {
             console.log(`[eHelply SDK] ${message}`)
         }
