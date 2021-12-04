@@ -1,9 +1,6 @@
 import {Logger} from "../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
-import {AuthCodeRequest, CreateUserRequest, LoginRequest} from "./types/userRequestTypes";
-import {LoginResponse, RefreshTokensResponse } from "./types/userResponseTypes";
-import {CreateReviewResponse} from "../products/reviews/reviewTypes";
 
 export default class UserSdk {
   axiosClient: AxiosInstance
