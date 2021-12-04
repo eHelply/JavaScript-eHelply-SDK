@@ -1,4 +1,4 @@
-export interface CreateUserRequest {
+export interface SignUpRequest {
   user_signup_data: {
     username: string,
     password: string,

@@ -1,5 +1,7 @@
 import {Logger} from "../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
+import {LoginRequest, SignUpRequest, AuthCodeRequest} from "./types/userRequestTypes";
+import {LoginResponse, SignUpResponse, RefreshTokensResponse} from "./types/userResponseTypes";
 import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
 
 export default class UserSdk {
@@ -20,12 +22,16 @@ export default class UserSdk {
     ).then((res: AxiosResponse<LoginResponse>) => {
       this.logger.debug(res);
       return res.data;
-    })
+    });
   }
 
-  signup(payload: CreateUserRequest) {
-    return this.axiosClientHeaderless.post(`/users/auth/signup`, payload).then((res: any) => {
+  signup(payload: SignUpRequest): Promise<SignUpResponse> {
+    return this.axiosClientHeaderless.post<SignUpResponse>(
+      `/users/auth/signup`,
+      payload
+    ).then((res: AxiosResponse<SignUpResponse>) => {
       this.logger.debug(res);
+      return res.data;
     });
   }
 
@@ -43,11 +49,12 @@ export default class UserSdk {
       return res.data
     });
   }
-  refreshTokens(appClientId: string, payload: any) {
-    return this.axiosClientHeaderless.post(
+
+  refreshTokens(appClientId: string, payload: string): Promise<RefreshTokensResponse> {
+    return this.axiosClientHeaderless.post<RefreshTokensResponse>(
       `/auth/${appClientId}/refresh-token`,
       payload
-    ).then((res: AxiosResponse<CreateReviewResponse>) => {
+    ).then((res: AxiosResponse<RefreshTokensResponse>) => {
       this.logger.debug(res);
       return res.data
     });
