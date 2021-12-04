@@ -1,10 +1,6 @@
 {
   "name": "@ehelply/superstack-sdk",
-<<<<<<< HEAD
   "version": "0.0.33",
-=======
-  "version": "0.0.27",
->>>>>>> eccf548 (moved more auth endpoint into user, however needed to setup the vuex store)
   "description": "eHelply JavaScript SDK",
   "main": "./dist/bundle.js",
   "types": "./dist/sdk.d.ts",

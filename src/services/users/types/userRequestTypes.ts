@@ -1,4 +1,4 @@
-export interface createUserRequest {
+export interface CreateUserRequest {
   user_signup_data: {
     username: string,
     password: string,
@@ -11,9 +11,15 @@ export interface createUserRequest {
   }
 }
 
-export interface authCodeRequest {
+export interface AuthCodeRequest {
   grant_type: string,
   client_id: string,
   code: string,
   redirect_uri: string
+}
+export interface LoginRequest {
+  user_login_data: {
+    username: string,
+    password: string
+  }
 }
