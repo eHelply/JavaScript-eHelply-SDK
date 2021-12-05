@@ -1,6 +1,6 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {GetMonitorServicesResponse} from "./types/monitorResponseTypes";
+import {GetKpisResponse, GetMonitorServicesResponse} from "./types/monitorResponseTypes";
 
 export default class MonitorSdk {
   axiosClient: AxiosInstance
@@ -28,7 +28,13 @@ export default class MonitorSdk {
       this.logger.debug(res);
       return res.data;
     });
-
   }
-
+  getServiceKpis(serviceUuid: string): Promise<Array<GetKpisResponse>> {
+    return this.axiosClient.post<Array<GetKpisResponse>>(
+      `/sam/monitor/services/${serviceUuid}/kpis`,
+    ).then((res: AxiosResponse<Array<GetKpisResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
 }
