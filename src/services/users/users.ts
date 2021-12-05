@@ -1,7 +1,19 @@
 import {Logger} from "../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {LoginRequest, SignUpRequest, AuthCodeRequest} from "./types/userRequestTypes";
-import {LoginResponse, SignUpResponse, RefreshTokensResponse} from "./types/userResponseTypes";
+import {
+  LoginRequest,
+  SignUpRequest,
+  AuthCodeRequest,
+  ValidateEmailRequest,
+  ResetPasswordRequest, ResetPasswordConfirmationRequest
+} from "./types/userRequestTypes";
+import {
+  LoginResponse,
+  SignUpResponse,
+  RefreshTokensResponse,
+  ValidateEmailResponse,
+  ResetPasswordResponse, ResetPasswordConfirmationResponse, CreateUserResponse
+} from "./types/userResponseTypes";
 import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
 
 export default class UserSdk {
@@ -35,8 +47,8 @@ export default class UserSdk {
     });
   }
 
-  createUser(identityToken: string) {
-    return this.axiosClientHeaderless.post(
+  createUser(identityToken: string): Promise<CreateUserResponse> {
+    return this.axiosClientHeaderless.post<CreateUserResponse>(
       `/users`,
       {},
       {
@@ -44,7 +56,7 @@ export default class UserSdk {
           Authorization: identityToken
         }
       }
-    ).then((res: AxiosResponse<CreateReviewResponse>) => {
+    ).then((res: AxiosResponse<CreateUserResponse>) => {
       this.logger.debug(res);
       return res.data
     });
@@ -59,29 +71,29 @@ export default class UserSdk {
       return res.data
     });
   }
-  validateEmail(payload: any) {
-    return this.axiosClient.post(
+  validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
+    return this.axiosClient.post<ValidateEmailResponse>(
       `/users/validations/email`,
       payload
-    ).then((res: AxiosResponse<CreateReviewResponse>) => {
+    ).then((res: AxiosResponse<ValidateEmailResponse>) => {
       this.logger.debug(res);
       return res.data
     });
   }
-  resetPassword(payload: any) {
+  resetPassword(payload: ResetPasswordRequest): Promise<ResetPasswordResponse> {
     return this.axiosClient.post(
       `/auth/password/reset`,
       payload
-    ).then((res: AxiosResponse<CreateReviewResponse>) => {
+    ).then((res: AxiosResponse<ResetPasswordResponse>) => {
       this.logger.debug(res);
       return res.data
     });
   }
-  resetPasswordConfirm(payload: any) {
-    return this.axiosClient.post(
+  resetPasswordConfirm(payload: ResetPasswordConfirmationRequest): Promise<ResetPasswordConfirmationResponse> {
+    return this.axiosClient.post<ResetPasswordConfirmationResponse>(
       `/auth/password/reset/confirm`,
       payload
-    ).then((res: AxiosResponse<CreateReviewResponse>) => {
+    ).then((res: AxiosResponse<ResetPasswordConfirmationResponse>) => {
       this.logger.debug(res);
       return res.data
     });

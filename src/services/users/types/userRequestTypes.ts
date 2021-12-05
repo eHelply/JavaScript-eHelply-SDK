@@ -1,3 +1,5 @@
+import {ValidateEmailResponse} from "./userResponseTypes";
+
 export interface SignUpRequest {
   user_signup_data: {
     username: string,
@@ -22,4 +24,17 @@ export interface LoginRequest {
     username: string,
     password: string
   }
+}
+
+export interface ValidateEmailRequest {
+  email: string
+  verification_code: string
+}
+export interface ResetPasswordRequest {
+  email: string
+}
+export interface ResetPasswordConfirmationRequest {
+  email: string,
+  confirmation_code: string,
+  password: string
 }
