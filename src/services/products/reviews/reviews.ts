@@ -1,10 +1,9 @@
 import {
-    CreateReviewRequest,
     CreateReviewResponse,
     GetReviewResponse,
-    UpdateReviewRequest,
     UpdateReviewResponse
-} from "./reviewTypes"
+} from "./types/reviewResponseTypes"
+import {UpdateReviewRequest,CreateReviewRequest} from "./types/reviewRequestTypes"
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 
