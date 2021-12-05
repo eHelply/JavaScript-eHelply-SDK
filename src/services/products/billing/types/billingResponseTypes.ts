@@ -3,5 +3,4 @@ export interface BillingAccountResponse{
   last_name: string,
   project_uuid: string,
   stripe_customer_id: string
-
 }
