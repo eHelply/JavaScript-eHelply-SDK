@@ -1,12 +1,12 @@
 import {Logger} from "../../../utils/logger";
-import {BillingAccountResponse} from "./billingTypes";
-import {AxiosResponse} from "axios";
+import {BillingAccountResponse} from "./types/billingResponseTypes";
+import {AxiosInstance, AxiosResponse} from "axios";
 
 export default class BillingSdk {
-  axiosClient: any
+  axiosClient: AxiosInstance
   logger: Logger
 
-  constructor(axiosClient: any, logger: Logger) {
+  constructor(axiosClient: AxiosInstance, logger: Logger) {
     this.axiosClient = axiosClient;
     this.logger = logger;
   }
@@ -35,6 +35,5 @@ export default class BillingSdk {
     return this.axiosClient.delete(`/products/billing/remove_payment_method`).then((res: any) => {
       this.logger.debug(res);
     });
-
   }
 }
