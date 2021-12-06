@@ -28,4 +28,5 @@ export default class AccessSdk {
       return res.data;
     });
   }
+
 }
