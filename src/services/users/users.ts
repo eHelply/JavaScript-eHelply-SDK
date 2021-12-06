@@ -2,7 +2,7 @@ import {Logger} from "../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {
   LoginRequest,
-  SignUpRequest,
+  SignupRequest,
   AuthCodeRequest,
   ValidateEmailRequest,
   ResetPasswordRequest, ResetPasswordConfirmationRequest
@@ -37,7 +37,7 @@ export default class UserSdk {
     });
   }
 
-  signup(payload: SignUpRequest): Promise<SignUpResponse> {
+  signup(payload: SignupRequest): Promise<SignUpResponse> {
     return this.axiosClientHeaderless.post<SignUpResponse>(
       `/users/auth/signup`,
       payload
@@ -71,6 +71,7 @@ export default class UserSdk {
       return res.data
     });
   }
+
   validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
     return this.axiosClient.post<ValidateEmailResponse>(
       `/users/validations/email`,
@@ -80,6 +81,7 @@ export default class UserSdk {
       return res.data
     });
   }
+
   resetPassword(payload: ResetPasswordRequest): Promise<ResetPasswordResponse> {
     return this.axiosClient.post(
       `/auth/password/reset`,
@@ -89,6 +91,7 @@ export default class UserSdk {
       return res.data
     });
   }
+
   resetPasswordConfirm(payload: ResetPasswordConfirmationRequest): Promise<ResetPasswordConfirmationResponse> {
     return this.axiosClient.post<ResetPasswordConfirmationResponse>(
       `/auth/password/reset/confirm`,

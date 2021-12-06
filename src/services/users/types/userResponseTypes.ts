@@ -25,7 +25,6 @@ export interface CreateUserResponse {
   uuid: string,
 }
 
-
 export interface RefreshTokensResponse {
   AccessToken: string,
   ExpiresIn: number,
@@ -36,6 +35,7 @@ export interface RefreshTokensResponse {
 export interface ResetPasswordResponse {
 
 }
+
 export interface ResetPasswordConfirmationResponse {
   ClientId: string,
   UserName: string,
