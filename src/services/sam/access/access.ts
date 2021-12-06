@@ -20,7 +20,7 @@ export default class AccessSdk {
     });
   }
 
-  checkAccessibility(partition: string, target: string, node: string, entity: string): Promise<boolean> {
+  checkAccess(partition: string, target: string, node: string, entity: string): Promise<boolean> {
     return this.axiosClient.post<boolean>(
       `/sam/access/partitions/${partition}/auth/targets/${target}/nodes/${node}/entities/${entity}`
     ).then((res: AxiosResponse<boolean>) => {
