@@ -29,6 +29,7 @@ export default class MonitorSdk {
       return res.data;
     });
   }
+
   getServiceKpis(serviceUuid: string): Promise<Array<GetKpisResponse>> {
     return this.axiosClient.post<Array<GetKpisResponse>>(
       `/sam/monitor/services/${serviceUuid}/kpis`,

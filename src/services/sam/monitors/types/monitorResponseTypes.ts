@@ -15,8 +15,15 @@ export interface GetMonitorServicesResponse {
 export interface Kpi {
   uuid: string,
   service_uuid: string,
-  // within the db is just JSON
-  kpis: any
+  kpis: {
+    name: string,
+    metrics: {
+      count: number
+    },
+    date_end: string,
+    date_start: string,
+    disclaimers: Array<string>
+  }
   created_at: string,
   fetched_at: string
 }
