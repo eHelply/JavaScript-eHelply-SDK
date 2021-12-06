@@ -2,6 +2,7 @@ import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {GetKeyResponse} from "./types/accessResponseTypes";
 
+
 export default class AccessSdk {
   axiosClient: AxiosInstance
   logger: Logger
