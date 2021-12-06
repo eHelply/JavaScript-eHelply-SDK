@@ -1,5 +1,5 @@
 import {Logger} from "../../../utils/logger";
-import {BillingAccountResponse, GetPaymentResponse, GetSecretResponse} from "./types/billingResponseTypes";
+import {BillingAccountResponse, GetPaymentResponse, GetStripeSecret} from "./types/billingResponseTypes";
 import {AxiosInstance, AxiosResponse} from "axios";
 
 export default class BillingSdk {
@@ -19,10 +19,10 @@ export default class BillingSdk {
     });
   }
 
-  getSecret(): Promise<GetSecretResponse> {
-    return this.axiosClient.get<GetSecretResponse>(
+  getSecret(): Promise<GetStripeSecret> {
+    return this.axiosClient.get<GetStripeSecret>(
       `/products/billing/retrieve_secret`
-    ).then((res: AxiosResponse<GetSecretResponse>) => {
+    ).then((res: AxiosResponse<GetStripeSecret>) => {
       this.logger.debug(res);
       return res.data
     });
