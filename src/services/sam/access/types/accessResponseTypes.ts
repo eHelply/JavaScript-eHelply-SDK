@@ -6,10 +6,3 @@ export interface GetKeyResponse {
   created_at: string,
   last_used_at: string
 }
-
-export interface GetAccessibilityResponse{
-  status_code: string,
-  content: {
-    message: string
-  }
-}
