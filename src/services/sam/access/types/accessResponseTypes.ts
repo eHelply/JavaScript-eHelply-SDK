@@ -1,6 +1,7 @@
 export interface GetKeyResponse {
 
 }
+<<<<<<< HEAD
 
 export interface GetAccessibilityResponse{
   status_code: string,
@@ -8,3 +9,5 @@ export interface GetAccessibilityResponse{
     message: string
   }
 }
+=======
+>>>>>>> 516c868 (added get key endpoints)
