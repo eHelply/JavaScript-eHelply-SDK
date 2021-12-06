@@ -1,6 +1,12 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {GetMemberProjectsResponse} from "./types/projectResponseTypes";
+import {
+  GetMemberProjectsResponse,
+  CreateProjectResponse,
+  GetProjectResponse,
+  UpdateProjectResponse
+} from "./types/projectResponseTypes";
+import {CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
 export default class ProjectSdk {
   axiosClient: AxiosInstance
@@ -23,14 +29,42 @@ export default class ProjectSdk {
       return res.data;
     });
   }
-  createProject() {
 
+  createProject(payload: CreateProjectRequest): Promise<CreateProjectResponse> {
+    return this.axiosClient.post<CreateProjectResponse>(
+      `/sam/projects`,
+      payload
+    ).then((res: AxiosResponse<CreateProjectResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
-  updateProject() {
 
+  updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<UpdateProjectResponse> {
+    return this.axiosClient.put<UpdateProjectResponse>(
+      `/sam/projects/${projectUuid}`,
+      payload
+    ).then((res: AxiosResponse<UpdateProjectResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
-  archiveProject() {
 
+  getProject(projectUuid: string): Promise<GetProjectResponse> {
+    return this.axiosClient.get<GetProjectResponse>(
+      `/sam/projects/${projectUuid}`,
+    ).then((res: AxiosResponse<GetProjectResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 
+  archiveProject(projectUuid: string): Promise<string> {
+    return this.axiosClient.delete<string>(
+      `/sam/projects/${projectUuid}`,
+    ).then((res: AxiosResponse<string>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
 }
