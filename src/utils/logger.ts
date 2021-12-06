@@ -22,8 +22,6 @@ export class Logger {
         }
     }
 
-
-
     info(message: string | AxiosResponse) {
         if(this._logLevel >= LogLevel.INFO) {
             console.log(`[eHelply SDK] ${message}`)
