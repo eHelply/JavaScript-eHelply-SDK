@@ -7,3 +7,9 @@ export interface UpdateProjectRequest {
  status?: string
 }
 
+export interface ProjectKey {
+ name: string,
+ summary: string,
+}
+
+export interface CreateProjectKeyRequest extends  ProjectKey {}

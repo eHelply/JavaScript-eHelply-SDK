@@ -4,9 +4,9 @@ import {
   GetMemberProjectsResponse,
   CreateProjectResponse,
   GetProjectResponse,
-  UpdateProjectResponse, GetProjectMembersResponse
+  UpdateProjectResponse, GetProjectMembersResponse, CreateProjectKeyResponse, RemoveProjectKeyResponse
 } from "./types/projectResponseTypes";
-import {CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
+import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
 export default class ProjectSdk {
   axiosClient: AxiosInstance
@@ -95,6 +95,32 @@ export default class ProjectSdk {
     });
   }
 
+  createProjectKey(projectUuid: string, memberUuid: string, payload: CreateProjectKeyRequest): Promise<CreateProjectKeyResponse> {
+    return this.axiosClient.post<CreateProjectKeyResponse>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
+    ).then((res: AxiosResponse<CreateProjectKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  removeProjectKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<RemoveProjectKeyResponse> {
+    return this.axiosClient.delete<RemoveProjectKeyResponse>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}`,
+    ).then((res: AxiosResponse<RemoveProjectKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  addPermissionToKey() {
+  }
+
+  removePermissionToKey() {
+  }
+
+  getPermissionToKey() {
+  }
 
 
 }
