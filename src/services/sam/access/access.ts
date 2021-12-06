@@ -19,4 +19,8 @@ export default class AccessSdk {
       return res.data;
     });
   }
+
+  getAccess(entity: string, target: string, node: string ) {
+
+  }
 }
