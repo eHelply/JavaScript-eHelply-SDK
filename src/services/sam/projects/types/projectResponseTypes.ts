@@ -27,3 +27,14 @@ export interface GetProjectMembersResponse {
   role: string,
   created_at: string
 }
+
+export interface ProjectKey {
+  name: string,
+  summary: string,
+}
+
+export interface CreateProjectKeyResponse extends ProjectKey {}
+export interface RemoveProjectKeyResponse {
+  entity_identifier: string,
+  key_uuid: string
+}
