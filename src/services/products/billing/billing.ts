@@ -1,12 +1,7 @@
 import {Logger} from "../../../utils/logger";
-<<<<<<< HEAD
-import {BillingAccountResponse, GetPaymentResponse, GetSecretResponse} from "./types/billingResponseTypes";
+import {BillingAccountResponse, GetPaymentResponse, GetStripeSecret} from "./types/billingResponseTypes";
 import {AxiosInstance, AxiosResponse} from "axios";
 
-=======
-import {BillingAccountResponse} from "./types/billingResponseTypes";
-import {AxiosInstance, AxiosResponse} from "axios";
->>>>>>> a529bca (fixes typing)
 
 export default class BillingSdk {
   axiosClient: AxiosInstance
@@ -25,10 +20,10 @@ export default class BillingSdk {
     });
   }
 
-  getSecret(): Promise<GetSecretResponse> {
-    return this.axiosClient.get<GetSecretResponse>(
+  getSecret(): Promise<GetStripeSecret> {
+    return this.axiosClient.get<GetStripeSecret>(
       `/products/billing/retrieve_secret`
-    ).then((res: AxiosResponse<GetSecretResponse>) => {
+    ).then((res: AxiosResponse<GetStripeSecret>) => {
       this.logger.debug(res);
       return res.data
     });

@@ -5,7 +5,7 @@ export interface BillingAccountResponse{
   stripe_customer_id: string
 }
 
-export interface GetSecretResponse {
+export interface GetStripeSecret {
   secret: string,
 }
 
