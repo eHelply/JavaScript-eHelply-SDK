@@ -6,3 +6,4 @@ export interface UpdateProjectRequest {
  max_spend?: number
  status?: string
 }
+
