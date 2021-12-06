@@ -4,7 +4,11 @@ import {
   GetMemberProjectsResponse,
   CreateProjectResponse,
   GetProjectResponse,
-  UpdateProjectResponse, GetProjectMembersResponse, CreateProjectKeyResponse, RemoveProjectKeyResponse
+  UpdateProjectResponse,
+  GetProjectMembersResponse,
+  CreateProjectKeyResponse,
+  RemoveProjectKeyResponse,
+  AddPermissionToKeyResponse, RemovePermissionFromKeyResponse, GetPermissionFromKeyResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -113,14 +117,30 @@ export default class ProjectSdk {
     });
   }
 
-  addPermissionToKey() {
+  addPermissionToKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string):Promise<AddPermissionToKeyResponse> {
+    return this.axiosClient.post<AddPermissionToKeyResponse>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
+    ).then((res: AxiosResponse<AddPermissionToKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 
-  removePermissionToKey() {
+  removePermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<RemovePermissionFromKeyResponse> {
+    return this.axiosClient.delete<RemovePermissionFromKeyResponse>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
+    ).then((res: AxiosResponse<RemovePermissionFromKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 
-  getPermissionToKey() {
+  getPermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<Array<GetPermissionFromKeyResponse>> {
+    return this.axiosClient.get<Array<GetPermissionFromKeyResponse>>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions`,
+    ).then((res: AxiosResponse<Array<GetPermissionFromKeyResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
-
-
 }

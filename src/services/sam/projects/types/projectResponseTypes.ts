@@ -34,7 +34,33 @@ export interface ProjectKey {
 }
 
 export interface CreateProjectKeyResponse extends ProjectKey {}
+
 export interface RemoveProjectKeyResponse {
   entity_identifier: string,
   key_uuid: string
+}
+
+export interface  PermissionForKey {
+  key: string,
+  node: {
+    uuid: string,
+    name: string,
+    node: string,
+    type_uuid: string,
+    summary: string,
+    created_at: string
+  }
+}
+
+export interface AddPermissionToKeyResponse extends PermissionForKey {}
+
+export interface RemovePermissionFromKeyResponse extends PermissionForKey {}
+
+export interface GetPermissionFromKeyResponse {
+  uuid: string,
+  name: string,
+  node: string,
+  type_uuid: string,
+  summary: string,
+  created_at: string
 }
