@@ -1,13 +1,12 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
+import {CreateTicketRequest, CreateContactRequest,} from "./types/ticketRequestTypes";
 import {
-  CreateTicketRequest,
-  UpdateTicketResponse,
-  CreateTicketResponse,
-  CreateContactRequest,
+  CreateContactResponse,
   GetTicketResponse,
-  CreateContactResponse
-} from "./ticketTypes";
+  CreateTicketResponse,
+  UpdateTicketResponse
+} from "./types/ticketReponseTypes";
 
 export default class SupportSdk {
   axiosClient: AxiosInstance
