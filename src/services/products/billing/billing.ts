@@ -1,7 +1,12 @@
 import {Logger} from "../../../utils/logger";
+<<<<<<< HEAD
 import {BillingAccountResponse, GetPaymentResponse, GetSecretResponse} from "./types/billingResponseTypes";
 import {AxiosInstance, AxiosResponse} from "axios";
 
+=======
+import {BillingAccountResponse} from "./types/billingResponseTypes";
+import {AxiosInstance, AxiosResponse} from "axios";
+>>>>>>> a529bca (fixes typing)
 
 export default class BillingSdk {
   axiosClient: AxiosInstance
