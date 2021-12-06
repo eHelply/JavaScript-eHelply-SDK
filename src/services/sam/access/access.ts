@@ -1,6 +1,6 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {GetKeyResponse, GetAccessibilityResponse} from "./types/accessResponseTypes";
+import {GetKeyResponse} from "./types/accessResponseTypes";
 
 export default class AccessSdk {
   axiosClient: AxiosInstance
@@ -20,10 +20,10 @@ export default class AccessSdk {
     });
   }
 
-  checkAccessibility(partition: string, target: string, node: string, entity: string): Promise<GetAccessibilityResponse> {
-    return this.axiosClient.post<GetAccessibilityResponse>(
+  checkAccessibility(partition: string, target: string, node: string, entity: string): Promise<boolean> {
+    return this.axiosClient.post<boolean>(
       `/sam/access/partitions/${partition}/auth/targets/${target}/nodes/${node}/entities/${entity}`
-    ).then((res: AxiosResponse<GetAccessibilityResponse>) => {
+    ).then((res: AxiosResponse<boolean>) => {
       this.logger.debug(res);
       return res.data;
     });
