@@ -19,3 +19,11 @@ export interface UpdateProjectResponse extends ProjectResponse {
   group_m_p: string,
   group_p_c: string
 }
+
+export interface GetProjectMembersResponse {
+  uuid: string,
+  project_uuid: string,
+  entity_uuid: string,
+  role: string,
+  created_at: string
+}

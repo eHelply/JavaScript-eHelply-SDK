@@ -4,7 +4,7 @@ import {
   GetMemberProjectsResponse,
   CreateProjectResponse,
   GetProjectResponse,
-  UpdateProjectResponse
+  UpdateProjectResponse, GetProjectMembersResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -67,4 +67,34 @@ export default class ProjectSdk {
       return res.data;
     });
   }
+
+  getProjectMembers(projectUuid: string): Promise<Array<GetProjectMembersResponse>> {
+    return this.axiosClient.get<Array<GetProjectMembersResponse>>(
+      `/sam/projects/${projectUuid}/members`,
+    ).then((res: AxiosResponse<Array<GetProjectMembersResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  addMemberToProject(projectUuid: string, memberUuid: string): Promise<boolean> {
+    return this.axiosClient.post<boolean>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}`,
+    ).then((res: AxiosResponse<boolean>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  removeMemberFromProject(projectUuid: string, memberUuid: string): Promise<boolean> {
+    return this.axiosClient.delete<boolean>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}`,
+    ).then((res: AxiosResponse<boolean>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+
+
 }
