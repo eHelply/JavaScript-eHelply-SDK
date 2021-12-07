@@ -8,7 +8,9 @@ import {
   GetProjectMembersResponse,
   CreateProjectKeyResponse,
   RemoveProjectKeyResponse,
-  AddPermissionToKeyResponse, RemovePermissionFromKeyResponse, GetPermissionFromKeyResponse
+  AddPermissionToKeyResponse,
+  RemovePermissionFromKeyResponse,
+  GetPermissionFromKeyResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -26,7 +28,7 @@ export default class ProjectSdk {
       role: role
     }
     return this.axiosClient.get<Array<GetMemberProjectsResponse>>(
-      `/sam/projects/member/${memberUuid}/`,
+      `/sam/projects/member/${memberUuid}`,
       {params}
     ).then((res: AxiosResponse<Array<GetMemberProjectsResponse>>) => {
       this.logger.debug(res);
@@ -117,7 +119,7 @@ export default class ProjectSdk {
     });
   }
 
-  addPermissionToKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string):Promise<AddPermissionToKeyResponse> {
+  addPermissionToKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<AddPermissionToKeyResponse> {
     return this.axiosClient.post<AddPermissionToKeyResponse>(
       `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
     ).then((res: AxiosResponse<AddPermissionToKeyResponse>) => {
