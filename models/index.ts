@@ -31,7 +31,6 @@ export * from './body-attach-alarm-ticket-monitor-services-service-uuid-stages-s
 export * from './body-cloud-participant-projects-cloud-participant-post';
 export * from './body-create-group-access-partitions-partition-identifier-who-groups-post';
 export * from './body-create-key-security-keys-post';
-export * from './body-create-note-notes-notes-post';
 export * from './body-create-project-key-projects-projects-project-uuid-members-entity-uuid-keys-post';
 export * from './body-create-project-projects-projects-post';
 export * from './body-create-role-access-partitions-partition-identifier-roles-post';
@@ -51,7 +50,6 @@ export * from './body-update-limits-for-key-on-target-access-partitions-partitio
 export * from './body-update-meta-from-uuid-meta-meta-meta-uuid-put';
 export * from './body-update-meta-meta-meta-service-service-type-type-entity-entity-uuid-put';
 export * from './body-update-node-access-partitions-partition-identifier-permissions-nodes-node-uuid-put';
-export * from './body-update-note-notes-notes-note-id-put';
 export * from './body-update-project-projects-projects-project-uuid-put';
 export * from './body-update-role-access-partitions-partition-identifier-roles-role-uuid-put';
 export * from './body-update-ticket-support-projects-project-uuid-members-member-uuid-tickets-ticket-id-put';
@@ -72,9 +70,6 @@ export * from './httpvalidation-error';
 export * from './meta-create';
 export * from './meta-dynamo';
 export * from './meta-slugger';
-export * from './note-base';
-export * from './note-dynamo';
-export * from './note-meta';
 export * from './page';
 export * from './pagination';
 export * from './projects-project-create';

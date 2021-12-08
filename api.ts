@@ -15,11 +15,9 @@
 
 
 export * from './apis/access-api';
-export * from './apis/default-api';
 export * from './apis/logging-api';
 export * from './apis/meta-api';
 export * from './apis/monitor-api';
-export * from './apis/notes-api';
 export * from './apis/projects-api';
 export * from './apis/security-api';
 export * from './apis/support-api';
