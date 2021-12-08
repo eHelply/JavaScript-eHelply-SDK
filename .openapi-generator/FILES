@@ -4,9 +4,11 @@
 README.md
 api.ts
 apis/access-api.ts
+apis/default-api.ts
 apis/logging-api.ts
 apis/meta-api.ts
 apis/monitor-api.ts
+apis/notes-api.ts
 apis/projects-api.ts
 apis/security-api.ts
 apis/support-api.ts
@@ -48,6 +50,7 @@ models/body-attach-alarm-ticket-monitor-services-service-uuid-stages-stage-alarm
 models/body-cloud-participant-projects-cloud-participant-post.ts
 models/body-create-group-access-partitions-partition-identifier-who-groups-post.ts
 models/body-create-key-security-keys-post.ts
+models/body-create-note-notes-notes-post.ts
 models/body-create-project-key-projects-projects-project-uuid-members-entity-uuid-keys-post.ts
 models/body-create-project-projects-projects-post.ts
 models/body-create-role-access-partitions-partition-identifier-roles-post.ts
@@ -67,6 +70,7 @@ models/body-update-limits-for-key-on-target-access-partitions-partition-identifi
 models/body-update-meta-from-uuid-meta-meta-meta-uuid-put.ts
 models/body-update-meta-meta-meta-service-service-type-type-entity-entity-uuid-put.ts
 models/body-update-node-access-partitions-partition-identifier-permissions-nodes-node-uuid-put.ts
+models/body-update-note-notes-notes-note-id-put.ts
 models/body-update-project-projects-projects-project-uuid-put.ts
 models/body-update-role-access-partitions-partition-identifier-roles-role-uuid-put.ts
 models/body-update-ticket-support-projects-project-uuid-members-member-uuid-tickets-ticket-id-put.ts
@@ -88,6 +92,9 @@ models/index.ts
 models/meta-create.ts
 models/meta-dynamo.ts
 models/meta-slugger.ts
+models/note-base.ts
+models/note-dynamo.ts
+models/note-meta.ts
 models/page.ts
 models/pagination.ts
 models/projects-project-create.ts
