@@ -1,6 +1,6 @@
 {
   "name": "@ehelply/superstack-sdk",
-  "version": "${sdkVersion}",
+  "version": "",
   "description": "OpenAPI client for @ehelply/superstack-sdk",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
