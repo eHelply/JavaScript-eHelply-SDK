@@ -1,6 +1,10 @@
 import UserSdk from "./services/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import SupportSdk from "./services/sam/supports/tickets";
+import AccessSdk from "./services/sam/access/access";
+import MonitorSdk from "./services/sam/monitors/monitor";
+import ProjectSdk from "./services/sam/projects/projects";
+import BillingSdk from "./services/products/billing/billing";
 import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
 
@@ -16,6 +20,10 @@ export interface Services {
   users: UserSdk,
   reviews: ReviewSdk,
   support: SupportSdk,
+  access: AccessSdk,
+  monitor: MonitorSdk,
+  billing: BillingSdk,
+  projects: ProjectSdk
 }
 
 export interface Authentication {
@@ -101,7 +109,12 @@ export class eHelplySDK {
     this.services = {
       users: new UserSdk(this._axiosClient, this._logger),
       reviews: new ReviewSdk(this._axiosClient, this._logger),
-      support: new SupportSdk(this._axiosClient, this._logger)
+      support: new SupportSdk(this._axiosClient, this._logger),
+      access: new AccessSdk(this._axiosClient, this._logger),
+      monitor: new MonitorSdk(this._axiosClient, this._logger),
+      billing: new BillingSdk(this._axiosClient, this._logger),
+      projects: new ProjectSdk(this._axiosClient, this._logger)
+
     };
   }
 }
