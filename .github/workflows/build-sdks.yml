@@ -1,0 +1,48 @@
+name: Publish SDK
+on:
+  push:
+    branches:
+      - sdk-env-test
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v2
+      - name: Install node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  notifications:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Slack Failure Notification
+        if: needs.build.result == 'failure'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: '#9e101e'
+          SLACK_USERNAME: 'GitHub SDK Bot'
+          SLACK_ICON: "https://assets.ehelply.com/logo/ehelply/base/symbol_green_white.png"
+          SLACK_FOOTER: ""
+          SLACK_TITLE: 'JS/TS SDK Publish FAILED'
+          SLACK_MESSAGE: 'Failed to publish the JS/TS SDK to NPM'
+      - name: Slack Success Notification
+        if: always() && needs.build.result == 'success'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: 'good'
+          SLACK_USERNAME: 'GitHub SDK Bot'
+          SLACK_ICON: "https://assets.ehelply.com/logo/ehelply/base/symbol_green_white.png"
+          SLACK_FOOTER: ""
+          SLACK_TITLE: 'JS/TS SDK Publish SUCCESS'
+          SLACK_MESSAGE: 'JS/TS SDK pushed to NPM successfully'
