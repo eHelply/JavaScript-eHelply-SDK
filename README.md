@@ -1,4 +1,6 @@
-## @ehelply/superstack-sdk@1.1.32
+# @ehelply/superstack-sdk@1.1.33
+
+## Requirements
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -17,6 +19,25 @@ Module system
 
 It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
 
+## Usage
+
+navigate to the folder of your consuming project and run one of the following commands.
+
+_published:_
+
+```
+npm install @ehelply/superstack-sdk@1.1.33 --save
+```
+
+_unPublished (not recommended):_
+
+```
+npm install PATH_TO_GENERATED_PACKAGE --save
+
+## Developing
+
+Note: This SDK is generated, built, and published automatically by eHelply. For that reason, the commands below should only be used while troubleshooting.
+
 ### Building
 
 To build and compile the typescript sources to javascript use:
@@ -29,17 +50,3 @@ npm run build
 
 First build the package then run ```npm publish```
 
-### Consuming
-
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
-
-```
-npm install @ehelply/superstack-sdk@1.1.32 --save
-```
-
-_unPublished (not recommended):_
-
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
