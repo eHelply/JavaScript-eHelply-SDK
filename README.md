@@ -30,7 +30,7 @@ npm install @ehelply/superstack-sdk@1.1.34 --save
 
 ### Install from repository (not recommended):
 ```
-npm install PATH_TO_GENERATED_PACKAGE --save
+npm install https://github.com/eHelply/JavaScript-eHelply-SDK --save
 ```
 
 ## Developing
