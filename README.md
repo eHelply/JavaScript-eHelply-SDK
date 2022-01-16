@@ -1,4 +1,4 @@
-# @ehelply/superstack-sdk@1.1.33
+# @ehelply/superstack-sdk@1.1.34
 
 ## Requirements
 
@@ -23,16 +23,15 @@ It can be used in both TypeScript and JavaScript. In TypeScript, the definition 
 
 navigate to the folder of your consuming project and run one of the following commands.
 
-_published:_
-
+### Install from NPM (Recommended):
 ```
-npm install @ehelply/superstack-sdk@1.1.33 --save
+npm install @ehelply/superstack-sdk@1.1.34 --save
 ```
 
-_unPublished (not recommended):_
-
+### Install from repository (not recommended):
 ```
 npm install PATH_TO_GENERATED_PACKAGE --save
+```
 
 ## Developing
 
@@ -48,5 +47,8 @@ npm run build
 
 ### Publishing
 
-First build the package then run ```npm publish```
+First build the package then run
+```
+npm publish
+```
 
