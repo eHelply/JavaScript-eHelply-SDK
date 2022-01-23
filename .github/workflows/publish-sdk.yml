@@ -1,4 +1,5 @@
 name: Publish SDK
+concurrency: sdk_publish
 on:
   push:
     branches:
