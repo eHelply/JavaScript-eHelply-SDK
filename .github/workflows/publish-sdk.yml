@@ -1,7 +1,5 @@
 name: Publish SDK
-concurrency:
-  group: sdk_publish
-  cancel-in-progress: true
+concurrency: sdk_publish
 on:
   push:
     branches:
