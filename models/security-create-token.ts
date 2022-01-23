@@ -4,7 +4,7 @@
  * eHelply SDK
  * eHelply SDK
  *
- * The version of the OpenAPI document: 1.1.36
+ * The version of the OpenAPI document: 1.1.37
  *
  * Do not edit the class manually.
  *
