@@ -3,7 +3,7 @@ concurrency: sdk_publish
 on:
   push:
     branches:
-      - sdk-env-test
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
