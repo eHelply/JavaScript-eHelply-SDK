@@ -1,3 +1,11 @@
+export interface Flag {
+
+}
+
+export interface Participant {
+  uuid: string
+}
+
 export interface LoginResponse {
   AccessToken: string,
   ExpiresIn: number,
@@ -23,6 +31,8 @@ export interface CreateUserResponse {
   date_deleted: string,
   last_login: string,
   uuid: string,
+  participants: [Participant],
+  flags: [Flag]
 }
 
 export interface RefreshTokensResponse {
