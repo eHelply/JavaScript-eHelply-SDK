@@ -213,30 +213,19 @@
  */
 
 
+import { AccessNodeCreate } from './access-node-create';
 
 /**
- * Used for update endpoint
+ * 
  * @export
- * @interface AccessGroupUpdate
+ * @interface BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost
  */
-export interface AccessGroupUpdate {
+export interface BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost {
     /**
      * 
-     * @type {string}
-     * @memberof AccessGroupUpdate
+     * @type {AccessNodeCreate}
+     * @memberof BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost
      */
-    'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccessGroupUpdate
-     */
-    'summary'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AccessGroupUpdate
-     */
-    'default'?: boolean;
+    'node': AccessNodeCreate;
 }
 

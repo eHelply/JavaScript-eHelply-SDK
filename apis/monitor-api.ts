@@ -4,7 +4,7 @@
  * eHelply SDK
  * eHelply SDK
  *
- * The version of the OpenAPI document: 1.1.38
+ * The version of the OpenAPI document: 1.1.39
  *
  * Do not edit the class manually.
  *
@@ -716,6 +716,83 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Getservicespec
+         * @param {string} service 
+         * @param {string} spec 
+         * @param {boolean} [asJson] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServiceSpec: async (service: string, spec: string, asJson?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceSpec', 'service', service)
+            // verify required parameter 'spec' is not null or undefined
+            assertParamExists('getServiceSpec', 'spec', spec)
+            const localVarPath = `/sam/monitor/services/{service}/specs/{spec}`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
+                .replace(`{${"spec"}}`, encodeURIComponent(String(spec)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (asJson !== undefined) {
+                localVarQueryParameter['as_json'] = asJson;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Getservicespecs
+         * @param {string} service 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServiceSpecs: async (service: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceSpecs', 'service', service)
+            const localVarPath = `/sam/monitor/services/{service}/specs`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get Service Vitals
          * @param {string} serviceUuid 
          * @param {string} stage 
@@ -810,6 +887,36 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             if (key !== undefined) {
                 localVarQueryParameter['key'] = key;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Getserviceswithspecs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServicesWithSpecs: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/sam/monitor/specs/services`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
 
     
@@ -1288,6 +1395,30 @@ export const MonitorApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Getservicespec
+         * @param {string} service 
+         * @param {string} spec 
+         * @param {boolean} [asJson] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getServiceSpec(service: string, spec: string, asJson?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceSpec(service, spec, asJson, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Getservicespecs
+         * @param {string} service 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getServiceSpecs(service: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceSpecs(service, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Get Service Vitals
          * @param {string} serviceUuid 
          * @param {string} stage 
@@ -1314,6 +1445,16 @@ export const MonitorApiFp = function(configuration?: Configuration) {
          */
         async getServicesMonitorServicesGet(heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, includeHidden?: boolean, stage?: string, key?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getServicesMonitorServicesGet(heartbeats, heartbeatLimit, alarms, alarmLimit, includeHidden, stage, key, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Getserviceswithspecs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getServicesWithSpecs(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServicesWithSpecs(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1549,6 +1690,28 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Getservicespec
+         * @param {string} service 
+         * @param {string} spec 
+         * @param {boolean} [asJson] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServiceSpec(service: string, spec: string, asJson?: boolean, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceSpec(service, spec, asJson, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Getservicespecs
+         * @param {string} service 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServiceSpecs(service: string, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceSpecs(service, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get Service Vitals
          * @param {string} serviceUuid 
          * @param {string} stage 
@@ -1574,6 +1737,15 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
          */
         getServicesMonitorServicesGet(heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, includeHidden?: boolean, stage?: string, key?: string, options?: any): AxiosPromise<any> {
             return localVarFp.getServicesMonitorServicesGet(heartbeats, heartbeatLimit, alarms, alarmLimit, includeHidden, stage, key, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Getserviceswithspecs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServicesWithSpecs(options?: any): AxiosPromise<any> {
+            return localVarFp.getServicesWithSpecs(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1800,6 +1972,28 @@ export interface MonitorApiInterface {
 
     /**
      * 
+     * @summary Getservicespec
+     * @param {string} service 
+     * @param {string} spec 
+     * @param {boolean} [asJson] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApiInterface
+     */
+    getServiceSpec(service: string, spec: string, asJson?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
+     * @summary Getservicespecs
+     * @param {string} service 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApiInterface
+     */
+    getServiceSpecs(service: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Get Service Vitals
      * @param {string} serviceUuid 
      * @param {string} stage 
@@ -1825,6 +2019,15 @@ export interface MonitorApiInterface {
      * @memberof MonitorApiInterface
      */
     getServicesMonitorServicesGet(heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, includeHidden?: boolean, stage?: string, key?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
+     * @summary Getserviceswithspecs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApiInterface
+     */
+    getServicesWithSpecs(options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -2071,6 +2274,32 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
 
     /**
      * 
+     * @summary Getservicespec
+     * @param {string} service 
+     * @param {string} spec 
+     * @param {boolean} [asJson] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApi
+     */
+    public getServiceSpec(service: string, spec: string, asJson?: boolean, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceSpec(service, spec, asJson, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Getservicespecs
+     * @param {string} service 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApi
+     */
+    public getServiceSpecs(service: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceSpecs(service, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get Service Vitals
      * @param {string} serviceUuid 
      * @param {string} stage 
@@ -2099,6 +2328,17 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
      */
     public getServicesMonitorServicesGet(heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, includeHidden?: boolean, stage?: string, key?: string, options?: AxiosRequestConfig) {
         return MonitorApiFp(this.configuration).getServicesMonitorServicesGet(heartbeats, heartbeatLimit, alarms, alarmLimit, includeHidden, stage, key, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Getserviceswithspecs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MonitorApi
+     */
+    public getServicesWithSpecs(options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServicesWithSpecs(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

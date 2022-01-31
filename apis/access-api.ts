@@ -4,7 +4,7 @@
  * eHelply SDK
  * eHelply SDK
  *
- * The version of the OpenAPI document: 1.1.38
+ * The version of the OpenAPI document: 1.1.39
  *
  * Do not edit the class manually.
  *
@@ -227,8 +227,6 @@ import { AccessGroupGet } from '../models';
 // @ts-ignore
 import { AccessLimitCreate } from '../models';
 // @ts-ignore
-import { AccessNodeCreate } from '../models';
-// @ts-ignore
 import { AccessNodeDB } from '../models';
 // @ts-ignore
 import { AccessNodeGet } from '../models';
@@ -242,6 +240,8 @@ import { AccessTypeDB } from '../models';
 import { AccessTypeGet } from '../models';
 // @ts-ignore
 import { BodyCreateGroupAccessPartitionsPartitionIdentifierWhoGroupsPost } from '../models';
+// @ts-ignore
+import { BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost } from '../models';
 // @ts-ignore
 import { BodyCreateRoleAccessPartitionsPartitionIdentifierRolesPost } from '../models';
 // @ts-ignore
@@ -633,7 +633,7 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary Createnode
          * @param {string} partitionIdentifier 
          * @param {string} typeUuid 
-         * @param {AccessNodeCreate} accessNodeCreate 
+         * @param {BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost} bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -643,13 +643,13 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNode: async (partitionIdentifier: string, typeUuid: string, accessNodeCreate: AccessNodeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createNode: async (partitionIdentifier: string, typeUuid: string, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost: BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'partitionIdentifier' is not null or undefined
             assertParamExists('createNode', 'partitionIdentifier', partitionIdentifier)
             // verify required parameter 'typeUuid' is not null or undefined
             assertParamExists('createNode', 'typeUuid', typeUuid)
-            // verify required parameter 'accessNodeCreate' is not null or undefined
-            assertParamExists('createNode', 'accessNodeCreate', accessNodeCreate)
+            // verify required parameter 'bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost' is not null or undefined
+            assertParamExists('createNode', 'bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost', bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost)
             const localVarPath = `/sam/access/partitions/{partition_identifier}/permissions/types/{type_uuid}/nodes`
                 .replace(`{${"partition_identifier"}}`, encodeURIComponent(String(partitionIdentifier)))
                 .replace(`{${"type_uuid"}}`, encodeURIComponent(String(typeUuid)));
@@ -695,7 +695,7 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(accessNodeCreate, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3517,7 +3517,7 @@ export const AccessApiFp = function(configuration?: Configuration) {
          * @summary Createnode
          * @param {string} partitionIdentifier 
          * @param {string} typeUuid 
-         * @param {AccessNodeCreate} accessNodeCreate 
+         * @param {BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost} bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -3527,8 +3527,8 @@ export const AccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createNode(partitionIdentifier: string, typeUuid: string, accessNodeCreate: AccessNodeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessNodeDB>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(partitionIdentifier, typeUuid, accessNodeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createNode(partitionIdentifier: string, typeUuid: string, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost: BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessNodeDB>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(partitionIdentifier, typeUuid, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -4339,7 +4339,7 @@ export const AccessApiFactory = function (configuration?: Configuration, basePat
          * @summary Createnode
          * @param {string} partitionIdentifier 
          * @param {string} typeUuid 
-         * @param {AccessNodeCreate} accessNodeCreate 
+         * @param {BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost} bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -4349,8 +4349,8 @@ export const AccessApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNode(partitionIdentifier: string, typeUuid: string, accessNodeCreate: AccessNodeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<AccessNodeDB> {
-            return localVarFp.createNode(partitionIdentifier, typeUuid, accessNodeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createNode(partitionIdentifier: string, typeUuid: string, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost: BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<AccessNodeDB> {
+            return localVarFp.createNode(partitionIdentifier, typeUuid, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Create a new Role
@@ -5122,7 +5122,7 @@ export interface AccessApiInterface {
      * @summary Createnode
      * @param {string} partitionIdentifier 
      * @param {string} typeUuid 
-     * @param {AccessNodeCreate} accessNodeCreate 
+     * @param {BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost} bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -5133,7 +5133,7 @@ export interface AccessApiInterface {
      * @throws {RequiredError}
      * @memberof AccessApiInterface
      */
-    createNode(partitionIdentifier: string, typeUuid: string, accessNodeCreate: AccessNodeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<AccessNodeDB>;
+    createNode(partitionIdentifier: string, typeUuid: string, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost: BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<AccessNodeDB>;
 
     /**
      * Create a new Role
@@ -5915,7 +5915,7 @@ export class AccessApi extends BaseAPI implements AccessApiInterface {
      * @summary Createnode
      * @param {string} partitionIdentifier 
      * @param {string} typeUuid 
-     * @param {AccessNodeCreate} accessNodeCreate 
+     * @param {BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost} bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -5926,8 +5926,8 @@ export class AccessApi extends BaseAPI implements AccessApiInterface {
      * @throws {RequiredError}
      * @memberof AccessApi
      */
-    public createNode(partitionIdentifier: string, typeUuid: string, accessNodeCreate: AccessNodeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return AccessApiFp(this.configuration).createNode(partitionIdentifier, typeUuid, accessNodeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createNode(partitionIdentifier: string, typeUuid: string, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost: BodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return AccessApiFp(this.configuration).createNode(partitionIdentifier, typeUuid, bodyCreateNodeAccessPartitionsPartitionIdentifierPermissionsTypesTypeUuidNodesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

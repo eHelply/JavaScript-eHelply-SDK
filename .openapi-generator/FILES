@@ -50,6 +50,7 @@ models/body-attach-alarm-ticket-monitor-services-service-uuid-stages-stage-alarm
 models/body-cloud-participant-projects-cloud-participant-post.ts
 models/body-create-group-access-partitions-partition-identifier-who-groups-post.ts
 models/body-create-key-security-keys-post.ts
+models/body-create-node-access-partitions-partition-identifier-permissions-types-type-uuid-nodes-post.ts
 models/body-create-note-notes-notes-post.ts
 models/body-create-project-key-projects-projects-project-uuid-members-entity-uuid-keys-post.ts
 models/body-create-project-projects-projects-post.ts

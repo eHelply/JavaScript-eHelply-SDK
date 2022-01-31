@@ -31,6 +31,7 @@ export * from './body-attach-alarm-ticket-monitor-services-service-uuid-stages-s
 export * from './body-cloud-participant-projects-cloud-participant-post';
 export * from './body-create-group-access-partitions-partition-identifier-who-groups-post';
 export * from './body-create-key-security-keys-post';
+export * from './body-create-node-access-partitions-partition-identifier-permissions-types-type-uuid-nodes-post';
 export * from './body-create-note-notes-notes-post';
 export * from './body-create-project-key-projects-projects-project-uuid-members-entity-uuid-keys-post';
 export * from './body-create-project-projects-projects-post';
