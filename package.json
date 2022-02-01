@@ -1,6 +1,6 @@
 {
   "name": "@ehelply/superstack-sdk",
-  "version": "0.0.41",
+  "version": "0.0.42",
   "description": "eHelply JavaScript SDK",
   "main": "./dist/bundle.js",
   "types": "./dist/sdk.d.ts",

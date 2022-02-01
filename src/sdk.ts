@@ -19,6 +19,14 @@ import {
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse
 } from "./services/sam/projects/types/projectResponseTypes";
+
+import {
+  GetMonitorServicesResponse,
+  GetServiceSpecContentResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse,
+  GetKpisResponse
+} from "./services/sam/monitors/types/monitorResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./services/sam/projects/types/projectRequestTypes";
 
 export {LogLevel};
@@ -147,4 +155,12 @@ export {
   CreateProjectKeyRequest,
   CreateProjectRequest,
   UpdateProjectRequest
+}
+
+export {
+  GetMonitorServicesResponse,
+  GetServiceSpecContentResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse,
+  GetKpisResponse
 }
