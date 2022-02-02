@@ -43,7 +43,3 @@ export interface GetServicesWithSpecsResponse {
 export interface GetServiceSpecsResponse {
   specs: Array<string>
 }
-
-export interface  GetServiceSpecContentResponse {
-  content: any
-}

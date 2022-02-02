@@ -61,10 +61,14 @@ export default class MonitorSdk {
     });
 
   }
-  getServiceSpecContent(service: string, apiSpec: string ) {
-    return this.axiosClient.get<GetServiceSpecContentResponse>(
+  getServiceSpecContent(service: string, apiSpec: string, asJson: boolean = true ) {
+    const params = {
+      as_json: asJson
+    }
+    return this.axiosClient.get<any>(
       `/sam/monitor/services/${service}/specs/${apiSpec}`,
-    ).then((res: AxiosResponse<GetServiceSpecContentResponse>) => {
+      {params}
+    ).then((res: AxiosResponse<any>) => {
       this.logger.debug(res);
       return res.data;
     });
