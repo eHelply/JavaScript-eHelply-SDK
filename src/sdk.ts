@@ -7,12 +7,33 @@ import ProjectSdk from "./services/sam/projects/projects";
 import BillingSdk from "./services/products/billing/billing";
 import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
+import {
+  GetMemberProjectsResponse,
+  CreateProjectResponse,
+  GetProjectResponse,
+  UpdateProjectResponse,
+  GetProjectMembersResponse,
+  CreateProjectKeyResponse,
+  RemoveProjectKeyResponse,
+  AddPermissionToKeyResponse,
+  RemovePermissionFromKeyResponse,
+  GetPermissionFromKeyResponse
+} from "./services/sam/projects/types/projectResponseTypes";
+
+import {
+  GetMonitorServicesResponse,
+  GetServiceSpecContentResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse,
+  GetKpisResponse
+} from "./services/sam/monitors/types/monitorResponseTypes";
+import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./services/sam/projects/types/projectRequestTypes";
 
 export {LogLevel};
 
 export interface Configuration {
   logLevel: LogLevel
-  baseUrl?: String,
+  baseUrl?: string,
   timeout: Number
 }
 
@@ -117,4 +138,29 @@ export class eHelplySDK {
 
     };
   }
+}
+
+// export project response and request type
+export {
+  GetMemberProjectsResponse,
+  CreateProjectResponse,
+  GetProjectResponse,
+  UpdateProjectResponse,
+  GetProjectMembersResponse,
+  CreateProjectKeyResponse,
+  RemoveProjectKeyResponse,
+  AddPermissionToKeyResponse,
+  RemovePermissionFromKeyResponse,
+  GetPermissionFromKeyResponse,
+  CreateProjectKeyRequest,
+  CreateProjectRequest,
+  UpdateProjectRequest
+}
+
+export {
+  GetMonitorServicesResponse,
+  GetServiceSpecContentResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse,
+  GetKpisResponse
 }

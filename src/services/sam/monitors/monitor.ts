@@ -1,6 +1,11 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {GetKpisResponse, GetMonitorServicesResponse} from "./types/monitorResponseTypes";
+import {
+  GetKpisResponse,
+  GetMonitorServicesResponse,
+  GetServiceSpecContentResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse } from "./types/monitorResponseTypes";
 
 export default class MonitorSdk {
   axiosClient: AxiosInstance
@@ -38,4 +43,37 @@ export default class MonitorSdk {
       return res.data;
     });
   }
+
+  getServicesWithSpecs() {
+    return this.axiosClient.get<GetServicesWithSpecsResponse>(
+      `/sam/monitor/specs/services`,
+    ).then((res: AxiosResponse<GetServicesWithSpecsResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+  getServiceSpecs(service: string) {
+    return this.axiosClient.get<GetServiceSpecsResponse>(
+    `/sam/monitor/services/${service}/specs`,
+    ).then((res: AxiosResponse<GetServiceSpecsResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+
+  }
+  getServiceSpecContent(service: string, apiSpec: string, asJson: boolean = true ) {
+    const params = {
+      as_json: asJson
+    }
+    return this.axiosClient.get<any>(
+      `/sam/monitor/services/${service}/specs/${apiSpec}`,
+      {params}
+    ).then((res: AxiosResponse<any>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
 }
+
+
