@@ -48,7 +48,7 @@ export default class UserSdk {
   }
 
   createUser(identityToken: string): Promise<CreateUserResponse> {
-    return this.axiosClientHeaderless.post<CreateUserResponse>(
+    return this.axiosClient.post<CreateUserResponse>(
       `/users`,
       {},
       {
