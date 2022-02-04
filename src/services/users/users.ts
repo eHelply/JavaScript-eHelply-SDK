@@ -49,7 +49,7 @@ export default class UserSdk {
 
   createUser(identityToken: string): Promise<CreateUserResponse> {
     return this.axiosClient.post<CreateUserResponse>(
-      `/users`,
+      `/users/users`,
       {},
       {
         headers: {
@@ -64,7 +64,7 @@ export default class UserSdk {
 
   refreshTokens(appClientId: string, payload: string): Promise<RefreshTokensResponse> {
     return this.axiosClientHeaderless.post<RefreshTokensResponse>(
-      `/auth/${appClientId}/refresh-token`,
+      `/users/auth/${appClientId}/refresh-token`,
       payload
     ).then((res: AxiosResponse<RefreshTokensResponse>) => {
       this.logger.debug(res);
@@ -74,7 +74,7 @@ export default class UserSdk {
 
   validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
     return this.axiosClient.post<ValidateEmailResponse>(
-      `/users/validations/email`,
+      `/users/users/validations/email`,
       payload
     ).then((res: AxiosResponse<ValidateEmailResponse>) => {
       this.logger.debug(res);
@@ -84,7 +84,7 @@ export default class UserSdk {
 
   resetPassword(payload: ResetPasswordRequest): Promise<ResetPasswordResponse> {
     return this.axiosClient.post(
-      `/auth/password/reset`,
+      `/users/auth/password/reset`,
       payload
     ).then((res: AxiosResponse<ResetPasswordResponse>) => {
       this.logger.debug(res);
@@ -94,7 +94,7 @@ export default class UserSdk {
 
   resetPasswordConfirm(payload: ResetPasswordConfirmationRequest): Promise<ResetPasswordConfirmationResponse> {
     return this.axiosClient.post<ResetPasswordConfirmationResponse>(
-      `/auth/password/reset/confirm`,
+      `/users/auth/password/reset/confirm`,
       payload
     ).then((res: AxiosResponse<ResetPasswordConfirmationResponse>) => {
       this.logger.debug(res);
