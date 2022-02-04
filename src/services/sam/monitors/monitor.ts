@@ -3,7 +3,6 @@ import {AxiosInstance, AxiosResponse} from "axios";
 import {
   GetKpisResponse,
   GetMonitorServicesResponse,
-  GetServiceSpecContentResponse,
   GetServiceSpecsResponse,
   GetServicesWithSpecsResponse } from "./types/monitorResponseTypes";
 
@@ -73,7 +72,6 @@ export default class MonitorSdk {
       return res.data;
     });
   }
-
 }
 
 
