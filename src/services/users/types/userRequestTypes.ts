@@ -26,8 +26,8 @@ export interface LoginRequest {
 }
 
 export interface ValidateEmailRequest {
-  email: string
-  verification_code: string
+  value: string,
+  type: string
 }
 
 export interface ResetPasswordRequest {
