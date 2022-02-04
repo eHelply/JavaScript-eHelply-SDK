@@ -22,7 +22,6 @@ import {
 
 import {
   GetMonitorServicesResponse,
-  GetServiceSpecContentResponse,
   GetServiceSpecsResponse,
   GetServicesWithSpecsResponse,
   GetKpisResponse
@@ -159,7 +158,6 @@ export {
 
 export {
   GetMonitorServicesResponse,
-  GetServiceSpecContentResponse,
   GetServiceSpecsResponse,
   GetServicesWithSpecsResponse,
   GetKpisResponse
