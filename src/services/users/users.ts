@@ -48,7 +48,9 @@ export default class UserSdk {
   }
 
   createUser(identityToken: string): Promise<CreateUserResponse> {
-    return this.axiosClient.post<CreateUserResponse>(
+    let axiosClientPostUsers = this.axiosClient
+    axiosClientPostUsers.defaults.headers.common["Authorization"] = identityToken;
+    return axiosClientPostUsers.post<CreateUserResponse>(
       `/users/users`,
       {},
       {
