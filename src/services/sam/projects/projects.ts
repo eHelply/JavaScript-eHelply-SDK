@@ -10,7 +10,8 @@ import {
   RemoveProjectKeyResponse,
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
-  GetPermissionFromKeyResponse
+  GetPermissionFromKeyResponse,
+  GetProjectKeysResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -153,5 +154,5 @@ export default class ProjectSdk {
       this.logger.debug(res);
       return res.data;
     });
-
   }
+}

@@ -35,3 +35,11 @@ export interface GetKpisResponse {
   created_at: string,
   fetched_at: string
 }
+
+export interface GetServicesWithSpecsResponse {
+  services: Array<string>
+}
+
+export interface GetServiceSpecsResponse {
+  specs: Array<string>
+}
