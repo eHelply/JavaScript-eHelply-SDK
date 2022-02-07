@@ -145,4 +145,13 @@ export default class ProjectSdk {
       return res.data;
     });
   }
-}
+
+  getProjectKeys(projectUuid: string, memberUuid: string): Promise<Array<GetProjectKeysResponse>> {
+    return this.axiosClient.get<Array<GetProjectKeysResponse>>(
+      `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
+    ).then((res: AxiosResponse<Array<GetProjectKeysResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+
+  }
