@@ -35,14 +35,4 @@ export default class SecuritySdk {
 
   }
 
-
-
-
-
-
-
-
-
-
-
 }

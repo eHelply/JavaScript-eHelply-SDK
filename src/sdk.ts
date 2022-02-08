@@ -5,6 +5,7 @@ import AccessSdk from "./services/sam/access/access";
 import MonitorSdk from "./services/sam/monitors/monitor";
 import ProjectSdk from "./services/sam/projects/projects";
 import BillingSdk from "./services/products/billing/billing";
+import SecuritySdk from "./services/sam/security/security";
 import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
 import {
@@ -44,7 +45,8 @@ export interface Services {
   access: AccessSdk,
   monitor: MonitorSdk,
   billing: BillingSdk,
-  projects: ProjectSdk
+  projects: ProjectSdk,
+  security: SecuritySdk
 }
 
 export interface Authentication {
@@ -134,8 +136,8 @@ export class eHelplySDK {
       access: new AccessSdk(this._axiosClient, this._logger),
       monitor: new MonitorSdk(this._axiosClient, this._logger),
       billing: new BillingSdk(this._axiosClient, this._logger),
-      projects: new ProjectSdk(this._axiosClient, this._logger)
-
+      projects: new ProjectSdk(this._axiosClient, this._logger),
+      security: new SecuritySdk(this._axiosClient, this._logger)
     };
   }
 }
