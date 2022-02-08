@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK
- * eHelply SDK
+ * eHelply SDK - 1.1.40
+ * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.39
+ * The version of the OpenAPI document: 1.1.40
  *
  * Do not edit the class manually.
  *
@@ -218,7 +218,7 @@ import { Configuration } from "./configuration";
 // @ts-ignore
 import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 
-export const BASE_PATH = "http://localhost".replace(/\/+$/, "");
+export const BASE_PATH = "https://api.prod.ehelply.com".replace(/\/+$/, "");
 
 /**
  *
