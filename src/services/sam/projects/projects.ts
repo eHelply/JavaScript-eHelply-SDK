@@ -147,10 +147,10 @@ export default class ProjectSdk {
     });
   }
 
-  getProjectKeys(projectUuid: string, memberUuid: string): Promise<Array<GetProjectKeysResponse>> {
-    return this.axiosClient.get<Array<GetProjectKeysResponse>>(
+  getProjectKeys(projectUuid: string, memberUuid: string): Promise<GetProjectKeysResponse> {
+    return this.axiosClient.get<GetProjectKeysResponse>(
       `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
-    ).then((res: AxiosResponse<Array<GetProjectKeysResponse>>) => {
+    ).then((res: AxiosResponse<GetProjectKeysResponse>) => {
       this.logger.debug(res);
       return res.data;
     });

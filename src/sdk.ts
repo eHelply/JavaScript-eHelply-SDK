@@ -17,7 +17,8 @@ import {
   RemoveProjectKeyResponse,
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
-  GetPermissionFromKeyResponse
+  GetPermissionFromKeyResponse,
+  GetProjectKeysResponse
 } from "./services/sam/projects/types/projectResponseTypes";
 
 import {
@@ -153,7 +154,8 @@ export {
   GetPermissionFromKeyResponse,
   CreateProjectKeyRequest,
   CreateProjectRequest,
-  UpdateProjectRequest
+  UpdateProjectRequest,
+  GetProjectKeysResponse
 }
 
 export {
