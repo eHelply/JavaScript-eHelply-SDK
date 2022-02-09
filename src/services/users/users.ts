@@ -22,12 +22,14 @@ import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
 
 export default class UserSdk {
   axiosClient: AxiosInstance
+  axiosClientPostUsers: AxiosInstance
   axiosClientHeaderless: AxiosInstance
   logger: Logger
 
   constructor(axiosClient: AxiosInstance, logger: Logger) {
     this.axiosClient = axiosClient;
     this.axiosClientHeaderless = makeAxiosClientHeaderless(axiosClient);
+    this.axiosClientPostUsers = makeAxiosClientHeaderless(axiosClient);
     this.logger = logger;
   }
 
@@ -52,7 +54,8 @@ export default class UserSdk {
   }
 
   createUser(identityToken: string): Promise<CreateUserResponse> {
-    return this.axiosClient.post<CreateUserResponse>(
+    this.axiosClientPostUsers.defaults.headers.common["Authorization"] = identityToken;
+    return this.axiosClientPostUsers.post<CreateUserResponse>(
       `/users/users`,
       {},
       {
