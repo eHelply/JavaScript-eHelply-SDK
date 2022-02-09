@@ -1,6 +1,6 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {GetProjectKeysResponse} from "../projects/types/projectResponseTypes";
+import { SearchSecurityKeysResponse } from "./types/securityResponseTypes";
 
 export default class SecuritySdk {
   axiosClient: AxiosInstance
@@ -10,9 +10,14 @@ export default class SecuritySdk {
     this.axiosClient = axiosClient;
     this.logger = logger;
   }
-
-  searchSecurityKeys () {
-
+  searchSecurityKeys (): Promise<Array<SearchSecurityKeysResponse>> {
+    return this.axiosClient.get<Array<SearchSecurityKeysResponse>>(
+      `/sam/security/keys`,
+      payload
+    ).then((res: AxiosResponse<Array<SearchSecurityKeysResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 
   getSecurityKey () {
