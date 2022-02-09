@@ -1,6 +1,10 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
-import { GetSecurityKeyResponse } from "./types/securityResponseTypes";
+import {
+  DeleteSecurityKeyResponse,
+  GetSecurityKeyResponse,
+  PostCreateSecurityKeyResponse
+} from "./types/securityResponseTypes";
 import { PostSecurityKeyVerifyRequest, PostCreateSecurityKeyRequest } from "./types/securityRequestTypes";
 
 export default class SecuritySdk {
@@ -40,12 +44,24 @@ export default class SecuritySdk {
     });
   }
 
-  postCreateSecurityKey () {
+  postCreateSecurityKey (payload: PostCreateSecurityKeyRequest): Promise<PostCreateSecurityKeyResponse> {
+    return this.axiosClient.post<PostCreateSecurityKeyResponse>(
+      `/sam/security/keys/`,
+      payload
+    ).then((res: AxiosResponse<PostCreateSecurityKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
 
   }
 
-  deleteSecurityKey  () {
-
+  deleteSecurityKey (keyUuid: string): Promise<DeleteSecurityKeyResponse> {
+    return this.axiosClient.delete<DeleteSecurityKeyResponse>(
+      `/sam/security/keys/${keyUuid}`
+    ).then((res: AxiosResponse<DeleteSecurityKeyResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 
   getEncryptionKey () {

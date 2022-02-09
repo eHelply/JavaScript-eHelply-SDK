@@ -8,3 +8,11 @@ export interface SecurityKey {
 }
 
 export interface GetSecurityKeyResponse extends SecurityKey {}
+export interface PostCreateSecurityKeyResponse {
+  uuid: string,
+  access: string,
+  secret: string
+}
+export interface DeleteSecurityKeyResponse {
+  message: string
+}
