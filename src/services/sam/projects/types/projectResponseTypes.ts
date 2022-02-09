@@ -64,3 +64,7 @@ export interface GetPermissionFromKeyResponse {
   summary: string,
   created_at: string
 }
+
+export interface GetProjectKeysResponse {
+  keys: Array<string>
+}

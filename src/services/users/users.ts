@@ -5,14 +5,18 @@ import {
   SignupRequest,
   AuthCodeRequest,
   ValidateEmailRequest,
-  ResetPasswordRequest, ResetPasswordConfirmationRequest
+  ResetPasswordRequest,
+  ResetPasswordConfirmationRequest
 } from "./types/userRequestTypes";
 import {
   LoginResponse,
   SignUpResponse,
   RefreshTokensResponse,
   ValidateEmailResponse,
-  ResetPasswordResponse, ResetPasswordConfirmationResponse, CreateUserResponse
+  ResetPasswordResponse,
+  ResetPasswordConfirmationResponse,
+  CreateUserResponse,
+  GetParticipantResponse
 } from "./types/userResponseTypes";
 import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
 
@@ -100,5 +104,16 @@ export default class UserSdk {
       this.logger.debug(res);
       return res.data
     });
+  }
+
+  // PARTICIPANTS ENDPOINTS
+  getParticipants(participantUuid: string): Promise<GetParticipantResponse>{
+    return this.axiosClient.get<GetParticipantResponse>(
+      `/participants/${participantUuid}`
+    ).then((res: AxiosResponse<GetParticipantResponse>) => {
+      this.logger.debug(res);
+      return res.data
+    });
+
   }
 }
