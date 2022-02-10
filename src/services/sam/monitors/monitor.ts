@@ -4,7 +4,8 @@ import {
   GetKpisResponse,
   GetMonitorServicesResponse,
   GetServiceSpecsResponse,
-  GetServicesWithSpecsResponse } from "./types/monitorResponseTypes";
+  GetServicesWithSpecsResponse
+} from "./types/monitorResponseTypes";
 
 export default class MonitorSdk {
   axiosClient: AxiosInstance

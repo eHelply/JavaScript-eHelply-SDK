@@ -1,3 +1,8 @@
+// import utils
+import axios from "axios";
+import {Logger, LogLevel} from "./utils/logger";
+
+// import services sdks
 import UserSdk from "./services/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import SupportSdk from "./services/sam/supports/tickets";
@@ -6,29 +11,6 @@ import MonitorSdk from "./services/sam/monitors/monitor";
 import ProjectSdk from "./services/sam/projects/projects";
 import BillingSdk from "./services/products/billing/billing";
 import SecuritySdk from "./services/sam/security/security";
-import axios from "axios";
-import {Logger, LogLevel} from "./utils/logger";
-import {
-  GetMemberProjectsResponse,
-  CreateProjectResponse,
-  GetProjectResponse,
-  UpdateProjectResponse,
-  GetProjectMembersResponse,
-  CreateProjectKeyResponse,
-  RemoveProjectKeyResponse,
-  AddPermissionToKeyResponse,
-  RemovePermissionFromKeyResponse,
-  GetPermissionFromKeyResponse,
-  GetProjectKeysResponse
-} from "./services/sam/projects/types/projectResponseTypes";
-
-import {
-  GetMonitorServicesResponse,
-  GetServiceSpecsResponse,
-  GetServicesWithSpecsResponse,
-  GetKpisResponse
-} from "./services/sam/monitors/types/monitorResponseTypes";
-import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./services/sam/projects/types/projectRequestTypes";
 
 export {LogLevel};
 
@@ -142,7 +124,19 @@ export class eHelplySDK {
   }
 }
 
-// export project response and request type
+
+// import and export access response types
+export {GetAccessKeyResponse} from "./services/sam/access/types/accessResponseTypes";
+
+// import and export monitor response types
+export {
+  GetKpisResponse,
+  GetMonitorServicesResponse,
+  GetServiceSpecsResponse,
+  GetServicesWithSpecsResponse
+} from "./services/sam/monitors/types/monitorResponseTypes";
+
+//import and export project response types
 export {
   GetMemberProjectsResponse,
   CreateProjectResponse,
@@ -154,15 +148,42 @@ export {
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
+  GetProjectKeysResponse
+} from "./services/sam/projects/types/projectResponseTypes";
+
+// import and export project request payload types
+export {
   CreateProjectKeyRequest,
   CreateProjectRequest,
-  UpdateProjectRequest,
-  GetProjectKeysResponse
-}
+  UpdateProjectRequest
+} from "./services/sam/projects/types/projectRequestTypes";
 
+// import and export security response types
 export {
-  GetMonitorServicesResponse,
-  GetServiceSpecsResponse,
-  GetServicesWithSpecsResponse,
-  GetKpisResponse
-}
+  PostCreateEncryptionKeyResponse,
+  DeleteSecurityKeyResponse,
+  GetSecurityKeyResponse,
+  PostCreateSecurityKeyResponse,
+  GetEncryptionKeyResponse
+} from "./services/sam/security/types/securityResponseTypes";
+
+// import and export security request payload types
+export {
+  PostSecurityKeyVerifyRequest,
+  PostCreateSecurityKeyRequest
+} from "./services/sam/security/types/securityRequestTypes";
+
+// import and export support response types
+export {
+  CreateContactResponse,
+  GetTicketResponse,
+  CreateTicketResponse,
+  UpdateTicketResponse
+} from "./services/sam/supports/types/ticketReponseTypes";
+
+
+// import and export support request payload types
+export {
+  CreateTicketRequest,
+  CreateContactRequest
+} from "./services/sam/supports/types/ticketRequestTypes";
