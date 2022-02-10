@@ -148,7 +148,8 @@ export {
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
-  GetProjectKeysResponse
+  GetProjectKeysResponse,
+  GetProjectUsageResponse
 } from "./services/sam/projects/types/projectResponseTypes";
 
 // import and export project request payload types
