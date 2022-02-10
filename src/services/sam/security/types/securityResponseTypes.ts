@@ -16,11 +16,18 @@ export interface PostCreateSecurityKeyResponse {
 export interface DeleteSecurityKeyResponse {
   message: string
 }
-export interface CreateEncryptionKeyResponse {
+export interface PostCreateEncryptionKeyResponse {
   uuid: string,
   key: string, // in the db this stored as large binary
   category: string,
   created_at: string,
   retrieved_at: string,
   deleted_at: string
+}
+
+export interface GetEncryptionKeyResponse {
+  key: string,
+  category: string,
+  created_at: string,
+  retrieved_at: string
 }

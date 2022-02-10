@@ -1,10 +1,11 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {
-  CreateEncryptionKeyResponse,
+  PostCreateEncryptionKeyResponse,
   DeleteSecurityKeyResponse,
   GetSecurityKeyResponse,
-  PostCreateSecurityKeyResponse
+  PostCreateSecurityKeyResponse,
+  GetEncryptionKeyResponse
 } from "./types/securityResponseTypes";
 import { PostSecurityKeyVerifyRequest, PostCreateSecurityKeyRequest } from "./types/securityRequestTypes";
 
@@ -65,24 +66,23 @@ export default class SecuritySdk {
     });
   }
 
-  createEncryptionKey (category: string): Promise<CreateEncryptionKeyResponse> {
-    return this.axiosClient.post<CreateEncryptionKeyResponse>(
+  createEncryptionKey (category: string): Promise<PostCreateEncryptionKeyResponse> {
+    return this.axiosClient.post<PostCreateEncryptionKeyResponse>(
       `/sam/security/categories/${category}/keys`
-    ).then((res: AxiosResponse<CreateEncryptionKeyResponse>) => {
+    ).then((res: AxiosResponse<PostCreateEncryptionKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
 
   }
 
-  getEncryptionKey () {
-    return this.axiosClient.delete<CreateEncryptionKeyResponse>(
+  getEncryptionKey (category: string): Promise<Array<GetEncryptionKeyResponse>> {
+    return this.axiosClient.delete<Array<GetEncryptionKeyResponse>>(
       `/sam/security/categories/${category}/keys`
-    ).then((res: AxiosResponse<CreateEncryptionKeyResponse>) => {
+    ).then((res: AxiosResponse<Array<GetEncryptionKeyResponse>>) => {
       this.logger.debug(res);
       return res.data;
     });
 
   }
-
 }
