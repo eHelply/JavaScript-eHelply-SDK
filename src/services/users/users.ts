@@ -80,7 +80,7 @@ export default class UserSdk {
   }
 
   validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
-    return this.axiosClient.post<ValidateEmailResponse>(
+    return this.axiosClientHeaderless.post<ValidateEmailResponse>(
       `/users/users/validations/email`,
       payload
     ).then((res: AxiosResponse<ValidateEmailResponse>) => {
@@ -90,7 +90,7 @@ export default class UserSdk {
   }
 
   resetPassword(payload: ResetPasswordRequest): Promise<ResetPasswordResponse> {
-    return this.axiosClient.post(
+    return this.axiosClientHeaderless.post(
       `/users/auth/password/reset`,
       payload
     ).then((res: AxiosResponse<ResetPasswordResponse>) => {
@@ -100,7 +100,7 @@ export default class UserSdk {
   }
 
   resetPasswordConfirm(payload: ResetPasswordConfirmationRequest): Promise<ResetPasswordConfirmationResponse> {
-    return this.axiosClient.post<ResetPasswordConfirmationResponse>(
+    return this.axiosClientHeaderless.post<ResetPasswordConfirmationResponse>(
       `/users/auth/password/reset/confirm`,
       payload
     ).then((res: AxiosResponse<ResetPasswordConfirmationResponse>) => {
