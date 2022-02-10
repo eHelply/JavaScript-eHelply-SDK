@@ -1,4 +1,4 @@
-export interface GetKeyResponse {
+export interface GetAccessKeyResponse {
   uuid: string,
   access: string,
   name: string,
