@@ -26,8 +26,10 @@ export interface LoginRequest {
 }
 
 export interface ValidateEmailRequest {
-  value: string,
-  type: string
+  validator_value: {
+    value: string,
+    type: string
+  }
 }
 
 export interface ResetPasswordRequest {
@@ -35,7 +37,9 @@ export interface ResetPasswordRequest {
 }
 
 export interface ResetPasswordConfirmationRequest {
-  email: string,
-  confirmation_code: string,
-  password: string
+  password_reset_data: {
+    email: string,
+    confirmation_code: string,
+    password: string
+  }
 }
