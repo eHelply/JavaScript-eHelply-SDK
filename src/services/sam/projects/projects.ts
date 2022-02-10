@@ -11,7 +11,7 @@ import {
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
-  GetProjectKeysResponse
+  GetProjectKeysResponse, GetProjectUsageResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -154,5 +154,14 @@ export default class ProjectSdk {
       this.logger.debug(res);
       return res.data;
     });
+  }
+  getProjectUsage(projectUuid: string, year: number, month: number): Promise<Array<GetProjectUsageResponse>> {
+    return this.axiosClient.get<Array<GetProjectUsageResponse>>(
+      `/sam/projects/${projectUuid}/usage`,
+    ).then((res: AxiosResponse<Array<GetProjectUsageResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+
   }
 }
