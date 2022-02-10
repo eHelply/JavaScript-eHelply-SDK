@@ -105,6 +105,7 @@ export default class ProjectSdk {
   createProjectKey(projectUuid: string, memberUuid: string, payload: CreateProjectKeyRequest): Promise<CreateProjectKeyResponse> {
     return this.axiosClient.post<CreateProjectKeyResponse>(
       `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
+      payload
     ).then((res: AxiosResponse<CreateProjectKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
