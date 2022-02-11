@@ -78,6 +78,4 @@ export interface GetProjectUsageResponse {
   quantity: number, // Quantity formats represented by a x10000000 integer. Precision to the millonth
   estimated_cost: number,  // Dollar formats represented by a x10000000 integer. Precision to the millonth
   updated_at: string
-
-
 }
