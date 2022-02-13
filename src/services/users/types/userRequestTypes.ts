@@ -33,7 +33,9 @@ export interface ValidateEmailRequest {
 }
 
 export interface ResetPasswordRequest {
-  email: string
+  user_info: {
+    email: string
+  }
 }
 
 export interface ResetPasswordConfirmationRequest {
