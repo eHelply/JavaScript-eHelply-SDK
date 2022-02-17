@@ -29,7 +29,7 @@ export default class ProjectSdk {
       role: role
     }
     return this.axiosClient.get<Array<GetMemberProjectsResponse>>(
-      `/sam/projects/member/${memberUuid}`,
+      `/sam/projects/member/${memberUuid}/projects`,
       {params}
     ).then((res: AxiosResponse<Array<GetMemberProjectsResponse>>) => {
       this.logger.debug(res);
