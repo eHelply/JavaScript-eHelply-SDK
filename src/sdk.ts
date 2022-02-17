@@ -112,7 +112,7 @@ export class eHelplySDK {
       this._axiosClient.defaults.headers.common["X-Access-Token"] = this._authentication.accessToken;
       this._axiosClient.defaults.headers.common["X-Secret-Token"] = this._authentication.secretToken;
     } else if (this._authentication.authorizationToken !== undefined) {
-      this._axiosClient.defaults.headers.common["Authorization"] = this._authentication.authorizationToken;
+      this._axiosClient.defaults.headers.common["authorization"] = this._authentication.authorizationToken;
     } else {
       this._logger.debug("No valid authentication provided");
     }
