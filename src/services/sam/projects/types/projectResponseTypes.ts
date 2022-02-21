@@ -79,3 +79,38 @@ export interface GetProjectUsageResponse {
   estimated_cost: number,  // Dollar formats represented by a x10000000 integer. Precision to the millonth
   updated_at: string
 }
+
+
+interface Page<T>{
+  item: T,
+  pagination: {
+    current_page: number,
+    page_size: number,
+    total_items: number,
+    total_pages: number,
+    has_previous_page: boolean,
+    has_next_page: boolean,
+    previous_page: null | string
+    next_page: null | string
+  }
+}
+
+
+export interface ProjectsUsageTypeUnitPrice {
+  min_quantity: number,  // Quantity formats represented by a x10000000 integer. Precision to the millonth
+  max_quantity: number,  // Quantity formats represented by a x10000000 integer. Precision to the millonth
+  unit_price: number,  // Dollar formats represented by a x10000000 integer. Precision to the millonth
+}
+
+export interface GetSearchUsageTypesResponse {
+  key: string,
+  name: string,
+  summary: string,
+  category: string
+  service: string,
+  unit_prices: Array<ProjectsUsageTypeUnitPrice>
+}
+
+export interface GetPaginatedSearchUsageTypesResponse extends Page<GetProjectUsageResponse> {}
+
+

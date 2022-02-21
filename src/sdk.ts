@@ -157,7 +157,8 @@ export {
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
-  GetProjectUsageResponse
+  GetProjectUsageResponse,
+  GetSearchUsageTypesResponse
 } from "./services/sam/projects/types/projectResponseTypes";
 
 // import and export project request payload types
@@ -173,7 +174,7 @@ export {
   DeleteSecurityKeyResponse,
   GetSecurityKeyResponse,
   PostCreateSecurityKeyResponse,
-  GetEncryptionKeyResponse
+  GetEncryptionKeyResponse,
 } from "./services/sam/security/types/securityResponseTypes";
 
 // import and export security request payload types
