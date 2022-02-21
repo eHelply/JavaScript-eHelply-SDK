@@ -176,8 +176,13 @@ export default class ProjectSdk {
   }
 
   getSearchUsageType(search?: string, searchOn?: string): Promise<GetPaginatedSearchUsageTypesResponse> {
+    const params = {
+      search: search,
+      search_on: searchOn
+    }
     return this.axiosClient.get<GetPaginatedSearchUsageTypesResponse>(
       `/sam/projects/usage/types`,
+      {params}
     ).then((res: AxiosResponse<GetPaginatedSearchUsageTypesResponse>) => {
       this.logger.debug(res);
       return res.data;
