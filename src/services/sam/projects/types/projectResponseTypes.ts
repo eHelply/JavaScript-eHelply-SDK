@@ -82,7 +82,7 @@ export interface GetProjectUsageResponse {
 
 
 interface Page<T>{
-  item: Array<T>,
+  items: Array<T>,
   pagination: {
     current_page: number,
     page_size: number,
@@ -111,6 +111,6 @@ interface GetSearchUsageTypesResponse {
   unit_prices: Array<ProjectsUsageTypeUnitPrice>
 }
 
-export interface GetPaginatedSearchUsageTypesResponse extends Page<GetProjectUsageResponse> {}
+export interface GetPaginatedSearchUsageTypesResponse extends Page<GetSearchUsageTypesResponse> {}
 
 
