@@ -13,7 +13,7 @@ import {
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
   GetProjectUsageResponse,
-  GetSearchUsageTypesResponse
+  GetPaginatedSearchUsageTypesResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -175,10 +175,10 @@ export default class ProjectSdk {
     });
   }
 
-  getSearchUsageType(search?: string, searchOn?: boolean): Promise<GetSearchUsageTypesResponse> {
-    return this.axiosClient.get<GetSearchUsageTypesResponse>(
+  getSearchUsageType(search?: string, searchOn?: string): Promise<GetPaginatedSearchUsageTypesResponse> {
+    return this.axiosClient.get<GetPaginatedSearchUsageTypesResponse>(
       `/sam/projects/usage/types`,
-    ).then((res: AxiosResponse<GetSearchUsageTypesResponse>) => {
+    ).then((res: AxiosResponse<GetPaginatedSearchUsageTypesResponse>) => {
       this.logger.debug(res);
       return res.data;
     });

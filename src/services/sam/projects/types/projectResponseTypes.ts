@@ -82,7 +82,7 @@ export interface GetProjectUsageResponse {
 
 
 interface Page<T>{
-  item: T,
+  item: Array<T>,
   pagination: {
     current_page: number,
     page_size: number,
@@ -96,13 +96,13 @@ interface Page<T>{
 }
 
 
-export interface ProjectsUsageTypeUnitPrice {
+interface ProjectsUsageTypeUnitPrice {
   min_quantity: number,  // Quantity formats represented by a x10000000 integer. Precision to the millonth
   max_quantity: number,  // Quantity formats represented by a x10000000 integer. Precision to the millonth
   unit_price: number,  // Dollar formats represented by a x10000000 integer. Precision to the millonth
 }
 
-export interface GetSearchUsageTypesResponse {
+interface GetSearchUsageTypesResponse {
   key: string,
   name: string,
   summary: string,

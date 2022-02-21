@@ -158,7 +158,7 @@ export {
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
   GetProjectUsageResponse,
-  GetSearchUsageTypesResponse
+  GetPaginatedSearchUsageTypesResponse
 } from "./services/sam/projects/types/projectResponseTypes";
 
 // import and export project request payload types
