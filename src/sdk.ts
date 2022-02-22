@@ -165,7 +165,8 @@ export {
 export {
   CreateProjectKeyRequest,
   CreateProjectRequest,
-  UpdateProjectRequest
+  UpdateProjectRequest,
+  ProjectSchema
 } from "./services/sam/projects/types/projectRequestTypes";
 
 // import and export security response types
