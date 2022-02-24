@@ -1,5 +1,10 @@
-export interface CreateProjectRequest {
+
+export interface ProjectSchema {
  name: string
+}
+
+export interface CreateProjectRequest {
+ project : ProjectSchema
 }
 
 export interface UpdateProjectRequest {
@@ -12,4 +17,6 @@ export interface ProjectKey {
  summary: string,
 }
 
-export interface CreateProjectKeyRequest extends  ProjectKey {}
+export interface CreateProjectKeyRequest {
+ key: ProjectKey
+}

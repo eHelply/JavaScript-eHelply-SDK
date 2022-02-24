@@ -112,7 +112,7 @@ export default class UserSdk {
   // PARTICIPANTS ENDPOINTS
   getParticipants(participantUuid: string): Promise<GetParticipantResponse>{
     return this.axiosClient.get<GetParticipantResponse>(
-      `/participants/${participantUuid}`
+      `users/participants/${participantUuid}`
     ).then((res: AxiosResponse<GetParticipantResponse>) => {
       this.logger.debug(res);
       return res.data

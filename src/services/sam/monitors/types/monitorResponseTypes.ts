@@ -11,21 +11,14 @@ export interface GetMonitorServicesResponse {
   updated_at: string
 }
 
-
 export interface Kpi {
-  uuid: string,
-  service_uuid: string,
-  kpis: {
-    name: string,
-    metrics: {
-      count: number
-    },
-    date_end: string,
-    date_start: string,
-    disclaimers: Array<string>
-  }
-  created_at: string,
-  fetched_at: string
+  name: string,
+  metrics: {
+    count: number
+  },
+  date_end: string,
+  date_start: string,
+  disclaimers: Array<string>
 }
 
 export interface GetKpisResponse {

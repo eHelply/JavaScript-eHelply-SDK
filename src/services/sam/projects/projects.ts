@@ -11,7 +11,9 @@ import {
   AddPermissionToKeyResponse,
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
-  GetProjectKeysResponse, GetProjectUsageResponse
+  GetProjectKeysResponse,
+  GetProjectUsageResponse,
+  GetPaginatedSearchUsageTypesResponse
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -29,7 +31,7 @@ export default class ProjectSdk {
       role: role
     }
     return this.axiosClient.get<Array<GetMemberProjectsResponse>>(
-      `/sam/projects/member/${memberUuid}`,
+      `/sam/projects/members/${memberUuid}/projects`,
       {params}
     ).then((res: AxiosResponse<Array<GetMemberProjectsResponse>>) => {
       this.logger.debug(res);
@@ -39,7 +41,7 @@ export default class ProjectSdk {
 
   createProject(payload: CreateProjectRequest): Promise<CreateProjectResponse> {
     return this.axiosClient.post<CreateProjectResponse>(
-      `/sam/projects`,
+      `/sam/projects/projects`,
       payload
     ).then((res: AxiosResponse<CreateProjectResponse>) => {
       this.logger.debug(res);
@@ -49,7 +51,7 @@ export default class ProjectSdk {
 
   updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<UpdateProjectResponse> {
     return this.axiosClient.put<UpdateProjectResponse>(
-      `/sam/projects/${projectUuid}`,
+      `/sam/projects/projects/${projectUuid}`,
       payload
     ).then((res: AxiosResponse<UpdateProjectResponse>) => {
       this.logger.debug(res);
@@ -59,7 +61,7 @@ export default class ProjectSdk {
 
   getProject(projectUuid: string): Promise<GetProjectResponse> {
     return this.axiosClient.get<GetProjectResponse>(
-      `/sam/projects/${projectUuid}`,
+      `/sam/projects/projects/${projectUuid}`,
     ).then((res: AxiosResponse<GetProjectResponse>) => {
       this.logger.debug(res);
       return res.data;
@@ -68,7 +70,7 @@ export default class ProjectSdk {
 
   archiveProject(projectUuid: string): Promise<string> {
     return this.axiosClient.delete<string>(
-      `/sam/projects/${projectUuid}`,
+      `/sam/projects/projects/${projectUuid}`,
     ).then((res: AxiosResponse<string>) => {
       this.logger.debug(res);
       return res.data;
@@ -77,7 +79,7 @@ export default class ProjectSdk {
 
   getProjectMembers(projectUuid: string): Promise<Array<GetProjectMembersResponse>> {
     return this.axiosClient.get<Array<GetProjectMembersResponse>>(
-      `/sam/projects/${projectUuid}/members`,
+      `/sam/projects/projects/${projectUuid}/members`,
     ).then((res: AxiosResponse<Array<GetProjectMembersResponse>>) => {
       this.logger.debug(res);
       return res.data;
@@ -86,7 +88,7 @@ export default class ProjectSdk {
 
   addMemberToProject(projectUuid: string, memberUuid: string): Promise<boolean> {
     return this.axiosClient.post<boolean>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}`,
     ).then((res: AxiosResponse<boolean>) => {
       this.logger.debug(res);
       return res.data;
@@ -95,7 +97,7 @@ export default class ProjectSdk {
 
   removeMemberFromProject(projectUuid: string, memberUuid: string): Promise<boolean> {
     return this.axiosClient.delete<boolean>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}`,
     ).then((res: AxiosResponse<boolean>) => {
       this.logger.debug(res);
       return res.data;
@@ -104,7 +106,7 @@ export default class ProjectSdk {
 
   createProjectKey(projectUuid: string, memberUuid: string, payload: CreateProjectKeyRequest): Promise<CreateProjectKeyResponse> {
     return this.axiosClient.post<CreateProjectKeyResponse>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys`,
       payload
     ).then((res: AxiosResponse<CreateProjectKeyResponse>) => {
       this.logger.debug(res);
@@ -114,7 +116,7 @@ export default class ProjectSdk {
 
   removeProjectKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<RemoveProjectKeyResponse> {
     return this.axiosClient.delete<RemoveProjectKeyResponse>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}`,
     ).then((res: AxiosResponse<RemoveProjectKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
@@ -123,7 +125,7 @@ export default class ProjectSdk {
 
   addPermissionToKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<AddPermissionToKeyResponse> {
     return this.axiosClient.post<AddPermissionToKeyResponse>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
     ).then((res: AxiosResponse<AddPermissionToKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
@@ -132,7 +134,7 @@ export default class ProjectSdk {
 
   removePermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<RemovePermissionFromKeyResponse> {
     return this.axiosClient.delete<RemovePermissionFromKeyResponse>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
     ).then((res: AxiosResponse<RemovePermissionFromKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
@@ -141,7 +143,7 @@ export default class ProjectSdk {
 
   getPermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<Array<GetPermissionFromKeyResponse>> {
     return this.axiosClient.get<Array<GetPermissionFromKeyResponse>>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions`,
     ).then((res: AxiosResponse<Array<GetPermissionFromKeyResponse>>) => {
       this.logger.debug(res);
       return res.data;
@@ -150,19 +152,40 @@ export default class ProjectSdk {
 
   getProjectKeys(projectUuid: string, memberUuid: string): Promise<GetProjectKeysResponse> {
     return this.axiosClient.get<GetProjectKeysResponse>(
-      `/sam/projects/${projectUuid}/members/${memberUuid}/keys`,
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys`,
     ).then((res: AxiosResponse<GetProjectKeysResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
-  getProjectUsage(projectUuid: string, year: number, month: number): Promise<Array<GetProjectUsageResponse>> {
+  getProjectsUsage(projectUuid: string, year: number, month: number): Promise<Array<GetProjectUsageResponse>> {
     return this.axiosClient.get<Array<GetProjectUsageResponse>>(
-      `/sam/projects/${projectUuid}/usage`,
+      `/sam/projects/projects/${projectUuid}/usage`,
     ).then((res: AxiosResponse<Array<GetProjectUsageResponse>>) => {
       this.logger.debug(res);
       return res.data;
     });
+  }
+  getSpecificProjectUsage(projectUuid: string, usageKey: string): Promise<GetProjectUsageResponse> {
+    return this.axiosClient.get<GetProjectUsageResponse>(
+      `/sam/projects/projects/${projectUuid}/usage/${usageKey}`,
+    ).then((res: AxiosResponse<GetProjectUsageResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
 
+  getSearchUsageType(search?: string, searchOn?: string): Promise<GetPaginatedSearchUsageTypesResponse> {
+    const params = {
+      search: search,
+      search_on: searchOn
+    }
+    return this.axiosClient.get<GetPaginatedSearchUsageTypesResponse>(
+      `/sam/projects/usage/types`,
+      {params}
+    ).then((res: AxiosResponse<GetPaginatedSearchUsageTypesResponse>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
   }
 }

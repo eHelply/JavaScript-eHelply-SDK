@@ -17,7 +17,7 @@ export default class MonitorSdk {
   }
 
   getServices(): Promise<Array<GetMonitorServicesResponse>> {
-    return this.axiosClient.post<Array<GetMonitorServicesResponse>>(
+    return this.axiosClient.get<Array<GetMonitorServicesResponse>>(
       `/sam/monitor/services`,
     ).then((res: AxiosResponse<Array<GetMonitorServicesResponse>>) => {
       this.logger.debug(res);
@@ -27,7 +27,7 @@ export default class MonitorSdk {
   }
 
   getService(serviceUuid: string): Promise<GetMonitorServicesResponse> {
-    return this.axiosClient.post<GetMonitorServicesResponse>(
+    return this.axiosClient.get<GetMonitorServicesResponse>(
       `/sam/monitor/services/${serviceUuid}`,
     ).then((res: AxiosResponse<GetMonitorServicesResponse>) => {
       this.logger.debug(res);
@@ -36,7 +36,7 @@ export default class MonitorSdk {
   }
 
   getServiceKpis(serviceUuid: string): Promise<Array<GetKpisResponse>> {
-    return this.axiosClient.post<Array<GetKpisResponse>>(
+    return this.axiosClient.get<Array<GetKpisResponse>>(
       `/sam/monitor/services/${serviceUuid}/kpis`,
     ).then((res: AxiosResponse<Array<GetKpisResponse>>) => {
       this.logger.debug(res);

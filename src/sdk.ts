@@ -35,6 +35,7 @@ export interface Authentication {
   authorizationToken?: String
   secretToken?: String
   accessToken?: String
+  ehelplyActiveParticipant? : String
 }
 
 export class eHelplySDK {
@@ -45,6 +46,7 @@ export class eHelplySDK {
   private _authentication: Authentication
   private _projectUuid: string;
   private _axiosClient: any;
+  private _activeParticipant: string;
 
   constructor(configuration: Configuration) {
     this._authentication = {};
@@ -69,6 +71,12 @@ export class eHelplySDK {
     this._authentication.secretToken = secretToken;
     this.setupSdk(this._configuration);
   }
+
+  setActiveParticipant(activeParticipant: string): void {
+    this._activeParticipant = activeParticipant;
+    this.setupSdk(this._configuration);
+  }
+
 
   setAccessToken(accessToken: string): void {
     this._authentication.accessToken = accessToken;
@@ -99,12 +107,12 @@ export class eHelplySDK {
 
   private setAxiosClientHeaders(): void {
     this._axiosClient.defaults.headers.common["ehelply-project"] = this._projectUuid;
-
+    this._axiosClient.defaults.headers.common["ehelply-active-participant"] = this._activeParticipant;
     if (this._authentication.accessToken !== undefined && this._authentication.secretToken !== undefined) {
       this._axiosClient.defaults.headers.common["X-Access-Token"] = this._authentication.accessToken;
       this._axiosClient.defaults.headers.common["X-Secret-Token"] = this._authentication.secretToken;
     } else if (this._authentication.authorizationToken !== undefined) {
-      this._axiosClient.defaults.headers.common["Authorization"] = this._authentication.authorizationToken;
+      this._axiosClient.defaults.headers.common["authorization"] = this._authentication.authorizationToken;
     } else {
       this._logger.debug("No valid authentication provided");
     }
@@ -149,14 +157,16 @@ export {
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
-  GetProjectUsageResponse
+  GetProjectUsageResponse,
+  GetPaginatedSearchUsageTypesResponse
 } from "./services/sam/projects/types/projectResponseTypes";
 
 // import and export project request payload types
 export {
   CreateProjectKeyRequest,
   CreateProjectRequest,
-  UpdateProjectRequest
+  UpdateProjectRequest,
+  ProjectSchema
 } from "./services/sam/projects/types/projectRequestTypes";
 
 // import and export security response types
@@ -165,7 +175,7 @@ export {
   DeleteSecurityKeyResponse,
   GetSecurityKeyResponse,
   PostCreateSecurityKeyResponse,
-  GetEncryptionKeyResponse
+  GetEncryptionKeyResponse,
 } from "./services/sam/security/types/securityResponseTypes";
 
 // import and export security request payload types
