@@ -31,7 +31,7 @@ export interface GetProjectMembersResponse {
 export interface CreateProjectKeyResponse {
   access: string,
   secret: string,
-  status: number,
+  status_code: number,
   uuid: string
 }
 
