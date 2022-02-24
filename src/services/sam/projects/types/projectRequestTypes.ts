@@ -17,4 +17,6 @@ export interface ProjectKey {
  summary: string,
 }
 
-export interface CreateProjectKeyRequest extends  ProjectKey {}
+export interface CreateProjectKeyRequest {
+ key: ProjectKey
+}

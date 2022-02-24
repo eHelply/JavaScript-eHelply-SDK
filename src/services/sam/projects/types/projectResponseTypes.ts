@@ -28,12 +28,12 @@ export interface GetProjectMembersResponse {
   created_at: string
 }
 
-export interface ProjectKey {
-  name: string,
-  summary: string,
+export interface CreateProjectKeyResponse {
+  access: string,
+  secret: string,
+  status: number,
+  uuid: string
 }
-
-export interface CreateProjectKeyResponse extends ProjectKey {}
 
 export interface RemoveProjectKeyResponse {
   entity_identifier: string,
@@ -65,8 +65,19 @@ export interface GetPermissionFromKeyResponse {
   created_at: string
 }
 
+
+
+
 export interface GetProjectKeysResponse {
-  keys: Array<string>
+  items: [
+    {
+      key_uuid: string,
+      partition_identifier: string,
+      uuid: string,
+      project: string,
+      entity_identifier: string
+    }
+  ]
 }
 
 export interface GetProjectUsageResponse {
