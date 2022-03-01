@@ -159,8 +159,14 @@ export default class ProjectSdk {
     });
   }
   getProjectsUsage(projectUuid: string, year: number, month: number): Promise<Array<GetProjectUsageResponse>> {
+    const params = {
+      month: month,
+      year: year
+    }
     return this.axiosClient.get<Array<GetProjectUsageResponse>>(
       `/sam/projects/projects/${projectUuid}/usage`,
+      {params}
+
     ).then((res: AxiosResponse<Array<GetProjectUsageResponse>>) => {
       this.logger.debug(res);
       return res.data;
