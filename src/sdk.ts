@@ -40,12 +40,12 @@ export interface Authentication {
 
 export class eHelplySDK {
   services: Services
+  axiosClient: any;
 
   private _configuration: Configuration
   private _logger: Logger
   private _authentication: Authentication
   private _projectUuid: string;
-  private _axiosClient: any;
   private _activeParticipant: string;
 
   constructor(configuration: Configuration) {
@@ -99,20 +99,20 @@ export class eHelplySDK {
   }
 
   private createAxiosClient(): void {
-    this._axiosClient = axios.create({
+    this.axiosClient = axios.create({
       baseURL: this._configuration.baseUrl.valueOf(),
       timeout: this._configuration.timeout.valueOf()
     });
   }
 
   private setAxiosClientHeaders(): void {
-    this._axiosClient.defaults.headers.common["ehelply-project"] = this._projectUuid;
-    this._axiosClient.defaults.headers.common["ehelply-active-participant"] = this._activeParticipant;
+    this.axiosClient.defaults.headers.common["ehelply-project"] = this._projectUuid;
+    this.axiosClient.defaults.headers.common["ehelply-active-participant"] = this._activeParticipant;
     if (this._authentication.accessToken !== undefined && this._authentication.secretToken !== undefined) {
-      this._axiosClient.defaults.headers.common["X-Access-Token"] = this._authentication.accessToken;
-      this._axiosClient.defaults.headers.common["X-Secret-Token"] = this._authentication.secretToken;
+      this.axiosClient.defaults.headers.common["X-Access-Token"] = this._authentication.accessToken;
+      this.axiosClient.defaults.headers.common["X-Secret-Token"] = this._authentication.secretToken;
     } else if (this._authentication.authorizationToken !== undefined) {
-      this._axiosClient.defaults.headers.common["authorization"] = this._authentication.authorizationToken;
+      this.axiosClient.defaults.headers.common["authorization"] = this._authentication.authorizationToken;
     } else {
       this._logger.debug("No valid authentication provided");
     }
@@ -120,14 +120,14 @@ export class eHelplySDK {
 
   private createServices(): void {
     this.services = {
-      users: new UserSdk(this._axiosClient, this._logger),
-      reviews: new ReviewSdk(this._axiosClient, this._logger),
-      support: new SupportSdk(this._axiosClient, this._logger),
-      access: new AccessSdk(this._axiosClient, this._logger),
-      monitor: new MonitorSdk(this._axiosClient, this._logger),
-      billing: new BillingSdk(this._axiosClient, this._logger),
-      projects: new ProjectSdk(this._axiosClient, this._logger),
-      security: new SecuritySdk(this._axiosClient, this._logger)
+      users: new UserSdk(this.axiosClient, this._logger),
+      reviews: new ReviewSdk(this.axiosClient, this._logger),
+      support: new SupportSdk(this.axiosClient, this._logger),
+      access: new AccessSdk(this.axiosClient, this._logger),
+      monitor: new MonitorSdk(this.axiosClient, this._logger),
+      billing: new BillingSdk(this.axiosClient, this._logger),
+      projects: new ProjectSdk(this.axiosClient, this._logger),
+      security: new SecuritySdk(this.axiosClient, this._logger)
     };
   }
 }
