@@ -29,10 +29,10 @@ export default class BillingSdk {
     });
   }
 
-  viewPaymentMethod(): Promise<GetPaymentResponse> {
-    return this.axiosClient.get<GetPaymentResponse>(
+  viewPaymentMethod(): Promise<GetPaymentResponse[]> {
+    return this.axiosClient.get<GetPaymentResponse[]>(
       `/products/billing/view_payment_method`
-    ).then((res: AxiosResponse<GetPaymentResponse>) => {
+    ).then((res: AxiosResponse<GetPaymentResponse[]>) => {
       this.logger.debug(res);
       return res.data
     });
