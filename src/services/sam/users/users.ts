@@ -1,4 +1,4 @@
-import {Logger} from "../../utils/logger";
+import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {
   LoginRequest,
@@ -18,7 +18,7 @@ import {
   CreateUserResponse,
   GetParticipantResponse
 } from "./types/userResponseTypes";
-import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
+import {makeAxiosClientHeaderless} from "../../../utils/axiosClient";
 
 export default class UserSdk {
   axiosClient: AxiosInstance
@@ -56,7 +56,7 @@ export default class UserSdk {
   createUser(identityToken: string): Promise<CreateUserResponse> {
     this.axiosClientPostUsers.defaults.headers.common["Authorization"] = identityToken;
     return this.axiosClientPostUsers.post<CreateUserResponse>(
-      `/users/users`,
+      `/users`,
       {},
       {
         headers: {
@@ -81,7 +81,7 @@ export default class UserSdk {
 
   validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
     return this.axiosClientHeaderless.post<ValidateEmailResponse>(
-      `/users/users/validations/email`,
+      `/users/validations/email`,
       payload
     ).then((res: AxiosResponse<ValidateEmailResponse>) => {
       this.logger.debug(res);

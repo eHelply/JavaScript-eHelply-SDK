@@ -3,7 +3,7 @@ import axios from "axios";
 import {Logger, LogLevel} from "./utils/logger";
 
 // import services sdks
-import UserSdk from "./services/users/users";
+import UserSdk from "./services/sam/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import SupportSdk from "./services/sam/supports/tickets";
 import AccessSdk from "./services/sam/access/access";
