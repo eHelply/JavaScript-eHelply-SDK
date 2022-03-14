@@ -158,6 +158,7 @@ export default class ProjectSdk {
       return res.data;
     });
   }
+
   getProjectsUsage(projectUuid: string, year: number, month: number): Promise<Array<GetProjectUsageResponse>> {
     const params = {
       month: month,
@@ -166,12 +167,12 @@ export default class ProjectSdk {
     return this.axiosClient.get<Array<GetProjectUsageResponse>>(
       `/sam/projects/projects/${projectUuid}/usage`,
       {params}
-
     ).then((res: AxiosResponse<Array<GetProjectUsageResponse>>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
+
   getSpecificProjectUsage(projectUuid: string, usageKey: string): Promise<GetProjectUsageResponse> {
     return this.axiosClient.get<GetProjectUsageResponse>(
       `/sam/projects/projects/${projectUuid}/usage/${usageKey}`,
