@@ -1,14 +1,12 @@
 export interface SignupRequest {
-  user_signup_data: {
-    username: string,
-    password: string,
-    email: string,
-    first_name: string,
-    last_name: string,
-    phone_number: string,
-    country: string,
-    verified_legal_terms: boolean,
-  }
+  username: string,
+  password: string,
+  email: string,
+  first_name: string,
+  last_name: string,
+  phone_number: string,
+  country: string,
+  verified_legal_terms: boolean,
 }
 
 export interface AuthCodeRequest {
@@ -19,29 +17,21 @@ export interface AuthCodeRequest {
 }
 
 export interface LoginRequest {
-  user_login_data: {
-    username: string,
-    password: string
-  }
+  username: string,
+  password: string
 }
 
 export interface ValidateEmailRequest {
-  validator_value: {
-    value: string,
-    type: string
-  }
+  value: string,
+  type: string
 }
 
 export interface ResetPasswordRequest {
-  user_info: {
-    email: string
-  }
+  email: string
 }
 
 export interface ResetPasswordConfirmationRequest {
-  password_reset_data: {
-    email: string,
-    confirmation_code: string,
-    password: string
-  }
+  email: string,
+  confirmation_code: string,
+  password: string
 }
