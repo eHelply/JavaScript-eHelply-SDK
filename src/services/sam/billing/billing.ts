@@ -11,6 +11,7 @@ export default class BillingSdk {
     this.axiosClient = axiosClient;
     this.logger = logger;
   }
+
   createBillingAccount(): Promise<BillingAccountResponse> {
     return this.axiosClient.post<BillingAccountResponse>(
       `/sam/billing/create_billing_account`
