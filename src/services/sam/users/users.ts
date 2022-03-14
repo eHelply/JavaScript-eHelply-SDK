@@ -1,4 +1,4 @@
-import {Logger} from "../../utils/logger";
+import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {
   LoginRequest,
@@ -18,7 +18,7 @@ import {
   CreateUserResponse,
   GetParticipantResponse
 } from "./types/userResponseTypes";
-import {makeAxiosClientHeaderless} from "../../utils/axiosClient";
+import {makeAxiosClientHeaderless} from "../../../utils/axiosClient";
 
 export default class UserSdk {
   axiosClient: AxiosInstance
@@ -35,7 +35,7 @@ export default class UserSdk {
 
   login(payload: LoginRequest): Promise<LoginResponse> {
     return this.axiosClientHeaderless.post<LoginResponse>(
-      `/users/auth/login`,
+      `/sam/users/auth/login`,
       payload
     ).then((res: AxiosResponse<LoginResponse>) => {
       this.logger.debug(res);
@@ -45,7 +45,7 @@ export default class UserSdk {
 
   signup(payload: SignupRequest): Promise<SignUpResponse> {
     return this.axiosClientHeaderless.post<SignUpResponse>(
-      `/users/auth/signup`,
+      `/sam/users/auth/signup`,
       payload
     ).then((res: AxiosResponse<SignUpResponse>) => {
       this.logger.debug(res);
@@ -56,7 +56,7 @@ export default class UserSdk {
   createUser(identityToken: string): Promise<CreateUserResponse> {
     this.axiosClientPostUsers.defaults.headers.common["Authorization"] = identityToken;
     return this.axiosClientPostUsers.post<CreateUserResponse>(
-      `/users/users`,
+      `/sam/users`,
       {},
       {
         headers: {
@@ -71,7 +71,7 @@ export default class UserSdk {
 
   refreshTokens(appClientId: string, payload: string): Promise<RefreshTokensResponse> {
     return this.axiosClientHeaderless.post<RefreshTokensResponse>(
-      `/users/auth/${appClientId}/refresh-token`,
+      `/sam/users/auth/${appClientId}/refresh-token`,
       payload
     ).then((res: AxiosResponse<RefreshTokensResponse>) => {
       this.logger.debug(res);
@@ -81,7 +81,7 @@ export default class UserSdk {
 
   validateEmail(payload: ValidateEmailRequest):Promise<ValidateEmailResponse> {
     return this.axiosClientHeaderless.post<ValidateEmailResponse>(
-      `/users/users/validations/email`,
+      `/sam/users/validations/email`,
       payload
     ).then((res: AxiosResponse<ValidateEmailResponse>) => {
       this.logger.debug(res);
@@ -91,7 +91,7 @@ export default class UserSdk {
 
   resetPassword(payload: ResetPasswordRequest): Promise<ResetPasswordResponse> {
     return this.axiosClientHeaderless.post(
-      `/users/auth/password/reset`,
+      `/sam/users/auth/password/reset`,
       payload
     ).then((res: AxiosResponse<ResetPasswordResponse>) => {
       this.logger.debug(res);
@@ -101,7 +101,7 @@ export default class UserSdk {
 
   resetPasswordConfirm(payload: ResetPasswordConfirmationRequest): Promise<ResetPasswordConfirmationResponse> {
     return this.axiosClientHeaderless.post<ResetPasswordConfirmationResponse>(
-      `/users/auth/password/reset/confirm`,
+      `/sam/users/auth/password/reset/confirm`,
       payload
     ).then((res: AxiosResponse<ResetPasswordConfirmationResponse>) => {
       this.logger.debug(res);
@@ -112,7 +112,7 @@ export default class UserSdk {
   // PARTICIPANTS ENDPOINTS
   getParticipants(participantUuid: string): Promise<GetParticipantResponse>{
     return this.axiosClient.get<GetParticipantResponse>(
-      `users/participants/${participantUuid}`
+      `/sam/users/participants/${participantUuid}`
     ).then((res: AxiosResponse<GetParticipantResponse>) => {
       this.logger.debug(res);
       return res.data
