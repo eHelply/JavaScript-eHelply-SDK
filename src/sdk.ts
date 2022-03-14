@@ -9,7 +9,7 @@ import SupportSdk from "./services/sam/supports/tickets";
 import AccessSdk from "./services/sam/access/access";
 import MonitorSdk from "./services/sam/monitors/monitor";
 import ProjectSdk from "./services/sam/projects/projects";
-import BillingSdk from "./services/products/billing/billing";
+import BillingSdk from "./services/sam/billing/billing";
 import SecuritySdk from "./services/sam/security/security";
 
 export {LogLevel};
