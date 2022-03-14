@@ -198,3 +198,24 @@ export {
   CreateTicketRequest,
   CreateContactRequest
 } from "./services/sam/supports/types/ticketRequestTypes";
+
+export {
+  Participant,
+  LoginResponse,
+  SignUpResponse,
+  CreateUserResponse,
+  RefreshTokensResponse,
+  ResetPasswordResponse,
+  ResetPasswordConfirmationResponse,
+  ValidateEmailResponse,
+  GetParticipantResponse
+} from "./services/sam/users/types/userResponseTypes"
+
+export {
+  SignupRequest,
+  AuthCodeRequest,
+  LoginRequest,
+  ValidateEmailRequest,
+  ResetPasswordConfirmationRequest,
+  ResetPasswordRequest
+} from "./services/sam/users/types/userRequestTypes"
