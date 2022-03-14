@@ -13,7 +13,7 @@ export default class BillingSdk {
   }
   createBillingAccount(): Promise<BillingAccountResponse> {
     return this.axiosClient.post<BillingAccountResponse>(
-      `/products/billing/create_billing_account`
+      `/sam/billing/create_billing_account`
     ).then((res: AxiosResponse<BillingAccountResponse>) => {
       this.logger.debug(res);
       return res.data
@@ -22,7 +22,7 @@ export default class BillingSdk {
 
   getSecret(): Promise<GetStripeSecret> {
     return this.axiosClient.get<GetStripeSecret>(
-      `/products/billing/retrieve_secret`
+      `/sam/billing/retrieve_secret`
     ).then((res: AxiosResponse<GetStripeSecret>) => {
       this.logger.debug(res);
       return res.data
@@ -31,7 +31,7 @@ export default class BillingSdk {
 
   viewPaymentMethod(): Promise<GetPaymentResponse[]> {
     return this.axiosClient.get<GetPaymentResponse[]>(
-      `/products/billing/view_payment_method`
+      `/sam/billing/view_payment_method`
     ).then((res: AxiosResponse<GetPaymentResponse[]>) => {
       this.logger.debug(res);
       return res.data
@@ -40,7 +40,7 @@ export default class BillingSdk {
 
   removePaymentMethod(): Promise<string> {
     return this.axiosClient.delete<string>(
-      `/products/billing/remove_payment_method`
+      `/sam/billing/remove_payment_method`
     ).then((res: AxiosResponse<string>) => {
       this.logger.debug(res);
       return res.data
