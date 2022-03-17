@@ -13,7 +13,7 @@ import {
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
   GetProjectUsageResponse,
-  GetPaginatedSearchUsageTypesResponse
+  GetPaginatedSearchUsageTypesResponse, GetPermissionTypeResponse, GetPermissionsForMember
 } from "./types/projectResponseTypes";
 import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -145,6 +145,24 @@ export default class ProjectSdk {
     return this.axiosClient.get<Array<GetPermissionFromKeyResponse>>(
       `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions`,
     ).then((res: AxiosResponse<Array<GetPermissionFromKeyResponse>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  detPermissionsForMember(projectUuid: string, memberUuid: string): Promise<Array<GetPermissionsForMember>> {
+    return this.axiosClient.get<Array<GetPermissionsForMember>>(
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/permissions`,
+    ).then((res: AxiosResponse<Array<GetPermissionsForMember>>) => {
+      this.logger.debug(res);
+      return res.data;
+    });
+  }
+
+  getPermissionType(projectUuid: string, memberUuid: string, typeUuid: string): Promise<GetPermissionTypeResponse> {
+    return this.axiosClient.get<GetPermissionTypeResponse>(
+      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/permissions/types/${typeUuid}`,
+    ).then((res: AxiosResponse<GetPermissionTypeResponse>) => {
       this.logger.debug(res);
       return res.data;
     });

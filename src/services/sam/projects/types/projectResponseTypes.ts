@@ -65,8 +65,23 @@ export interface GetPermissionFromKeyResponse {
   created_at: string
 }
 
+export interface GetPermissionsForMember {
+  uuid: string,
+  name: string,
+  node: string,
+  type_uuid: string,
+  summary: string,
+  created_at: string,
+  roles: []
+}
 
-
+export interface GetPermissionTypeResponse {
+  uuid: string,
+  name: string,
+  slug: string,
+  summary: string,
+  created_at: string
+}
 
 export interface GetProjectKeysResponse {
   items: [
