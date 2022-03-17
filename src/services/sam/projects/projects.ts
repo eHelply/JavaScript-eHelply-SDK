@@ -150,7 +150,7 @@ export default class ProjectSdk {
     });
   }
 
-  detPermissionsForMember(projectUuid: string, memberUuid: string): Promise<Array<GetPermissionsForMember>> {
+  getPermissionsForMember(projectUuid: string, memberUuid: string): Promise<Array<GetPermissionsForMember>> {
     return this.axiosClient.get<Array<GetPermissionsForMember>>(
       `/sam/projects/projects/${projectUuid}/members/${memberUuid}/permissions`,
     ).then((res: AxiosResponse<Array<GetPermissionsForMember>>) => {
