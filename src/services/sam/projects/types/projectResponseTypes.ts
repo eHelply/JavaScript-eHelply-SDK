@@ -84,15 +84,7 @@ export interface GetPermissionTypeResponse {
 }
 
 export interface GetProjectKeysResponse {
-  items: [
-    {
-      key_uuid: string,
-      partition_identifier: string,
-      uuid: string,
-      project: string,
-      entity_identifier: string
-    }
-  ]
+  keys: Array<string>
 }
 
 export interface GetProjectUsageResponse {
