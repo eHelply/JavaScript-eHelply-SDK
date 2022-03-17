@@ -154,6 +154,8 @@ export {
   CreateProjectKeyResponse,
   RemoveProjectKeyResponse,
   AddPermissionToKeyResponse,
+  GetPermissionsForMember,
+  GetPermissionTypeResponse,
   RemovePermissionFromKeyResponse,
   GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
