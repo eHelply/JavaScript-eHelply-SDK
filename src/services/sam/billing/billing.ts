@@ -39,6 +39,15 @@ export default class BillingSdk {
     });
   }
 
+  reconcilePaymentMethod(): Promise<boolean> {
+    return this.axiosClient.get<boolean>(
+      `/sam/billing/reconcile_payment`
+    ).then((res: AxiosResponse<boolean>) => {
+      this.logger.debug(res);
+      return res.data
+    });
+  }
+
   removePaymentMethod(): Promise<string> {
     return this.axiosClient.delete<string>(
       `/sam/billing/remove_payment_method`
