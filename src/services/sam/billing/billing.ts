@@ -41,7 +41,7 @@ export default class BillingSdk {
 
   reconcilePaymentMethod(): Promise<boolean> {
     return this.axiosClient.get<boolean>(
-      `/sam/billing/reconcile_payment`
+      `/sam/billing/payment_method/reconcile`
     ).then((res: AxiosResponse<boolean>) => {
       this.logger.debug(res);
       return res.data
