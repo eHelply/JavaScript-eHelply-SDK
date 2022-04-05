@@ -3,10 +3,6 @@ export interface ProjectSchema {
  name: string
 }
 
-export interface CreateProjectRequest {
- project : ProjectSchema
-}
-
 export interface UpdateProjectRequest {
  max_spend?: number
  status?: string
@@ -15,8 +11,4 @@ export interface UpdateProjectRequest {
 export interface ProjectKey {
  name: string,
  summary: string,
-}
-
-export interface CreateProjectKeyRequest {
- key: ProjectKey
 }
