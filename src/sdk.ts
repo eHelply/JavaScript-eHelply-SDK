@@ -139,10 +139,6 @@ export {
 
 //import and export project response types
 export {
-  GetMemberProjectsResponse,
-  CreateProjectResponse,
-  GetProjectResponse,
-  UpdateProjectResponse,
   GetProjectMembersResponse,
   CreateProjectKeyResponse,
   RemoveProjectKeyResponse,
@@ -158,8 +154,6 @@ export {
 
 // import and export project request payload types
 export {
-  CreateProjectKeyRequest,
-  CreateProjectRequest,
   UpdateProjectRequest,
   ProjectSchema
 } from "./services/sam/projects/types/projectRequestTypes";
