@@ -1,21 +1,14 @@
 import {Logger} from "../../../utils/logger";
 import {AxiosInstance, AxiosResponse} from "axios";
 import {
-  GetMemberProjectsResponse,
-  CreateProjectResponse,
-  GetProjectResponse,
-  UpdateProjectResponse,
   GetProjectMembersResponse,
   CreateProjectKeyResponse,
   RemoveProjectKeyResponse,
-  AddPermissionToKeyResponse,
-  RemovePermissionFromKeyResponse,
-  GetPermissionFromKeyResponse,
   GetProjectKeysResponse,
   GetProjectUsageResponse,
-  GetPaginatedSearchUsageTypesResponse, GetPermissionTypeResponse, GetPermissionsForMember
+  GetPaginatedSearchUsageTypesResponse, ProjectResponse,
 } from "./types/projectResponseTypes";
-import {CreateProjectKeyRequest, CreateProjectRequest, UpdateProjectRequest} from "./types/projectRequestTypes";
+import {ProjectKey, ProjectSchema, UpdateProjectRequest} from "./types/projectRequestTypes";
 
 export default class ProjectSdk {
   axiosClient: AxiosInstance
@@ -26,43 +19,43 @@ export default class ProjectSdk {
     this.logger = logger;
   }
 
-  getMemberProjects(memberUuid: string, role: string): Promise<Array<GetMemberProjectsResponse>> {
+  getMemberProjects(memberUuid: string, role: string): Promise<Array<ProjectResponse>> {
     const params = {
       role: role
     }
-    return this.axiosClient.get<Array<GetMemberProjectsResponse>>(
+    return this.axiosClient.get<Array<ProjectResponse>>(
       `/sam/projects/members/${memberUuid}/projects`,
       {params}
-    ).then((res: AxiosResponse<Array<GetMemberProjectsResponse>>) => {
+    ).then((res: AxiosResponse<Array<ProjectResponse>>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
 
-  createProject(payload: CreateProjectRequest): Promise<CreateProjectResponse> {
-    return this.axiosClient.post<CreateProjectResponse>(
+  createProject(payload: ProjectSchema): Promise<ProjectResponse> {
+    return this.axiosClient.post<ProjectResponse>(
       `/sam/projects/projects`,
       payload
-    ).then((res: AxiosResponse<CreateProjectResponse>) => {
+    ).then((res: AxiosResponse<ProjectResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
 
-  updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<UpdateProjectResponse> {
-    return this.axiosClient.put<UpdateProjectResponse>(
+  updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<ProjectResponse> {
+    return this.axiosClient.put<ProjectResponse>(
       `/sam/projects/projects/${projectUuid}`,
       payload
-    ).then((res: AxiosResponse<UpdateProjectResponse>) => {
+    ).then((res: AxiosResponse<ProjectResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
 
-  getProject(projectUuid: string): Promise<GetProjectResponse> {
-    return this.axiosClient.get<GetProjectResponse>(
+  getProject(projectUuid: string): Promise<ProjectResponse> {
+    return this.axiosClient.get<ProjectResponse>(
       `/sam/projects/projects/${projectUuid}`,
-    ).then((res: AxiosResponse<GetProjectResponse>) => {
+    ).then((res: AxiosResponse<ProjectResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
@@ -104,9 +97,9 @@ export default class ProjectSdk {
     });
   }
 
-  createProjectKey(projectUuid: string, memberUuid: string, payload: CreateProjectKeyRequest): Promise<CreateProjectKeyResponse> {
+  createProjectKey(projectUuid: string, payload: ProjectKey): Promise<CreateProjectKeyResponse> {
     return this.axiosClient.post<CreateProjectKeyResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys`,
+      `/sam/projects/projects/${projectUuid}/keys`,
       payload
     ).then((res: AxiosResponse<CreateProjectKeyResponse>) => {
       this.logger.debug(res);
@@ -114,63 +107,18 @@ export default class ProjectSdk {
     });
   }
 
-  removeProjectKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<RemoveProjectKeyResponse> {
+  removeProjectKey(projectUuid: string, keyUuid: string): Promise<RemoveProjectKeyResponse> {
     return this.axiosClient.delete<RemoveProjectKeyResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}`,
+      `/sam/projects/projects/${projectUuid}/keys?access_token=${keyUuid}`,
     ).then((res: AxiosResponse<RemoveProjectKeyResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
   }
 
-  addPermissionToKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<AddPermissionToKeyResponse> {
-    return this.axiosClient.post<AddPermissionToKeyResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
-    ).then((res: AxiosResponse<AddPermissionToKeyResponse>) => {
-      this.logger.debug(res);
-      return res.data;
-    });
-  }
-
-  removePermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string, nodeUuid: string): Promise<RemovePermissionFromKeyResponse> {
-    return this.axiosClient.delete<RemovePermissionFromKeyResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions/${nodeUuid}`,
-    ).then((res: AxiosResponse<RemovePermissionFromKeyResponse>) => {
-      this.logger.debug(res);
-      return res.data;
-    });
-  }
-
-  getPermissionFromKey(projectUuid: string, memberUuid: string, keyUuid: string): Promise<Array<GetPermissionFromKeyResponse>> {
-    return this.axiosClient.get<Array<GetPermissionFromKeyResponse>>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys/${keyUuid}/permissions`,
-    ).then((res: AxiosResponse<Array<GetPermissionFromKeyResponse>>) => {
-      this.logger.debug(res);
-      return res.data;
-    });
-  }
-
-  getPermissionsForMember(projectUuid: string, memberUuid: string): Promise<Array<GetPermissionsForMember>> {
-    return this.axiosClient.get<Array<GetPermissionsForMember>>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/permissions`,
-    ).then((res: AxiosResponse<Array<GetPermissionsForMember>>) => {
-      this.logger.debug(res);
-      return res.data;
-    });
-  }
-
-  getPermissionType(projectUuid: string, memberUuid: string, typeUuid: string): Promise<GetPermissionTypeResponse> {
-    return this.axiosClient.get<GetPermissionTypeResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/permissions/types/${typeUuid}`,
-    ).then((res: AxiosResponse<GetPermissionTypeResponse>) => {
-      this.logger.debug(res);
-      return res.data;
-    });
-  }
-
-  getProjectKeys(projectUuid: string, memberUuid: string): Promise<GetProjectKeysResponse> {
+  getProjectKeys(projectUuid: string): Promise<GetProjectKeysResponse> {
     return this.axiosClient.get<GetProjectKeysResponse>(
-      `/sam/projects/projects/${projectUuid}/members/${memberUuid}/keys`,
+      `/sam/projects/projects/${projectUuid}/keys`,
     ).then((res: AxiosResponse<GetProjectKeysResponse>) => {
       this.logger.debug(res);
       return res.data;

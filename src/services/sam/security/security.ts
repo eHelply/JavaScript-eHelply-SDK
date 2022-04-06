@@ -54,7 +54,6 @@ export default class SecuritySdk {
       this.logger.debug(res);
       return res.data;
     });
-
   }
 
   deleteSecurityKey (keyUuid: string): Promise<DeleteSecurityKeyResponse> {
@@ -73,7 +72,6 @@ export default class SecuritySdk {
       this.logger.debug(res);
       return res.data;
     });
-
   }
 
   getEncryptionKey (category: string): Promise<Array<GetEncryptionKeyResponse>> {
@@ -83,6 +81,5 @@ export default class SecuritySdk {
       this.logger.debug(res);
       return res.data;
     });
-
   }
 }

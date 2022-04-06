@@ -6,7 +6,6 @@ import {Logger, LogLevel} from "./utils/logger";
 import UserSdk from "./services/sam/users/users";
 import ReviewSdk from "./services/products/reviews/reviews";
 import SupportSdk from "./services/sam/supports/tickets";
-import AccessSdk from "./services/sam/access/access";
 import MonitorSdk from "./services/sam/monitors/monitor";
 import ProjectSdk from "./services/sam/projects/projects";
 import BillingSdk from "./services/sam/billing/billing";
@@ -24,7 +23,6 @@ export interface Services {
   users: UserSdk,
   reviews: ReviewSdk,
   support: SupportSdk,
-  access: AccessSdk,
   monitor: MonitorSdk,
   billing: BillingSdk,
   projects: ProjectSdk,
@@ -123,7 +121,6 @@ export class eHelplySDK {
       users: new UserSdk(this.axiosClient, this._logger),
       reviews: new ReviewSdk(this.axiosClient, this._logger),
       support: new SupportSdk(this.axiosClient, this._logger),
-      access: new AccessSdk(this.axiosClient, this._logger),
       monitor: new MonitorSdk(this.axiosClient, this._logger),
       billing: new BillingSdk(this.axiosClient, this._logger),
       projects: new ProjectSdk(this.axiosClient, this._logger),
@@ -131,10 +128,6 @@ export class eHelplySDK {
     };
   }
 }
-
-
-// import and export access response types
-export {GetAccessKeyResponse} from "./services/sam/access/types/accessResponseTypes";
 
 // import and export monitor response types
 export {
@@ -146,10 +139,6 @@ export {
 
 //import and export project response types
 export {
-  GetMemberProjectsResponse,
-  CreateProjectResponse,
-  GetProjectResponse,
-  UpdateProjectResponse,
   GetProjectMembersResponse,
   CreateProjectKeyResponse,
   RemoveProjectKeyResponse,
@@ -165,8 +154,6 @@ export {
 
 // import and export project request payload types
 export {
-  CreateProjectKeyRequest,
-  CreateProjectRequest,
   UpdateProjectRequest,
   ProjectSchema
 } from "./services/sam/projects/types/projectRequestTypes";
