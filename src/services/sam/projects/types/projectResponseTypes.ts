@@ -1,10 +1,15 @@
+export interface UpdateAttributes {
+  key: string,
+  value: any
+}
+
 export interface ProjectResponse {
   uuid: string,
   name: string,
   created_at: string,
   current_spend: number,
   max_spend: number,
-  status: string,
+  project_status: string,
   archived_at?: string
 }
 
@@ -21,6 +26,10 @@ export interface CreateProjectKeyResponse {
   secret: string,
   status_code: number,
   uuid: string
+}
+
+export interface UpdateProjectResponse {
+  changed : Array<UpdateAttributes>
 }
 
 export interface RemoveProjectKeyResponse {

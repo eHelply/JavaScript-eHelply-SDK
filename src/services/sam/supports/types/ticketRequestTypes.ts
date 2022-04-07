@@ -1,8 +1,6 @@
 export interface CreateTicketRequest {
-  ticket: {
-    subject: string,
-    priority: string,
-  }
+  subject: string,
+  priority: string,
 }
 export interface CreateContactRequest {
   email: string,

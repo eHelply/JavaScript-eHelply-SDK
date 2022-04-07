@@ -6,7 +6,7 @@ import {
   RemoveProjectKeyResponse,
   GetProjectKeysResponse,
   GetProjectUsageResponse,
-  GetPaginatedSearchUsageTypesResponse, ProjectResponse,
+  GetPaginatedSearchUsageTypesResponse, ProjectResponse, UpdateProjectResponse,
 } from "./types/projectResponseTypes";
 import {ProjectKey, ProjectSchema, UpdateProjectRequest} from "./types/projectRequestTypes";
 
@@ -42,11 +42,11 @@ export default class ProjectSdk {
     });
   }
 
-  updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<ProjectResponse> {
-    return this.axiosClient.put<ProjectResponse>(
+  updateProject(projectUuid: string, payload: UpdateProjectRequest): Promise<UpdateProjectResponse> {
+    return this.axiosClient.put<UpdateProjectResponse>(
       `/sam/projects/projects/${projectUuid}`,
       payload
-    ).then((res: AxiosResponse<ProjectResponse>) => {
+    ).then((res: AxiosResponse<UpdateProjectResponse>) => {
       this.logger.debug(res);
       return res.data;
     });
@@ -116,10 +116,10 @@ export default class ProjectSdk {
     });
   }
 
-  getProjectKeys(projectUuid: string): Promise<GetProjectKeysResponse> {
-    return this.axiosClient.get<GetProjectKeysResponse>(
+  getProjectKeys(projectUuid: string): Promise<Array<GetProjectMembersResponse>> {
+    return this.axiosClient.get<Array<GetProjectMembersResponse>>(
       `/sam/projects/projects/${projectUuid}/keys`,
-    ).then((res: AxiosResponse<GetProjectKeysResponse>) => {
+    ).then((res: AxiosResponse<Array<GetProjectMembersResponse>>) => {
       this.logger.debug(res);
       return res.data;
     });
