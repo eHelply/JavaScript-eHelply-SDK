@@ -1,4 +1,4 @@
-# @ehelply/superstack-sdk@1.1.41
+# @ehelply/superstack-sdk@1.1.42
 
 ## Requirements
 
@@ -25,7 +25,7 @@ navigate to the folder of your consuming project and run one of the following co
 
 ### Install from NPM (Recommended):
 ```
-npm install @ehelply/superstack-sdk@1.1.41 --save
+npm install @ehelply/superstack-sdk@1.1.42 --save
 ```
 
 ### Install from repository (not recommended):

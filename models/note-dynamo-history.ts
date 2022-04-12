@@ -213,24 +213,44 @@
  */
 
 
+import { NoteDynamo } from './note-dynamo';
+import { NoteMeta } from './note-meta';
 
 /**
- * 
+ * A note from Dynamo DB including n amount of version history of that note
  * @export
- * @interface CreateTicket
+ * @interface NoteDynamoHistory
  */
-export interface CreateTicket {
+export interface NoteDynamoHistory {
     /**
      * 
      * @type {string}
-     * @memberof CreateTicket
+     * @memberof NoteDynamoHistory
      */
-    'priority': string;
+    'uuid': string;
+    /**
+     * 
+     * @type {any | string}
+     * @memberof NoteDynamoHistory
+     */
+    'content'?: any | string;
     /**
      * 
      * @type {string}
-     * @memberof CreateTicket
+     * @memberof NoteDynamoHistory
      */
-    'subject': string;
+    'time': string;
+    /**
+     * 
+     * @type {NoteMeta}
+     * @memberof NoteDynamoHistory
+     */
+    'meta': NoteMeta;
+    /**
+     * 
+     * @type {Array<NoteDynamo>}
+     * @memberof NoteDynamoHistory
+     */
+    'history'?: Array<NoteDynamo>;
 }
 

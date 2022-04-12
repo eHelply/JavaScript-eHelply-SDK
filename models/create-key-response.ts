@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.41
+ * eHelply SDK - 1.1.42
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.41
+ * The version of the OpenAPI document: 1.1.42
  *
  * Do not edit the class manually.
  *

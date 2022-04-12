@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.41
+ * eHelply SDK - 1.1.42
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.41
+ * The version of the OpenAPI document: 1.1.42
  *
  * Do not edit the class manually.
  *
@@ -226,6 +226,8 @@ import { HTTPValidationError } from '../models';
 import { NoteBase } from '../models';
 // @ts-ignore
 import { NoteDynamo } from '../models';
+// @ts-ignore
+import { NoteDynamoHistory } from '../models';
 /**
  * NotesApi - axios parameter creator
  * @export
@@ -245,9 +247,9 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNoteNotesNotesPost: async (noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createNote: async (noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteBase' is not null or undefined
-            assertParamExists('createNoteNotesNotesPost', 'noteBase', noteBase)
+            assertParamExists('createNote', 'noteBase', noteBase)
             const localVarPath = `/notes/notes/notes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -312,9 +314,9 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteNoteNotesNotesNoteIdDelete: async (noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteNote: async (noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteId' is not null or undefined
-            assertParamExists('deleteNoteNotesNotesNoteIdDelete', 'noteId', noteId)
+            assertParamExists('deleteNote', 'noteId', noteId)
             const localVarPath = `/notes/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -382,9 +384,9 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNoteNotesNotesNoteIdGet: async (noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getNote: async (noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteId' is not null or undefined
-            assertParamExists('getNoteNotesNotesNoteIdGet', 'noteId', noteId)
+            assertParamExists('getNote', 'noteId', noteId)
             const localVarPath = `/notes/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -455,11 +457,11 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateNoteNotesNotesNoteIdPut: async (noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateNote: async (noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteId' is not null or undefined
-            assertParamExists('updateNoteNotesNotesNoteIdPut', 'noteId', noteId)
+            assertParamExists('updateNote', 'noteId', noteId)
             // verify required parameter 'noteBase' is not null or undefined
-            assertParamExists('updateNoteNotesNotesNoteIdPut', 'noteBase', noteBase)
+            assertParamExists('updateNote', 'noteBase', noteBase)
             const localVarPath = `/notes/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -534,8 +536,8 @@ export const NotesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createNoteNotesNotesPost(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoteDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createNoteNotesNotesPost(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createNote(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoteDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createNote(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -552,8 +554,8 @@ export const NotesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteNoteNotesNotesNoteIdDelete(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteNoteNotesNotesNoteIdDelete(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async deleteNote(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteNote(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -571,8 +573,8 @@ export const NotesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNoteNotesNotesNoteIdGet(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getNoteNotesNotesNoteIdGet(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getNote(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoteDynamoHistory>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNote(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -589,8 +591,8 @@ export const NotesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateNoteNotesNotesNoteIdPut(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoteDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateNoteNotesNotesNoteIdPut(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateNote(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoteDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateNote(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -616,8 +618,8 @@ export const NotesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createNoteNotesNotesPost(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<NoteDynamo> {
-            return localVarFp.createNoteNotesNotesPost(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createNote(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<NoteDynamo> {
+            return localVarFp.createNote(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -633,8 +635,8 @@ export const NotesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteNoteNotesNotesNoteIdDelete(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteNoteNotesNotesNoteIdDelete(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        deleteNote(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteNote(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -651,8 +653,8 @@ export const NotesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNoteNotesNotesNoteIdGet(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getNoteNotesNotesNoteIdGet(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getNote(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<NoteDynamoHistory> {
+            return localVarFp.getNote(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -668,8 +670,8 @@ export const NotesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateNoteNotesNotesNoteIdPut(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<NoteDynamo> {
-            return localVarFp.updateNoteNotesNotesNoteIdPut(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateNote(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<NoteDynamo> {
+            return localVarFp.updateNote(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -694,7 +696,7 @@ export interface NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApiInterface
      */
-    createNoteNotesNotesPost(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<NoteDynamo>;
+    createNote(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<NoteDynamo>;
 
     /**
      * 
@@ -711,7 +713,7 @@ export interface NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApiInterface
      */
-    deleteNoteNotesNotesNoteIdDelete(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteNote(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -729,7 +731,7 @@ export interface NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApiInterface
      */
-    getNoteNotesNotesNoteIdGet(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getNote(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<NoteDynamoHistory>;
 
     /**
      * 
@@ -746,7 +748,7 @@ export interface NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApiInterface
      */
-    updateNoteNotesNotesNoteIdPut(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<NoteDynamo>;
+    updateNote(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<NoteDynamo>;
 
 }
 
@@ -771,8 +773,8 @@ export class NotesApi extends BaseAPI implements NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApi
      */
-    public createNoteNotesNotesPost(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return NotesApiFp(this.configuration).createNoteNotesNotesPost(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createNote(noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return NotesApiFp(this.configuration).createNote(noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -790,8 +792,8 @@ export class NotesApi extends BaseAPI implements NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApi
      */
-    public deleteNoteNotesNotesNoteIdDelete(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return NotesApiFp(this.configuration).deleteNoteNotesNotesNoteIdDelete(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public deleteNote(noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return NotesApiFp(this.configuration).deleteNote(noteId, method, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -810,8 +812,8 @@ export class NotesApi extends BaseAPI implements NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApi
      */
-    public getNoteNotesNotesNoteIdGet(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return NotesApiFp(this.configuration).getNoteNotesNotesNoteIdGet(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getNote(noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return NotesApiFp(this.configuration).getNote(noteId, history, historyContent, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -829,7 +831,7 @@ export class NotesApi extends BaseAPI implements NotesApiInterface {
      * @throws {RequiredError}
      * @memberof NotesApi
      */
-    public updateNoteNotesNotesNoteIdPut(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return NotesApiFp(this.configuration).updateNoteNotesNotesNoteIdPut(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateNote(noteId: string, noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return NotesApiFp(this.configuration).updateNote(noteId, noteBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }
