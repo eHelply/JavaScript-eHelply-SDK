@@ -213,45 +213,44 @@
  */
 
 
-import { BasicMeta } from './basic-meta';
-import { DatesMeta } from './dates-meta';
-import { DetailedMeta } from './detailed-meta';
+import { NoteDynamo } from './note-dynamo';
+import { NoteMeta } from './note-meta';
 
 /**
- * A meta from DynamoDB
+ * A note from Dynamo DB including n amount of version history of that note
  * @export
- * @interface MetaDynamo
+ * @interface NoteDynamoHistory
  */
-export interface MetaDynamo {
-    /**
-     * 
-     * @type {BasicMeta}
-     * @memberof MetaDynamo
-     */
-    'basic'?: BasicMeta;
-    /**
-     * 
-     * @type {DetailedMeta}
-     * @memberof MetaDynamo
-     */
-    'detailed'?: DetailedMeta;
-    /**
-     * 
-     * @type {object}
-     * @memberof MetaDynamo
-     */
-    'custom'?: object;
-    /**
-     * 
-     * @type {DatesMeta}
-     * @memberof MetaDynamo
-     */
-    'dates'?: DatesMeta;
+export interface NoteDynamoHistory {
     /**
      * 
      * @type {string}
-     * @memberof MetaDynamo
+     * @memberof NoteDynamoHistory
      */
     'uuid': string;
+    /**
+     * 
+     * @type {any | string}
+     * @memberof NoteDynamoHistory
+     */
+    'content'?: any | string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoteDynamoHistory
+     */
+    'time': string;
+    /**
+     * 
+     * @type {NoteMeta}
+     * @memberof NoteDynamoHistory
+     */
+    'meta': NoteMeta;
+    /**
+     * 
+     * @type {Array<NoteDynamo>}
+     * @memberof NoteDynamoHistory
+     */
+    'history'?: Array<NoteDynamo>;
 }
 

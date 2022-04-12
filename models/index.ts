@@ -43,6 +43,7 @@ export * from './meta-dynamo';
 export * from './meta-slugger';
 export * from './note-base';
 export * from './note-dynamo';
+export * from './note-dynamo-history';
 export * from './note-meta';
 export * from './page';
 export * from './pagination';
