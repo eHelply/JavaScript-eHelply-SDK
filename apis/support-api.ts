@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.40
+ * eHelply SDK - 1.1.58
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.40
+ * The version of the OpenAPI document: 1.1.58
  *
  * Do not edit the class manually.
  *
@@ -221,11 +221,11 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost } from '../models';
-// @ts-ignore
-import { BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut } from '../models';
+import { Contact } from '../models';
 // @ts-ignore
 import { ContactResponse } from '../models';
+// @ts-ignore
+import { CreateTicket } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
@@ -241,6 +241,7 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Create Contact
+         * @param {Contact} contact 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -250,7 +251,9 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createContactSupportContactPost: async (xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createContactSupportContactPost: async (contact: Contact, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contact' is not null or undefined
+            assertParamExists('createContactSupportContactPost', 'contact', contact)
             const localVarPath = `/sam/support/contact`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -289,9 +292,12 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(contact, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -303,7 +309,7 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Create Ticket
          * @param {string} projectUuid 
          * @param {string} memberUuid 
-         * @param {BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost} bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -313,13 +319,13 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: async (projectUuid: string, memberUuid: string, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: async (projectUuid: string, memberUuid: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
             assertParamExists('createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost', 'projectUuid', projectUuid)
             // verify required parameter 'memberUuid' is not null or undefined
             assertParamExists('createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost', 'memberUuid', memberUuid)
-            // verify required parameter 'bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost' is not null or undefined
-            assertParamExists('createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost', 'bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost', bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost)
+            // verify required parameter 'createTicket' is not null or undefined
+            assertParamExists('createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost', 'createTicket', createTicket)
             const localVarPath = `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets`
                 .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
                 .replace(`{${"member_uuid"}}`, encodeURIComponent(String(memberUuid)));
@@ -365,7 +371,7 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createTicket, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -506,7 +512,7 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} projectUuid 
          * @param {string} memberUuid 
          * @param {string} ticketId 
-         * @param {BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut} bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -516,15 +522,15 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: async (projectUuid: string, memberUuid: string, ticketId: string, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: async (projectUuid: string, memberUuid: string, ticketId: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
             assertParamExists('updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', 'projectUuid', projectUuid)
             // verify required parameter 'memberUuid' is not null or undefined
             assertParamExists('updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', 'memberUuid', memberUuid)
             // verify required parameter 'ticketId' is not null or undefined
             assertParamExists('updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', 'ticketId', ticketId)
-            // verify required parameter 'bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut' is not null or undefined
-            assertParamExists('updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', 'bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut)
+            // verify required parameter 'createTicket' is not null or undefined
+            assertParamExists('updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut', 'createTicket', createTicket)
             const localVarPath = `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets/{ticket_id}`
                 .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
                 .replace(`{${"member_uuid"}}`, encodeURIComponent(String(memberUuid)))
@@ -571,7 +577,7 @@ export const SupportApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createTicket, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -663,6 +669,7 @@ export const SupportApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create Contact
+         * @param {Contact} contact 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -672,8 +679,8 @@ export const SupportApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createContactSupportContactPost(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createContactSupportContactPost(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createContactSupportContactPost(contact: Contact, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContactResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createContactSupportContactPost(contact, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -681,7 +688,7 @@ export const SupportApiFp = function(configuration?: Configuration) {
          * @summary Create Ticket
          * @param {string} projectUuid 
          * @param {string} memberUuid 
-         * @param {BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost} bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -691,8 +698,8 @@ export const SupportApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -735,7 +742,7 @@ export const SupportApiFp = function(configuration?: Configuration) {
          * @param {string} projectUuid 
          * @param {string} memberUuid 
          * @param {string} ticketId 
-         * @param {BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut} bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -745,8 +752,8 @@ export const SupportApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TicketResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -781,6 +788,7 @@ export const SupportApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Create Contact
+         * @param {Contact} contact 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -790,15 +798,15 @@ export const SupportApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createContactSupportContactPost(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ContactResponse> {
-            return localVarFp.createContactSupportContactPost(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createContactSupportContactPost(contact: Contact, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ContactResponse> {
+            return localVarFp.createContactSupportContactPost(contact, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create Ticket
          * @param {string} projectUuid 
          * @param {string} memberUuid 
-         * @param {BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost} bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -808,8 +816,8 @@ export const SupportApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<TicketResponse> {
-            return localVarFp.createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<TicketResponse> {
+            return localVarFp.createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -849,7 +857,7 @@ export const SupportApiFactory = function (configuration?: Configuration, basePa
          * @param {string} projectUuid 
          * @param {string} memberUuid 
          * @param {string} ticketId 
-         * @param {BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut} bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut 
+         * @param {CreateTicket} createTicket 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -859,8 +867,8 @@ export const SupportApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<TicketResponse> {
-            return localVarFp.updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<TicketResponse> {
+            return localVarFp.updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -892,6 +900,7 @@ export interface SupportApiInterface {
     /**
      * 
      * @summary Create Contact
+     * @param {Contact} contact 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -902,14 +911,14 @@ export interface SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApiInterface
      */
-    createContactSupportContactPost(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ContactResponse>;
+    createContactSupportContactPost(contact: Contact, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ContactResponse>;
 
     /**
      * 
      * @summary Create Ticket
      * @param {string} projectUuid 
      * @param {string} memberUuid 
-     * @param {BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost} bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost 
+     * @param {CreateTicket} createTicket 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -920,7 +929,7 @@ export interface SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApiInterface
      */
-    createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<TicketResponse>;
+    createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<TicketResponse>;
 
     /**
      * 
@@ -960,7 +969,7 @@ export interface SupportApiInterface {
      * @param {string} projectUuid 
      * @param {string} memberUuid 
      * @param {string} ticketId 
-     * @param {BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut} bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut 
+     * @param {CreateTicket} createTicket 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -971,7 +980,7 @@ export interface SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApiInterface
      */
-    updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<TicketResponse>;
+    updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<TicketResponse>;
 
     /**
      * 
@@ -1003,6 +1012,7 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
     /**
      * 
      * @summary Create Contact
+     * @param {Contact} contact 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1013,8 +1023,8 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApi
      */
-    public createContactSupportContactPost(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return SupportApiFp(this.configuration).createContactSupportContactPost(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createContactSupportContactPost(contact: Contact, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return SupportApiFp(this.configuration).createContactSupportContactPost(contact, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1022,7 +1032,7 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
      * @summary Create Ticket
      * @param {string} projectUuid 
      * @param {string} memberUuid 
-     * @param {BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost} bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost 
+     * @param {CreateTicket} createTicket 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1033,8 +1043,8 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApi
      */
-    public createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost: BodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return SupportApiFp(this.configuration).createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, bodyCreateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid: string, memberUuid: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return SupportApiFp(this.configuration).createTicketSupportProjectsProjectUuidMembersMemberUuidTicketsPost(projectUuid, memberUuid, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1079,7 +1089,7 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
      * @param {string} projectUuid 
      * @param {string} memberUuid 
      * @param {string} ticketId 
-     * @param {BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut} bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut 
+     * @param {CreateTicket} createTicket 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1090,8 +1100,8 @@ export class SupportApi extends BaseAPI implements SupportApiInterface {
      * @throws {RequiredError}
      * @memberof SupportApi
      */
-    public updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut: BodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return SupportApiFp(this.configuration).updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, bodyUpdateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid: string, memberUuid: string, ticketId: string, createTicket: CreateTicket, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return SupportApiFp(this.configuration).updateTicketSupportProjectsProjectUuidMembersMemberUuidTicketsTicketIdPut(projectUuid, memberUuid, ticketId, createTicket, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

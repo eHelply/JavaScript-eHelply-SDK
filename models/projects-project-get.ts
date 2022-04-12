@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.40
+ * eHelply SDK - 1.1.58
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.40
+ * The version of the OpenAPI document: 1.1.58
  *
  * Do not edit the class manually.
  *
@@ -237,31 +237,7 @@ export interface ProjectsProjectGet {
      * @type {string}
      * @memberof ProjectsProjectGet
      */
-    'created_at': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectGet
-     */
-    'current_spend': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectGet
-     */
-    'max_spend': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ProjectsProjectGet
-     */
-    'is_spend_maxed': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectsProjectGet
-     */
-    'status': string;
+    'status'?: string;
     /**
      * 
      * @type {string}

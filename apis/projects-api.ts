@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.40
+ * eHelply SDK - 1.1.58
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.40
+ * The version of the OpenAPI document: 1.1.58
  *
  * Do not edit the class manually.
  *
@@ -221,41 +221,31 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { AccessNodeGet } from '../models';
-// @ts-ignore
-import { AccessTypeGet } from '../models';
-// @ts-ignore
-import { BodyCloudParticipantProjectsCloudParticipantPost } from '../models';
-// @ts-ignore
-import { BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost } from '../models';
-// @ts-ignore
-import { BodyCreateProjectProjectsProjectsPost } from '../models';
-// @ts-ignore
-import { BodyCreateUsageTypeProjectsUsageTypesPost } from '../models';
-// @ts-ignore
-import { BodyUpdateProjectProjectsProjectsProjectUuidPut } from '../models';
-// @ts-ignore
-import { BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut } from '../models';
-// @ts-ignore
-import { CloudParticipantResponse } from '../models';
-// @ts-ignore
 import { CreateKeyResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { Page } from '../models';
 // @ts-ignore
-import { ProjectsProjectDB } from '../models';
+import { ProjectsProjectCreate } from '../models';
 // @ts-ignore
 import { ProjectsProjectGet } from '../models';
 // @ts-ignore
 import { ProjectsProjectMemberDB } from '../models';
 // @ts-ignore
+import { ProjectsProjectUpdate } from '../models';
+// @ts-ignore
 import { ProjectsProjectUsageDB } from '../models';
+// @ts-ignore
+import { ProjectsUsageTypeCreate } from '../models';
 // @ts-ignore
 import { ProjectsUsageTypeDB } from '../models';
 // @ts-ignore
 import { ProjectsUsageTypeGet } from '../models';
+// @ts-ignore
+import { ProjectsUsageTypeUpdate } from '../models';
+// @ts-ignore
+import { SecurityKeyCreate } from '../models';
 /**
  * ProjectsApi - axios parameter creator
  * @export
@@ -284,82 +274,6 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}`
                 .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (xAccessToken !== undefined && xAccessToken !== null) {
-                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
-            }
-
-            if (xSecretToken !== undefined && xSecretToken !== null) {
-                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['authorization'] = String(authorization);
-            }
-
-            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
-                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
-            }
-
-            if (ehelplyProject !== undefined && ehelplyProject !== null) {
-                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
-            }
-
-            if (ehelplyData !== undefined && ehelplyData !== null) {
-                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Add Permission To Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost: async (projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost', 'entityUuid', entityUuid)
-            // verify required parameter 'keyUuid' is not null or undefined
-            assertParamExists('addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost', 'keyUuid', keyUuid)
-            // verify required parameter 'nodeUuid' is not null or undefined
-            assertParamExists('addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost', 'nodeUuid', nodeUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys/{key_uuid}/permissions/{node_uuid}`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
-                .replace(`{${"key_uuid"}}`, encodeURIComponent(String(keyUuid)))
-                .replace(`{${"node_uuid"}}`, encodeURIComponent(String(nodeUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -471,47 +385,10 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * :param auth: :param cloud_participant_auth: :return:
-         * @summary Cloud Participant
-         * @param {BodyCloudParticipantProjectsCloudParticipantPost} bodyCloudParticipantProjectsCloudParticipantPost 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cloudParticipantProjectsCloudParticipantPost: async (bodyCloudParticipantProjectsCloudParticipantPost: BodyCloudParticipantProjectsCloudParticipantPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'bodyCloudParticipantProjectsCloudParticipantPost' is not null or undefined
-            assertParamExists('cloudParticipantProjectsCloudParticipantPost', 'bodyCloudParticipantProjectsCloudParticipantPost', bodyCloudParticipantProjectsCloudParticipantPost)
-            const localVarPath = `/sam/projects/cloud_participant`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyCloudParticipantProjectsCloudParticipantPost, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @summary Create Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost} bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost 
+         * @param {SecurityKeyCreate} securityKeyCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -521,16 +398,13 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: async (projectUuid: string, entityUuid: string, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createProjectKeyProjectsProjectsProjectUuidKeysPost: async (projectUuid: string, securityKeyCreate: SecurityKeyCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost', 'entityUuid', entityUuid)
-            // verify required parameter 'bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost' is not null or undefined
-            assertParamExists('createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost', 'bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost', bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            assertParamExists('createProjectKeyProjectsProjectsProjectUuidKeysPost', 'projectUuid', projectUuid)
+            // verify required parameter 'securityKeyCreate' is not null or undefined
+            assertParamExists('createProjectKeyProjectsProjectsProjectUuidKeysPost', 'securityKeyCreate', securityKeyCreate)
+            const localVarPath = `/sam/projects/projects/{project_uuid}/keys`
+                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -573,7 +447,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(securityKeyCreate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -583,7 +457,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Create a new Project
          * @summary Create Project
-         * @param {BodyCreateProjectProjectsProjectsPost} bodyCreateProjectProjectsProjectsPost 
+         * @param {ProjectsProjectCreate} projectsProjectCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -593,9 +467,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProjectProjectsProjectsPost: async (bodyCreateProjectProjectsProjectsPost: BodyCreateProjectProjectsProjectsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'bodyCreateProjectProjectsProjectsPost' is not null or undefined
-            assertParamExists('createProjectProjectsProjectsPost', 'bodyCreateProjectProjectsProjectsPost', bodyCreateProjectProjectsProjectsPost)
+        createProjectProjectsProjectsPost: async (projectsProjectCreate: ProjectsProjectCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'projectsProjectCreate' is not null or undefined
+            assertParamExists('createProjectProjectsProjectsPost', 'projectsProjectCreate', projectsProjectCreate)
             const localVarPath = `/sam/projects/projects`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -639,7 +513,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyCreateProjectProjectsProjectsPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(projectsProjectCreate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -649,7 +523,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Create Usage Type
-         * @param {BodyCreateUsageTypeProjectsUsageTypesPost} bodyCreateUsageTypeProjectsUsageTypesPost 
+         * @param {ProjectsUsageTypeCreate} projectsUsageTypeCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -659,9 +533,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUsageTypeProjectsUsageTypesPost: async (bodyCreateUsageTypeProjectsUsageTypesPost: BodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'bodyCreateUsageTypeProjectsUsageTypesPost' is not null or undefined
-            assertParamExists('createUsageTypeProjectsUsageTypesPost', 'bodyCreateUsageTypeProjectsUsageTypesPost', bodyCreateUsageTypeProjectsUsageTypesPost)
+        createUsageTypeProjectsUsageTypesPost: async (projectsUsageTypeCreate: ProjectsUsageTypeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'projectsUsageTypeCreate' is not null or undefined
+            assertParamExists('createUsageTypeProjectsUsageTypesPost', 'projectsUsageTypeCreate', projectsUsageTypeCreate)
             const localVarPath = `/sam/projects/usage/types`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -705,7 +579,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyCreateUsageTypeProjectsUsageTypesPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(projectsUsageTypeCreate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -921,221 +795,8 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Get Permissions For Entity
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet: async (projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet', 'entityUuid', entityUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/permissions`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (xAccessToken !== undefined && xAccessToken !== null) {
-                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
-            }
-
-            if (xSecretToken !== undefined && xSecretToken !== null) {
-                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['authorization'] = String(authorization);
-            }
-
-            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
-                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
-            }
-
-            if (ehelplyProject !== undefined && ehelplyProject !== null) {
-                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
-            }
-
-            if (ehelplyData !== undefined && ehelplyData !== null) {
-                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get Permissions For Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet: async (projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet', 'entityUuid', entityUuid)
-            // verify required parameter 'keyUuid' is not null or undefined
-            assertParamExists('getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet', 'keyUuid', keyUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys/{key_uuid}/permissions`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
-                .replace(`{${"key_uuid"}}`, encodeURIComponent(String(keyUuid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (xAccessToken !== undefined && xAccessToken !== null) {
-                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
-            }
-
-            if (xSecretToken !== undefined && xSecretToken !== null) {
-                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['authorization'] = String(authorization);
-            }
-
-            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
-                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
-            }
-
-            if (ehelplyProject !== undefined && ehelplyProject !== null) {
-                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
-            }
-
-            if (ehelplyData !== undefined && ehelplyData !== null) {
-                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get Permissions Type
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} typeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet: async (projectUuid: string, entityUuid: string, typeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet', 'entityUuid', entityUuid)
-            // verify required parameter 'typeUuid' is not null or undefined
-            assertParamExists('getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet', 'typeUuid', typeUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/permissions/types/{type_uuid}`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
-                .replace(`{${"type_uuid"}}`, encodeURIComponent(String(typeUuid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (xAccessToken !== undefined && xAccessToken !== null) {
-                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
-            }
-
-            if (xSecretToken !== undefined && xSecretToken !== null) {
-                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['authorization'] = String(authorization);
-            }
-
-            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
-                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
-            }
-
-            if (ehelplyProject !== undefined && ehelplyProject !== null) {
-                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
-            }
-
-            if (ehelplyData !== undefined && ehelplyData !== null) {
-                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Get Project Keys
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1145,14 +806,11 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet: async (projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getProjectKeysProjectsProjectsProjectUuidKeysGet: async (projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet', 'entityUuid', entityUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            assertParamExists('getProjectKeysProjectsProjectsProjectUuidKeysGet', 'projectUuid', projectUuid)
+            const localVarPath = `/sam/projects/projects/{project_uuid}/keys`
+                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1504,11 +1162,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Remove Permission From Key
+         * @summary Remove Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
+         * @param {string} [accessToken] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1518,20 +1174,11 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete: async (projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        removeProjectKeyProjectsProjectsProjectUuidKeysDelete: async (projectUuid: string, accessToken?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete', 'entityUuid', entityUuid)
-            // verify required parameter 'keyUuid' is not null or undefined
-            assertParamExists('removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete', 'keyUuid', keyUuid)
-            // verify required parameter 'nodeUuid' is not null or undefined
-            assertParamExists('removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete', 'nodeUuid', nodeUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys/{key_uuid}/permissions/{node_uuid}`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
-                .replace(`{${"key_uuid"}}`, encodeURIComponent(String(keyUuid)))
-                .replace(`{${"node_uuid"}}`, encodeURIComponent(String(nodeUuid)));
+            assertParamExists('removeProjectKeyProjectsProjectsProjectUuidKeysDelete', 'projectUuid', projectUuid)
+            const localVarPath = `/sam/projects/projects/{project_uuid}/keys`
+                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1542,6 +1189,10 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (accessToken !== undefined) {
+                localVarQueryParameter['access_token'] = accessToken;
+            }
 
             if (xAccessToken !== undefined && xAccessToken !== null) {
                 localVarHeaderParameter['x-access-token'] = String(xAccessToken);
@@ -1580,10 +1231,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Remove Project Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
+         * @summary Sandbox
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1593,17 +1241,8 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete: async (projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'projectUuid' is not null or undefined
-            assertParamExists('removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete', 'projectUuid', projectUuid)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete', 'entityUuid', entityUuid)
-            // verify required parameter 'keyUuid' is not null or undefined
-            assertParamExists('removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete', 'keyUuid', keyUuid)
-            const localVarPath = `/sam/projects/projects/{project_uuid}/members/{entity_uuid}/keys/{key_uuid}`
-                .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
-                .replace(`{${"key_uuid"}}`, encodeURIComponent(String(keyUuid)));
+        sandboxProjectsSandboxGet: async (xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/sam/projects/sandbox`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1611,7 +1250,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1804,7 +1443,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary Update Project
          * @param {string} projectUuid 
-         * @param {BodyUpdateProjectProjectsProjectsProjectUuidPut} bodyUpdateProjectProjectsProjectsProjectUuidPut 
+         * @param {ProjectsProjectUpdate} projectsProjectUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1814,11 +1453,11 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectProjectsProjectsProjectUuidPut: async (projectUuid: string, bodyUpdateProjectProjectsProjectsProjectUuidPut: BodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProjectProjectsProjectsProjectUuidPut: async (projectUuid: string, projectsProjectUpdate: ProjectsProjectUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'projectUuid' is not null or undefined
             assertParamExists('updateProjectProjectsProjectsProjectUuidPut', 'projectUuid', projectUuid)
-            // verify required parameter 'bodyUpdateProjectProjectsProjectsProjectUuidPut' is not null or undefined
-            assertParamExists('updateProjectProjectsProjectsProjectUuidPut', 'bodyUpdateProjectProjectsProjectsProjectUuidPut', bodyUpdateProjectProjectsProjectsProjectUuidPut)
+            // verify required parameter 'projectsProjectUpdate' is not null or undefined
+            assertParamExists('updateProjectProjectsProjectsProjectUuidPut', 'projectsProjectUpdate', projectsProjectUpdate)
             const localVarPath = `/sam/projects/projects/{project_uuid}`
                 .replace(`{${"project_uuid"}}`, encodeURIComponent(String(projectUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1863,7 +1502,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyUpdateProjectProjectsProjectsProjectUuidPut, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(projectsProjectUpdate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1874,7 +1513,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @summary Update Usage Type
          * @param {string} usageTypeKey 
-         * @param {BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut} bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut 
+         * @param {ProjectsUsageTypeUpdate} projectsUsageTypeUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1884,11 +1523,11 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUsageTypeProjectsUsageTypesUsageTypeKeyPut: async (usageTypeKey: string, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut: BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUsageTypeProjectsUsageTypesUsageTypeKeyPut: async (usageTypeKey: string, projectsUsageTypeUpdate: ProjectsUsageTypeUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'usageTypeKey' is not null or undefined
             assertParamExists('updateUsageTypeProjectsUsageTypesUsageTypeKeyPut', 'usageTypeKey', usageTypeKey)
-            // verify required parameter 'bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut' is not null or undefined
-            assertParamExists('updateUsageTypeProjectsUsageTypesUsageTypeKeyPut', 'bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut', bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut)
+            // verify required parameter 'projectsUsageTypeUpdate' is not null or undefined
+            assertParamExists('updateUsageTypeProjectsUsageTypesUsageTypeKeyPut', 'projectsUsageTypeUpdate', projectsUsageTypeUpdate)
             const localVarPath = `/sam/projects/usage/types/{usage_type_key}`
                 .replace(`{${"usage_type_key"}}`, encodeURIComponent(String(usageTypeKey)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1933,7 +1572,7 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(projectsUsageTypeUpdate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1970,26 +1609,6 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Add Permission To Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Archive Project
          * @param {string} projectUuid 
          * @param {string} [xAccessToken] 
@@ -2006,22 +1625,10 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * :param auth: :param cloud_participant_auth: :return:
-         * @summary Cloud Participant
-         * @param {BodyCloudParticipantProjectsCloudParticipantPost} bodyCloudParticipantProjectsCloudParticipantPost 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost: BodyCloudParticipantProjectsCloudParticipantPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudParticipantResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * 
          * @summary Create Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost} bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost 
+         * @param {SecurityKeyCreate} securityKeyCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2031,14 +1638,14 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid: string, entityUuid: string, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateKeyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid, entityUuid, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid: string, securityKeyCreate: SecurityKeyCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateKeyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid, securityKeyCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * Create a new Project
          * @summary Create Project
-         * @param {BodyCreateProjectProjectsProjectsPost} bodyCreateProjectProjectsProjectsPost 
+         * @param {ProjectsProjectCreate} projectsProjectCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2048,14 +1655,14 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost: BodyCreateProjectProjectsProjectsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsProjectDB>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createProjectProjectsProjectsPost(projectsProjectCreate: ProjectsProjectCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectProjectsProjectsPost(projectsProjectCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Create Usage Type
-         * @param {BodyCreateUsageTypeProjectsUsageTypesPost} bodyCreateUsageTypeProjectsUsageTypesPost 
+         * @param {ProjectsUsageTypeCreate} projectsUsageTypeCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2065,8 +1672,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost: BodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsUsageTypeDB>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate: ProjectsUsageTypeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsUsageTypeDB>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2125,65 +1732,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get Permissions For Entity
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AccessNodeGet>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Get Permissions For Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AccessNodeGet>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Get Permissions Type
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} typeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid: string, entityUuid: string, typeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessTypeGet>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid, entityUuid, typeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Get Project Keys
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2193,8 +1743,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ProjectsProjectMemberDB>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2228,7 +1778,7 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsProjectGet>> {
+        async getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getProjectProjectsProjectsProjectUuidGet(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2281,11 +1831,9 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Remove Permission From Key
+         * @summary Remove Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
+         * @param {string} [accessToken] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2295,16 +1843,13 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid: string, accessToken?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid, accessToken, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Remove Project Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
+         * @summary Sandbox
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2314,8 +1859,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async sandboxProjectsSandboxGet(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.sandboxProjectsSandboxGet(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -2360,7 +1905,7 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update Project
          * @param {string} projectUuid 
-         * @param {BodyUpdateProjectProjectsProjectsProjectUuidPut} bodyUpdateProjectProjectsProjectsProjectUuidPut 
+         * @param {ProjectsProjectUpdate} projectsProjectUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2370,15 +1915,15 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, bodyUpdateProjectProjectsProjectsProjectUuidPut: BodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsProjectDB>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectProjectsProjectsProjectUuidPut(projectUuid, bodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, projectsProjectUpdate: ProjectsProjectUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProjectProjectsProjectsProjectUuidPut(projectUuid, projectsProjectUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Update Usage Type
          * @param {string} usageTypeKey 
-         * @param {BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut} bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut 
+         * @param {ProjectsUsageTypeUpdate} projectsUsageTypeUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2388,8 +1933,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut: BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsUsageTypeDB>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, projectsUsageTypeUpdate: ProjectsUsageTypeUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectsUsageTypeDB>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, projectsUsageTypeUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2421,25 +1966,6 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @summary Add Permission To Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Archive Project
          * @param {string} projectUuid 
          * @param {string} [xAccessToken] 
@@ -2455,21 +1981,10 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.archiveProjectProjectsProjectsProjectUuidDelete(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
-         * :param auth: :param cloud_participant_auth: :return:
-         * @summary Cloud Participant
-         * @param {BodyCloudParticipantProjectsCloudParticipantPost} bodyCloudParticipantProjectsCloudParticipantPost 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost: BodyCloudParticipantProjectsCloudParticipantPost, options?: any): AxiosPromise<CloudParticipantResponse> {
-            return localVarFp.cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost, options).then((request) => request(axios, basePath));
-        },
-        /**
          * 
          * @summary Create Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost} bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost 
+         * @param {SecurityKeyCreate} securityKeyCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2479,13 +1994,13 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid: string, entityUuid: string, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CreateKeyResponse> {
-            return localVarFp.createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid, entityUuid, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid: string, securityKeyCreate: SecurityKeyCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CreateKeyResponse> {
+            return localVarFp.createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid, securityKeyCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Create a new Project
          * @summary Create Project
-         * @param {BodyCreateProjectProjectsProjectsPost} bodyCreateProjectProjectsProjectsPost 
+         * @param {ProjectsProjectCreate} projectsProjectCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2495,13 +2010,13 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost: BodyCreateProjectProjectsProjectsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsProjectDB> {
-            return localVarFp.createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createProjectProjectsProjectsPost(projectsProjectCreate: ProjectsProjectCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.createProjectProjectsProjectsPost(projectsProjectCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Create Usage Type
-         * @param {BodyCreateUsageTypeProjectsUsageTypesPost} bodyCreateUsageTypeProjectsUsageTypesPost 
+         * @param {ProjectsUsageTypeCreate} projectsUsageTypeCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2511,8 +2026,8 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost: BodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsUsageTypeDB> {
-            return localVarFp.createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate: ProjectsUsageTypeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsUsageTypeDB> {
+            return localVarFp.createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2567,62 +2082,8 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @summary Get Permissions For Entity
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Array<AccessNodeGet>> {
-            return localVarFp.getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get Permissions For Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Array<AccessNodeGet>> {
-            return localVarFp.getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get Permissions Type
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} typeUuid 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid: string, entityUuid: string, typeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<AccessTypeGet> {
-            return localVarFp.getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid, entityUuid, typeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Get Project Keys
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2632,8 +2093,8 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Array<ProjectsProjectMemberDB>> {
+            return localVarFp.getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2665,7 +2126,7 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsProjectGet> {
+        getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
             return localVarFp.getProjectProjectsProjectsProjectUuidGet(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2714,11 +2175,9 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @summary Remove Permission From Key
+         * @summary Remove Project Key
          * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
-         * @param {string} nodeUuid 
+         * @param {string} [accessToken] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2728,15 +2187,12 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid: string, accessToken?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid, accessToken, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Remove Project Key
-         * @param {string} projectUuid 
-         * @param {string} entityUuid 
-         * @param {string} keyUuid 
+         * @summary Sandbox
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2746,8 +2202,8 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        sandboxProjectsSandboxGet(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.sandboxProjectsSandboxGet(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Search projects
@@ -2789,7 +2245,7 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * 
          * @summary Update Project
          * @param {string} projectUuid 
-         * @param {BodyUpdateProjectProjectsProjectsProjectUuidPut} bodyUpdateProjectProjectsProjectsProjectUuidPut 
+         * @param {ProjectsProjectUpdate} projectsProjectUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2799,14 +2255,14 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, bodyUpdateProjectProjectsProjectsProjectUuidPut: BodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsProjectDB> {
-            return localVarFp.updateProjectProjectsProjectsProjectUuidPut(projectUuid, bodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, projectsProjectUpdate: ProjectsProjectUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.updateProjectProjectsProjectsProjectUuidPut(projectUuid, projectsProjectUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update Usage Type
          * @param {string} usageTypeKey 
-         * @param {BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut} bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut 
+         * @param {ProjectsUsageTypeUpdate} projectsUsageTypeUpdate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -2816,8 +2272,8 @@ export const ProjectsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut: BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsUsageTypeDB> {
-            return localVarFp.updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, projectsUsageTypeUpdate: ProjectsUsageTypeUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProjectsUsageTypeDB> {
+            return localVarFp.updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, projectsUsageTypeUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2847,25 +2303,6 @@ export interface ProjectsApiInterface {
 
     /**
      * 
-     * @summary Add Permission To Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} nodeUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApiInterface
-     */
-    addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
-
-    /**
-     * 
      * @summary Archive Project
      * @param {string} projectUuid 
      * @param {string} [xAccessToken] 
@@ -2881,21 +2318,10 @@ export interface ProjectsApiInterface {
     archiveProjectProjectsProjectsProjectUuidDelete(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
-     * :param auth: :param cloud_participant_auth: :return:
-     * @summary Cloud Participant
-     * @param {BodyCloudParticipantProjectsCloudParticipantPost} bodyCloudParticipantProjectsCloudParticipantPost 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApiInterface
-     */
-    cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost: BodyCloudParticipantProjectsCloudParticipantPost, options?: AxiosRequestConfig): AxiosPromise<CloudParticipantResponse>;
-
-    /**
      * 
      * @summary Create Project Key
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost} bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost 
+     * @param {SecurityKeyCreate} securityKeyCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -2906,12 +2332,12 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid: string, entityUuid: string, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CreateKeyResponse>;
+    createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid: string, securityKeyCreate: SecurityKeyCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CreateKeyResponse>;
 
     /**
      * Create a new Project
      * @summary Create Project
-     * @param {BodyCreateProjectProjectsProjectsPost} bodyCreateProjectProjectsProjectsPost 
+     * @param {ProjectsProjectCreate} projectsProjectCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -2922,12 +2348,12 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost: BodyCreateProjectProjectsProjectsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsProjectDB>;
+    createProjectProjectsProjectsPost(projectsProjectCreate: ProjectsProjectCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Create Usage Type
-     * @param {BodyCreateUsageTypeProjectsUsageTypesPost} bodyCreateUsageTypeProjectsUsageTypesPost 
+     * @param {ProjectsUsageTypeCreate} projectsUsageTypeCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -2938,7 +2364,7 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost: BodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsUsageTypeDB>;
+    createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate: ProjectsUsageTypeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsUsageTypeDB>;
 
     /**
      * 
@@ -2993,62 +2419,8 @@ export interface ProjectsApiInterface {
 
     /**
      * 
-     * @summary Get Permissions For Entity
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApiInterface
-     */
-    getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Array<AccessNodeGet>>;
-
-    /**
-     * 
-     * @summary Get Permissions For Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApiInterface
-     */
-    getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Array<AccessNodeGet>>;
-
-    /**
-     * 
-     * @summary Get Permissions Type
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} typeUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApiInterface
-     */
-    getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid: string, entityUuid: string, typeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<AccessTypeGet>;
-
-    /**
-     * 
      * @summary Get Project Keys
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3059,7 +2431,7 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Array<ProjectsProjectMemberDB>>;
 
     /**
      * 
@@ -3092,7 +2464,7 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsProjectGet>;
+    getProjectProjectsProjectsProjectUuidGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -3140,11 +2512,9 @@ export interface ProjectsApiInterface {
 
     /**
      * 
-     * @summary Remove Permission From Key
+     * @summary Remove Project Key
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} nodeUuid 
+     * @param {string} [accessToken] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3155,14 +2525,11 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid: string, accessToken?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
-     * @summary Remove Project Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
+     * @summary Sandbox
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3173,7 +2540,7 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    sandboxProjectsSandboxGet(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Search projects
@@ -3215,7 +2582,7 @@ export interface ProjectsApiInterface {
      * 
      * @summary Update Project
      * @param {string} projectUuid 
-     * @param {BodyUpdateProjectProjectsProjectsProjectUuidPut} bodyUpdateProjectProjectsProjectsProjectUuidPut 
+     * @param {ProjectsProjectUpdate} projectsProjectUpdate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3226,13 +2593,13 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, bodyUpdateProjectProjectsProjectsProjectUuidPut: BodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsProjectDB>;
+    updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, projectsProjectUpdate: ProjectsProjectUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Update Usage Type
      * @param {string} usageTypeKey 
-     * @param {BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut} bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut 
+     * @param {ProjectsUsageTypeUpdate} projectsUsageTypeUpdate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3243,7 +2610,7 @@ export interface ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApiInterface
      */
-    updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut: BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsUsageTypeDB>;
+    updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, projectsUsageTypeUpdate: ProjectsUsageTypeUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProjectsUsageTypeDB>;
 
 }
 
@@ -3275,27 +2642,6 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
 
     /**
      * 
-     * @summary Add Permission To Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} nodeUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApi
-     */
-    public addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).addPermissionToKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidPost(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Archive Project
      * @param {string} projectUuid 
      * @param {string} [xAccessToken] 
@@ -3313,23 +2659,10 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
     }
 
     /**
-     * :param auth: :param cloud_participant_auth: :return:
-     * @summary Cloud Participant
-     * @param {BodyCloudParticipantProjectsCloudParticipantPost} bodyCloudParticipantProjectsCloudParticipantPost 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApi
-     */
-    public cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost: BodyCloudParticipantProjectsCloudParticipantPost, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).cloudParticipantProjectsCloudParticipantPost(bodyCloudParticipantProjectsCloudParticipantPost, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * 
      * @summary Create Project Key
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost} bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost 
+     * @param {SecurityKeyCreate} securityKeyCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3340,14 +2673,14 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid: string, entityUuid: string, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost: BodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).createProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost(projectUuid, entityUuid, bodyCreateProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid: string, securityKeyCreate: SecurityKeyCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).createProjectKeyProjectsProjectsProjectUuidKeysPost(projectUuid, securityKeyCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Create a new Project
      * @summary Create Project
-     * @param {BodyCreateProjectProjectsProjectsPost} bodyCreateProjectProjectsProjectsPost 
+     * @param {ProjectsProjectCreate} projectsProjectCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3358,14 +2691,14 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost: BodyCreateProjectProjectsProjectsPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).createProjectProjectsProjectsPost(bodyCreateProjectProjectsProjectsPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createProjectProjectsProjectsPost(projectsProjectCreate: ProjectsProjectCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).createProjectProjectsProjectsPost(projectsProjectCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Create Usage Type
-     * @param {BodyCreateUsageTypeProjectsUsageTypesPost} bodyCreateUsageTypeProjectsUsageTypesPost 
+     * @param {ProjectsUsageTypeCreate} projectsUsageTypeCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3376,8 +2709,8 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost: BodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).createUsageTypeProjectsUsageTypesPost(bodyCreateUsageTypeProjectsUsageTypesPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate: ProjectsUsageTypeCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).createUsageTypeProjectsUsageTypesPost(projectsUsageTypeCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3439,68 +2772,8 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
 
     /**
      * 
-     * @summary Get Permissions For Entity
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApi
-     */
-    public getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).getPermissionsForEntityProjectsProjectsProjectUuidMembersEntityUuidPermissionsGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get Permissions For Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApi
-     */
-    public getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).getPermissionsForKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsGet(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get Permissions Type
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} typeUuid 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProjectsApi
-     */
-    public getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid: string, entityUuid: string, typeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).getPermissionsTypeProjectsProjectsProjectUuidMembersEntityUuidPermissionsTypesTypeUuidGet(projectUuid, entityUuid, typeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Get Project Keys
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3511,8 +2784,8 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).getProjectKeysProjectsProjectsProjectUuidMembersEntityUuidKeysGet(projectUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).getProjectKeysProjectsProjectsProjectUuidKeysGet(projectUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3604,11 +2877,9 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
 
     /**
      * 
-     * @summary Remove Permission From Key
+     * @summary Remove Project Key
      * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
-     * @param {string} nodeUuid 
+     * @param {string} [accessToken] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3619,16 +2890,13 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, nodeUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).removePermissionFromKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidPermissionsNodeUuidDelete(projectUuid, entityUuid, keyUuid, nodeUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid: string, accessToken?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).removeProjectKeyProjectsProjectsProjectUuidKeysDelete(projectUuid, accessToken, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Remove Project Key
-     * @param {string} projectUuid 
-     * @param {string} entityUuid 
-     * @param {string} keyUuid 
+     * @summary Sandbox
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3639,8 +2907,8 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid: string, entityUuid: string, keyUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).removeProjectKeyProjectsProjectsProjectUuidMembersEntityUuidKeysKeyUuidDelete(projectUuid, entityUuid, keyUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public sandboxProjectsSandboxGet(xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).sandboxProjectsSandboxGet(xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3687,7 +2955,7 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * 
      * @summary Update Project
      * @param {string} projectUuid 
-     * @param {BodyUpdateProjectProjectsProjectsProjectUuidPut} bodyUpdateProjectProjectsProjectsProjectUuidPut 
+     * @param {ProjectsProjectUpdate} projectsProjectUpdate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3698,15 +2966,15 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, bodyUpdateProjectProjectsProjectsProjectUuidPut: BodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).updateProjectProjectsProjectsProjectUuidPut(projectUuid, bodyUpdateProjectProjectsProjectsProjectUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateProjectProjectsProjectsProjectUuidPut(projectUuid: string, projectsProjectUpdate: ProjectsProjectUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).updateProjectProjectsProjectsProjectUuidPut(projectUuid, projectsProjectUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Update Usage Type
      * @param {string} usageTypeKey 
-     * @param {BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut} bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut 
+     * @param {ProjectsUsageTypeUpdate} projectsUsageTypeUpdate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -3717,7 +2985,7 @@ export class ProjectsApi extends BaseAPI implements ProjectsApiInterface {
      * @throws {RequiredError}
      * @memberof ProjectsApi
      */
-    public updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut: BodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return ProjectsApiFp(this.configuration).updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, bodyUpdateUsageTypeProjectsUsageTypesUsageTypeKeyPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey: string, projectsUsageTypeUpdate: ProjectsUsageTypeUpdate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return ProjectsApiFp(this.configuration).updateUsageTypeProjectsUsageTypesUsageTypeKeyPut(usageTypeKey, projectsUsageTypeUpdate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }

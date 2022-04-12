@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.40
+ * eHelply SDK - 1.1.58
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.40
+ * The version of the OpenAPI document: 1.1.58
  *
  * Do not edit the class manually.
  *
@@ -221,21 +221,21 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost } from '../models';
+import { BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost } from '../models';
 // @ts-ignore
-import { BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost } from '../models';
+import { BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost } from '../models';
 // @ts-ignore
-import { BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost } from '../models';
+import { BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost } from '../models';
 // @ts-ignore
-import { BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost } from '../models';
+import { BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost } from '../models';
 // @ts-ignore
-import { BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost } from '../models';
+import { BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost } from '../models';
 // @ts-ignore
 import { BodyRegisterServiceMonitorServicesPost } from '../models';
 // @ts-ignore
-import { BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost } from '../models';
+import { BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost } from '../models';
 // @ts-ignore
-import { BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost } from '../models';
+import { BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 /**
@@ -247,24 +247,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Ack Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost 
+         * @param {BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost', 'serviceUuid', serviceUuid)
+        ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: async (service: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost', 'stage', stage)
+            assertParamExists('ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost' is not null or undefined
-            assertParamExists('ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost', 'bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost', bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/acknowledge`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost' is not null or undefined
+            assertParamExists('ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost', 'bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost', bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/acknowledge`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -285,7 +285,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -295,24 +295,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Assign Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost 
+         * @param {BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost', 'serviceUuid', serviceUuid)
+        assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: async (service: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost', 'stage', stage)
+            assertParamExists('assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost' is not null or undefined
-            assertParamExists('assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost', 'bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost', bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/assign`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost' is not null or undefined
+            assertParamExists('assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost', 'bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost', bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/assign`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -333,7 +333,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -343,24 +343,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Attach Alarm Note
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost 
+         * @param {BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost', 'serviceUuid', serviceUuid)
+        attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: async (service: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost', 'stage', stage)
+            assertParamExists('attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost' is not null or undefined
-            assertParamExists('attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost', 'bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost', bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/note`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost' is not null or undefined
+            assertParamExists('attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost', 'bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost', bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/note`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -381,7 +381,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -391,24 +391,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Attach Alarm Ticket
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost 
+         * @param {BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost', 'serviceUuid', serviceUuid)
+        attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: async (service: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost', 'stage', stage)
+            assertParamExists('attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost' is not null or undefined
-            assertParamExists('attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost', 'bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost', bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/ticket`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost' is not null or undefined
+            assertParamExists('attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost', 'bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost', bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/ticket`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -429,7 +429,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -439,21 +439,21 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Clear Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost: async (serviceUuid: string, stage: string, alarmUuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost', 'serviceUuid', serviceUuid)
+        clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost: async (service: string, stage: string, alarmUuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost', 'stage', stage)
+            assertParamExists('clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost', 'alarmUuid', alarmUuid)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/clear`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost', 'alarmUuid', alarmUuid)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/clear`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -481,21 +481,21 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet: async (serviceUuid: string, stage: string, alarmUuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet', 'serviceUuid', serviceUuid)
+        getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet: async (service: string, stage: string, alarmUuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet', 'stage', stage)
+            assertParamExists('getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet', 'alarmUuid', alarmUuid)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet', 'alarmUuid', alarmUuid)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -523,7 +523,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {boolean} [includeTerminated] 
@@ -531,13 +531,13 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet: async (serviceUuid: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet', 'serviceUuid', serviceUuid)
+        getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet: async (service: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet', 'stage', stage)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet', 'stage', stage)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -576,19 +576,19 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service Heartbeats
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet: async (serviceUuid: string, stage: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet', 'serviceUuid', serviceUuid)
+        getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet: async (service: string, stage: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet', 'stage', stage)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/heartbeats`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet', 'stage', stage)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/heartbeats`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -619,16 +619,16 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service Kpis
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceKpisMonitorServicesServiceUuidKpisGet: async (serviceUuid: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceKpisMonitorServicesServiceUuidKpisGet', 'serviceUuid', serviceUuid)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/kpis`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)));
+        getServiceKpisMonitorServicesServiceKpisGet: async (service: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceKpisMonitorServicesServiceKpisGet', 'service', service)
+            const localVarPath = `/sam/monitor/services/{service}/kpis`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -658,7 +658,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {boolean} [heartbeats] 
          * @param {number} [heartbeatLimit] 
          * @param {boolean} [alarms] 
@@ -667,11 +667,11 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceMonitorServicesServiceUuidGet: async (serviceUuid: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceMonitorServicesServiceUuidGet', 'serviceUuid', serviceUuid)
-            const localVarPath = `/sam/monitor/services/{service_uuid}`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)));
+        getServiceMonitorServicesServiceGet: async (service: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceMonitorServicesServiceGet', 'service', service)
+            const localVarPath = `/sam/monitor/services/{service}`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -794,19 +794,19 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Service Vitals
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet: async (serviceUuid: string, stage: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet', 'serviceUuid', serviceUuid)
+        getServiceVitalsMonitorServicesServiceStagesStageVitalsGet: async (service: string, stage: string, history?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getServiceVitalsMonitorServicesServiceStagesStageVitalsGet', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet', 'stage', stage)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/vitals`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('getServiceVitalsMonitorServicesServiceStagesStageVitalsGet', 'stage', stage)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/vitals`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -932,18 +932,18 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Hide Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hideServiceMonitorServicesServiceUuidStagesStageHidePost: async (serviceUuid: string, stage: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('hideServiceMonitorServicesServiceUuidStagesStageHidePost', 'serviceUuid', serviceUuid)
+        hideServiceMonitorServicesServiceStagesStageHidePost: async (service: string, stage: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('hideServiceMonitorServicesServiceStagesStageHidePost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('hideServiceMonitorServicesServiceUuidStagesStageHidePost', 'stage', stage)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/hide`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('hideServiceMonitorServicesServiceStagesStageHidePost', 'stage', stage)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/hide`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -970,24 +970,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Ignore Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost 
+         * @param {BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost', 'serviceUuid', serviceUuid)
+        ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: async (service: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost', 'stage', stage)
+            assertParamExists('ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost' is not null or undefined
-            assertParamExists('ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost', 'bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost', bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/ignore`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost' is not null or undefined
+            assertParamExists('ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost', 'bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost', bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/ignore`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1008,7 +1008,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1054,7 +1054,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Search Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [page] 
          * @param {number} [pageSize] 
          * @param {string} [search] 
@@ -1064,11 +1064,11 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchAlarmsMonitorServicesServiceUuidAlarmsGet: async (serviceUuid: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('searchAlarmsMonitorServicesServiceUuidAlarmsGet', 'serviceUuid', serviceUuid)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/alarms`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)));
+        searchAlarmsMonitorServicesServiceAlarmsGet: async (service: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('searchAlarmsMonitorServicesServiceAlarmsGet', 'service', service)
+            const localVarPath = `/sam/monitor/services/{service}/alarms`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1118,18 +1118,18 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Show Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        showServiceMonitorServicesServiceUuidStagesStageShowPost: async (serviceUuid: string, stage: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('showServiceMonitorServicesServiceUuidStagesStageShowPost', 'serviceUuid', serviceUuid)
+        showServiceMonitorServicesServiceStagesStageShowPost: async (service: string, stage: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('showServiceMonitorServicesServiceStagesStageShowPost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('showServiceMonitorServicesServiceUuidStagesStageShowPost', 'stage', stage)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/show`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('showServiceMonitorServicesServiceStagesStageShowPost', 'stage', stage)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/show`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1156,24 +1156,24 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Terminate Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost 
+         * @param {BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: async (serviceUuid: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost', 'serviceUuid', serviceUuid)
+        terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: async (service: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost', 'stage', stage)
+            assertParamExists('terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost', 'stage', stage)
             // verify required parameter 'alarmUuid' is not null or undefined
-            assertParamExists('terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost', 'alarmUuid', alarmUuid)
-            // verify required parameter 'bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost' is not null or undefined
-            assertParamExists('terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost', 'bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost', bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms/{alarm_uuid}/terminate`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost', 'alarmUuid', alarmUuid)
+            // verify required parameter 'bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost' is not null or undefined
+            assertParamExists('terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost', 'bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost', bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms/{alarm_uuid}/terminate`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)))
                 .replace(`{${"alarm_uuid"}}`, encodeURIComponent(String(alarmUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1194,7 +1194,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1204,21 +1204,21 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Trigger Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
-         * @param {BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost 
+         * @param {BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: async (serviceUuid: string, stage: string, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'serviceUuid' is not null or undefined
-            assertParamExists('triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost', 'serviceUuid', serviceUuid)
+        triggerAlarmMonitorServicesServiceStagesStageAlarmsPost: async (service: string, stage: string, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('triggerAlarmMonitorServicesServiceStagesStageAlarmsPost', 'service', service)
             // verify required parameter 'stage' is not null or undefined
-            assertParamExists('triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost', 'stage', stage)
-            // verify required parameter 'bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost' is not null or undefined
-            assertParamExists('triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost', 'bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost', bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost)
-            const localVarPath = `/sam/monitor/services/{service_uuid}/stages/{stage}/alarms`
-                .replace(`{${"service_uuid"}}`, encodeURIComponent(String(serviceUuid)))
+            assertParamExists('triggerAlarmMonitorServicesServiceStagesStageAlarmsPost', 'stage', stage)
+            // verify required parameter 'bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost' is not null or undefined
+            assertParamExists('triggerAlarmMonitorServicesServiceStagesStageAlarmsPost', 'bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost', bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost)
+            const localVarPath = `/sam/monitor/services/{service}/stages/{stage}/alarms`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"stage"}}`, encodeURIComponent(String(stage)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1238,7 +1238,7 @@ export const MonitorApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1258,89 +1258,89 @@ export const MonitorApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Ack Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost 
+         * @param {BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options);
+        async ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Assign Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost 
+         * @param {BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options);
+        async assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Attach Alarm Note
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost 
+         * @param {BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options);
+        async attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Attach Alarm Ticket
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost 
+         * @param {BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options);
+        async attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Clear Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid, stage, alarmUuid, options);
+        async clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service, stage, alarmUuid, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get Service Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid, stage, alarmUuid, options);
+        async getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service, stage, alarmUuid, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get Service Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {boolean} [includeTerminated] 
@@ -1348,39 +1348,39 @@ export const MonitorApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid, stage, history, includeTerminated, includeCleared, options);
+        async getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service, stage, history, includeTerminated, includeCleared, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get Service Heartbeats
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid, stage, history, options);
+        async getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service, stage, history, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get Service Kpis
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid, history, options);
+        async getServiceKpisMonitorServicesServiceKpisGet(service: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceKpisMonitorServicesServiceKpisGet(service, history, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {boolean} [heartbeats] 
          * @param {number} [heartbeatLimit] 
          * @param {boolean} [alarms] 
@@ -1389,8 +1389,8 @@ export const MonitorApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceMonitorServicesServiceUuidGet(serviceUuid: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceMonitorServicesServiceUuidGet(serviceUuid, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options);
+        async getServiceMonitorServicesServiceGet(service: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceMonitorServicesServiceGet(service, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1420,14 +1420,14 @@ export const MonitorApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get Service Vitals
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid, stage, history, options);
+        async getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service, stage, history, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1460,27 +1460,27 @@ export const MonitorApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Hide Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid: string, stage: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid, stage, options);
+        async hideServiceMonitorServicesServiceStagesStageHidePost(service: string, stage: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.hideServiceMonitorServicesServiceStagesStageHidePost(service, stage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Ignore Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost 
+         * @param {BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options);
+        async ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1497,7 +1497,7 @@ export const MonitorApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Search Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [page] 
          * @param {number} [pageSize] 
          * @param {string} [search] 
@@ -1507,47 +1507,47 @@ export const MonitorApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid, page, pageSize, search, searchOn, sortOn, sortDesc, options);
+        async searchAlarmsMonitorServicesServiceAlarmsGet(service: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchAlarmsMonitorServicesServiceAlarmsGet(service, page, pageSize, search, searchOn, sortOn, sortDesc, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Show Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid: string, stage: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid, stage, options);
+        async showServiceMonitorServicesServiceStagesStageShowPost(service: string, stage: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.showServiceMonitorServicesServiceStagesStageShowPost(service, stage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Terminate Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost 
+         * @param {BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options);
+        async terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Trigger Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
-         * @param {BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost 
+         * @param {BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid: string, stage: string, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid, stage, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options);
+        async triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service: string, stage: string, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service, stage, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1563,83 +1563,83 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Ack Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost 
+         * @param {BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options?: any): AxiosPromise<any> {
-            return localVarFp.ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options).then((request) => request(axios, basePath));
+        ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options?: any): AxiosPromise<any> {
+            return localVarFp.ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Assign Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost 
+         * @param {BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options?: any): AxiosPromise<any> {
-            return localVarFp.assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options).then((request) => request(axios, basePath));
+        assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options?: any): AxiosPromise<any> {
+            return localVarFp.assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Attach Alarm Note
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost 
+         * @param {BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options?: any): AxiosPromise<any> {
-            return localVarFp.attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options).then((request) => request(axios, basePath));
+        attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options?: any): AxiosPromise<any> {
+            return localVarFp.attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Attach Alarm Ticket
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost 
+         * @param {BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options?: any): AxiosPromise<any> {
-            return localVarFp.attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options).then((request) => request(axios, basePath));
+        attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options?: any): AxiosPromise<any> {
+            return localVarFp.attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Clear Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid: string, stage: string, alarmUuid: string, options?: any): AxiosPromise<any> {
-            return localVarFp.clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid, stage, alarmUuid, options).then((request) => request(axios, basePath));
+        clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service: string, stage: string, alarmUuid: string, options?: any): AxiosPromise<any> {
+            return localVarFp.clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service, stage, alarmUuid, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Service Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid: string, stage: string, alarmUuid: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid, stage, alarmUuid, options).then((request) => request(axios, basePath));
+        getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service: string, stage: string, alarmUuid: string, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service, stage, alarmUuid, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Service Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {boolean} [includeTerminated] 
@@ -1647,36 +1647,36 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid, stage, history, includeTerminated, includeCleared, options).then((request) => request(axios, basePath));
+        getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service, stage, history, includeTerminated, includeCleared, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Service Heartbeats
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid: string, stage: string, history?: number, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid, stage, history, options).then((request) => request(axios, basePath));
+        getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service: string, stage: string, history?: number, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service, stage, history, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Service Kpis
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid: string, history?: number, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid, history, options).then((request) => request(axios, basePath));
+        getServiceKpisMonitorServicesServiceKpisGet(service: string, history?: number, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceKpisMonitorServicesServiceKpisGet(service, history, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {boolean} [heartbeats] 
          * @param {number} [heartbeatLimit] 
          * @param {boolean} [alarms] 
@@ -1685,8 +1685,8 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceMonitorServicesServiceUuidGet(serviceUuid: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceMonitorServicesServiceUuidGet(serviceUuid, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options).then((request) => request(axios, basePath));
+        getServiceMonitorServicesServiceGet(service: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceMonitorServicesServiceGet(service, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1713,14 +1713,14 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get Service Vitals
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {number} [history] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid: string, stage: string, history?: number, options?: any): AxiosPromise<any> {
-            return localVarFp.getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid, stage, history, options).then((request) => request(axios, basePath));
+        getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service: string, stage: string, history?: number, options?: any): AxiosPromise<any> {
+            return localVarFp.getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service, stage, history, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1750,26 +1750,26 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Hide Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid: string, stage: string, options?: any): AxiosPromise<any> {
-            return localVarFp.hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid, stage, options).then((request) => request(axios, basePath));
+        hideServiceMonitorServicesServiceStagesStageHidePost(service: string, stage: string, options?: any): AxiosPromise<any> {
+            return localVarFp.hideServiceMonitorServicesServiceStagesStageHidePost(service, stage, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Ignore Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost 
+         * @param {BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options?: any): AxiosPromise<any> {
-            return localVarFp.ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options).then((request) => request(axios, basePath));
+        ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options?: any): AxiosPromise<any> {
+            return localVarFp.ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1784,7 +1784,7 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Search Alarms
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {number} [page] 
          * @param {number} [pageSize] 
          * @param {string} [search] 
@@ -1794,44 +1794,44 @@ export const MonitorApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: any): AxiosPromise<any> {
-            return localVarFp.searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid, page, pageSize, search, searchOn, sortOn, sortDesc, options).then((request) => request(axios, basePath));
+        searchAlarmsMonitorServicesServiceAlarmsGet(service: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: any): AxiosPromise<any> {
+            return localVarFp.searchAlarmsMonitorServicesServiceAlarmsGet(service, page, pageSize, search, searchOn, sortOn, sortDesc, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Show Service
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid: string, stage: string, options?: any): AxiosPromise<any> {
-            return localVarFp.showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid, stage, options).then((request) => request(axios, basePath));
+        showServiceMonitorServicesServiceStagesStageShowPost(service: string, stage: string, options?: any): AxiosPromise<any> {
+            return localVarFp.showServiceMonitorServicesServiceStagesStageShowPost(service, stage, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Terminate Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
          * @param {string} alarmUuid 
-         * @param {BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost 
+         * @param {BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options?: any): AxiosPromise<any> {
-            return localVarFp.terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options).then((request) => request(axios, basePath));
+        terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options?: any): AxiosPromise<any> {
+            return localVarFp.terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Trigger Alarm
-         * @param {string} serviceUuid 
+         * @param {string} service 
          * @param {string} stage 
-         * @param {BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost 
+         * @param {BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid: string, stage: string, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options?: any): AxiosPromise<any> {
-            return localVarFp.triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid, stage, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options).then((request) => request(axios, basePath));
+        triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service: string, stage: string, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options?: any): AxiosPromise<any> {
+            return localVarFp.triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service, stage, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1845,83 +1845,83 @@ export interface MonitorApiInterface {
     /**
      * 
      * @summary Ack Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost 
+     * @param {BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Assign Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost 
+     * @param {BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Attach Alarm Note
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost 
+     * @param {BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Attach Alarm Ticket
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost 
+     * @param {BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Clear Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Get Service Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Get Service Alarms
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {boolean} [includeTerminated] 
@@ -1930,35 +1930,35 @@ export interface MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Get Service Heartbeats
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Get Service Kpis
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceKpisMonitorServicesServiceKpisGet(service: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Get Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {boolean} [heartbeats] 
      * @param {number} [heartbeatLimit] 
      * @param {boolean} [alarms] 
@@ -1968,7 +1968,7 @@ export interface MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceMonitorServicesServiceUuidGet(serviceUuid: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceMonitorServicesServiceGet(service: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1995,14 +1995,14 @@ export interface MonitorApiInterface {
     /**
      * 
      * @summary Get Service Vitals
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -2032,26 +2032,26 @@ export interface MonitorApiInterface {
     /**
      * 
      * @summary Hide Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid: string, stage: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    hideServiceMonitorServicesServiceStagesStageHidePost(service: string, stage: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Ignore Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost 
+     * @param {BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -2066,7 +2066,7 @@ export interface MonitorApiInterface {
     /**
      * 
      * @summary Search Alarms
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {number} [page] 
      * @param {number} [pageSize] 
      * @param {string} [search] 
@@ -2077,43 +2077,43 @@ export interface MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
+    searchAlarmsMonitorServicesServiceAlarmsGet(service: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Show Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid: string, stage: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    showServiceMonitorServicesServiceStagesStageShowPost(service: string, stage: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Terminate Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost 
+     * @param {BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
      * @summary Trigger Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
-     * @param {BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost 
+     * @param {BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApiInterface
      */
-    triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid: string, stage: string, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options?: AxiosRequestConfig): AxiosPromise<any>;
+    triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service: string, stage: string, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options?: AxiosRequestConfig): AxiosPromise<any>;
 
 }
 
@@ -2127,95 +2127,95 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
     /**
      * 
      * @summary Ack Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost 
+     * @param {BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost} bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).ackAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost(serviceUuid, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAcknowledgePost, options).then((request) => request(this.axios, this.basePath));
+    public ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service: string, stage: string, alarmUuid: string, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost: BodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).ackAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost(service, stage, alarmUuid, bodyAckAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAcknowledgePost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Assign Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost 
+     * @param {BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost} bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).assignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost(serviceUuid, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidAssignPost, options).then((request) => request(this.axios, this.basePath));
+    public assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service: string, stage: string, alarmUuid: string, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost: BodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).assignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost(service, stage, alarmUuid, bodyAssignAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidAssignPost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Attach Alarm Note
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost 
+     * @param {BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost} bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).attachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost(serviceUuid, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidNotePost, options).then((request) => request(this.axios, this.basePath));
+    public attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost: BodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).attachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost(service, stage, alarmUuid, bodyAttachAlarmNoteMonitorServicesServiceStagesStageAlarmsAlarmUuidNotePost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Attach Alarm Ticket
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost 
+     * @param {BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost} bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).attachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost(serviceUuid, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTicketPost, options).then((request) => request(this.axios, this.basePath));
+    public attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service: string, stage: string, alarmUuid: string, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost: BodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).attachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost(service, stage, alarmUuid, bodyAttachAlarmTicketMonitorServicesServiceStagesStageAlarmsAlarmUuidTicketPost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Clear Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).clearAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidClearPost(serviceUuid, stage, alarmUuid, options).then((request) => request(this.axios, this.basePath));
+    public clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).clearAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidClearPost(service, stage, alarmUuid, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Service Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidGet(serviceUuid, stage, alarmUuid, options).then((request) => request(this.axios, this.basePath));
+    public getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service: string, stage: string, alarmUuid: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidGet(service, stage, alarmUuid, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Service Alarms
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {boolean} [includeTerminated] 
@@ -2224,41 +2224,41 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceAlarmsMonitorServicesServiceUuidStagesStageAlarmsGet(serviceUuid, stage, history, includeTerminated, includeCleared, options).then((request) => request(this.axios, this.basePath));
+    public getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service: string, stage: string, history?: number, includeTerminated?: boolean, includeCleared?: boolean, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceAlarmsMonitorServicesServiceStagesStageAlarmsGet(service, stage, history, includeTerminated, includeCleared, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Service Heartbeats
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceHeartbeatsMonitorServicesServiceUuidStagesStageHeartbeatsGet(serviceUuid, stage, history, options).then((request) => request(this.axios, this.basePath));
+    public getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceHeartbeatsMonitorServicesServiceStagesStageHeartbeatsGet(service, stage, history, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Service Kpis
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid: string, history?: number, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceKpisMonitorServicesServiceUuidKpisGet(serviceUuid, history, options).then((request) => request(this.axios, this.basePath));
+    public getServiceKpisMonitorServicesServiceKpisGet(service: string, history?: number, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceKpisMonitorServicesServiceKpisGet(service, history, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {boolean} [heartbeats] 
      * @param {number} [heartbeatLimit] 
      * @param {boolean} [alarms] 
@@ -2268,8 +2268,8 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceMonitorServicesServiceUuidGet(serviceUuid: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceMonitorServicesServiceUuidGet(serviceUuid, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options).then((request) => request(this.axios, this.basePath));
+    public getServiceMonitorServicesServiceGet(service: string, heartbeats?: boolean, heartbeatLimit?: number, alarms?: boolean, alarmLimit?: number, stage?: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceMonitorServicesServiceGet(service, heartbeats, heartbeatLimit, alarms, alarmLimit, stage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2301,15 +2301,15 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
     /**
      * 
      * @summary Get Service Vitals
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {number} [history] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid: string, stage: string, history?: number, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).getServiceVitalsMonitorServicesServiceUuidStagesStageVitalsGet(serviceUuid, stage, history, options).then((request) => request(this.axios, this.basePath));
+    public getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service: string, stage: string, history?: number, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).getServiceVitalsMonitorServicesServiceStagesStageVitalsGet(service, stage, history, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2344,29 +2344,29 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
     /**
      * 
      * @summary Hide Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid: string, stage: string, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).hideServiceMonitorServicesServiceUuidStagesStageHidePost(serviceUuid, stage, options).then((request) => request(this.axios, this.basePath));
+    public hideServiceMonitorServicesServiceStagesStageHidePost(service: string, stage: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).hideServiceMonitorServicesServiceStagesStageHidePost(service, stage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Ignore Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost 
+     * @param {BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost} bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).ignoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost(serviceUuid, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidIgnorePost, options).then((request) => request(this.axios, this.basePath));
+    public ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service: string, stage: string, alarmUuid: string, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost: BodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).ignoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost(service, stage, alarmUuid, bodyIgnoreAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidIgnorePost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2384,7 +2384,7 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
     /**
      * 
      * @summary Search Alarms
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {number} [page] 
      * @param {number} [pageSize] 
      * @param {string} [search] 
@@ -2395,49 +2395,49 @@ export class MonitorApi extends BaseAPI implements MonitorApiInterface {
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).searchAlarmsMonitorServicesServiceUuidAlarmsGet(serviceUuid, page, pageSize, search, searchOn, sortOn, sortDesc, options).then((request) => request(this.axios, this.basePath));
+    public searchAlarmsMonitorServicesServiceAlarmsGet(service: string, page?: number, pageSize?: number, search?: string, searchOn?: string, sortOn?: string, sortDesc?: boolean, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).searchAlarmsMonitorServicesServiceAlarmsGet(service, page, pageSize, search, searchOn, sortOn, sortDesc, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Show Service
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid: string, stage: string, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).showServiceMonitorServicesServiceUuidStagesStageShowPost(serviceUuid, stage, options).then((request) => request(this.axios, this.basePath));
+    public showServiceMonitorServicesServiceStagesStageShowPost(service: string, stage: string, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).showServiceMonitorServicesServiceStagesStageShowPost(service, stage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Terminate Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
      * @param {string} alarmUuid 
-     * @param {BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost 
+     * @param {BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost} bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).terminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost(serviceUuid, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceUuidStagesStageAlarmsAlarmUuidTerminatePost, options).then((request) => request(this.axios, this.basePath));
+    public terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service: string, stage: string, alarmUuid: string, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost: BodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).terminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost(service, stage, alarmUuid, bodyTerminateAlarmMonitorServicesServiceStagesStageAlarmsAlarmUuidTerminatePost, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Trigger Alarm
-     * @param {string} serviceUuid 
+     * @param {string} service 
      * @param {string} stage 
-     * @param {BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost 
+     * @param {BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost} bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MonitorApi
      */
-    public triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid: string, stage: string, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options?: AxiosRequestConfig) {
-        return MonitorApiFp(this.configuration).triggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost(serviceUuid, stage, bodyTriggerAlarmMonitorServicesServiceUuidStagesStageAlarmsPost, options).then((request) => request(this.axios, this.basePath));
+    public triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service: string, stage: string, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost: BodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options?: AxiosRequestConfig) {
+        return MonitorApiFp(this.configuration).triggerAlarmMonitorServicesServiceStagesStageAlarmsPost(service, stage, bodyTriggerAlarmMonitorServicesServiceStagesStageAlarmsPost, options).then((request) => request(this.axios, this.basePath));
     }
 }
