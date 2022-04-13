@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.51
+ * eHelply SDK - 1.1.52
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.51
+ * The version of the OpenAPI document: 1.1.52
  *
  * Do not edit the class manually.
  *
@@ -254,7 +254,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         deleteMetaFromUuidMetaMetaMetaUuidDelete: async (metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'metaUuid' is not null or undefined
             assertParamExists('deleteMetaFromUuidMetaMetaMetaUuidDelete', 'metaUuid', metaUuid)
-            const localVarPath = `/meta/meta/meta/{meta_uuid}`
+            const localVarPath = `/meta/meta/{meta_uuid}`
                 .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -324,7 +324,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete', 'entityUuid', entityUuid)
-            const localVarPath = `/meta/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
+            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
@@ -394,7 +394,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         getMetaFromUuidMetaMetaMetaUuidGet: async (metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'metaUuid' is not null or undefined
             assertParamExists('getMetaFromUuidMetaMetaMetaUuidGet', 'metaUuid', metaUuid)
-            const localVarPath = `/meta/meta/meta/{meta_uuid}`
+            const localVarPath = `/meta/meta/{meta_uuid}`
                 .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -484,7 +484,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet', 'entityUuid', entityUuid)
-            const localVarPath = `/meta/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
+            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
@@ -560,7 +560,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         makeSlugMetaMetaSlugPost: async (metaSlugger: MetaSlugger, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'metaSlugger' is not null or undefined
             assertParamExists('makeSlugMetaMetaSlugPost', 'metaSlugger', metaSlugger)
-            const localVarPath = `/meta/meta/meta/slug`;
+            const localVarPath = `/meta/meta/slug`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -611,7 +611,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'entityUuid', entityUuid)
             // verify required parameter 'bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost' is not null or undefined
             assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost)
-            const localVarPath = `/meta/meta/meta/service/{service}/type/{type_str}/entity/{entity_uuid}`
+            const localVarPath = `/meta/meta/service/{service}/type/{type_str}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type_str"}}`, encodeURIComponent(String(typeStr)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
@@ -686,7 +686,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost', 'entityUuid', entityUuid)
-            const localVarPath = `/meta/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}/touch`
+            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}/touch`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
@@ -755,7 +755,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('updateMetaFromUuidMetaMetaMetaUuidPut', 'metaUuid', metaUuid)
             // verify required parameter 'bodyUpdateMetaFromUuidMetaMetaMetaUuidPut' is not null or undefined
             assertParamExists('updateMetaFromUuidMetaMetaMetaUuidPut', 'bodyUpdateMetaFromUuidMetaMetaMetaUuidPut', bodyUpdateMetaFromUuidMetaMetaMetaUuidPut)
-            const localVarPath = `/meta/meta/meta/{meta_uuid}`
+            const localVarPath = `/meta/meta/{meta_uuid}`
                 .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -831,7 +831,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'entityUuid', entityUuid)
             // verify required parameter 'bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut' is not null or undefined
             assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut)
-            const localVarPath = `/meta/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
+            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
