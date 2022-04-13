@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.62
+ * eHelply SDK - 1.1.63
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.62
+ * The version of the OpenAPI document: 1.1.63
  *
  * Do not edit the class manually.
  *
@@ -216,6 +216,7 @@
 import { BasicMeta } from './basic-meta';
 import { DatesMeta } from './dates-meta';
 import { DetailedMeta } from './detailed-meta';
+import { Field } from './field';
 
 /**
  * A meta from DynamoDB
@@ -247,6 +248,24 @@ export interface MetaDynamo {
      * @memberof MetaDynamo
      */
     'dates'?: DatesMeta;
+    /**
+     * 
+     * @type {Array<Field>}
+     * @memberof MetaDynamo
+     */
+    'fields'?: Array<Field>;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof MetaDynamo
+     */
+    'children'?: Array<object>;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaDynamo
+     */
+    'parent_uuid'?: string;
     /**
      * 
      * @type {string}

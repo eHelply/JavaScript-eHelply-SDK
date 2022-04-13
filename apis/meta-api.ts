@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.62
+ * eHelply SDK - 1.1.63
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.62
+ * The version of the OpenAPI document: 1.1.63
  *
  * Do not edit the class manually.
  *
@@ -221,13 +221,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost } from '../models';
+import { Field } from '../models';
 // @ts-ignore
-import { BodyUpdateMetaFromUuidMetaMetaMetaUuidPut } from '../models';
-// @ts-ignore
-import { BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut } from '../models';
+import { FieldDynamo } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
+// @ts-ignore
+import { MetaCreate } from '../models';
 // @ts-ignore
 import { MetaDynamo } from '../models';
 // @ts-ignore
@@ -240,8 +240,8 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
-         * @summary Delete Meta From Uuid
-         * @param {string} metaUuid 
+         * @summary Create Field
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -251,11 +251,156 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMetaFromUuidMetaMetaMetaUuidDelete: async (metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'metaUuid' is not null or undefined
-            assertParamExists('deleteMetaFromUuidMetaMetaMetaUuidDelete', 'metaUuid', metaUuid)
-            const localVarPath = `/meta/meta/{meta_uuid}`
-                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
+        createField: async (field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'field' is not null or undefined
+            assertParamExists('createField', 'field', field)
+            const localVarPath = `/meta/field`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(field, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create Meta
+         * @param {string} service 
+         * @param {string} typeStr 
+         * @param {string} entityUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMeta: async (service: string, typeStr: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('createMeta', 'service', service)
+            // verify required parameter 'typeStr' is not null or undefined
+            assertParamExists('createMeta', 'typeStr', typeStr)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('createMeta', 'entityUuid', entityUuid)
+            // verify required parameter 'metaCreate' is not null or undefined
+            assertParamExists('createMeta', 'metaCreate', metaCreate)
+            const localVarPath = `/meta/meta/service/{service}/type/{type_str}/entity/{entity_uuid}`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
+                .replace(`{${"type_str"}}`, encodeURIComponent(String(typeStr)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(metaCreate, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete Field
+         * @param {string} fieldUuid 
+         * @param {boolean} [softDelete] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteField: async (fieldUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fieldUuid' is not null or undefined
+            assertParamExists('deleteField', 'fieldUuid', fieldUuid)
+            const localVarPath = `/meta/field/{field_uuid}`
+                .replace(`{${"field_uuid"}}`, encodeURIComponent(String(fieldUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -266,6 +411,10 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (softDelete !== undefined) {
+                localVarQueryParameter['soft_delete'] = softDelete;
+            }
 
             if (xAccessToken !== undefined && xAccessToken !== null) {
                 localVarHeaderParameter['x-access-token'] = String(xAccessToken);
@@ -317,13 +466,13 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete: async (service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteMeta: async (service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'service' is not null or undefined
-            assertParamExists('deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete', 'service', service)
+            assertParamExists('deleteMeta', 'service', service)
             // verify required parameter 'type' is not null or undefined
-            assertParamExists('deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete', 'type', type)
+            assertParamExists('deleteMeta', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete', 'entityUuid', entityUuid)
+            assertParamExists('deleteMeta', 'entityUuid', entityUuid)
             const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
@@ -376,8 +525,138 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @summary Get Meta From Uuid
+         * @summary Delete Meta From Uuid
          * @param {string} metaUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteMetaFromUuid: async (metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'metaUuid' is not null or undefined
+            assertParamExists('deleteMetaFromUuid', 'metaUuid', metaUuid)
+            const localVarPath = `/meta/meta/{meta_uuid}`
+                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get Field
+         * @param {string} fieldUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getField: async (fieldUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fieldUuid' is not null or undefined
+            assertParamExists('getField', 'fieldUuid', fieldUuid)
+            const localVarPath = `/meta/field/{field_uuid}`
+                .replace(`{${"field_uuid"}}`, encodeURIComponent(String(fieldUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get Meta
+         * @param {string} service 
+         * @param {string} type 
+         * @param {string} entityUuid 
          * @param {boolean} [detailed] 
          * @param {boolean} [custom] 
          * @param {boolean} [dates] 
@@ -391,11 +670,17 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetaFromUuidMetaMetaMetaUuidGet: async (metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'metaUuid' is not null or undefined
-            assertParamExists('getMetaFromUuidMetaMetaMetaUuidGet', 'metaUuid', metaUuid)
-            const localVarPath = `/meta/meta/{meta_uuid}`
-                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
+        getMeta: async (service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'service' is not null or undefined
+            assertParamExists('getMeta', 'service', service)
+            // verify required parameter 'type' is not null or undefined
+            assertParamExists('getMeta', 'type', type)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('getMeta', 'entityUuid', entityUuid)
+            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
+                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
+                .replace(`{${"type"}}`, encodeURIComponent(String(type)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -460,10 +745,8 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @summary Get Meta
-         * @param {string} service 
-         * @param {string} type 
-         * @param {string} entityUuid 
+         * @summary Get Meta From Uuid
+         * @param {string} metaUuid 
          * @param {boolean} [detailed] 
          * @param {boolean} [custom] 
          * @param {boolean} [dates] 
@@ -477,17 +760,11 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet: async (service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'service' is not null or undefined
-            assertParamExists('getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet', 'service', service)
-            // verify required parameter 'type' is not null or undefined
-            assertParamExists('getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet', 'type', type)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet', 'entityUuid', entityUuid)
-            const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
-                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
-                .replace(`{${"type"}}`, encodeURIComponent(String(type)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+        getMetaFromUuid: async (metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'metaUuid' is not null or undefined
+            assertParamExists('getMetaFromUuid', 'metaUuid', metaUuid)
+            const localVarPath = `/meta/meta/{meta_uuid}`
+                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -557,9 +834,9 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        makeSlugMetaMetaSlugPost: async (metaSlugger: MetaSlugger, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        makeSlug: async (metaSlugger: MetaSlugger, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'metaSlugger' is not null or undefined
-            assertParamExists('makeSlugMetaMetaSlugPost', 'metaSlugger', metaSlugger)
+            assertParamExists('makeSlug', 'metaSlugger', metaSlugger)
             const localVarPath = `/meta/meta/slug`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -588,84 +865,6 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @summary Post Meta
-         * @param {string} service 
-         * @param {string} typeStr 
-         * @param {string} entityUuid 
-         * @param {BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost} bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost 
-         * @param {string} [xAccessToken] 
-         * @param {string} [xSecretToken] 
-         * @param {string} [authorization] 
-         * @param {string} [ehelplyActiveParticipant] 
-         * @param {string} [ehelplyProject] 
-         * @param {string} [ehelplyData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: async (service: string, typeStr: string, entityUuid: string, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'service' is not null or undefined
-            assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'service', service)
-            // verify required parameter 'typeStr' is not null or undefined
-            assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'typeStr', typeStr)
-            // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'entityUuid', entityUuid)
-            // verify required parameter 'bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost' is not null or undefined
-            assertParamExists('postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', 'bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost', bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost)
-            const localVarPath = `/meta/meta/service/{service}/type/{type_str}/entity/{entity_uuid}`
-                .replace(`{${"service"}}`, encodeURIComponent(String(service)))
-                .replace(`{${"type_str"}}`, encodeURIComponent(String(typeStr)))
-                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            if (xAccessToken !== undefined && xAccessToken !== null) {
-                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
-            }
-
-            if (xSecretToken !== undefined && xSecretToken !== null) {
-                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
-            }
-
-            if (authorization !== undefined && authorization !== null) {
-                localVarHeaderParameter['authorization'] = String(authorization);
-            }
-
-            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
-                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
-            }
-
-            if (ehelplyProject !== undefined && ehelplyProject !== null) {
-                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
-            }
-
-            if (ehelplyData !== undefined && ehelplyData !== null) {
-                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Touch Meta
          * @param {string} service 
          * @param {string} type 
@@ -679,13 +878,13 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost: async (service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        touchMeta: async (service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'service' is not null or undefined
-            assertParamExists('touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost', 'service', service)
+            assertParamExists('touchMeta', 'service', service)
             // verify required parameter 'type' is not null or undefined
-            assertParamExists('touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost', 'type', type)
+            assertParamExists('touchMeta', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost', 'entityUuid', entityUuid)
+            assertParamExists('touchMeta', 'entityUuid', entityUuid)
             const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}/touch`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
@@ -738,9 +937,9 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @summary Update Meta From Uuid
-         * @param {string} metaUuid 
-         * @param {BodyUpdateMetaFromUuidMetaMetaMetaUuidPut} bodyUpdateMetaFromUuidMetaMetaMetaUuidPut 
+         * @summary Update Field
+         * @param {string} fieldUuid 
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -750,13 +949,13 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMetaFromUuidMetaMetaMetaUuidPut: async (metaUuid: string, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut: BodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'metaUuid' is not null or undefined
-            assertParamExists('updateMetaFromUuidMetaMetaMetaUuidPut', 'metaUuid', metaUuid)
-            // verify required parameter 'bodyUpdateMetaFromUuidMetaMetaMetaUuidPut' is not null or undefined
-            assertParamExists('updateMetaFromUuidMetaMetaMetaUuidPut', 'bodyUpdateMetaFromUuidMetaMetaMetaUuidPut', bodyUpdateMetaFromUuidMetaMetaMetaUuidPut)
-            const localVarPath = `/meta/meta/{meta_uuid}`
-                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
+        updateField: async (fieldUuid: string, field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fieldUuid' is not null or undefined
+            assertParamExists('updateField', 'fieldUuid', fieldUuid)
+            // verify required parameter 'field' is not null or undefined
+            assertParamExists('updateField', 'field', field)
+            const localVarPath = `/meta/field/{field_uuid}`
+                .replace(`{${"field_uuid"}}`, encodeURIComponent(String(fieldUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -799,7 +998,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyUpdateMetaFromUuidMetaMetaMetaUuidPut, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(field, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -812,7 +1011,7 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} service 
          * @param {string} type 
          * @param {string} entityUuid 
-         * @param {BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut} bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut 
+         * @param {MetaCreate} metaCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -822,15 +1021,15 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: async (service: string, type: string, entityUuid: string, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateMeta: async (service: string, type: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'service' is not null or undefined
-            assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'service', service)
+            assertParamExists('updateMeta', 'service', service)
             // verify required parameter 'type' is not null or undefined
-            assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'type', type)
+            assertParamExists('updateMeta', 'type', type)
             // verify required parameter 'entityUuid' is not null or undefined
-            assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'entityUuid', entityUuid)
-            // verify required parameter 'bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut' is not null or undefined
-            assertParamExists('updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', 'bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut', bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut)
+            assertParamExists('updateMeta', 'entityUuid', entityUuid)
+            // verify required parameter 'metaCreate' is not null or undefined
+            assertParamExists('updateMeta', 'metaCreate', metaCreate)
             const localVarPath = `/meta/meta/service/{service}/type/{type}/entity/{entity_uuid}`
                 .replace(`{${"service"}}`, encodeURIComponent(String(service)))
                 .replace(`{${"type"}}`, encodeURIComponent(String(type)))
@@ -877,7 +1076,77 @@ export const MetaApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(metaCreate, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update Meta From Uuid
+         * @param {string} metaUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMetaFromUuid: async (metaUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'metaUuid' is not null or undefined
+            assertParamExists('updateMetaFromUuid', 'metaUuid', metaUuid)
+            // verify required parameter 'metaCreate' is not null or undefined
+            assertParamExists('updateMetaFromUuid', 'metaCreate', metaCreate)
+            const localVarPath = `/meta/meta/{meta_uuid}`
+                .replace(`{${"meta_uuid"}}`, encodeURIComponent(String(metaUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(metaCreate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -896,8 +1165,8 @@ export const MetaApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Delete Meta From Uuid
-         * @param {string} metaUuid 
+         * @summary Create Field
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -907,8 +1176,46 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createField(field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createField(field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Create Meta
+         * @param {string} service 
+         * @param {string} typeStr 
+         * @param {string} entityUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createMeta(service: string, typeStr: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createMeta(service, typeStr, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete Field
+         * @param {string} fieldUuid 
+         * @param {boolean} [softDelete] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteField(fieldUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteField(fieldUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -926,18 +1233,14 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async deleteMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Get Meta From Uuid
+         * @summary Delete Meta From Uuid
          * @param {string} metaUuid 
-         * @param {boolean} [detailed] 
-         * @param {boolean} [custom] 
-         * @param {boolean} [dates] 
-         * @param {number} [history] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -947,8 +1250,25 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMetaFromUuidMetaMetaMetaUuidGet(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getMetaFromUuidMetaMetaMetaUuidGet(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async deleteMetaFromUuid(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMetaFromUuid(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get Field
+         * @param {string} fieldUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getField(fieldUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FieldDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getField(fieldUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -970,28 +1290,18 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getMeta(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMeta(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Make Slug
-         * @param {MetaSlugger} metaSlugger 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async makeSlugMetaMetaSlugPost(metaSlugger: MetaSlugger, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.makeSlugMetaMetaSlugPost(metaSlugger, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Post Meta
-         * @param {string} service 
-         * @param {string} typeStr 
-         * @param {string} entityUuid 
-         * @param {BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost} bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost 
+         * @summary Get Meta From Uuid
+         * @param {string} metaUuid 
+         * @param {boolean} [detailed] 
+         * @param {boolean} [custom] 
+         * @param {boolean} [dates] 
+         * @param {number} [history] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1001,8 +1311,19 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service: string, typeStr: string, entityUuid: string, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service, typeStr, entityUuid, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getMetaFromUuid(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getMetaFromUuid(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Make Slug
+         * @param {MetaSlugger} metaSlugger 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async makeSlug(metaSlugger: MetaSlugger, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.makeSlug(metaSlugger, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1020,15 +1341,15 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async touchMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.touchMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Update Meta From Uuid
-         * @param {string} metaUuid 
-         * @param {BodyUpdateMetaFromUuidMetaMetaMetaUuidPut} bodyUpdateMetaFromUuidMetaMetaMetaUuidPut 
+         * @summary Update Field
+         * @param {string} fieldUuid 
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1038,8 +1359,8 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid: string, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut: BodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateField(fieldUuid: string, field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateField(fieldUuid, field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1048,7 +1369,7 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {string} service 
          * @param {string} type 
          * @param {string} entityUuid 
-         * @param {BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut} bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut 
+         * @param {MetaCreate} metaCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1058,8 +1379,26 @@ export const MetaApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service: string, type: string, entityUuid: string, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service, type, entityUuid, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateMeta(service: string, type: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMeta(service, type, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update Meta From Uuid
+         * @param {string} metaUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateMetaFromUuid(metaUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetaDynamo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMetaFromUuid(metaUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1074,8 +1413,8 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
-         * @summary Delete Meta From Uuid
-         * @param {string} metaUuid 
+         * @summary Create Field
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1085,8 +1424,44 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createField(field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<FieldDynamo> {
+            return localVarFp.createField(field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create Meta
+         * @param {string} service 
+         * @param {string} typeStr 
+         * @param {string} entityUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createMeta(service: string, typeStr: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.createMeta(service, typeStr, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete Field
+         * @param {string} fieldUuid 
+         * @param {boolean} [softDelete] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteField(fieldUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteField(fieldUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1103,17 +1478,13 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        deleteMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Get Meta From Uuid
+         * @summary Delete Meta From Uuid
          * @param {string} metaUuid 
-         * @param {boolean} [detailed] 
-         * @param {boolean} [custom] 
-         * @param {boolean} [dates] 
-         * @param {number} [history] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1123,8 +1494,24 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetaFromUuidMetaMetaMetaUuidGet(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getMetaFromUuidMetaMetaMetaUuidGet(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        deleteMetaFromUuid(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteMetaFromUuid(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get Field
+         * @param {string} fieldUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getField(fieldUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<FieldDynamo> {
+            return localVarFp.getField(fieldUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1145,26 +1532,17 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getMeta(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.getMeta(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Make Slug
-         * @param {MetaSlugger} metaSlugger 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        makeSlugMetaMetaSlugPost(metaSlugger: MetaSlugger, options?: any): AxiosPromise<any> {
-            return localVarFp.makeSlugMetaMetaSlugPost(metaSlugger, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Post Meta
-         * @param {string} service 
-         * @param {string} typeStr 
-         * @param {string} entityUuid 
-         * @param {BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost} bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost 
+         * @summary Get Meta From Uuid
+         * @param {string} metaUuid 
+         * @param {boolean} [detailed] 
+         * @param {boolean} [custom] 
+         * @param {boolean} [dates] 
+         * @param {number} [history] 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1174,8 +1552,18 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service: string, typeStr: string, entityUuid: string, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
-            return localVarFp.postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service, typeStr, entityUuid, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getMetaFromUuid(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.getMetaFromUuid(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Make Slug
+         * @param {MetaSlugger} metaSlugger 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        makeSlug(metaSlugger: MetaSlugger, options?: any): AxiosPromise<any> {
+            return localVarFp.makeSlug(metaSlugger, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1192,14 +1580,14 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
-            return localVarFp.touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        touchMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.touchMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Update Meta From Uuid
-         * @param {string} metaUuid 
-         * @param {BodyUpdateMetaFromUuidMetaMetaMetaUuidPut} bodyUpdateMetaFromUuidMetaMetaMetaUuidPut 
+         * @summary Update Field
+         * @param {string} fieldUuid 
+         * @param {Field} field 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1209,8 +1597,8 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid: string, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut: BodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
-            return localVarFp.updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateField(fieldUuid: string, field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.updateField(fieldUuid, field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1218,7 +1606,7 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} service 
          * @param {string} type 
          * @param {string} entityUuid 
-         * @param {BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut} bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut 
+         * @param {MetaCreate} metaCreate 
          * @param {string} [xAccessToken] 
          * @param {string} [xSecretToken] 
          * @param {string} [authorization] 
@@ -1228,8 +1616,25 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service: string, type: string, entityUuid: string, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
-            return localVarFp.updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service, type, entityUuid, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateMeta(service: string, type: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.updateMeta(service, type, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update Meta From Uuid
+         * @param {string} metaUuid 
+         * @param {MetaCreate} metaCreate 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateMetaFromUuid(metaUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<MetaDynamo> {
+            return localVarFp.updateMetaFromUuid(metaUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1242,8 +1647,8 @@ export const MetaApiFactory = function (configuration?: Configuration, basePath?
 export interface MetaApiInterface {
     /**
      * 
-     * @summary Delete Meta From Uuid
-     * @param {string} metaUuid 
+     * @summary Create Field
+     * @param {Field} field 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1254,7 +1659,43 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    createField(field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<FieldDynamo>;
+
+    /**
+     * 
+     * @summary Create Meta
+     * @param {string} service 
+     * @param {string} typeStr 
+     * @param {string} entityUuid 
+     * @param {MetaCreate} metaCreate 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApiInterface
+     */
+    createMeta(service: string, typeStr: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+
+    /**
+     * 
+     * @summary Delete Field
+     * @param {string} fieldUuid 
+     * @param {boolean} [softDelete] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApiInterface
+     */
+    deleteField(fieldUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1272,16 +1713,12 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
-     * @summary Get Meta From Uuid
+     * @summary Delete Meta From Uuid
      * @param {string} metaUuid 
-     * @param {boolean} [detailed] 
-     * @param {boolean} [custom] 
-     * @param {boolean} [dates] 
-     * @param {number} [history] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1292,7 +1729,23 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    getMetaFromUuidMetaMetaMetaUuidGet(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteMetaFromUuid(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
+     * @summary Get Field
+     * @param {string} fieldUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApiInterface
+     */
+    getField(fieldUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<FieldDynamo>;
 
     /**
      * 
@@ -1314,25 +1767,16 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    getMeta(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
 
     /**
      * 
-     * @summary Make Slug
-     * @param {MetaSlugger} metaSlugger 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MetaApiInterface
-     */
-    makeSlugMetaMetaSlugPost(metaSlugger: MetaSlugger, options?: AxiosRequestConfig): AxiosPromise<any>;
-
-    /**
-     * 
-     * @summary Post Meta
-     * @param {string} service 
-     * @param {string} typeStr 
-     * @param {string} entityUuid 
-     * @param {BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost} bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost 
+     * @summary Get Meta From Uuid
+     * @param {string} metaUuid 
+     * @param {boolean} [detailed] 
+     * @param {boolean} [custom] 
+     * @param {boolean} [dates] 
+     * @param {number} [history] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1343,7 +1787,17 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service: string, typeStr: string, entityUuid: string, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+    getMetaFromUuid(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+
+    /**
+     * 
+     * @summary Make Slug
+     * @param {MetaSlugger} metaSlugger 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApiInterface
+     */
+    makeSlug(metaSlugger: MetaSlugger, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1361,13 +1815,13 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+    touchMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
 
     /**
      * 
-     * @summary Update Meta From Uuid
-     * @param {string} metaUuid 
-     * @param {BodyUpdateMetaFromUuidMetaMetaMetaUuidPut} bodyUpdateMetaFromUuidMetaMetaMetaUuidPut 
+     * @summary Update Field
+     * @param {string} fieldUuid 
+     * @param {Field} field 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1378,7 +1832,7 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid: string, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut: BodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+    updateField(fieldUuid: string, field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1386,7 +1840,7 @@ export interface MetaApiInterface {
      * @param {string} service 
      * @param {string} type 
      * @param {string} entityUuid 
-     * @param {BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut} bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut 
+     * @param {MetaCreate} metaCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1397,7 +1851,24 @@ export interface MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApiInterface
      */
-    updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service: string, type: string, entityUuid: string, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+    updateMeta(service: string, type: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
+
+    /**
+     * 
+     * @summary Update Meta From Uuid
+     * @param {string} metaUuid 
+     * @param {MetaCreate} metaCreate 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApiInterface
+     */
+    updateMetaFromUuid(metaUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<MetaDynamo>;
 
 }
 
@@ -1410,8 +1881,8 @@ export interface MetaApiInterface {
 export class MetaApi extends BaseAPI implements MetaApiInterface {
     /**
      * 
-     * @summary Delete Meta From Uuid
-     * @param {string} metaUuid 
+     * @summary Create Field
+     * @param {Field} field 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1422,8 +1893,48 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).deleteMetaFromUuidMetaMetaMetaUuidDelete(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createField(field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).createField(field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create Meta
+     * @param {string} service 
+     * @param {string} typeStr 
+     * @param {string} entityUuid 
+     * @param {MetaCreate} metaCreate 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApi
+     */
+    public createMeta(service: string, typeStr: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).createMeta(service, typeStr, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete Field
+     * @param {string} fieldUuid 
+     * @param {boolean} [softDelete] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApi
+     */
+    public deleteField(fieldUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).deleteField(fieldUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1442,18 +1953,14 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).deleteMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidDelete(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public deleteMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).deleteMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Get Meta From Uuid
+     * @summary Delete Meta From Uuid
      * @param {string} metaUuid 
-     * @param {boolean} [detailed] 
-     * @param {boolean} [custom] 
-     * @param {boolean} [dates] 
-     * @param {number} [history] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1464,8 +1971,26 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public getMetaFromUuidMetaMetaMetaUuidGet(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).getMetaFromUuidMetaMetaMetaUuidGet(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public deleteMetaFromUuid(metaUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).deleteMetaFromUuid(metaUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Field
+     * @param {string} fieldUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApi
+     */
+    public getField(fieldUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).getField(fieldUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1488,29 +2013,18 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).getMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidGet(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getMeta(service: string, type: string, entityUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).getMeta(service, type, entityUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Make Slug
-     * @param {MetaSlugger} metaSlugger 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MetaApi
-     */
-    public makeSlugMetaMetaSlugPost(metaSlugger: MetaSlugger, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).makeSlugMetaMetaSlugPost(metaSlugger, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Post Meta
-     * @param {string} service 
-     * @param {string} typeStr 
-     * @param {string} entityUuid 
-     * @param {BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost} bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost 
+     * @summary Get Meta From Uuid
+     * @param {string} metaUuid 
+     * @param {boolean} [detailed] 
+     * @param {boolean} [custom] 
+     * @param {boolean} [dates] 
+     * @param {number} [history] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1521,8 +2035,20 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service: string, typeStr: string, entityUuid: string, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost: BodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).postMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost(service, typeStr, entityUuid, bodyPostMetaMetaMetaServiceServiceTypeTypeStrEntityEntityUuidPost, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getMetaFromUuid(metaUuid: string, detailed?: boolean, custom?: boolean, dates?: boolean, history?: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).getMetaFromUuid(metaUuid, detailed, custom, dates, history, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Make Slug
+     * @param {MetaSlugger} metaSlugger 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApi
+     */
+    public makeSlug(metaSlugger: MetaSlugger, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).makeSlug(metaSlugger, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1541,15 +2067,15 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).touchMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidTouchPost(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public touchMeta(service: string, type: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).touchMeta(service, type, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Update Meta From Uuid
-     * @param {string} metaUuid 
-     * @param {BodyUpdateMetaFromUuidMetaMetaMetaUuidPut} bodyUpdateMetaFromUuidMetaMetaMetaUuidPut 
+     * @summary Update Field
+     * @param {string} fieldUuid 
+     * @param {Field} field 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1560,8 +2086,8 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid: string, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut: BodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).updateMetaFromUuidMetaMetaMetaUuidPut(metaUuid, bodyUpdateMetaFromUuidMetaMetaMetaUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateField(fieldUuid: string, field: Field, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).updateField(fieldUuid, field, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1570,7 +2096,7 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @param {string} service 
      * @param {string} type 
      * @param {string} entityUuid 
-     * @param {BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut} bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut 
+     * @param {MetaCreate} metaCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -1581,7 +2107,26 @@ export class MetaApi extends BaseAPI implements MetaApiInterface {
      * @throws {RequiredError}
      * @memberof MetaApi
      */
-    public updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service: string, type: string, entityUuid: string, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut: BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return MetaApiFp(this.configuration).updateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut(service, type, entityUuid, bodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateMeta(service: string, type: string, entityUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).updateMeta(service, type, entityUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Meta From Uuid
+     * @param {string} metaUuid 
+     * @param {MetaCreate} metaCreate 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetaApi
+     */
+    public updateMetaFromUuid(metaUuid: string, metaCreate: MetaCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return MetaApiFp(this.configuration).updateMetaFromUuid(metaUuid, metaCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }

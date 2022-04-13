@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.62
+ * eHelply SDK - 1.1.63
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.62
+ * The version of the OpenAPI document: 1.1.63
  *
  * Do not edit the class manually.
  *
@@ -213,19 +213,60 @@
  */
 
 
-import { MetaCreate } from './meta-create';
 
 /**
- * 
+ * Field Dynamo
  * @export
- * @interface BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut
+ * @interface FieldDynamo
  */
-export interface BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut {
+export interface FieldDynamo {
     /**
      * 
-     * @type {MetaCreate}
-     * @memberof BodyUpdateMetaMetaMetaServiceServiceTypeTypeEntityEntityUuidPut
+     * @type {object}
+     * @memberof FieldDynamo
      */
-    'meta': MetaCreate;
+    'type'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldDynamo
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof FieldDynamo
+     */
+    'validations'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldDynamo
+     */
+    'hint'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldDynamo
+     */
+    'icon'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldDynamo
+     */
+    'label'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof FieldDynamo
+     */
+    'options'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldDynamo
+     */
+    'uuid': string;
 }
 
