@@ -250,7 +250,7 @@ export const CompaniesApiAxiosParamCreator = function (configuration?: Configura
         createCompanyCompaniesPost: async (companyBase: CompanyBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'companyBase' is not null or undefined
             assertParamExists('createCompanyCompaniesPost', 'companyBase', companyBase)
-            const localVarPath = `/places/companies`;
+            const localVarPath = `/companies`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -317,7 +317,7 @@ export const CompaniesApiAxiosParamCreator = function (configuration?: Configura
         deletePlaceCompaniesCompanyUuidDelete: async (companyUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'companyUuid' is not null or undefined
             assertParamExists('deletePlaceCompaniesCompanyUuidDelete', 'companyUuid', companyUuid)
-            const localVarPath = `/places/companies/{company_uuid}`
+            const localVarPath = `/companies/{company_uuid}`
                 .replace(`{${"company_uuid"}}`, encodeURIComponent(String(companyUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -393,7 +393,7 @@ export const CompaniesApiAxiosParamCreator = function (configuration?: Configura
         getCompanyCompaniesCompanyUuidGet: async (companyUuid: string, withMeta?: boolean, withCatalog?: boolean, withReviews?: boolean, withSchedule?: boolean, withBlog?: boolean, withTags?: boolean, withCategories?: boolean, withPlaces?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'companyUuid' is not null or undefined
             assertParamExists('getCompanyCompaniesCompanyUuidGet', 'companyUuid', companyUuid)
-            const localVarPath = `/places/companies/{company_uuid}`
+            const localVarPath = `/companies/{company_uuid}`
                 .replace(`{${"company_uuid"}}`, encodeURIComponent(String(companyUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -503,7 +503,7 @@ export const CompaniesApiAxiosParamCreator = function (configuration?: Configura
          * @throws {RequiredError}
          */
         searchCompaniesCompaniesGet: async (projectUuid?: string, name?: string, email?: string, isPublic?: boolean, isDeleted?: boolean, withPlaces?: boolean, withMeta?: boolean, withCatalog?: boolean, withReviews?: boolean, withSchedule?: boolean, withBlog?: boolean, withTags?: boolean, withCategories?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/companies`;
+            const localVarPath = `/companies`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -637,7 +637,7 @@ export const CompaniesApiAxiosParamCreator = function (configuration?: Configura
             assertParamExists('updateCompanyCompaniesCompanyUuidPut', 'companyUuid', companyUuid)
             // verify required parameter 'companyBase' is not null or undefined
             assertParamExists('updateCompanyCompaniesCompanyUuidPut', 'companyBase', companyBase)
-            const localVarPath = `/places/companies/{company_uuid}`
+            const localVarPath = `/companies/{company_uuid}`
                 .replace(`{${"company_uuid"}}`, encodeURIComponent(String(companyUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

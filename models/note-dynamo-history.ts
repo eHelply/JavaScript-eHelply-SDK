@@ -230,10 +230,10 @@ export interface NoteDynamoHistory {
     'uuid': string;
     /**
      * 
-     * @type {any | string}
+     * @type {any}
      * @memberof NoteDynamoHistory
      */
-    'content'?: any | string;
+    'content'?: any;
     /**
      * 
      * @type {string}

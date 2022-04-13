@@ -252,7 +252,7 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
         createStaffStaffPost: async (staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffCreate' is not null or undefined
             assertParamExists('createStaffStaffPost', 'staffCreate', staffCreate)
-            const localVarPath = `/places/staff`;
+            const localVarPath = `/staff`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -319,7 +319,7 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
         deleteStaffStaffStaffUuidDelete: async (staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffUuid' is not null or undefined
             assertParamExists('deleteStaffStaffStaffUuidDelete', 'staffUuid', staffUuid)
-            const localVarPath = `/places/staff/{staff_uuid}`
+            const localVarPath = `/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -392,7 +392,7 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
         getStaffStaffStaffUuidGet: async (staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffUuid' is not null or undefined
             assertParamExists('getStaffStaffStaffUuidGet', 'staffUuid', staffUuid)
-            const localVarPath = `/places/staff/{staff_uuid}`
+            const localVarPath = `/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -487,7 +487,7 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         searchStaffStaffGet: async (projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/staff`;
+            const localVarPath = `/staff`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -609,7 +609,7 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
             assertParamExists('updateStaffStaffStaffUuidPut', 'staffUuid', staffUuid)
             // verify required parameter 'staffCreate' is not null or undefined
             assertParamExists('updateStaffStaffStaffUuidPut', 'staffCreate', staffCreate)
-            const localVarPath = `/places/staff/{staff_uuid}`
+            const localVarPath = `/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

@@ -250,7 +250,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
         createPlacePlacesPost: async (placeBase: PlaceBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'placeBase' is not null or undefined
             assertParamExists('createPlacePlacesPost', 'placeBase', placeBase)
-            const localVarPath = `/places/places`;
+            const localVarPath = `/places`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -317,7 +317,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
         deletePlacePlacesPlaceUuidDelete: async (placeUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'placeUuid' is not null or undefined
             assertParamExists('deletePlacePlacesPlaceUuidDelete', 'placeUuid', placeUuid)
-            const localVarPath = `/places/places/{place_uuid}`
+            const localVarPath = `/places/{place_uuid}`
                 .replace(`{${"place_uuid"}}`, encodeURIComponent(String(placeUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -385,7 +385,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
         forwardGeocodingPlacesForwardGeocodingGet: async (searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'searchingPlace' is not null or undefined
             assertParamExists('forwardGeocodingPlacesForwardGeocodingGet', 'searchingPlace', searchingPlace)
-            const localVarPath = `/places/places/forward_geocoding`;
+            const localVarPath = `/places/forward_geocoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -461,7 +461,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
         getPlacePlacesPlaceUuidGet: async (placeUuid: string, withMeta?: boolean, withCatalog?: boolean, withReviews?: boolean, withSchedule?: boolean, withCollection?: boolean, withBlog?: boolean, withTags?: boolean, withCategories?: boolean, withCompany?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'placeUuid' is not null or undefined
             assertParamExists('getPlacePlacesPlaceUuidGet', 'placeUuid', placeUuid)
-            const localVarPath = `/places/places/{place_uuid}`
+            const localVarPath = `/places/{place_uuid}`
                 .replace(`{${"place_uuid"}}`, encodeURIComponent(String(placeUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -564,7 +564,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
             assertParamExists('reverseGeocodingPlacesReverseGeocodingGet', '_long', _long)
             // verify required parameter 'lat' is not null or undefined
             assertParamExists('reverseGeocodingPlacesReverseGeocodingGet', 'lat', lat)
-            const localVarPath = `/places/places/reverse_geocoding`;
+            const localVarPath = `/places/reverse_geocoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -626,7 +626,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @throws {RequiredError}
          */
         searchPlacesByAreaPlacesSearchLocationGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/places/search/location`;
+            const localVarPath = `/places/search/location`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -667,7 +667,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @throws {RequiredError}
          */
         searchPlacesBySearchStringPlacesSearchGet: async (searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/places/search`;
+            const localVarPath = `/places/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -773,7 +773,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @throws {RequiredError}
          */
         searchPlacesPlacesGet: async (projectUuid?: string, name?: string, addressLine1?: string, addressLine2?: string, city?: string, provinceState?: string, country?: string, postalZipCode?: string, lat?: string, lng?: string, email?: string, isPublic?: boolean, isDeleted?: boolean, withCompany?: boolean, withMeta?: boolean, withCatalog?: boolean, withReviews?: boolean, withSchedule?: boolean, withCollection?: boolean, withBlog?: boolean, withTags?: boolean, withCategories?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/places`;
+            const localVarPath = `/places`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -943,7 +943,7 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
             assertParamExists('updatePlacePlacesPlaceUuidPut', 'placeUuid', placeUuid)
             // verify required parameter 'placeBase' is not null or undefined
             assertParamExists('updatePlacePlacesPlaceUuidPut', 'placeBase', placeBase)
-            const localVarPath = `/places/places/{place_uuid}`
+            const localVarPath = `/places/{place_uuid}`
                 .replace(`{${"place_uuid"}}`, encodeURIComponent(String(placeUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

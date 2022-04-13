@@ -250,7 +250,7 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
         createNote: async (noteBase: NoteBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteBase' is not null or undefined
             assertParamExists('createNote', 'noteBase', noteBase)
-            const localVarPath = `/notes/notes/notes`;
+            const localVarPath = `/notes/notes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -317,7 +317,7 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
         deleteNote: async (noteId: string, method?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteId' is not null or undefined
             assertParamExists('deleteNote', 'noteId', noteId)
-            const localVarPath = `/notes/notes/notes/{note_id}`
+            const localVarPath = `/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -387,7 +387,7 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
         getNote: async (noteId: string, history?: number, historyContent?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'noteId' is not null or undefined
             assertParamExists('getNote', 'noteId', noteId)
-            const localVarPath = `/notes/notes/notes/{note_id}`
+            const localVarPath = `/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -462,7 +462,7 @@ export const NotesApiAxiosParamCreator = function (configuration?: Configuration
             assertParamExists('updateNote', 'noteId', noteId)
             // verify required parameter 'noteBase' is not null or undefined
             assertParamExists('updateNote', 'noteBase', noteBase)
-            const localVarPath = `/notes/notes/notes/{note_id}`
+            const localVarPath = `/notes/notes/{note_id}`
                 .replace(`{${"note_id"}}`, encodeURIComponent(String(noteId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

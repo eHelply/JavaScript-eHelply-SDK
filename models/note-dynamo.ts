@@ -229,10 +229,10 @@ export interface NoteDynamo {
     'uuid': string;
     /**
      * 
-     * @type {any | string}
+     * @type {any}
      * @memberof NoteDynamo
      */
-    'content'?: any | string;
+    'content'?: any;
     /**
      * 
      * @type {string}

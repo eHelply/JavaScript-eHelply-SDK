@@ -250,7 +250,7 @@ export const TagApiAxiosParamCreator = function (configuration?: Configuration) 
         createTagTagsPost: async (tagBase: TagBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'tagBase' is not null or undefined
             assertParamExists('createTagTagsPost', 'tagBase', tagBase)
-            const localVarPath = `/places/tags`;
+            const localVarPath = `/tags`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -316,7 +316,7 @@ export const TagApiAxiosParamCreator = function (configuration?: Configuration) 
         deleteTagTagsTagUuidDelete: async (tagUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'tagUuid' is not null or undefined
             assertParamExists('deleteTagTagsTagUuidDelete', 'tagUuid', tagUuid)
-            const localVarPath = `/places/tags/{tag_uuid}`
+            const localVarPath = `/tags/{tag_uuid}`
                 .replace(`{${"tag_uuid"}}`, encodeURIComponent(String(tagUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -380,7 +380,7 @@ export const TagApiAxiosParamCreator = function (configuration?: Configuration) 
         getTagTagsTagUuidGet: async (tagUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'tagUuid' is not null or undefined
             assertParamExists('getTagTagsTagUuidGet', 'tagUuid', tagUuid)
-            const localVarPath = `/places/tags/{tag_uuid}`
+            const localVarPath = `/tags/{tag_uuid}`
                 .replace(`{${"tag_uuid"}}`, encodeURIComponent(String(tagUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -447,7 +447,7 @@ export const TagApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          */
         searchTagsTagsGet: async (projectUuid?: string, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/tags`;
+            const localVarPath = `/tags`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -537,7 +537,7 @@ export const TagApiAxiosParamCreator = function (configuration?: Configuration) 
             assertParamExists('updateTagTagsTagUuidPut', 'tagUuid', tagUuid)
             // verify required parameter 'tagBase' is not null or undefined
             assertParamExists('updateTagTagsTagUuidPut', 'tagBase', tagBase)
-            const localVarPath = `/places/tags/{tag_uuid}`
+            const localVarPath = `/tags/{tag_uuid}`
                 .replace(`{${"tag_uuid"}}`, encodeURIComponent(String(tagUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

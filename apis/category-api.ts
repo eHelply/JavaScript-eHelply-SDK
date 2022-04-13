@@ -250,7 +250,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
         createCategoryCategoriesPost: async (categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryBase' is not null or undefined
             assertParamExists('createCategoryCategoriesPost', 'categoryBase', categoryBase)
-            const localVarPath = `/places/categories`;
+            const localVarPath = `/categories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -316,7 +316,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
         deleteCategoryCategoriesCategoryUuidDelete: async (categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryUuid' is not null or undefined
             assertParamExists('deleteCategoryCategoriesCategoryUuidDelete', 'categoryUuid', categoryUuid)
-            const localVarPath = `/places/categories/{category_uuid}`
+            const localVarPath = `/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -381,7 +381,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
         getCategoryCategoriesCategoryUuidGet: async (categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryUuid' is not null or undefined
             assertParamExists('getCategoryCategoriesCategoryUuidGet', 'categoryUuid', categoryUuid)
-            const localVarPath = `/places/categories/{category_uuid}`
+            const localVarPath = `/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -453,7 +453,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @throws {RequiredError}
          */
         searchCategoriesCategoriesGet: async (projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/categories`;
+            const localVarPath = `/categories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -547,7 +547,7 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
             assertParamExists('updateCategoryCategoriesCategoryUuidPut', 'categoryUuid', categoryUuid)
             // verify required parameter 'categoryBase' is not null or undefined
             assertParamExists('updateCategoryCategoriesCategoryUuidPut', 'categoryBase', categoryBase)
-            const localVarPath = `/places/categories/{category_uuid}`
+            const localVarPath = `/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
