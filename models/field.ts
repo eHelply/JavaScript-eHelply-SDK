@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.53
+ * eHelply SDK - 1.1.54
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.53
+ * The version of the OpenAPI document: 1.1.54
  *
  * Do not edit the class manually.
  *
@@ -213,19 +213,54 @@
  */
 
 
-import { MetaCreate } from './meta-create';
 
 /**
- * 
+ * Field
  * @export
- * @interface BodyUpdateMetaFromUuidMetaMetaMetaUuidPut
+ * @interface Field
  */
-export interface BodyUpdateMetaFromUuidMetaMetaMetaUuidPut {
+export interface Field {
     /**
      * 
-     * @type {MetaCreate}
-     * @memberof BodyUpdateMetaFromUuidMetaMetaMetaUuidPut
+     * @type {object}
+     * @memberof Field
      */
-    'meta': MetaCreate;
+    'type'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof Field
+     */
+    'placeholder'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof Field
+     */
+    'validations'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof Field
+     */
+    'hint'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Field
+     */
+    'icon'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Field
+     */
+    'label'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof Field
+     */
+    'options'?: object;
 }
 
