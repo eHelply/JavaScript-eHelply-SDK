@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.65
+ * eHelply SDK - 1.1.66
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.65
+ * The version of the OpenAPI document: 1.1.66
  *
  * Do not edit the class manually.
  *
@@ -218,6 +218,7 @@ export * from './apis/auth-api';
 export * from './apis/billing-api';
 export * from './apis/category-api';
 export * from './apis/companies-api';
+export * from './apis/default-api';
 export * from './apis/logging-api';
 export * from './apis/meta-api';
 export * from './apis/monitor-api';

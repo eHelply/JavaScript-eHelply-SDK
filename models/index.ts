@@ -6,6 +6,8 @@ export * from './alarm-ignore';
 export * from './alarm-note';
 export * from './alarm-terminate';
 export * from './alarm-ticket';
+export * from './appointment-base';
+export * from './appointment-response';
 export * from './attach-payment-to-project';
 export * from './basic-meta';
 export * from './basic-meta-create';

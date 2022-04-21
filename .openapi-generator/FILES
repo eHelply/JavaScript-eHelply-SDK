@@ -7,6 +7,7 @@ apis/auth-api.ts
 apis/billing-api.ts
 apis/category-api.ts
 apis/companies-api.ts
+apis/default-api.ts
 apis/logging-api.ts
 apis/meta-api.ts
 apis/monitor-api.ts
@@ -31,6 +32,8 @@ models/alarm-ignore.ts
 models/alarm-note.ts
 models/alarm-terminate.ts
 models/alarm-ticket.ts
+models/appointment-base.ts
+models/appointment-response.ts
 models/attach-payment-to-project.ts
 models/basic-meta-create.ts
 models/basic-meta.ts

@@ -213,6 +213,90 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface AppointmentBase
+ */
+export interface AppointmentBase {
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'project_uuid': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'place_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'review_group_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'expected_finish_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'expected_start_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'actual_start_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'actual_finish_at'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AppointmentBase
+     */
+    'products'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'meta_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'cancellation_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'cancellation_reason'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentBase
+     */
+    'cancellation_entity_uuid'?: string;
+}
+

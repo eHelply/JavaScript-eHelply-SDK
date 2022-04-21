@@ -213,6 +213,114 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface AppointmentResponse
+ */
+export interface AppointmentResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'project_uuid': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'place_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'review_group_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'expected_finish_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'expected_start_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'actual_start_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'actual_finish_at'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AppointmentResponse
+     */
+    'products'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'meta_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'cancellation_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'cancellation_reason'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'cancellation_entity_uuid'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'uuid': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'updated_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppointmentResponse
+     */
+    'deleted_at'?: string;
+}
+
