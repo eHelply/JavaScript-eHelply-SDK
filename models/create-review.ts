@@ -215,82 +215,28 @@
 
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface CreateReview
  */
-export interface UserSignup {
+export interface CreateReview {
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateReview
+     */
+    'rating': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateReview
+     */
+    'max_rating': number;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CreateReview
      */
-    'username': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'password': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'first_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'last_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'phone_number': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'country': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'review_text': string;
 }
 

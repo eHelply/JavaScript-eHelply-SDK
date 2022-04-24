@@ -215,82 +215,34 @@
 
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface CatalogBase
  */
-export interface UserSignup {
+export interface CatalogBase {
+    /**
+     * 
+     * @type {object}
+     * @memberof CatalogBase
+     */
+    'meta_data'?: object;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogBase
      */
-    'username': string;
+    'name'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserSignup
+     * @type {object}
+     * @memberof CatalogBase
      */
-    'password': string;
+    'featured'?: object;
     /**
      * 
-     * @type {string}
-     * @memberof UserSignup
+     * @type {object}
+     * @memberof CatalogBase
      */
-    'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'first_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'last_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'phone_number': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'country': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'sub_catalogs'?: object;
 }
 

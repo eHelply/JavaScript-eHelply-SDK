@@ -50,6 +50,8 @@ models/body-register-service-monitor-services-post.ts
 models/body-terminate-alarm-monitor-services-service-stages-stage-alarms-alarm-uuid-terminate-post.ts
 models/body-trigger-alarm-monitor-services-service-stages-stage-alarms-post.ts
 models/body-verify-key-security-keys-verify-post.ts
+models/catalog-base.ts
+models/catalog-return.ts
 models/category-base.ts
 models/category-db.ts
 models/company-base.ts
@@ -58,6 +60,7 @@ models/contact-base.ts
 models/contact-response.ts
 models/contact.ts
 models/create-key-response.ts
+models/create-review.ts
 models/create-ticket.ts
 models/dates-meta.ts
 models/detailed-meta-create.ts
@@ -82,6 +85,10 @@ models/payment-method-response.ts
 models/payment.ts
 models/place-base.ts
 models/place-response.ts
+models/product-base.ts
+models/product-return.ts
+models/products-httpvalidation-error.ts
+models/products-validation-error.ts
 models/projects-project-create.ts
 models/projects-project-get.ts
 models/projects-project-member-db.ts
@@ -106,6 +113,7 @@ models/tag-base.ts
 models/tag-db.ts
 models/ticket-response.ts
 models/tickets-response.ts
+models/update-review.ts
 models/user-confirmation.ts
 models/user-email.ts
 models/user-flags.ts

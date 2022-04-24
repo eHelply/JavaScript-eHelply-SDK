@@ -215,82 +215,52 @@
 
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface ProductBase
  */
-export interface UserSignup {
+export interface ProductBase {
+    /**
+     * 
+     * @type {object}
+     * @memberof ProductBase
+     */
+    'meta_data'?: object;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductBase
      */
-    'username': string;
+    'collection_uuid'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductBase
      */
-    'password': string;
+    'review_group_uuid'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ProductBase
+     */
+    'addons'?: Array<string>;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductBase
      */
-    'email': string;
+    'name'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserSignup
+     * @type {number}
+     * @memberof ProductBase
      */
-    'first_name': string;
+    'price': number;
     /**
      * 
-     * @type {string}
-     * @memberof UserSignup
+     * @type {number}
+     * @memberof ProductBase
      */
-    'last_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'phone_number': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'country': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'quantity_for_public': number;
 }
 

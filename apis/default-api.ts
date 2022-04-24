@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.66
+ * eHelply SDK - 1.1.67
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.66
+ * The version of the OpenAPI document: 1.1.67
  *
  * Do not edit the class manually.
  *
@@ -225,7 +225,23 @@ import { AppointmentBase } from '../models';
 // @ts-ignore
 import { AppointmentResponse } from '../models';
 // @ts-ignore
+import { CatalogBase } from '../models';
+// @ts-ignore
+import { CatalogReturn } from '../models';
+// @ts-ignore
+import { CreateReview } from '../models';
+// @ts-ignore
 import { HTTPValidationError } from '../models';
+// @ts-ignore
+import { Page } from '../models';
+// @ts-ignore
+import { ProductBase } from '../models';
+// @ts-ignore
+import { ProductReturn } from '../models';
+// @ts-ignore
+import { ProductsHTTPValidationError } from '../models';
+// @ts-ignore
+import { UpdateReview } from '../models';
 /**
  * DefaultApi - axios parameter creator
  * @export
@@ -254,6 +270,74 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarPath = `/appointments/{appointment_uuid}/entities/{entity_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Attach Product To Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachProductToCatalog: async (catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('attachProductToCatalog', 'catalogUuid', catalogUuid)
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('attachProductToCatalog', 'productUuid', productUuid)
+            const localVarPath = `/catalogs/{catalog_uuid}/products/{product_uuid}`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)))
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -368,6 +452,212 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Create Catalog
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createCatalog: async (catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogBase' is not null or undefined
+            assertParamExists('createCatalog', 'catalogBase', catalogBase)
+            const localVarPath = `/catalogs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(catalogBase, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create Product
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProduct: async (productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productBase' is not null or undefined
+            assertParamExists('createProduct', 'productBase', productBase)
+            const localVarPath = `/products`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(productBase, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {CreateReview} createReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createReview: async (entityType: string, entityUuid: string, createReview: CreateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityType' is not null or undefined
+            assertParamExists('createReview', 'entityType', entityType)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('createReview', 'entityUuid', entityUuid)
+            // verify required parameter 'createReview' is not null or undefined
+            assertParamExists('createReview', 'createReview', createReview)
+            const localVarPath = `/reviews/types/{entity_type}/entities/{entity_uuid}`
+                .replace(`{${"entity_type"}}`, encodeURIComponent(String(entityType)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createReview, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Delete Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -384,6 +674,206 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('deleteAppointment', 'appointmentUuid', appointmentUuid)
             const localVarPath = `/appointments/{appointment_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete Catalog
+         * @param {string} catalogUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteCatalog: async (catalogUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('deleteCatalog', 'catalogUuid', catalogUuid)
+            const localVarPath = `/catalogs/{catalog_uuid}`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete Product
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct: async (productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('deleteProduct', 'productUuid', productUuid)
+            const localVarPath = `/products/{product_uuid}`
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteReview: async (entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityType' is not null or undefined
+            assertParamExists('deleteReview', 'entityType', entityType)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('deleteReview', 'entityUuid', entityUuid)
+            // verify required parameter 'reviewUuid' is not null or undefined
+            assertParamExists('deleteReview', 'reviewUuid', reviewUuid)
+            const localVarPath = `/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`
+                .replace(`{${"entity_type"}}`, encodeURIComponent(String(entityType)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
+                .replace(`{${"review_uuid"}}`, encodeURIComponent(String(reviewUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -500,6 +990,74 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Detach Product From Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachProductFromCatalog: async (catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('detachProductFromCatalog', 'catalogUuid', catalogUuid)
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('detachProductFromCatalog', 'productUuid', productUuid)
+            const localVarPath = `/catalogs/{catalog_uuid}/products/{product_uuid}`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)))
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -516,6 +1074,221 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getAppointment', 'appointmentUuid', appointmentUuid)
             const localVarPath = `/appointments/{appointment_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get Catalog
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCatalog: async (catalogUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('getCatalog', 'catalogUuid', catalogUuid)
+            const localVarPath = `/catalogs/{catalog_uuid}`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get Product
+         * @param {string} productUuid 
+         * @param {boolean} [withAddons] 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProduct: async (productUuid: string, withAddons?: boolean, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('getProduct', 'productUuid', productUuid)
+            const localVarPath = `/products/{product_uuid}`
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withAddons !== undefined) {
+                localVarQueryParameter['with_addons'] = withAddons;
+            }
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getReview: async (entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityType' is not null or undefined
+            assertParamExists('getReview', 'entityType', entityType)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('getReview', 'entityUuid', entityUuid)
+            // verify required parameter 'reviewUuid' is not null or undefined
+            assertParamExists('getReview', 'reviewUuid', reviewUuid)
+            const localVarPath = `/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`
+                .replace(`{${"entity_type"}}`, encodeURIComponent(String(entityType)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
+                .replace(`{${"review_uuid"}}`, encodeURIComponent(String(reviewUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -773,6 +1546,457 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Search Catalog Products
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchCatalogProducts: async (catalogUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('searchCatalogProducts', 'catalogUuid', catalogUuid)
+            const localVarPath = `/catalogs/{catalog_uuid}/products`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (sortOn !== undefined) {
+                localVarQueryParameter['sort_on'] = sortOn;
+            }
+
+            if (sortDesc !== undefined) {
+                localVarQueryParameter['sort_desc'] = sortDesc;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Search Catalogs
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchCatalogs: async (withMeta?: boolean, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/catalogs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (sortOn !== undefined) {
+                localVarQueryParameter['sort_on'] = sortOn;
+            }
+
+            if (sortDesc !== undefined) {
+                localVarQueryParameter['sort_desc'] = sortDesc;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Search Products
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {Array<string>} [addons] 
+         * @param {number} [priceMax] 
+         * @param {number} [priceMin] 
+         * @param {boolean} [quantityAvailable] 
+         * @param {boolean} [isDeleted] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchProduct: async (withMeta?: boolean, name?: string, addons?: Array<string>, priceMax?: number, priceMin?: number, quantityAvailable?: boolean, isDeleted?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/products`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (name !== undefined) {
+                localVarQueryParameter['name'] = name;
+            }
+
+            if (addons) {
+                localVarQueryParameter['addons'] = addons;
+            }
+
+            if (priceMax !== undefined) {
+                localVarQueryParameter['price_max'] = priceMax;
+            }
+
+            if (priceMin !== undefined) {
+                localVarQueryParameter['price_min'] = priceMin;
+            }
+
+            if (quantityAvailable !== undefined) {
+                localVarQueryParameter['quantity_available'] = quantityAvailable;
+            }
+
+            if (isDeleted !== undefined) {
+                localVarQueryParameter['is_deleted'] = isDeleted;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (sortOn !== undefined) {
+                localVarQueryParameter['sort_on'] = sortOn;
+            }
+
+            if (sortDesc !== undefined) {
+                localVarQueryParameter['sort_desc'] = sortDesc;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Search Product Catalogs
+         * @param {string} productUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchProductCatalog: async (productUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('searchProductCatalog', 'productUuid', productUuid)
+            const localVarPath = `/products/{product_uuid}/catalogs`
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (withMeta !== undefined) {
+                localVarQueryParameter['with_meta'] = withMeta;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (sortOn !== undefined) {
+                localVarQueryParameter['sort_on'] = sortOn;
+            }
+
+            if (sortDesc !== undefined) {
+                localVarQueryParameter['sort_desc'] = sortDesc;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Search Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchReviews: async (entityType: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityType' is not null or undefined
+            assertParamExists('searchReviews', 'entityType', entityType)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('searchReviews', 'entityUuid', entityUuid)
+            const localVarPath = `/reviews/types/{entity_type}/entities/{entity_uuid}`
+                .replace(`{${"entity_type"}}`, encodeURIComponent(String(entityType)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update Appointment
          * @param {string} appointmentUuid 
          * @param {AppointmentBase} appointmentBase 
@@ -841,6 +2065,224 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update Catalog
+         * @param {string} catalogUuid 
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCatalog: async (catalogUuid: string, catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'catalogUuid' is not null or undefined
+            assertParamExists('updateCatalog', 'catalogUuid', catalogUuid)
+            // verify required parameter 'catalogBase' is not null or undefined
+            assertParamExists('updateCatalog', 'catalogBase', catalogBase)
+            const localVarPath = `/catalogs/{catalog_uuid}`
+                .replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(catalogUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(catalogBase, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update Product
+         * @param {string} productUuid 
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProduct: async (productUuid: string, productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productUuid' is not null or undefined
+            assertParamExists('updateProduct', 'productUuid', productUuid)
+            // verify required parameter 'productBase' is not null or undefined
+            assertParamExists('updateProduct', 'productBase', productBase)
+            const localVarPath = `/products/{product_uuid}`
+                .replace(`{${"product_uuid"}}`, encodeURIComponent(String(productUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(productBase, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {UpdateReview} updateReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateReview: async (entityType: string, entityUuid: string, reviewUuid: string, updateReview: UpdateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityType' is not null or undefined
+            assertParamExists('updateReview', 'entityType', entityType)
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('updateReview', 'entityUuid', entityUuid)
+            // verify required parameter 'reviewUuid' is not null or undefined
+            assertParamExists('updateReview', 'reviewUuid', reviewUuid)
+            // verify required parameter 'updateReview' is not null or undefined
+            assertParamExists('updateReview', 'updateReview', updateReview)
+            const localVarPath = `/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`
+                .replace(`{${"entity_type"}}`, encodeURIComponent(String(entityType)))
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)))
+                .replace(`{${"review_uuid"}}`, encodeURIComponent(String(reviewUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateReview, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -871,6 +2313,24 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Attach Product To Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async attachProductToCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachProductToCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Create Appointment
          * @param {AppointmentBase} appointmentBase 
          * @param {string} [xAccessToken] 
@@ -888,6 +2348,59 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Create Catalog
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createCatalog(catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CatalogReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createCatalog(catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Create Product
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createProduct(productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createProduct(productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Create Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {CreateReview} createReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createReview(entityType: string, entityUuid: string, createReview: CreateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createReview(entityType, entityUuid, createReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Delete Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -901,6 +2414,59 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete Catalog
+         * @param {string} catalogUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteCatalog(catalogUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCatalog(catalogUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete Product
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteProduct(productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProduct(productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -923,6 +2489,24 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Detach Product From Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async detachProductFromCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.detachProductFromCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Get Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -936,6 +2520,62 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async getAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AppointmentResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get Catalog
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCatalog(catalogUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CatalogReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCatalog(catalogUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get Product
+         * @param {string} productUuid 
+         * @param {boolean} [withAddons] 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getProduct(productUuid: string, withAddons?: boolean, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getProduct(productUuid, withAddons, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -990,6 +2630,117 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Search Catalog Products
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchCatalogProducts(catalogUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchCatalogProducts(catalogUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Search Catalogs
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchCatalogs(withMeta?: boolean, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchCatalogs(withMeta, name, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Search Products
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {Array<string>} [addons] 
+         * @param {number} [priceMax] 
+         * @param {number} [priceMin] 
+         * @param {boolean} [quantityAvailable] 
+         * @param {boolean} [isDeleted] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchProduct(withMeta?: boolean, name?: string, addons?: Array<string>, priceMax?: number, priceMin?: number, quantityAvailable?: boolean, isDeleted?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchProduct(withMeta, name, addons, priceMax, priceMin, quantityAvailable, isDeleted, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Search Product Catalogs
+         * @param {string} productUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchProductCatalog(productUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchProductCatalog(productUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Search Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async searchReviews(entityType: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchReviews(entityType, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Update Appointment
          * @param {string} appointmentUuid 
          * @param {AppointmentBase} appointmentBase 
@@ -1004,6 +2755,62 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async updateAppointment(appointmentUuid: string, appointmentBase: AppointmentBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AppointmentResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateAppointment(appointmentUuid, appointmentBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update Catalog
+         * @param {string} catalogUuid 
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateCatalog(catalogUuid: string, catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CatalogReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateCatalog(catalogUuid, catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update Product
+         * @param {string} productUuid 
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateProduct(productUuid: string, productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductReturn>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProduct(productUuid, productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {UpdateReview} updateReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateReview(entityType: string, entityUuid: string, reviewUuid: string, updateReview: UpdateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateReview(entityType, entityUuid, reviewUuid, updateReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1035,6 +2842,23 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Attach Product To Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachProductToCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.attachProductToCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Create Appointment
          * @param {AppointmentBase} appointmentBase 
          * @param {string} [xAccessToken] 
@@ -1051,6 +2875,56 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Create Catalog
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createCatalog(catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CatalogReturn> {
+            return localVarFp.createCatalog(catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create Product
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProduct(productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProductReturn> {
+            return localVarFp.createProduct(productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Create Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {CreateReview} createReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createReview(entityType: string, entityUuid: string, createReview: CreateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.createReview(entityType, entityUuid, createReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Delete Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -1064,6 +2938,56 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
             return localVarFp.deleteAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete Catalog
+         * @param {string} catalogUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteCatalog(catalogUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<boolean> {
+            return localVarFp.deleteCatalog(catalogUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete Product
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProduct(productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<boolean> {
+            return localVarFp.deleteProduct(productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1084,6 +3008,23 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Detach Product From Catalog
+         * @param {string} catalogUuid 
+         * @param {string} productUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachProductFromCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.detachProductFromCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get Appointment
          * @param {string} appointmentUuid 
          * @param {string} [xAccessToken] 
@@ -1097,6 +3038,59 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<AppointmentResponse> {
             return localVarFp.getAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get Catalog
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCatalog(catalogUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CatalogReturn> {
+            return localVarFp.getCatalog(catalogUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get Product
+         * @param {string} productUuid 
+         * @param {boolean} [withAddons] 
+         * @param {boolean} [withMeta] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProduct(productUuid: string, withAddons?: boolean, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProductReturn> {
+            return localVarFp.getProduct(productUuid, withAddons, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.getReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1148,6 +3142,112 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Search Catalog Products
+         * @param {string} catalogUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchCatalogProducts(catalogUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchCatalogProducts(catalogUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Search Catalogs
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchCatalogs(withMeta?: boolean, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchCatalogs(withMeta, name, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Search Products
+         * @param {boolean} [withMeta] 
+         * @param {string} [name] 
+         * @param {Array<string>} [addons] 
+         * @param {number} [priceMax] 
+         * @param {number} [priceMin] 
+         * @param {boolean} [quantityAvailable] 
+         * @param {boolean} [isDeleted] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchProduct(withMeta?: boolean, name?: string, addons?: Array<string>, priceMax?: number, priceMin?: number, quantityAvailable?: boolean, isDeleted?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchProduct(withMeta, name, addons, priceMax, priceMin, quantityAvailable, isDeleted, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Search Product Catalogs
+         * @param {string} productUuid 
+         * @param {boolean} [withMeta] 
+         * @param {number} [page] 
+         * @param {number} [pageSize] 
+         * @param {string} [sortOn] 
+         * @param {boolean} [sortDesc] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchProductCatalog(productUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchProductCatalog(productUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Search Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchReviews(entityType: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.searchReviews(entityType, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update Appointment
          * @param {string} appointmentUuid 
          * @param {AppointmentBase} appointmentBase 
@@ -1162,6 +3262,59 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         updateAppointment(appointmentUuid: string, appointmentBase: AppointmentBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<AppointmentResponse> {
             return localVarFp.updateAppointment(appointmentUuid, appointmentBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update Catalog
+         * @param {string} catalogUuid 
+         * @param {CatalogBase} catalogBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCatalog(catalogUuid: string, catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CatalogReturn> {
+            return localVarFp.updateCatalog(catalogUuid, catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update Product
+         * @param {string} productUuid 
+         * @param {ProductBase} productBase 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProduct(productUuid: string, productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<ProductReturn> {
+            return localVarFp.updateProduct(productUuid, productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update Review
+         * @param {string} entityType 
+         * @param {string} entityUuid 
+         * @param {string} reviewUuid 
+         * @param {UpdateReview} updateReview 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateReview(entityType: string, entityUuid: string, reviewUuid: string, updateReview: UpdateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.updateReview(entityType, entityUuid, reviewUuid, updateReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1191,6 +3344,23 @@ export interface DefaultApiInterface {
 
     /**
      * 
+     * @summary Attach Product To Catalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    attachProductToCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Create Appointment
      * @param {AppointmentBase} appointmentBase 
      * @param {string} [xAccessToken] 
@@ -1207,6 +3377,56 @@ export interface DefaultApiInterface {
 
     /**
      * 
+     * @summary Create Catalog
+     * @param {CatalogBase} catalogBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    createCatalog(catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CatalogReturn>;
+
+    /**
+     * 
+     * @summary Create Product
+     * @param {ProductBase} productBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    createProduct(productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProductReturn>;
+
+    /**
+     * 
+     * @summary Create Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {CreateReview} createReview 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    createReview(entityType: string, entityUuid: string, createReview: CreateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Delete Appointment
      * @param {string} appointmentUuid 
      * @param {string} [xAccessToken] 
@@ -1220,6 +3440,56 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
+     * @summary Delete Catalog
+     * @param {string} catalogUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    deleteCatalog(catalogUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<boolean>;
+
+    /**
+     * 
+     * @summary Delete Product
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    deleteProduct(productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<boolean>;
+
+    /**
+     * 
+     * @summary Delete Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    deleteReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1240,6 +3510,23 @@ export interface DefaultApiInterface {
 
     /**
      * 
+     * @summary Detach Product From Catalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    detachProductFromCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Get Appointment
      * @param {string} appointmentUuid 
      * @param {string} [xAccessToken] 
@@ -1253,6 +3540,59 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<AppointmentResponse>;
+
+    /**
+     * 
+     * @summary Get Catalog
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getCatalog(catalogUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CatalogReturn>;
+
+    /**
+     * 
+     * @summary Get Product
+     * @param {string} productUuid 
+     * @param {boolean} [withAddons] 
+     * @param {boolean} [withMeta] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getProduct(productUuid: string, withAddons?: boolean, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProductReturn>;
+
+    /**
+     * 
+     * @summary Get Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * 
@@ -1304,6 +3644,112 @@ export interface DefaultApiInterface {
 
     /**
      * 
+     * @summary Search Catalog Products
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    searchCatalogProducts(catalogUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+
+    /**
+     * 
+     * @summary Search Catalogs
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    searchCatalogs(withMeta?: boolean, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+
+    /**
+     * 
+     * @summary Search Products
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
+     * @param {Array<string>} [addons] 
+     * @param {number} [priceMax] 
+     * @param {number} [priceMin] 
+     * @param {boolean} [quantityAvailable] 
+     * @param {boolean} [isDeleted] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    searchProduct(withMeta?: boolean, name?: string, addons?: Array<string>, priceMax?: number, priceMin?: number, quantityAvailable?: boolean, isDeleted?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+
+    /**
+     * 
+     * @summary Search Product Catalogs
+     * @param {string} productUuid 
+     * @param {boolean} [withMeta] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    searchProductCatalog(productUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+
+    /**
+     * 
+     * @summary Search Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    searchReviews(entityType: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Update Appointment
      * @param {string} appointmentUuid 
      * @param {AppointmentBase} appointmentBase 
@@ -1318,6 +3764,59 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     updateAppointment(appointmentUuid: string, appointmentBase: AppointmentBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<AppointmentResponse>;
+
+    /**
+     * 
+     * @summary Update Catalog
+     * @param {string} catalogUuid 
+     * @param {CatalogBase} catalogBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    updateCatalog(catalogUuid: string, catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CatalogReturn>;
+
+    /**
+     * 
+     * @summary Update Product
+     * @param {string} productUuid 
+     * @param {ProductBase} productBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    updateProduct(productUuid: string, productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<ProductReturn>;
+
+    /**
+     * 
+     * @summary Update Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {UpdateReview} updateReview 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    updateReview(entityType: string, entityUuid: string, reviewUuid: string, updateReview: UpdateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
 }
 
@@ -1349,6 +3848,25 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
+     * @summary Attach Product To Catalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public attachProductToCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).attachProductToCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Create Appointment
      * @param {AppointmentBase} appointmentBase 
      * @param {string} [xAccessToken] 
@@ -1367,6 +3885,62 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
+     * @summary Create Catalog
+     * @param {CatalogBase} catalogBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createCatalog(catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createCatalog(catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create Product
+     * @param {ProductBase} productBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createProduct(productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createProduct(productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Create Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {CreateReview} createReview 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createReview(entityType: string, entityUuid: string, createReview: CreateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createReview(entityType, entityUuid, createReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Delete Appointment
      * @param {string} appointmentUuid 
      * @param {string} [xAccessToken] 
@@ -1381,6 +3955,62 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete Catalog
+     * @param {string} catalogUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public deleteCatalog(catalogUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).deleteCatalog(catalogUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete Product
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public deleteProduct(productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).deleteProduct(productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public deleteReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).deleteReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1404,6 +4034,25 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
+     * @summary Detach Product From Catalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public detachProductFromCatalog(catalogUuid: string, productUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).detachProductFromCatalog(catalogUuid, productUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get Appointment
      * @param {string} appointmentUuid 
      * @param {string} [xAccessToken] 
@@ -1418,6 +4067,65 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Catalog
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getCatalog(catalogUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getCatalog(catalogUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Product
+     * @param {string} productUuid 
+     * @param {boolean} [withAddons] 
+     * @param {boolean} [withMeta] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getProduct(productUuid: string, withAddons?: boolean, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getProduct(productUuid, withAddons, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getReview(entityType: string, entityUuid: string, reviewUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getReview(entityType, entityUuid, reviewUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1474,6 +4182,122 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
+     * @summary Search Catalog Products
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public searchCatalogProducts(catalogUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchCatalogProducts(catalogUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Search Catalogs
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public searchCatalogs(withMeta?: boolean, name?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchCatalogs(withMeta, name, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Search Products
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
+     * @param {Array<string>} [addons] 
+     * @param {number} [priceMax] 
+     * @param {number} [priceMin] 
+     * @param {boolean} [quantityAvailable] 
+     * @param {boolean} [isDeleted] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public searchProduct(withMeta?: boolean, name?: string, addons?: Array<string>, priceMax?: number, priceMin?: number, quantityAvailable?: boolean, isDeleted?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchProduct(withMeta, name, addons, priceMax, priceMin, quantityAvailable, isDeleted, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Search Product Catalogs
+     * @param {string} productUuid 
+     * @param {boolean} [withMeta] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public searchProductCatalog(productUuid: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchProductCatalog(productUuid, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Search Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public searchReviews(entityType: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).searchReviews(entityType, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Update Appointment
      * @param {string} appointmentUuid 
      * @param {AppointmentBase} appointmentBase 
@@ -1489,5 +4313,64 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public updateAppointment(appointmentUuid: string, appointmentBase: AppointmentBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateAppointment(appointmentUuid, appointmentBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Catalog
+     * @param {string} catalogUuid 
+     * @param {CatalogBase} catalogBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updateCatalog(catalogUuid: string, catalogBase: CatalogBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateCatalog(catalogUuid, catalogBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Product
+     * @param {string} productUuid 
+     * @param {ProductBase} productBase 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updateProduct(productUuid: string, productBase: ProductBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateProduct(productUuid, productBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update Review
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {UpdateReview} updateReview 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updateReview(entityType: string, entityUuid: string, reviewUuid: string, updateReview: UpdateReview, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateReview(entityType, entityUuid, reviewUuid, updateReview, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }

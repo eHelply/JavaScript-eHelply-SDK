@@ -213,84 +213,19 @@
  */
 
 
+import { ProductsValidationError } from './products-validation-error';
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface ProductsHTTPValidationError
  */
-export interface UserSignup {
+export interface ProductsHTTPValidationError {
     /**
      * 
-     * @type {string}
-     * @memberof UserSignup
+     * @type {Array<ProductsValidationError>}
+     * @memberof ProductsHTTPValidationError
      */
-    'username': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'password': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'first_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'last_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'phone_number': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'country': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'detail'?: Array<ProductsValidationError>;
 }
 

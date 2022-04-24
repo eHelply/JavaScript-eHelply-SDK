@@ -215,82 +215,76 @@
 
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface CatalogReturn
  */
-export interface UserSignup {
+export interface CatalogReturn {
+    /**
+     * 
+     * @type {object}
+     * @memberof CatalogReturn
+     */
+    'meta_data'?: object;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'username': string;
+    'name'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CatalogReturn
+     */
+    'featured'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof CatalogReturn
+     */
+    'sub_catalogs'?: object;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'password': string;
+    'uuid': string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'email': string;
+    'meta_uuid'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'first_name': string;
+    'project_uuid': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CatalogReturn
+     */
+    'product_uuids'?: Array<string>;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'last_name': string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'phone_number': string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof CatalogReturn
      */
-    'country': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserSignup
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'deleted_at'?: string;
 }
 

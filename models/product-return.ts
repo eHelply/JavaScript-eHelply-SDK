@@ -215,82 +215,100 @@
 
 
 /**
- * User information used for user signup
+ * 
  * @export
- * @interface UserSignup
+ * @interface ProductReturn
  */
-export interface UserSignup {
+export interface ProductReturn {
+    /**
+     * 
+     * @type {object}
+     * @memberof ProductReturn
+     */
+    'meta_data'?: object;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'username': string;
+    'collection_uuid'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'password': string;
+    'review_group_uuid'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ProductReturn
+     */
+    'addons'?: Array<string>;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'email': string;
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProductReturn
+     */
+    'price': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProductReturn
+     */
+    'quantity_for_public': number;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'first_name': string;
+    'uuid': string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'last_name': string;
+    'meta_uuid'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'phone_number': string;
+    'project_uuid': string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'country': string;
+    'catalog_uuid'?: string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof ProductReturn
+     */
+    'addon_list'?: Array<object>;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'lat'?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'lng'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'verified_legal_terms'?: boolean;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof UserSignup
+     * @memberof ProductReturn
      */
-    'picture'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserSignup
-     */
-    'newsletters'?: boolean;
+    'deleted_at'?: string;
 }
 
