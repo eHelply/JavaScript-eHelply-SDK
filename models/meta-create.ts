@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.69
+ * eHelply SDK - 1.1.70
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.69
+ * The version of the OpenAPI document: 1.1.70
  *
  * Do not edit the class manually.
  *
@@ -216,6 +216,8 @@
 import { BasicMetaCreate } from './basic-meta-create';
 import { DetailedMetaCreate } from './detailed-meta-create';
 import { Field } from './field';
+import { MetaChildren } from './meta-children';
+import { MetaCustom } from './meta-custom';
 
 /**
  * Meta
@@ -237,10 +239,10 @@ export interface MetaCreate {
     'detailed'?: DetailedMetaCreate;
     /**
      * 
-     * @type {object}
+     * @type {MetaCustom}
      * @memberof MetaCreate
      */
-    'custom'?: object;
+    'custom'?: MetaCustom;
     /**
      * 
      * @type {Array<Field>}
@@ -249,10 +251,10 @@ export interface MetaCreate {
     'fields'?: Array<Field>;
     /**
      * 
-     * @type {Array<{ [key: string]: string; }>}
+     * @type {Array<MetaChildren>}
      * @memberof MetaCreate
      */
-    'children'?: Array<{ [key: string]: string; }>;
+    'children'?: Array<MetaChildren>;
     /**
      * 
      * @type {string}

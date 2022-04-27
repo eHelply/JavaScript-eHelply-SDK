@@ -213,62 +213,31 @@
  */
 
 
-import { Options } from './options';
-import { Validations } from './validations';
+import { CustomList } from './custom-list';
 
 /**
- * Field Dynamo
+ * 
  * @export
- * @interface FieldDynamo
+ * @interface MetaCustom
  */
-export interface FieldDynamo {
+export interface MetaCustom {
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof MetaCustom
      */
-    'uuid': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldDynamo
-     */
-    'type'?: number;
+    'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof MetaCustom
      */
-    'placeholder'?: string;
+    'description'?: string;
     /**
      * 
-     * @type {Validations}
-     * @memberof FieldDynamo
+     * @type {Array<CustomList>}
+     * @memberof MetaCustom
      */
-    'validations'?: Validations;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'hint'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'icon'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'label'?: string;
-    /**
-     * 
-     * @type {Options}
-     * @memberof FieldDynamo
-     */
-    'options'?: Options;
+    'list'?: Array<CustomList>;
 }
 

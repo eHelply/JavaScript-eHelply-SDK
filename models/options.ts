@@ -213,62 +213,97 @@
  */
 
 
-import { Options } from './options';
-import { Validations } from './validations';
+import { OptionGroup } from './option-group';
 
 /**
- * Field Dynamo
+ * 
  * @export
- * @interface FieldDynamo
+ * @interface Options
  */
-export interface FieldDynamo {
+export interface Options {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Options
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Options
      */
-    'uuid': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldDynamo
-     */
-    'type'?: number;
+    'label'?: string;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Options
+     */
+    'insetLabel'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
      */
     'placeholder'?: string;
     /**
      * 
-     * @type {Validations}
-     * @memberof FieldDynamo
-     */
-    'validations'?: Validations;
-    /**
-     * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Options
      */
     'hint'?: string;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Options
      */
     'icon'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof FieldDynamo
+     * @type {number}
+     * @memberof Options
      */
-    'label'?: string;
+    'maxLength'?: number;
     /**
      * 
-     * @type {Options}
-     * @memberof FieldDynamo
+     * @type {boolean}
+     * @memberof Options
      */
-    'options'?: Options;
+    'counter'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'caption'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'color'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'size'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'iconPosition'?: string;
+    /**
+     * 
+     * @type {Array<OptionGroup>}
+     * @memberof Options
+     */
+    'selections'?: Array<OptionGroup>;
 }
 

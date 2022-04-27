@@ -213,62 +213,30 @@
  */
 
 
-import { Options } from './options';
-import { Validations } from './validations';
 
 /**
- * Field Dynamo
+ * 
  * @export
- * @interface FieldDynamo
+ * @interface MetaChildren
  */
-export interface FieldDynamo {
+export interface MetaChildren {
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof MetaChildren
      */
-    'uuid': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FieldDynamo
-     */
-    'type'?: number;
+    'child_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof MetaChildren
      */
-    'placeholder'?: string;
-    /**
-     * 
-     * @type {Validations}
-     * @memberof FieldDynamo
-     */
-    'validations'?: Validations;
+    'child_description'?: string;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof MetaChildren
      */
-    'hint'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'icon'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'label'?: string;
-    /**
-     * 
-     * @type {Options}
-     * @memberof FieldDynamo
-     */
-    'options'?: Options;
+    'child_uuid'?: string;
 }
 

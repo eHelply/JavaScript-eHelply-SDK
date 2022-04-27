@@ -213,62 +213,30 @@
  */
 
 
-import { Options } from './options';
-import { Validations } from './validations';
 
 /**
- * Field Dynamo
+ * 
  * @export
- * @interface FieldDynamo
+ * @interface Selection
  */
-export interface FieldDynamo {
+export interface Selection {
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Selection
      */
-    'uuid': string;
+    'name'?: string;
     /**
      * 
      * @type {number}
-     * @memberof FieldDynamo
+     * @memberof Selection
      */
-    'type'?: number;
+    'value'?: number;
     /**
      * 
      * @type {string}
-     * @memberof FieldDynamo
-     */
-    'placeholder'?: string;
-    /**
-     * 
-     * @type {Validations}
-     * @memberof FieldDynamo
-     */
-    'validations'?: Validations;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'hint'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
+     * @memberof Selection
      */
     'icon'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'label'?: string;
-    /**
-     * 
-     * @type {Options}
-     * @memberof FieldDynamo
-     */
-    'options'?: Options;
 }
 

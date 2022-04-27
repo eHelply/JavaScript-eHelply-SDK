@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.69
+ * eHelply SDK - 1.1.70
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.69
+ * The version of the OpenAPI document: 1.1.70
  *
  * Do not edit the class manually.
  *
@@ -213,6 +213,8 @@
  */
 
 
+import { Options } from './options';
+import { Validations } from './validations';
 
 /**
  * Field
@@ -222,10 +224,16 @@
 export interface Field {
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof Field
      */
-    'type'?: object;
+    'uuid'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Field
+     */
+    'type'?: number;
     /**
      * 
      * @type {string}
@@ -234,10 +242,10 @@ export interface Field {
     'placeholder'?: string;
     /**
      * 
-     * @type {object}
+     * @type {Validations}
      * @memberof Field
      */
-    'validations'?: object;
+    'validations'?: Validations;
     /**
      * 
      * @type {string}
@@ -258,9 +266,9 @@ export interface Field {
     'label'?: string;
     /**
      * 
-     * @type {object}
+     * @type {Options}
      * @memberof Field
      */
-    'options'?: object;
+    'options'?: Options;
 }
 
