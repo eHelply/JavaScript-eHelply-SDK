@@ -67,6 +67,8 @@ models/note-base.ts
 models/note-dynamo-history.ts
 models/note-dynamo.ts
 models/note-meta.ts
+models/option-group.ts
+models/options.ts
 models/page.ts
 models/pagination.ts
 models/participant-create.ts
@@ -93,6 +95,7 @@ models/security-encryption-key-get.ts
 models/security-key-create.ts
 models/security-key-get.ts
 models/security-key-verify.ts
+models/selection.ts
 models/service-create.ts
 models/stripe-account-response.ts
 models/ticket-response.ts

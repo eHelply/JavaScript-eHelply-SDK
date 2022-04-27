@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.60
+ * eHelply SDK - 1.1.61
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.60
+ * The version of the OpenAPI document: 1.1.61
  *
  * Do not edit the class manually.
  *
@@ -213,6 +213,7 @@
  */
 
 
+import { Options } from './options';
 
 /**
  * Field Dynamo
@@ -222,10 +223,16 @@
 export interface FieldDynamo {
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof FieldDynamo
      */
-    'type'?: object;
+    'uuid': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FieldDynamo
+     */
+    'type'?: number;
     /**
      * 
      * @type {string}
@@ -258,15 +265,9 @@ export interface FieldDynamo {
     'label'?: string;
     /**
      * 
-     * @type {object}
+     * @type {Options}
      * @memberof FieldDynamo
      */
-    'options'?: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof FieldDynamo
-     */
-    'uuid': string;
+    'options'?: Options;
 }
 

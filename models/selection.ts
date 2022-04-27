@@ -217,56 +217,26 @@
 /**
  * 
  * @export
- * @interface ProjectsProjectUsageDB
+ * @interface Selection
  */
-export interface ProjectsProjectUsageDB {
+export interface Selection {
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Selection
      */
-    'uuid': string;
+    'name'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Selection
+     */
+    'value'?: number;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Selection
      */
-    'project_uuid': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'usage_key': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'year': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'month': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'quantity': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'estimated_cost': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'updated_at': string;
+    'icon'?: string;
 }
 

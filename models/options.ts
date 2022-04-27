@@ -213,60 +213,97 @@
  */
 
 
+import { OptionGroup } from './option-group';
 
 /**
  * 
  * @export
- * @interface ProjectsProjectUsageDB
+ * @interface Options
  */
-export interface ProjectsProjectUsageDB {
+export interface Options {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Options
+     */
+    'required'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Options
      */
-    'uuid': string;
+    'label'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Options
      */
-    'project_uuid': string;
+    'insetLabel'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Options
      */
-    'usage_key': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'year': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'month': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'quantity': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'estimated_cost': number;
+    'placeholder'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof Options
      */
-    'updated_at': string;
+    'hint'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'icon'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Options
+     */
+    'maxLength'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Options
+     */
+    'counter'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'caption'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'color'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'size'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Options
+     */
+    'iconPosition'?: string;
+    /**
+     * 
+     * @type {Array<OptionGroup>}
+     * @memberof Options
+     */
+    'selections'?: Array<OptionGroup>;
 }
 

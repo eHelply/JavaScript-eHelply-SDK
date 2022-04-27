@@ -213,60 +213,31 @@
  */
 
 
+import { Selection } from './selection';
 
 /**
  * 
  * @export
- * @interface ProjectsProjectUsageDB
+ * @interface OptionGroup
  */
-export interface ProjectsProjectUsageDB {
+export interface OptionGroup {
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof OptionGroup
      */
-    'uuid': string;
+    'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @memberof OptionGroup
      */
-    'project_uuid': string;
+    'type'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof ProjectsProjectUsageDB
+     * @type {Array<Selection>}
+     * @memberof OptionGroup
      */
-    'usage_key': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'year': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'month': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'quantity': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'estimated_cost': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProjectsProjectUsageDB
-     */
-    'updated_at': string;
+    'selections'?: Array<Selection>;
 }
 
