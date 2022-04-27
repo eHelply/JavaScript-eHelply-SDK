@@ -71,7 +71,9 @@ models/httpvalidation-error.ts
 models/index.ts
 models/meta-create.ts
 models/meta-dynamo.ts
+models/meta-httpvalidation-error.ts
 models/meta-slugger.ts
+models/meta-validation-error.ts
 models/note-base.ts
 models/note-dynamo-history.ts
 models/note-dynamo.ts
