@@ -217,14 +217,20 @@
 /**
  * 
  * @export
- * @interface AlarmAcknowledge
+ * @interface CustomList
  */
-export interface AlarmAcknowledge {
+export interface CustomList {
     /**
      * 
      * @type {string}
-     * @memberof AlarmAcknowledge
+     * @memberof CustomList
      */
-    'acknowledger_uuid': string;
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomList
+     */
+    'description'?: string;
 }
 

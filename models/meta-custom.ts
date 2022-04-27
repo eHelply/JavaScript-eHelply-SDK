@@ -213,18 +213,31 @@
  */
 
 
+import { CustomList } from './custom-list';
 
 /**
  * 
  * @export
- * @interface AlarmAcknowledge
+ * @interface MetaCustom
  */
-export interface AlarmAcknowledge {
+export interface MetaCustom {
     /**
      * 
      * @type {string}
-     * @memberof AlarmAcknowledge
+     * @memberof MetaCustom
      */
-    'acknowledger_uuid': string;
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaCustom
+     */
+    'description'?: string;
+    /**
+     * 
+     * @type {Array<CustomList>}
+     * @memberof MetaCustom
+     */
+    'list'?: Array<CustomList>;
 }
 

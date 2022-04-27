@@ -217,14 +217,26 @@
 /**
  * 
  * @export
- * @interface AlarmAcknowledge
+ * @interface MetaChildren
  */
-export interface AlarmAcknowledge {
+export interface MetaChildren {
     /**
      * 
      * @type {string}
-     * @memberof AlarmAcknowledge
+     * @memberof MetaChildren
      */
-    'acknowledger_uuid': string;
+    'child_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaChildren
+     */
+    'child_description'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaChildren
+     */
+    'child_uuid'?: string;
 }
 

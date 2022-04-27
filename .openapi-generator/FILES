@@ -51,6 +51,7 @@ models/contact.ts
 models/create-key-response.ts
 models/create-review.ts
 models/create-ticket.ts
+models/custom-list.ts
 models/dates-meta.ts
 models/detailed-meta-create.ts
 models/detailed-meta.ts
@@ -58,7 +59,9 @@ models/field-dynamo.ts
 models/field.ts
 models/httpvalidation-error.ts
 models/index.ts
+models/meta-children.ts
 models/meta-create.ts
+models/meta-custom.ts
 models/meta-dynamo.ts
 models/meta-httpvalidation-error.ts
 models/meta-slugger.ts
