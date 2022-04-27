@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.68
+ * eHelply SDK - 1.1.69
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.68
+ * The version of the OpenAPI document: 1.1.69
  *
  * Do not edit the class manually.
  *
@@ -249,10 +249,10 @@ export interface MetaCreate {
     'fields'?: Array<Field>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<{ [key: string]: string; }>}
      * @memberof MetaCreate
      */
-    'children'?: Array<object>;
+    'children'?: Array<{ [key: string]: string; }>;
     /**
      * 
      * @type {string}
