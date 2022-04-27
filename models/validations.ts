@@ -213,97 +213,18 @@
  */
 
 
-import { UserEmail } from './user-email';
 
 /**
- * Contains all fields required when doing a Participant GET but also has user fields (name, location, ect). This is what is returned from all participant endpoints.
+ * 
  * @export
- * @interface ParticipantUserReturn
+ * @interface Validations
  */
-export interface ParticipantUserReturn {
+export interface Validations {
     /**
      * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
+     * @type {Array<string>}
+     * @memberof Validations
      */
-    'uuid'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'user_uuid'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof ParticipantUserReturn
-     */
-    'participant_meta'?: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'last_name'?: string;
-    /**
-     * 
-     * @type {UserEmail}
-     * @memberof ParticipantUserReturn
-     */
-    'email'?: UserEmail;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'phone_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'country'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof ParticipantUserReturn
-     */
-    'gps_location'?: object;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'picture'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'last_login'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ParticipantUserReturn
-     */
-    'verified_legal_terms'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'date_created'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ParticipantUserReturn
-     */
-    'date_updated'?: string;
+    'value'?: Array<string>;
 }
 

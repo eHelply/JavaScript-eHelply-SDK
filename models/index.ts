@@ -93,3 +93,4 @@ export * from './user-signup-return';
 export * from './user-token-return';
 export * from './user-validations';
 export * from './validation-error';
+export * from './validations';
