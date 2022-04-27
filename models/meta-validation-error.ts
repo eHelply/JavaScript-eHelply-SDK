@@ -214,15 +214,29 @@
 
 
 
-export * from './apis/auth-api';
-export * from './apis/billing-api';
-export * from './apis/default-api';
-export * from './apis/logging-api';
-export * from './apis/meta-api';
-export * from './apis/monitor-api';
-export * from './apis/notes-api';
-export * from './apis/projects-api';
-export * from './apis/security-api';
-export * from './apis/support-api';
-export * from './apis/users-api';
+/**
+ * 
+ * @export
+ * @interface MetaValidationError
+ */
+export interface MetaValidationError {
+    /**
+     * 
+     * @type {Array<string | number>}
+     * @memberof MetaValidationError
+     */
+    'loc': Array<string | number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaValidationError
+     */
+    'msg': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MetaValidationError
+     */
+    'type': string;
+}
 
