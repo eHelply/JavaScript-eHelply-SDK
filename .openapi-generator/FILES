@@ -92,8 +92,6 @@ models/payment-method-response.ts
 models/payment.ts
 models/place-base.ts
 models/place-response.ts
-models/places-httpvalidation-error.ts
-models/places-validation-error.ts
 models/product-base.ts
 models/product-return.ts
 models/projects-project-create.ts

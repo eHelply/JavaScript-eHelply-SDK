@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.66
+ * eHelply SDK - 1.1.67
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.66
+ * The version of the OpenAPI document: 1.1.67
  *
  * Do not edit the class manually.
  *
@@ -225,9 +225,9 @@ import { CategoryBase } from '../models';
 // @ts-ignore
 import { CategoryDb } from '../models';
 // @ts-ignore
-import { Page } from '../models';
+import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { PlacesHTTPValidationError } from '../models';
+import { Page } from '../models';
 /**
  * CategoryApi - axios parameter creator
  * @export
@@ -247,10 +247,10 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCategoryCategoriesPost: async (categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createCategoryPlacesCategoriesPost: async (categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryBase' is not null or undefined
-            assertParamExists('createCategoryCategoriesPost', 'categoryBase', categoryBase)
-            const localVarPath = `/categories`;
+            assertParamExists('createCategoryPlacesCategoriesPost', 'categoryBase', categoryBase)
+            const localVarPath = `/places/categories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -313,10 +313,10 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteCategoryCategoriesCategoryUuidDelete: async (categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteCategoryPlacesCategoriesCategoryUuidDelete: async (categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryUuid' is not null or undefined
-            assertParamExists('deleteCategoryCategoriesCategoryUuidDelete', 'categoryUuid', categoryUuid)
-            const localVarPath = `/categories/{category_uuid}`
+            assertParamExists('deleteCategoryPlacesCategoriesCategoryUuidDelete', 'categoryUuid', categoryUuid)
+            const localVarPath = `/places/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -378,10 +378,10 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryCategoriesCategoryUuidGet: async (categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getCategoryPlacesCategoriesCategoryUuidGet: async (categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryUuid' is not null or undefined
-            assertParamExists('getCategoryCategoriesCategoryUuidGet', 'categoryUuid', categoryUuid)
-            const localVarPath = `/categories/{category_uuid}`
+            assertParamExists('getCategoryPlacesCategoriesCategoryUuidGet', 'categoryUuid', categoryUuid)
+            const localVarPath = `/places/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -452,8 +452,8 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchCategoriesCategoriesGet: async (projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/categories`;
+        searchCategoriesPlacesCategoriesGet: async (projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/places/categories`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -542,12 +542,12 @@ export const CategoryApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategoryCategoriesCategoryUuidPut: async (categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateCategoryPlacesCategoriesCategoryUuidPut: async (categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'categoryUuid' is not null or undefined
-            assertParamExists('updateCategoryCategoriesCategoryUuidPut', 'categoryUuid', categoryUuid)
+            assertParamExists('updateCategoryPlacesCategoriesCategoryUuidPut', 'categoryUuid', categoryUuid)
             // verify required parameter 'categoryBase' is not null or undefined
-            assertParamExists('updateCategoryCategoriesCategoryUuidPut', 'categoryBase', categoryBase)
-            const localVarPath = `/categories/{category_uuid}`
+            assertParamExists('updateCategoryPlacesCategoriesCategoryUuidPut', 'categoryBase', categoryBase)
+            const localVarPath = `/places/categories/{category_uuid}`
                 .replace(`{${"category_uuid"}}`, encodeURIComponent(String(categoryUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -621,8 +621,8 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createCategoryCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryDb>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createCategoryCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createCategoryPlacesCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryDb>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createCategoryPlacesCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -638,8 +638,8 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteCategoryCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCategoryCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -656,8 +656,8 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCategoryCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryBase>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCategoryCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryBase>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -679,8 +679,8 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchCategoriesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchCategoriesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async searchCategoriesPlacesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchCategoriesPlacesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -697,8 +697,8 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCategoryCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryBase>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateCategoryCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryBase>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -724,8 +724,8 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCategoryCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryDb> {
-            return localVarFp.createCategoryCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createCategoryPlacesCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryDb> {
+            return localVarFp.createCategoryPlacesCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes the category with the given ID and returns True if successful
@@ -740,8 +740,8 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteCategoryCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteCategoryCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Gets the category information given the category ID
@@ -757,8 +757,8 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCategoryCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryBase> {
-            return localVarFp.getCategoryCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryBase> {
+            return localVarFp.getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -779,8 +779,8 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchCategoriesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
-            return localVarFp.searchCategoriesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        searchCategoriesPlacesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchCategoriesPlacesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
@@ -796,8 +796,8 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategoryCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryBase> {
-            return localVarFp.updateCategoryCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<CategoryBase> {
+            return localVarFp.updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -822,7 +822,7 @@ export interface CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApiInterface
      */
-    createCategoryCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryDb>;
+    createCategoryPlacesCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryDb>;
 
     /**
      * Deletes the category with the given ID and returns True if successful
@@ -838,7 +838,7 @@ export interface CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApiInterface
      */
-    deleteCategoryCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Gets the category information given the category ID
@@ -855,7 +855,7 @@ export interface CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApiInterface
      */
-    getCategoryCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryBase>;
+    getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryBase>;
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -877,7 +877,7 @@ export interface CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApiInterface
      */
-    searchCategoriesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+    searchCategoriesPlacesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
 
     /**
      * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
@@ -894,7 +894,7 @@ export interface CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApiInterface
      */
-    updateCategoryCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryBase>;
+    updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<CategoryBase>;
 
 }
 
@@ -919,8 +919,8 @@ export class CategoryApi extends BaseAPI implements CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApi
      */
-    public createCategoryCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return CategoryApiFp(this.configuration).createCategoryCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createCategoryPlacesCategoriesPost(categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return CategoryApiFp(this.configuration).createCategoryPlacesCategoriesPost(categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -937,8 +937,8 @@ export class CategoryApi extends BaseAPI implements CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApi
      */
-    public deleteCategoryCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return CategoryApiFp(this.configuration).deleteCategoryCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return CategoryApiFp(this.configuration).deleteCategoryPlacesCategoriesCategoryUuidDelete(categoryUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -956,8 +956,8 @@ export class CategoryApi extends BaseAPI implements CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApi
      */
-    public getCategoryCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return CategoryApiFp(this.configuration).getCategoryCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid: string, withMeta?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return CategoryApiFp(this.configuration).getCategoryPlacesCategoriesCategoryUuidGet(categoryUuid, withMeta, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -980,8 +980,8 @@ export class CategoryApi extends BaseAPI implements CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApi
      */
-    public searchCategoriesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return CategoryApiFp(this.configuration).searchCategoriesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public searchCategoriesPlacesCategoriesGet(projectUuid?: string, name?: string, withMeta?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return CategoryApiFp(this.configuration).searchCategoriesPlacesCategoriesGet(projectUuid, name, withMeta, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -999,7 +999,7 @@ export class CategoryApi extends BaseAPI implements CategoryApiInterface {
      * @throws {RequiredError}
      * @memberof CategoryApi
      */
-    public updateCategoryCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return CategoryApiFp(this.configuration).updateCategoryCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid: string, categoryBase: CategoryBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return CategoryApiFp(this.configuration).updateCategoryPlacesCategoriesCategoryUuidPut(categoryUuid, categoryBase, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }

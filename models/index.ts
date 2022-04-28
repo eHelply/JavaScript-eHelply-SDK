@@ -65,8 +65,6 @@ export * from './payment';
 export * from './payment-method-response';
 export * from './place-base';
 export * from './place-response';
-export * from './places-httpvalidation-error';
-export * from './places-validation-error';
 export * from './product-base';
 export * from './product-return';
 export * from './projects-project-create';
