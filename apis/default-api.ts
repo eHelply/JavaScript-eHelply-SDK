@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.65
+ * eHelply SDK - 1.1.66
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.65
+ * The version of the OpenAPI document: 1.1.66
  *
  * Do not edit the class manually.
  *
@@ -239,8 +239,6 @@ import { ProductBase } from '../models';
 // @ts-ignore
 import { ProductReturn } from '../models';
 // @ts-ignore
-import { ProductsHTTPValidationError } from '../models';
-// @ts-ignore
 import { UpdateReview } from '../models';
 /**
  * DefaultApi - axios parameter creator
@@ -248,6 +246,85 @@ import { UpdateReview } from '../models';
  */
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Get Entities Appointments
+         * @param {string} entityUuid 
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {boolean} [includeCancelled] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appointmentssearchAppointmentEntities: async (entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'entityUuid' is not null or undefined
+            assertParamExists('appointmentssearchAppointmentEntities', 'entityUuid', entityUuid)
+            const localVarPath = `/appointments/entities/{entity_uuid}/appointments`
+                .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+            if (includeCancelled !== undefined) {
+                localVarQueryParameter['include_cancelled'] = includeCancelled;
+            }
+
+            if (xAccessToken !== undefined && xAccessToken !== null) {
+                localVarHeaderParameter['x-access-token'] = String(xAccessToken);
+            }
+
+            if (xSecretToken !== undefined && xSecretToken !== null) {
+                localVarHeaderParameter['x-secret-token'] = String(xSecretToken);
+            }
+
+            if (authorization !== undefined && authorization !== null) {
+                localVarHeaderParameter['authorization'] = String(authorization);
+            }
+
+            if (ehelplyActiveParticipant !== undefined && ehelplyActiveParticipant !== null) {
+                localVarHeaderParameter['ehelply-active-participant'] = String(ehelplyActiveParticipant);
+            }
+
+            if (ehelplyProject !== undefined && ehelplyProject !== null) {
+                localVarHeaderParameter['ehelply-project'] = String(ehelplyProject);
+            }
+
+            if (ehelplyData !== undefined && ehelplyData !== null) {
+                localVarHeaderParameter['ehelply-data'] = String(ehelplyData);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Attach Entity To Appointment
@@ -2295,6 +2372,26 @@ export const DefaultApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get Entities Appointments
+         * @param {string} entityUuid 
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {boolean} [includeCancelled] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async appointmentssearchAppointmentEntities(entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.appointmentssearchAppointmentEntities(entityUuid, startDate, endDate, includeCancelled, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Attach Entity To Appointment
          * @param {string} appointmentUuid 
          * @param {string} entityUuid 
@@ -2825,6 +2922,25 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @summary Get Entities Appointments
+         * @param {string} entityUuid 
+         * @param {string} [startDate] 
+         * @param {string} [endDate] 
+         * @param {boolean} [includeCancelled] 
+         * @param {string} [xAccessToken] 
+         * @param {string} [xSecretToken] 
+         * @param {string} [authorization] 
+         * @param {string} [ehelplyActiveParticipant] 
+         * @param {string} [ehelplyProject] 
+         * @param {string} [ehelplyData] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        appointmentssearchAppointmentEntities(entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.appointmentssearchAppointmentEntities(entityUuid, startDate, endDate, includeCancelled, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Attach Entity To Appointment
          * @param {string} appointmentUuid 
          * @param {string} entityUuid 
@@ -3327,6 +3443,25 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
 export interface DefaultApiInterface {
     /**
      * 
+     * @summary Get Entities Appointments
+     * @param {string} entityUuid 
+     * @param {string} [startDate] 
+     * @param {string} [endDate] 
+     * @param {boolean} [includeCancelled] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    appointmentssearchAppointmentEntities(entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+
+    /**
+     * 
      * @summary Attach Entity To Appointment
      * @param {string} appointmentUuid 
      * @param {string} entityUuid 
@@ -3827,6 +3962,27 @@ export interface DefaultApiInterface {
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI implements DefaultApiInterface {
+    /**
+     * 
+     * @summary Get Entities Appointments
+     * @param {string} entityUuid 
+     * @param {string} [startDate] 
+     * @param {string} [endDate] 
+     * @param {boolean} [includeCancelled] 
+     * @param {string} [xAccessToken] 
+     * @param {string} [xSecretToken] 
+     * @param {string} [authorization] 
+     * @param {string} [ehelplyActiveParticipant] 
+     * @param {string} [ehelplyProject] 
+     * @param {string} [ehelplyData] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public appointmentssearchAppointmentEntities(entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).appointmentssearchAppointmentEntities(entityUuid, startDate, endDate, includeCancelled, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Attach Entity To Appointment

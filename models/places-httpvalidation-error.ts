@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.65
+ * eHelply SDK - 1.1.66
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.65
+ * The version of the OpenAPI document: 1.1.66
  *
  * Do not edit the class manually.
  *
@@ -213,30 +213,19 @@
  */
 
 
+import { PlacesValidationError } from './places-validation-error';
 
 /**
  * 
  * @export
- * @interface MetaValidationError
+ * @interface PlacesHTTPValidationError
  */
-export interface MetaValidationError {
+export interface PlacesHTTPValidationError {
     /**
      * 
-     * @type {Array<string | number>}
-     * @memberof MetaValidationError
+     * @type {Array<PlacesValidationError>}
+     * @memberof PlacesHTTPValidationError
      */
-    'loc': Array<string | number>;
-    /**
-     * 
-     * @type {string}
-     * @memberof MetaValidationError
-     */
-    'msg': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MetaValidationError
-     */
-    'type': string;
+    'detail'?: Array<PlacesValidationError>;
 }
 

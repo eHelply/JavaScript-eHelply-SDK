@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.65
+ * eHelply SDK - 1.1.66
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.65
+ * The version of the OpenAPI document: 1.1.66
  *
  * Do not edit the class manually.
  *
@@ -221,13 +221,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
-// @ts-ignore
 import { NoteBase } from '../models';
 // @ts-ignore
 import { NoteDynamo } from '../models';
 // @ts-ignore
 import { NoteDynamoHistory } from '../models';
+// @ts-ignore
+import { NotesHTTPValidationError } from '../models';
 /**
  * NotesApi - axios parameter creator
  * @export

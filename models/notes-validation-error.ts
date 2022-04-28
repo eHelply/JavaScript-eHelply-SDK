@@ -213,6 +213,30 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface NotesValidationError
+ */
+export interface NotesValidationError {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof NotesValidationError
+     */
+    'loc': Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotesValidationError
+     */
+    'msg': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotesValidationError
+     */
+    'type': string;
+}
+

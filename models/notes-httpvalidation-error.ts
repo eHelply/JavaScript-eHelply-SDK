@@ -213,6 +213,19 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+import { NotesValidationError } from './notes-validation-error';
+
+/**
+ * 
+ * @export
+ * @interface NotesHTTPValidationError
+ */
+export interface NotesHTTPValidationError {
+    /**
+     * 
+     * @type {Array<NotesValidationError>}
+     * @memberof NotesHTTPValidationError
+     */
+    'detail'?: Array<NotesValidationError>;
+}
+

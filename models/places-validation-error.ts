@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.65
+ * eHelply SDK - 1.1.66
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.65
+ * The version of the OpenAPI document: 1.1.66
  *
  * Do not edit the class manually.
  *
@@ -213,19 +213,30 @@
  */
 
 
-import { ProductsValidationError } from './products-validation-error';
 
 /**
  * 
  * @export
- * @interface ProductsHTTPValidationError
+ * @interface PlacesValidationError
  */
-export interface ProductsHTTPValidationError {
+export interface PlacesValidationError {
     /**
      * 
-     * @type {Array<ProductsValidationError>}
-     * @memberof ProductsHTTPValidationError
+     * @type {Array<string>}
+     * @memberof PlacesValidationError
      */
-    'detail'?: Array<ProductsValidationError>;
+    'loc': Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlacesValidationError
+     */
+    'msg': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlacesValidationError
+     */
+    'type': string;
 }
 
