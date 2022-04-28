@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.71
+ * eHelply SDK - 1.1.72
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.71
+ * The version of the OpenAPI document: 1.1.72
  *
  * Do not edit the class manually.
  *
@@ -227,7 +227,7 @@ import { ContactResponse } from '../models';
 // @ts-ignore
 import { CreateTicket } from '../models';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
+import { SamHTTPValidationError } from '../models';
 // @ts-ignore
 import { TicketResponse } from '../models';
 // @ts-ignore

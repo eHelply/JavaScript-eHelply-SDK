@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.71
+ * eHelply SDK - 1.1.72
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.71
+ * The version of the OpenAPI document: 1.1.72
  *
  * Do not edit the class manually.
  *
@@ -221,8 +221,6 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
-// @ts-ignore
 import { Page } from '../models';
 // @ts-ignore
 import { ParticipantCreate } from '../models';
@@ -230,6 +228,8 @@ import { ParticipantCreate } from '../models';
 import { ParticipantUpdate } from '../models';
 // @ts-ignore
 import { ParticipantUserReturn } from '../models';
+// @ts-ignore
+import { SamHTTPValidationError } from '../models';
 // @ts-ignore
 import { User } from '../models';
 // @ts-ignore

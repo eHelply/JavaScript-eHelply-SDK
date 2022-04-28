@@ -213,25 +213,30 @@
  */
 
 
-import { Pagination } from './pagination';
 
 /**
- * Page state
+ * 
  * @export
- * @interface Page
+ * @interface PlacesValidationError
  */
-export interface Page {
+export interface PlacesValidationError {
     /**
      * 
-     * @type {Array<any>}
-     * @memberof Page
+     * @type {Array<string>}
+     * @memberof PlacesValidationError
      */
-    'items': Array<any>;
+    'loc': Array<string>;
     /**
      * 
-     * @type {Pagination}
-     * @memberof Page
+     * @type {string}
+     * @memberof PlacesValidationError
      */
-    'pagination': Pagination;
+    'msg': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlacesValidationError
+     */
+    'type': string;
 }
 

@@ -213,25 +213,19 @@
  */
 
 
-import { Pagination } from './pagination';
+import { NotesValidationError } from './notes-validation-error';
 
 /**
- * Page state
+ * 
  * @export
- * @interface Page
+ * @interface NotesHTTPValidationError
  */
-export interface Page {
+export interface NotesHTTPValidationError {
     /**
      * 
-     * @type {Array<any>}
-     * @memberof Page
+     * @type {Array<NotesValidationError>}
+     * @memberof NotesHTTPValidationError
      */
-    'items': Array<any>;
-    /**
-     * 
-     * @type {Pagination}
-     * @memberof Page
-     */
-    'pagination': Pagination;
+    'detail'?: Array<NotesValidationError>;
 }
 

@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.71
+ * eHelply SDK - 1.1.72
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.71
+ * The version of the OpenAPI document: 1.1.72
  *
  * Do not edit the class manually.
  *
@@ -225,9 +225,9 @@ import { BodyAttachPaymentToProjectBillingAttachPaymentToProjectPost } from '../
 // @ts-ignore
 import { BodyProcessPaymentBillingProcessPaymentPost } from '../models';
 // @ts-ignore
-import { HTTPValidationError } from '../models';
-// @ts-ignore
 import { PaymentMethodResponse } from '../models';
+// @ts-ignore
+import { SamHTTPValidationError } from '../models';
 // @ts-ignore
 import { StripeAccountResponse } from '../models';
 /**
