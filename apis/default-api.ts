@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.68
+ * eHelply SDK - 1.1.69
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.68
+ * The version of the OpenAPI document: 1.1.69
  *
  * Do not edit the class manually.
  *
@@ -265,7 +265,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         appointmentssearchAppointmentEntities: async (entityUuid: string, startDate?: string, endDate?: string, includeCancelled?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('appointmentssearchAppointmentEntities', 'entityUuid', entityUuid)
-            const localVarPath = `/appointments/entities/{entity_uuid}/appointments`
+            const localVarPath = `/appointments/appointments/entities/{entity_uuid}/appointments`
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -344,7 +344,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('attachEntityToAppointment', 'appointmentUuid', appointmentUuid)
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('attachEntityToAppointment', 'entityUuid', entityUuid)
-            const localVarPath = `/appointments/{appointment_uuid}/entities/{entity_uuid}`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}/entities/{entity_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -477,7 +477,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         createAppointment: async (appointmentBase: AppointmentBase, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'appointmentBase' is not null or undefined
             assertParamExists('createAppointment', 'appointmentBase', appointmentBase)
-            const localVarPath = `/appointments`;
+            const localVarPath = `/appointments/appointments`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -749,7 +749,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         deleteAppointment: async (appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'appointmentUuid' is not null or undefined
             assertParamExists('deleteAppointment', 'appointmentUuid', appointmentUuid)
-            const localVarPath = `/appointments/{appointment_uuid}`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1016,7 +1016,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('detachEntityFromAppointment', 'appointmentUuid', appointmentUuid)
             // verify required parameter 'entityUuid' is not null or undefined
             assertParamExists('detachEntityFromAppointment', 'entityUuid', entityUuid)
-            const localVarPath = `/appointments/{appointment_uuid}/entities/{entity_uuid}`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}/entities/{entity_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)))
                 .replace(`{${"entity_uuid"}}`, encodeURIComponent(String(entityUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1149,7 +1149,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         getAppointment: async (appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'appointmentUuid' is not null or undefined
             assertParamExists('getAppointment', 'appointmentUuid', appointmentUuid)
-            const localVarPath = `/appointments/{appointment_uuid}`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1436,7 +1436,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         searchAppointment: async (placeUuid?: string, excludeCancelled?: boolean, isDeleted?: boolean, startRange?: string, endRange?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, search?: string, searchOn?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/appointments`;
+            const localVarPath = `/appointments/appointments`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1549,7 +1549,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         searchAppointmentEntities: async (appointmentUuid: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, search?: string, searchOn?: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'appointmentUuid' is not null or undefined
             assertParamExists('searchAppointmentEntities', 'appointmentUuid', appointmentUuid)
-            const localVarPath = `/appointments/{appointment_uuid}/entities`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}/entities`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2091,7 +2091,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('updateAppointment', 'appointmentUuid', appointmentUuid)
             // verify required parameter 'appointmentBase' is not null or undefined
             assertParamExists('updateAppointment', 'appointmentBase', appointmentBase)
-            const localVarPath = `/appointments/{appointment_uuid}`
+            const localVarPath = `/appointments/appointments/{appointment_uuid}`
                 .replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(appointmentUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2404,7 +2404,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.attachEntityToAppointment(appointmentUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2509,7 +2509,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2580,7 +2580,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.detachEntityFromAppointment(appointmentUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2953,7 +2953,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+        attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<boolean> {
             return localVarFp.attachEntityToAppointment(appointmentUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3052,7 +3052,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+        deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<boolean> {
             return localVarFp.deleteAppointment(appointmentUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3119,7 +3119,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+        detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<boolean> {
             return localVarFp.detachEntityFromAppointment(appointmentUuid, entityUuid, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3475,7 +3475,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    attachEntityToAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<boolean>;
 
     /**
      * 
@@ -3574,7 +3574,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteAppointment(appointmentUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<boolean>;
 
     /**
      * 
@@ -3641,7 +3641,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    detachEntityFromAppointment(appointmentUuid: string, entityUuid: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<boolean>;
 
     /**
      * 
