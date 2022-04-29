@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.74
+ * eHelply SDK - 1.1.75
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.74
+ * The version of the OpenAPI document: 1.1.75
  *
  * Do not edit the class manually.
  *
@@ -382,10 +382,10 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        forwardGeocodingPlacesPlacesForwardGeocodingGet: async (searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        forwardGeocodingPlacesPlacesGeocodingForwardGet: async (searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'searchingPlace' is not null or undefined
-            assertParamExists('forwardGeocodingPlacesPlacesForwardGeocodingGet', 'searchingPlace', searchingPlace)
-            const localVarPath = `/places/places/forward_geocoding`;
+            assertParamExists('forwardGeocodingPlacesPlacesGeocodingForwardGet', 'searchingPlace', searchingPlace)
+            const localVarPath = `/places/places/geocoding/forward`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -559,12 +559,12 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reverseGeocodingPlacesPlacesReverseGeocodingGet: async (_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        reverseGeocodingPlacesPlacesGeocodingReverseGet: async (_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter '_long' is not null or undefined
-            assertParamExists('reverseGeocodingPlacesPlacesReverseGeocodingGet', '_long', _long)
+            assertParamExists('reverseGeocodingPlacesPlacesGeocodingReverseGet', '_long', _long)
             // verify required parameter 'lat' is not null or undefined
-            assertParamExists('reverseGeocodingPlacesPlacesReverseGeocodingGet', 'lat', lat)
-            const localVarPath = `/places/places/reverse_geocoding`;
+            assertParamExists('reverseGeocodingPlacesPlacesGeocodingReverseGet', 'lat', lat)
+            const localVarPath = `/places/places/geocoding/reverse`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -620,36 +620,6 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * 
-         * @summary Search Places By Area
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        searchPlacesByAreaPlacesPlacesSearchLocationGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/places/search/location`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Search places by a search string
          * @summary Search Places By Search String
          * @param {string} [searchString] 
@@ -666,8 +636,8 @@ export const PlacesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchPlacesBySearchStringPlacesPlacesSearchGet: async (searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/places/places/search`;
+        searchPlacesBySearchStringPlacesPlacesSearchStringGet: async (searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/places/places/search/string`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1052,8 +1022,8 @@ export const PlacesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1096,18 +1066,8 @@ export const PlacesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async reverseGeocodingPlacesPlacesReverseGeocodingGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.reverseGeocodingPlacesPlacesReverseGeocodingGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Search Places By Area
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async searchPlacesByAreaPlacesPlacesSearchLocationGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchPlacesByAreaPlacesPlacesSearchLocationGet(options);
+        async reverseGeocodingPlacesPlacesGeocodingReverseGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.reverseGeocodingPlacesPlacesGeocodingReverseGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1127,8 +1087,8 @@ export const PlacesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchPlacesBySearchStringPlacesPlacesSearchGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchPlacesBySearchStringPlacesPlacesSearchGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1247,8 +1207,8 @@ export const PlacesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Gets the place information given the Place ID
@@ -1289,17 +1249,8 @@ export const PlacesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reverseGeocodingPlacesPlacesReverseGeocodingGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.reverseGeocodingPlacesPlacesReverseGeocodingGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Search Places By Area
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        searchPlacesByAreaPlacesPlacesSearchLocationGet(options?: any): AxiosPromise<Page> {
-            return localVarFp.searchPlacesByAreaPlacesPlacesSearchLocationGet(options).then((request) => request(axios, basePath));
+        reverseGeocodingPlacesPlacesGeocodingReverseGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.reverseGeocodingPlacesPlacesGeocodingReverseGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Search places by a search string
@@ -1318,8 +1269,8 @@ export const PlacesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchPlacesBySearchStringPlacesPlacesSearchGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
-            return localVarFp.searchPlacesBySearchStringPlacesPlacesSearchGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Search all places and returns paginated results with Places being stored in items field. Can search by `project_uuid, name, address, address_line_2, city, province_state, country, postal_zip_code, lat, lng email` string fields or the `is_public and is_deleted` boolean fields. To search with these fields use query params with string values. For sorting fill out \"sort_desc\" field with either true/false and the \"sort_on\" query parameter with column you want to sort on (ex: name). Max pagination items per page is 50. Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      meta_uuid                           **type:** string or None      catalog_data                        **type:** dict or None      review_group_data                   **type:** dict or None      schedule_data                       **type:** dict or None      collection_data                     **type:** dict or None      blog_data                           **type:** dict or None      tags                                **type:** [TagBase] or None      categories                          **type:** [CategoryBase] or None      company                             **type:** CompanyBase or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -1435,7 +1386,7 @@ export interface PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApiInterface
      */
-    forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Gets the place information given the Place ID
@@ -1477,16 +1428,7 @@ export interface PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApiInterface
      */
-    reverseGeocodingPlacesPlacesReverseGeocodingGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
-
-    /**
-     * 
-     * @summary Search Places By Area
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlacesApiInterface
-     */
-    searchPlacesByAreaPlacesPlacesSearchLocationGet(options?: AxiosRequestConfig): AxiosPromise<Page>;
+    reverseGeocodingPlacesPlacesGeocodingReverseGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Search places by a search string
@@ -1506,7 +1448,7 @@ export interface PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApiInterface
      */
-    searchPlacesBySearchStringPlacesPlacesSearchGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+    searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
 
     /**
      * Search all places and returns paginated results with Places being stored in items field. Can search by `project_uuid, name, address, address_line_2, city, province_state, country, postal_zip_code, lat, lng email` string fields or the `is_public and is_deleted` boolean fields. To search with these fields use query params with string values. For sorting fill out \"sort_desc\" field with either true/false and the \"sort_on\" query parameter with column you want to sort on (ex: name). Max pagination items per page is 50. Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      meta_uuid                           **type:** string or None      catalog_data                        **type:** dict or None      review_group_data                   **type:** dict or None      schedule_data                       **type:** dict or None      collection_data                     **type:** dict or None      blog_data                           **type:** dict or None      tags                                **type:** [TagBase] or None      categories                          **type:** [CategoryBase] or None      company                             **type:** CompanyBase or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -1626,8 +1568,8 @@ export class PlacesApi extends BaseAPI implements PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApi
      */
-    public forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return PlacesApiFp(this.configuration).forwardGeocodingPlacesPlacesForwardGeocodingGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace: string, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return PlacesApiFp(this.configuration).forwardGeocodingPlacesPlacesGeocodingForwardGet(searchingPlace, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1672,19 +1614,8 @@ export class PlacesApi extends BaseAPI implements PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApi
      */
-    public reverseGeocodingPlacesPlacesReverseGeocodingGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return PlacesApiFp(this.configuration).reverseGeocodingPlacesPlacesReverseGeocodingGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Search Places By Area
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlacesApi
-     */
-    public searchPlacesByAreaPlacesPlacesSearchLocationGet(options?: AxiosRequestConfig) {
-        return PlacesApiFp(this.configuration).searchPlacesByAreaPlacesPlacesSearchLocationGet(options).then((request) => request(this.axios, this.basePath));
+    public reverseGeocodingPlacesPlacesGeocodingReverseGet(_long: number, lat: number, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return PlacesApiFp(this.configuration).reverseGeocodingPlacesPlacesGeocodingReverseGet(_long, lat, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1705,8 +1636,8 @@ export class PlacesApi extends BaseAPI implements PlacesApiInterface {
      * @throws {RequiredError}
      * @memberof PlacesApi
      */
-    public searchPlacesBySearchStringPlacesPlacesSearchGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return PlacesApiFp(this.configuration).searchPlacesBySearchStringPlacesPlacesSearchGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString?: string, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return PlacesApiFp(this.configuration).searchPlacesBySearchStringPlacesPlacesSearchStringGet(searchString, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
