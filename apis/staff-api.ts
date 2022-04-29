@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * eHelply SDK - 1.1.73
+ * eHelply SDK - 1.1.74
  * eHelply SDK for SuperStack Services
  *
- * The version of the OpenAPI document: 1.1.73
+ * The version of the OpenAPI document: 1.1.74
  *
  * Do not edit the class manually.
  *
@@ -221,9 +221,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Page } from '../models';
+import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { PlacesHTTPValidationError } from '../models';
+import { Page } from '../models';
 // @ts-ignore
 import { StaffCreate } from '../models';
 // @ts-ignore
@@ -249,10 +249,10 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createStaffStaffPost: async (staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createStaffPlacesStaffPost: async (staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffCreate' is not null or undefined
-            assertParamExists('createStaffStaffPost', 'staffCreate', staffCreate)
-            const localVarPath = `/staff`;
+            assertParamExists('createStaffPlacesStaffPost', 'staffCreate', staffCreate)
+            const localVarPath = `/places/staff`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -316,10 +316,10 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteStaffStaffStaffUuidDelete: async (staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteStaffPlacesStaffStaffUuidDelete: async (staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffUuid' is not null or undefined
-            assertParamExists('deleteStaffStaffStaffUuidDelete', 'staffUuid', staffUuid)
-            const localVarPath = `/staff/{staff_uuid}`
+            assertParamExists('deleteStaffPlacesStaffStaffUuidDelete', 'staffUuid', staffUuid)
+            const localVarPath = `/places/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -389,10 +389,10 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStaffStaffStaffUuidGet: async (staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStaffPlacesStaffStaffUuidGet: async (staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffUuid' is not null or undefined
-            assertParamExists('getStaffStaffStaffUuidGet', 'staffUuid', staffUuid)
-            const localVarPath = `/staff/{staff_uuid}`
+            assertParamExists('getStaffPlacesStaffStaffUuidGet', 'staffUuid', staffUuid)
+            const localVarPath = `/places/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -486,8 +486,8 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchStaffStaffGet: async (projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/staff`;
+        searchStaffPlacesStaffGet: async (projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/places/staff`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -604,12 +604,12 @@ export const StaffApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateStaffStaffStaffUuidPut: async (staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateStaffPlacesStaffStaffUuidPut: async (staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'staffUuid' is not null or undefined
-            assertParamExists('updateStaffStaffStaffUuidPut', 'staffUuid', staffUuid)
+            assertParamExists('updateStaffPlacesStaffStaffUuidPut', 'staffUuid', staffUuid)
             // verify required parameter 'staffCreate' is not null or undefined
-            assertParamExists('updateStaffStaffStaffUuidPut', 'staffCreate', staffCreate)
-            const localVarPath = `/staff/{staff_uuid}`
+            assertParamExists('updateStaffPlacesStaffStaffUuidPut', 'staffCreate', staffCreate)
+            const localVarPath = `/places/staff/{staff_uuid}`
                 .replace(`{${"staff_uuid"}}`, encodeURIComponent(String(staffUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -683,8 +683,8 @@ export const StaffApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createStaffStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffDb>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createStaffStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async createStaffPlacesStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffDb>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createStaffPlacesStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -701,8 +701,8 @@ export const StaffApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteStaffStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteStaffStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async deleteStaffPlacesStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteStaffPlacesStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -723,8 +723,8 @@ export const StaffApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStaffStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStaffStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async getStaffPlacesStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStaffPlacesStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -753,8 +753,8 @@ export const StaffApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchStaffStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchStaffStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async searchStaffPlacesStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Page>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchStaffPlacesStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -771,8 +771,8 @@ export const StaffApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateStaffStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateStaffStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
+        async updateStaffPlacesStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaffResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateStaffPlacesStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -798,8 +798,8 @@ export const StaffApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createStaffStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffDb> {
-            return localVarFp.createStaffStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        createStaffPlacesStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffDb> {
+            return localVarFp.createStaffPlacesStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes the staff member with the given ID and returns True if successful
@@ -815,8 +815,8 @@ export const StaffApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteStaffStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
-            return localVarFp.deleteStaffStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        deleteStaffPlacesStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<any> {
+            return localVarFp.deleteStaffPlacesStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Gets the staff member information given the staff ID
@@ -836,8 +836,8 @@ export const StaffApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStaffStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffResponse> {
-            return localVarFp.getStaffStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        getStaffPlacesStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffResponse> {
+            return localVarFp.getStaffPlacesStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      entity                              **type:** string or None      place                               **type:** dict or None      company                             **type:** dict or None      schedule                            **type:** dict or None      catalog                             **type:** dict or None      reviews                             **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -865,8 +865,8 @@ export const StaffApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchStaffStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
-            return localVarFp.searchStaffStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        searchStaffPlacesStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<Page> {
+            return localVarFp.searchStaffPlacesStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
         /**
          * Update staff with given info, only updating the fields supplied. Staff Uuid must be sent however.
@@ -882,8 +882,8 @@ export const StaffApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateStaffStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffResponse> {
-            return localVarFp.updateStaffStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
+        updateStaffPlacesStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: any): AxiosPromise<StaffResponse> {
+            return localVarFp.updateStaffPlacesStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -908,7 +908,7 @@ export interface StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApiInterface
      */
-    createStaffStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffDb>;
+    createStaffPlacesStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffDb>;
 
     /**
      * Deletes the staff member with the given ID and returns True if successful
@@ -925,7 +925,7 @@ export interface StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApiInterface
      */
-    deleteStaffStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
+    deleteStaffPlacesStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Gets the staff member information given the staff ID
@@ -946,7 +946,7 @@ export interface StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApiInterface
      */
-    getStaffStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffResponse>;
+    getStaffPlacesStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffResponse>;
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      entity                              **type:** string or None      place                               **type:** dict or None      company                             **type:** dict or None      schedule                            **type:** dict or None      catalog                             **type:** dict or None      reviews                             **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
@@ -975,7 +975,7 @@ export interface StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApiInterface
      */
-    searchStaffStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
+    searchStaffPlacesStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<Page>;
 
     /**
      * Update staff with given info, only updating the fields supplied. Staff Uuid must be sent however.
@@ -992,7 +992,7 @@ export interface StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApiInterface
      */
-    updateStaffStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffResponse>;
+    updateStaffPlacesStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig): AxiosPromise<StaffResponse>;
 
 }
 
@@ -1017,8 +1017,8 @@ export class StaffApi extends BaseAPI implements StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApi
      */
-    public createStaffStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return StaffApiFp(this.configuration).createStaffStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public createStaffPlacesStaffPost(staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return StaffApiFp(this.configuration).createStaffPlacesStaffPost(staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1036,8 +1036,8 @@ export class StaffApi extends BaseAPI implements StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApi
      */
-    public deleteStaffStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return StaffApiFp(this.configuration).deleteStaffStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public deleteStaffPlacesStaffStaffUuidDelete(staffUuid: string, softDelete?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return StaffApiFp(this.configuration).deleteStaffPlacesStaffStaffUuidDelete(staffUuid, softDelete, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1059,8 +1059,8 @@ export class StaffApi extends BaseAPI implements StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApi
      */
-    public getStaffStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return StaffApiFp(this.configuration).getStaffStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public getStaffPlacesStaffStaffUuidGet(staffUuid: string, withPlaces?: boolean, withCompanies?: boolean, withCatalog?: boolean, withSchedule?: boolean, withRoles?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return StaffApiFp(this.configuration).getStaffPlacesStaffStaffUuidGet(staffUuid, withPlaces, withCompanies, withCatalog, withSchedule, withRoles, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1090,8 +1090,8 @@ export class StaffApi extends BaseAPI implements StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApi
      */
-    public searchStaffStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return StaffApiFp(this.configuration).searchStaffStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public searchStaffPlacesStaffGet(projectUuid?: string, firstName?: string, lastName?: string, isDeleted?: boolean, withCompanies?: boolean, withPlaces?: boolean, withSchedule?: boolean, withCatalog?: boolean, withReviews?: boolean, withRoles?: boolean, page?: number, pageSize?: number, sortOn?: string, sortDesc?: boolean, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return StaffApiFp(this.configuration).searchStaffPlacesStaffGet(projectUuid, firstName, lastName, isDeleted, withCompanies, withPlaces, withSchedule, withCatalog, withReviews, withRoles, page, pageSize, sortOn, sortDesc, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1109,7 +1109,7 @@ export class StaffApi extends BaseAPI implements StaffApiInterface {
      * @throws {RequiredError}
      * @memberof StaffApi
      */
-    public updateStaffStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
-        return StaffApiFp(this.configuration).updateStaffStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
+    public updateStaffPlacesStaffStaffUuidPut(staffUuid: string, staffCreate: StaffCreate, xAccessToken?: string, xSecretToken?: string, authorization?: string, ehelplyActiveParticipant?: string, ehelplyProject?: string, ehelplyData?: string, options?: AxiosRequestConfig) {
+        return StaffApiFp(this.configuration).updateStaffPlacesStaffStaffUuidPut(staffUuid, staffCreate, xAccessToken, xSecretToken, authorization, ehelplyActiveParticipant, ehelplyProject, ehelplyData, options).then((request) => request(this.axios, this.basePath));
     }
 }
