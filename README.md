@@ -1,4 +1,4 @@
-## @ehelply/superstack-sdk@1.1.70
+## @ehelply/superstack-sdk@1.1.71
 
 This generator creates TypeScript/JavaScript client that utilizes fetch-api.
 
@@ -21,7 +21,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @ehelply/superstack-sdk@1.1.70 --save
+npm install @ehelply/superstack-sdk@1.1.71 --save
 ```
 
 _unPublished (not recommended):_
