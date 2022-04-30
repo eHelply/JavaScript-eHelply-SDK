@@ -32,8 +32,6 @@ models/alarm-ignore.ts
 models/alarm-note.ts
 models/alarm-terminate.ts
 models/alarm-ticket.ts
-models/appointment-base.ts
-models/appointment-response.ts
 models/attach-payment-to-project.ts
 models/basic-meta-create.ts
 models/basic-meta.ts
@@ -70,6 +68,16 @@ models/field-dynamo.ts
 models/field.ts
 models/httpvalidation-error.ts
 models/index.ts
+models/inline-response200.ts
+models/inline-response2001.ts
+models/inline-response2002.ts
+models/inline-response2003.ts
+models/inline-response2004.ts
+models/inline-response2005.ts
+models/inline-response2006.ts
+models/inline-response2007.ts
+models/inline-response2008.ts
+models/inline-response403.ts
 models/meta-children.ts
 models/meta-create.ts
 models/meta-custom.ts
@@ -104,8 +112,6 @@ models/projects-usage-type-db.ts
 models/projects-usage-type-get.ts
 models/projects-usage-type-unit-price.ts
 models/projects-usage-type-update.ts
-models/sam-httpvalidation-error.ts
-models/sam-validation-error.ts
 models/security-create-token.ts
 models/security-encryption-key-get.ts
 models/security-key-create.ts
