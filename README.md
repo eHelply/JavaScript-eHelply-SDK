@@ -1,6 +1,6 @@
-## @ehelply/superstack-sdk@1.1.73
+## @ehelply/superstack-sdk@1.1.74
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
+This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
 Environment
 * Node.js
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @ehelply/superstack-sdk@1.1.73 --save
+npm install @ehelply/superstack-sdk@1.1.74 --save
 ```
 
 _unPublished (not recommended):_
