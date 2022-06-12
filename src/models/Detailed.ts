@@ -13,31 +13,38 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    DetailedMeta,
+    DetailedMetaFromJSON,
+    DetailedMetaFromJSONTyped,
+    DetailedMetaToJSON,
+} from './DetailedMeta';
+
 /**
- * Detailed meta based on Notes
+ * 
  * @export
- * @interface DetailedMeta
+ * @interface Detailed
  */
-export interface DetailedMeta {
+export interface Detailed {
     /**
      * 
      * @type {string}
-     * @memberof DetailedMeta
+     * @memberof Detailed
      */
     summaryUuid?: string;
     /**
      * 
      * @type {string}
-     * @memberof DetailedMeta
+     * @memberof Detailed
      */
     descriptionUuid?: string;
 }
 
-export function DetailedMetaFromJSON(json: any): DetailedMeta {
-    return DetailedMetaFromJSONTyped(json, false);
+export function DetailedFromJSON(json: any): Detailed {
+    return DetailedFromJSONTyped(json, false);
 }
 
-export function DetailedMetaFromJSONTyped(json: any, ignoreDiscriminator: boolean): DetailedMeta {
+export function DetailedFromJSONTyped(json: any, ignoreDiscriminator: boolean): Detailed {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -48,7 +55,7 @@ export function DetailedMetaFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function DetailedMetaToJSON(value?: DetailedMeta | null): any {
+export function DetailedToJSON(value?: Detailed | null): any {
     if (value === undefined) {
         return undefined;
     }

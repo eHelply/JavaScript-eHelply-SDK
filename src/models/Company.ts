@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    CompanyBase,
+    CompanyBaseFromJSON,
+    CompanyBaseFromJSONTyped,
+    CompanyBaseToJSON,
+} from './CompanyBase';
+import {
     ContactBase,
     ContactBaseFromJSON,
     ContactBaseFromJSONTyped,
@@ -21,55 +27,48 @@ import {
 } from './ContactBase';
 
 /**
- * **:param** name                                **type:** string
- * **:param** summary                             **type:** string or None
  * 
- * **:param** public                              **type:** bool or None
- * 
- * **:param** meta                                **type:** dict or None
- * 
- * **:param** contact                             **type:** ContactBase or None
  * @export
- * @interface CompanyBase
+ * @interface Company
  */
-export interface CompanyBase {
+export interface Company {
     /**
      * 
      * @type {string}
-     * @memberof CompanyBase
+     * @memberof Company
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof CompanyBase
+     * @memberof Company
      */
     summary?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof CompanyBase
+     * @memberof Company
      */
     _public?: boolean;
     /**
      * 
      * @type {object}
-     * @memberof CompanyBase
+     * @memberof Company
      */
     meta?: object;
     /**
      * 
      * @type {ContactBase}
-     * @memberof CompanyBase
+     * @memberof Company
      */
     contact?: ContactBase;
 }
 
-export function CompanyBaseFromJSON(json: any): CompanyBase {
-    return CompanyBaseFromJSONTyped(json, false);
+export function CompanyFromJSON(json: any): Company {
+    return CompanyFromJSONTyped(json, false);
 }
 
-export function CompanyBaseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CompanyBase {
+export function CompanyFromJSONTyped(json: any, ignoreDiscriminator: boolean): Company {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -83,7 +82,7 @@ export function CompanyBaseFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function CompanyBaseToJSON(value?: CompanyBase | null): any {
+export function CompanyToJSON(value?: Company | null): any {
     if (value === undefined) {
         return undefined;
     }

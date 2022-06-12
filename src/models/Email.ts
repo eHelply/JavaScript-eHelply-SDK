@@ -13,42 +13,49 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    UserEmail,
+    UserEmailFromJSON,
+    UserEmailFromJSONTyped,
+    UserEmailToJSON,
+} from './UserEmail';
+
 /**
- * Basic meta
+ * 
  * @export
- * @interface BasicMeta
+ * @interface Email
  */
-export interface BasicMeta {
+export interface Email {
     /**
      * 
      * @type {string}
-     * @memberof BasicMeta
+     * @memberof Email
      */
-    name?: string;
+    address?: string;
     /**
      * 
-     * @type {string}
-     * @memberof BasicMeta
+     * @type {boolean}
+     * @memberof Email
      */
-    slug?: string;
+    verified?: boolean;
 }
 
-export function BasicMetaFromJSON(json: any): BasicMeta {
-    return BasicMetaFromJSONTyped(json, false);
+export function EmailFromJSON(json: any): Email {
+    return EmailFromJSONTyped(json, false);
 }
 
-export function BasicMetaFromJSONTyped(json: any, ignoreDiscriminator: boolean): BasicMeta {
+export function EmailFromJSONTyped(json: any, ignoreDiscriminator: boolean): Email {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'address': !exists(json, 'address') ? undefined : json['address'],
+        'verified': !exists(json, 'verified') ? undefined : json['verified'],
     };
 }
 
-export function BasicMetaToJSON(value?: BasicMeta | null): any {
+export function EmailToJSON(value?: Email | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -57,8 +64,8 @@ export function BasicMetaToJSON(value?: BasicMeta | null): any {
     }
     return {
         
-        'name': value.name,
-        'slug': value.slug,
+        'address': value.address,
+        'verified': value.verified,
     };
 }
 

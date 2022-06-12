@@ -13,49 +13,49 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    BasicMeta,
+    BasicMetaFromJSON,
+    BasicMetaFromJSONTyped,
+    BasicMetaToJSON,
+} from './BasicMeta';
+
 /**
  * 
  * @export
- * @interface Selection
+ * @interface Basic
  */
-export interface Selection {
+export interface Basic {
     /**
      * 
      * @type {string}
-     * @memberof Selection
+     * @memberof Basic
      */
     name?: string;
     /**
      * 
-     * @type {number}
-     * @memberof Selection
-     */
-    value?: number;
-    /**
-     * 
      * @type {string}
-     * @memberof Selection
+     * @memberof Basic
      */
-    icon?: string;
+    slug?: string;
 }
 
-export function SelectionFromJSON(json: any): Selection {
-    return SelectionFromJSONTyped(json, false);
+export function BasicFromJSON(json: any): Basic {
+    return BasicFromJSONTyped(json, false);
 }
 
-export function SelectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Selection {
+export function BasicFromJSONTyped(json: any, ignoreDiscriminator: boolean): Basic {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'value': !exists(json, 'value') ? undefined : json['value'],
-        'icon': !exists(json, 'icon') ? undefined : json['icon'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
     };
 }
 
-export function SelectionToJSON(value?: Selection | null): any {
+export function BasicToJSON(value?: Basic | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -65,8 +65,7 @@ export function SelectionToJSON(value?: Selection | null): any {
     return {
         
         'name': value.name,
-        'value': value.value,
-        'icon': value.icon,
+        'slug': value.slug,
     };
 }
 
