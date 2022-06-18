@@ -24,6 +24,7 @@ export * from './CompanyBase';
 export * from './CompanyResponse';
 export * from './Contact';
 export * from './ContactBase';
+export * from './ContactMethod';
 export * from './ContactResponse';
 export * from './CreateKeyResponse';
 export * from './CreateReview';

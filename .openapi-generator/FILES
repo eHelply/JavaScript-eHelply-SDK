@@ -44,6 +44,7 @@ src/models/CompanyBase.ts
 src/models/CompanyResponse.ts
 src/models/Contact.ts
 src/models/ContactBase.ts
+src/models/ContactMethod.ts
 src/models/ContactResponse.ts
 src/models/CreateKeyResponse.ts
 src/models/CreateReview.ts

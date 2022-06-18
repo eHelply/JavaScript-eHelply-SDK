@@ -16,34 +16,28 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Selection
+ * @interface ContactMethod
  */
-export interface Selection {
+export interface ContactMethod {
     /**
      * 
      * @type {string}
-     * @memberof Selection
+     * @memberof ContactMethod
      */
     name?: string;
     /**
      * 
-     * @type {number}
-     * @memberof Selection
-     */
-    value?: number;
-    /**
-     * 
      * @type {string}
-     * @memberof Selection
+     * @memberof ContactMethod
      */
-    icon?: string;
+    value?: string;
 }
 
-export function SelectionFromJSON(json: any): Selection {
-    return SelectionFromJSONTyped(json, false);
+export function ContactMethodFromJSON(json: any): ContactMethod {
+    return ContactMethodFromJSONTyped(json, false);
 }
 
-export function SelectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Selection {
+export function ContactMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContactMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -51,11 +45,10 @@ export function SelectionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'value': !exists(json, 'value') ? undefined : json['value'],
-        'icon': !exists(json, 'icon') ? undefined : json['icon'],
     };
 }
 
-export function SelectionToJSON(value?: Selection | null): any {
+export function ContactMethodToJSON(value?: ContactMethod | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -66,7 +59,6 @@ export function SelectionToJSON(value?: Selection | null): any {
         
         'name': value.name,
         'value': value.value,
-        'icon': value.icon,
     };
 }
 
