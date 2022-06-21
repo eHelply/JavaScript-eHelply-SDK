@@ -14,34 +14,41 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Information used for resetting the password
+ * 
  * @export
- * @interface UserPasswordReset
+ * @interface ContactMethod
  */
-export interface UserPasswordReset {
+export interface ContactMethod {
     /**
      * 
      * @type {string}
-     * @memberof UserPasswordReset
+     * @memberof ContactMethod
      */
-    email: string;
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContactMethod
+     */
+    value?: string;
 }
 
-export function UserPasswordResetFromJSON(json: any): UserPasswordReset {
-    return UserPasswordResetFromJSONTyped(json, false);
+export function ContactMethodFromJSON(json: any): ContactMethod {
+    return ContactMethodFromJSONTyped(json, false);
 }
 
-export function UserPasswordResetFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserPasswordReset {
+export function ContactMethodFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContactMethod {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'email': json['email'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
+        'value': !exists(json, 'value') ? undefined : json['value'],
     };
 }
 
-export function UserPasswordResetToJSON(value?: UserPasswordReset | null): any {
+export function ContactMethodToJSON(value?: ContactMethod | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +57,8 @@ export function UserPasswordResetToJSON(value?: UserPasswordReset | null): any {
     }
     return {
         
-        'email': value.email,
+        'name': value.name,
+        'value': value.value,
     };
 }
 
