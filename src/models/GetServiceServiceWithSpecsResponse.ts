@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Validations
+ * @interface GetServiceServiceWithSpecsResponse
  */
-export interface Validations {
+export interface GetServiceServiceWithSpecsResponse {
     /**
      * 
      * @type {Array<string>}
-     * @memberof Validations
+     * @memberof GetServiceServiceWithSpecsResponse
      */
-    value?: Array<string>;
+    services: Array<string>;
 }
 
-export function ValidationsFromJSON(json: any): Validations {
-    return ValidationsFromJSONTyped(json, false);
+export function GetServiceServiceWithSpecsResponseFromJSON(json: any): GetServiceServiceWithSpecsResponse {
+    return GetServiceServiceWithSpecsResponseFromJSONTyped(json, false);
 }
 
-export function ValidationsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Validations {
+export function GetServiceServiceWithSpecsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetServiceServiceWithSpecsResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'value': !exists(json, 'value') ? undefined : json['value'],
+        'services': json['services'],
     };
 }
 
-export function ValidationsToJSON(value?: Validations | null): any {
+export function GetServiceServiceWithSpecsResponseToJSON(value?: GetServiceServiceWithSpecsResponse | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function ValidationsToJSON(value?: Validations | null): any {
     }
     return {
         
-        'value': value.value,
+        'services': value.services,
     };
 }
 

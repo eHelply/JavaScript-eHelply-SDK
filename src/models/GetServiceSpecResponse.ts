@@ -14,34 +14,34 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Used for create endpoint
+ * 
  * @export
- * @interface ProjectsProjectCreate
+ * @interface GetServiceSpecResponse
  */
-export interface ProjectsProjectCreate {
+export interface GetServiceSpecResponse {
     /**
      * 
      * @type {string}
-     * @memberof ProjectsProjectCreate
+     * @memberof GetServiceSpecResponse
      */
-    name: string;
+    content: string;
 }
 
-export function ProjectsProjectCreateFromJSON(json: any): ProjectsProjectCreate {
-    return ProjectsProjectCreateFromJSONTyped(json, false);
+export function GetServiceSpecResponseFromJSON(json: any): GetServiceSpecResponse {
+    return GetServiceSpecResponseFromJSONTyped(json, false);
 }
 
-export function ProjectsProjectCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectsProjectCreate {
+export function GetServiceSpecResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetServiceSpecResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': json['name'],
+        'content': json['content'],
     };
 }
 
-export function ProjectsProjectCreateToJSON(value?: ProjectsProjectCreate | null): any {
+export function GetServiceSpecResponseToJSON(value?: GetServiceSpecResponse | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function ProjectsProjectCreateToJSON(value?: ProjectsProjectCreate | null
     }
     return {
         
-        'name': value.name,
+        'content': value.content,
     };
 }
 

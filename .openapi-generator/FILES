@@ -57,6 +57,9 @@ src/models/DetailedMetaCreate.ts
 src/models/Email.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
+src/models/GetServiceServiceWithSpecsResponse.ts
+src/models/GetServiceSpecResponse.ts
+src/models/GetServiceSpecsResponse.ts
 src/models/GetServicesWithSpecs403Response.ts
 src/models/HTTPValidationError.ts
 src/models/HeartbeatResponse.ts
@@ -103,9 +106,6 @@ src/models/ResponseCreatekey.ts
 src/models/ResponseDeletekey.ts
 src/models/ResponseDeleteusagetype.ts
 src/models/ResponseGeneratetoken.ts
-src/models/ResponseGetservicespec.ts
-src/models/ResponseGetservicespecs.ts
-src/models/ResponseGetserviceswithspecs.ts
 src/models/ResponseRemovememberfromproject.ts
 src/models/SecurityCreateToken.ts
 src/models/SecurityEncryptionKeyGet.ts
