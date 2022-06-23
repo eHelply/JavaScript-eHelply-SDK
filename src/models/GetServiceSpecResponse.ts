@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Payment
+ * @interface GetServiceSpecResponse
  */
-export interface Payment {
+export interface GetServiceSpecResponse {
     /**
      * 
-     * @type {number}
-     * @memberof Payment
+     * @type {string}
+     * @memberof GetServiceSpecResponse
      */
-    amount: number;
+    content: string;
 }
 
-export function PaymentFromJSON(json: any): Payment {
-    return PaymentFromJSONTyped(json, false);
+export function GetServiceSpecResponseFromJSON(json: any): GetServiceSpecResponse {
+    return GetServiceSpecResponseFromJSONTyped(json, false);
 }
 
-export function PaymentFromJSONTyped(json: any, ignoreDiscriminator: boolean): Payment {
+export function GetServiceSpecResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetServiceSpecResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'amount': json['amount'],
+        'content': json['content'],
     };
 }
 
-export function PaymentToJSON(value?: Payment | null): any {
+export function GetServiceSpecResponseToJSON(value?: GetServiceSpecResponse | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function PaymentToJSON(value?: Payment | null): any {
     }
     return {
         
-        'amount': value.amount,
+        'content': value.content,
     };
 }
 
