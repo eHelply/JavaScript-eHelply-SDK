@@ -47,8 +47,10 @@ src/models/ContactBase.ts
 src/models/ContactMethod.ts
 src/models/ContactResponse.ts
 src/models/CreateKeyResponse.ts
+src/models/CreateProjectCredential.ts
 src/models/CreateReview.ts
 src/models/CreateTicket.ts
+src/models/Credential.ts
 src/models/CustomList.ts
 src/models/DatesMeta.ts
 src/models/Detailed.ts
@@ -57,6 +59,8 @@ src/models/DetailedMetaCreate.ts
 src/models/Email.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
+src/models/GetProjectCredential.ts
+src/models/GetSecret.ts
 src/models/GetServiceServiceWithSpecsResponse.ts
 src/models/GetServiceSpecResponse.ts
 src/models/GetServiceSpecsResponse.ts
@@ -103,10 +107,13 @@ src/models/ProjectsUsageTypeUpdate.ts
 src/models/ResponseAddmembertoproject.ts
 src/models/ResponseArchiveproject.ts
 src/models/ResponseCreatekey.ts
+src/models/ResponseCreateprojectcredential.ts
 src/models/ResponseDeletekey.ts
+src/models/ResponseDeleteprojectcredential.ts
 src/models/ResponseDeleteusagetype.ts
 src/models/ResponseGeneratetoken.ts
 src/models/ResponseRemovememberfromproject.ts
+src/models/ResponseUpdateprojectcredential.ts
 src/models/SecurityCreateToken.ts
 src/models/SecurityEncryptionKeyGet.ts
 src/models/SecurityEncryptionKeyResponse.ts
@@ -127,6 +134,7 @@ src/models/TagBase.ts
 src/models/TagDb.ts
 src/models/TicketResponse.ts
 src/models/TicketsResponse.ts
+src/models/UpdateProjectCredentialRequest.ts
 src/models/UpdateReview.ts
 src/models/User.ts
 src/models/UserConfirmation.ts
