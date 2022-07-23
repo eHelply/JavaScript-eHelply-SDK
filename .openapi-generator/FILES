@@ -75,7 +75,7 @@ src/models/MetaCustom.ts
 src/models/MetaDynamo.ts
 src/models/MetaSlugger.ts
 src/models/NoteBase.ts
-src/models/NoteDynamoHistory.ts
+src/models/NoteDynamoHistoryResponse.ts
 src/models/NoteDynamoResponse.ts
 src/models/NoteMeta.ts
 src/models/OptionGroup.ts

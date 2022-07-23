@@ -55,7 +55,7 @@ export * from './MetaCustom';
 export * from './MetaDynamo';
 export * from './MetaSlugger';
 export * from './NoteBase';
-export * from './NoteDynamoHistory';
+export * from './NoteDynamoHistoryResponse';
 export * from './NoteDynamoResponse';
 export * from './NoteMeta';
 export * from './OptionGroup';
