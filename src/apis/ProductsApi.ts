@@ -16,25 +16,23 @@
 import * as runtime from '../runtime';
 import type {
   HTTPValidationError,
-  Payment,
-  PaymentMethodResponse,
-  StripeAccountResponse,
-  StripeCustomerSecretResponse,
+  Page,
+  ProductBase,
+  ProductReturn,
 } from '../models';
 import {
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    PaymentFromJSON,
-    PaymentToJSON,
-    PaymentMethodResponseFromJSON,
-    PaymentMethodResponseToJSON,
-    StripeAccountResponseFromJSON,
-    StripeAccountResponseToJSON,
-    StripeCustomerSecretResponseFromJSON,
-    StripeCustomerSecretResponseToJSON,
+    PageFromJSON,
+    PageToJSON,
+    ProductBaseFromJSON,
+    ProductBaseToJSON,
+    ProductReturnFromJSON,
+    ProductReturnToJSON,
 } from '../models';
 
-export interface CreateBillingAccountRequest {
+export interface CreateProductRequest {
+    productBase: ProductBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -43,7 +41,8 @@ export interface CreateBillingAccountRequest {
     ehelplyData?: string;
 }
 
-export interface GetClientSecretRequest {
+export interface DeleteProductRequest {
+    productUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -52,7 +51,10 @@ export interface GetClientSecretRequest {
     ehelplyData?: string;
 }
 
-export interface HasPaymentRequest {
+export interface GetProductRequest {
+    productUuid: string;
+    withAddons?: boolean;
+    withMeta?: boolean;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -61,7 +63,13 @@ export interface HasPaymentRequest {
     ehelplyData?: string;
 }
 
-export interface ListPaymentMethodsRequest {
+export interface SearchProductCatalogRequest {
+    productUuid: string;
+    withMeta?: boolean;
+    page?: number;
+    pageSize?: number;
+    sortOn?: string;
+    sortDesc?: boolean;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -70,8 +78,18 @@ export interface ListPaymentMethodsRequest {
     ehelplyData?: string;
 }
 
-export interface ProcessPaymentRequest {
-    payment: Payment;
+export interface SearchProductsRequest {
+    withMeta?: boolean;
+    name?: string;
+    addons?: Array<string>;
+    priceMax?: number;
+    priceMin?: number;
+    quantityAvailable?: boolean;
+    isDeleted?: boolean;
+    page?: number;
+    pageSize?: number;
+    sortOn?: string;
+    sortDesc?: boolean;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -80,16 +98,9 @@ export interface ProcessPaymentRequest {
     ehelplyData?: string;
 }
 
-export interface ReconcilePaymentMethodRequest {
-    xAccessToken?: string;
-    xSecretToken?: string;
-    authorization?: string;
-    ehelplyActiveParticipant?: string;
-    ehelplyProject?: string;
-    ehelplyData?: string;
-}
-
-export interface RemovePaymentMethodRequest {
+export interface UpdateProductRequest {
+    productUuid: string;
+    productBase: ProductBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -99,15 +110,16 @@ export interface RemovePaymentMethodRequest {
 }
 
 /**
- * BillingApi - interface
+ * ProductsApi - interface
  * 
  * @export
- * @interface BillingApiInterface
+ * @interface ProductsApiInterface
  */
-export interface BillingApiInterface {
+export interface ProductsApiInterface {
     /**
      * 
-     * @summary Createbillingaccount
+     * @summary Createproduct
+     * @param {ProductBase} productBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -116,18 +128,19 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    createBillingAccountRaw(requestParameters: CreateBillingAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeAccountResponse>>;
+    createProductRaw(requestParameters: CreateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>>;
 
     /**
-     * Createbillingaccount
+     * Createproduct
      */
-    createBillingAccount(requestParameters: CreateBillingAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeAccountResponse>;
+    createProduct(requestParameters: CreateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn>;
 
     /**
      * 
-     * @summary Getclientsecret
+     * @summary Deleteproduct
+     * @param {string} productUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -136,18 +149,21 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    getClientSecretRaw(requestParameters: GetClientSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeCustomerSecretResponse>>;
+    deleteProductRaw(requestParameters: DeleteProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
 
     /**
-     * Getclientsecret
+     * Deleteproduct
      */
-    getClientSecret(requestParameters: GetClientSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeCustomerSecretResponse>;
+    deleteProduct(requestParameters: DeleteProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
 
     /**
      * 
-     * @summary Haspayment
+     * @summary Getproduct
+     * @param {string} productUuid 
+     * @param {boolean} [withAddons] 
+     * @param {boolean} [withMeta] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -156,18 +172,24 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    hasPaymentRaw(requestParameters: HasPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
+    getProductRaw(requestParameters: GetProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>>;
 
     /**
-     * Haspayment
+     * Getproduct
      */
-    hasPayment(requestParameters: HasPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
+    getProduct(requestParameters: GetProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn>;
 
     /**
      * 
-     * @summary Listpaymentmethods
+     * @summary Searchproductcatalog
+     * @param {string} productUuid 
+     * @param {boolean} [withMeta] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -176,19 +198,29 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    listPaymentMethodsRaw(requestParameters: ListPaymentMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PaymentMethodResponse>>>;
+    searchProductCatalogRaw(requestParameters: SearchProductCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
-     * Listpaymentmethods
+     * Searchproductcatalog
      */
-    listPaymentMethods(requestParameters: ListPaymentMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PaymentMethodResponse>>;
+    searchProductCatalog(requestParameters: SearchProductCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
      * 
-     * @summary Processpayment
-     * @param {Payment} payment 
+     * @summary Searchproducts
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
+     * @param {Array<string>} [addons] 
+     * @param {number} [priceMax] 
+     * @param {number} [priceMin] 
+     * @param {boolean} [quantityAvailable] 
+     * @param {boolean} [isDeleted] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -197,18 +229,20 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    processPaymentRaw(requestParameters: ProcessPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    searchProductsRaw(requestParameters: SearchProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
-     * Processpayment
+     * Searchproducts
      */
-    processPayment(requestParameters: ProcessPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    searchProducts(requestParameters: SearchProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
      * 
-     * @summary Reconcilepaymentmethod
+     * @summary Updateproduct
+     * @param {string} productUuid 
+     * @param {ProductBase} productBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -217,248 +251,28 @@ export interface BillingApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BillingApiInterface
+     * @memberof ProductsApiInterface
      */
-    reconcilePaymentMethodRaw(requestParameters: ReconcilePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
+    updateProductRaw(requestParameters: UpdateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>>;
 
     /**
-     * Reconcilepaymentmethod
+     * Updateproduct
      */
-    reconcilePaymentMethod(requestParameters: ReconcilePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
-
-    /**
-     * 
-     * @summary Removepaymentmethod
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApiInterface
-     */
-    removePaymentMethodRaw(requestParameters: RemovePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
-
-    /**
-     * Removepaymentmethod
-     */
-    removePaymentMethod(requestParameters: RemovePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    updateProduct(requestParameters: UpdateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn>;
 
 }
 
 /**
  * 
  */
-export class BillingApi extends runtime.BaseAPI implements BillingApiInterface {
+export class ProductsApi extends runtime.BaseAPI implements ProductsApiInterface {
 
     /**
-     * Createbillingaccount
+     * Createproduct
      */
-    async createBillingAccountRaw(requestParameters: CreateBillingAccountRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeAccountResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/billing/create_billing_account`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StripeAccountResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Createbillingaccount
-     */
-    async createBillingAccount(requestParameters: CreateBillingAccountRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeAccountResponse> {
-        const response = await this.createBillingAccountRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Getclientsecret
-     */
-    async getClientSecretRaw(requestParameters: GetClientSecretRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeCustomerSecretResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/billing/retrieve_secret`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StripeCustomerSecretResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Getclientsecret
-     */
-    async getClientSecret(requestParameters: GetClientSecretRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeCustomerSecretResponse> {
-        const response = await this.getClientSecretRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Haspayment
-     */
-    async hasPaymentRaw(requestParameters: HasPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/billing/has_payment`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Haspayment
-     */
-    async hasPayment(requestParameters: HasPaymentRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
-        const response = await this.hasPaymentRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Listpaymentmethods
-     */
-    async listPaymentMethodsRaw(requestParameters: ListPaymentMethodsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PaymentMethodResponse>>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/billing/view_payment_method`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PaymentMethodResponseFromJSON));
-    }
-
-    /**
-     * Listpaymentmethods
-     */
-    async listPaymentMethods(requestParameters: ListPaymentMethodsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PaymentMethodResponse>> {
-        const response = await this.listPaymentMethodsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Processpayment
-     */
-    async processPaymentRaw(requestParameters: ProcessPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
-        if (requestParameters.payment === null || requestParameters.payment === undefined) {
-            throw new runtime.RequiredError('payment','Required parameter requestParameters.payment was null or undefined when calling processPayment.');
+    async createProductRaw(requestParameters: CreateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>> {
+        if (requestParameters.productBase === null || requestParameters.productBase === undefined) {
+            throw new runtime.RequiredError('productBase','Required parameter requestParameters.productBase was null or undefined when calling createProduct.');
         }
 
         const queryParameters: any = {};
@@ -492,28 +306,32 @@ export class BillingApi extends runtime.BaseAPI implements BillingApiInterface {
         }
 
         const response = await this.request({
-            path: `/sam/billing/process_payment`,
+            path: `/products/products`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PaymentToJSON(requestParameters.payment),
+            body: ProductBaseToJSON(requestParameters.productBase),
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProductReturnFromJSON(jsonValue));
     }
 
     /**
-     * Processpayment
+     * Createproduct
      */
-    async processPayment(requestParameters: ProcessPaymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.processPaymentRaw(requestParameters, initOverrides);
+    async createProduct(requestParameters: CreateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn> {
+        const response = await this.createProductRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Reconcilepaymentmethod
+     * Deleteproduct
      */
-    async reconcilePaymentMethodRaw(requestParameters: ReconcilePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+    async deleteProductRaw(requestParameters: DeleteProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling deleteProduct.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -543,57 +361,7 @@ export class BillingApi extends runtime.BaseAPI implements BillingApiInterface {
         }
 
         const response = await this.request({
-            path: `/sam/billing/reconcile_payment`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Reconcilepaymentmethod
-     */
-    async reconcilePaymentMethod(requestParameters: ReconcilePaymentMethodRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
-        const response = await this.reconcilePaymentMethodRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Removepaymentmethod
-     */
-    async removePaymentMethodRaw(requestParameters: RemovePaymentMethodRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/billing/remove_payment_method`,
+            path: `/products/products/{product_uuid}`.replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -603,10 +371,301 @@ export class BillingApi extends runtime.BaseAPI implements BillingApiInterface {
     }
 
     /**
-     * Removepaymentmethod
+     * Deleteproduct
      */
-    async removePaymentMethod(requestParameters: RemovePaymentMethodRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.removePaymentMethodRaw(requestParameters, initOverrides);
+    async deleteProduct(requestParameters: DeleteProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
+        const response = await this.deleteProductRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getproduct
+     */
+    async getProductRaw(requestParameters: GetProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>> {
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling getProduct.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.withAddons !== undefined) {
+            queryParameters['with_addons'] = requestParameters.withAddons;
+        }
+
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/products/{product_uuid}`.replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProductReturnFromJSON(jsonValue));
+    }
+
+    /**
+     * Getproduct
+     */
+    async getProduct(requestParameters: GetProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn> {
+        const response = await this.getProductRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Searchproductcatalog
+     */
+    async searchProductCatalogRaw(requestParameters: SearchProductCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling searchProductCatalog.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['page_size'] = requestParameters.pageSize;
+        }
+
+        if (requestParameters.sortOn !== undefined) {
+            queryParameters['sort_on'] = requestParameters.sortOn;
+        }
+
+        if (requestParameters.sortDesc !== undefined) {
+            queryParameters['sort_desc'] = requestParameters.sortDesc;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/products/{product_uuid}/catalogs`.replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
+    }
+
+    /**
+     * Searchproductcatalog
+     */
+    async searchProductCatalog(requestParameters: SearchProductCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchProductCatalogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Searchproducts
+     */
+    async searchProductsRaw(requestParameters: SearchProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
+        }
+
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
+
+        if (requestParameters.addons) {
+            queryParameters['addons'] = requestParameters.addons;
+        }
+
+        if (requestParameters.priceMax !== undefined) {
+            queryParameters['price_max'] = requestParameters.priceMax;
+        }
+
+        if (requestParameters.priceMin !== undefined) {
+            queryParameters['price_min'] = requestParameters.priceMin;
+        }
+
+        if (requestParameters.quantityAvailable !== undefined) {
+            queryParameters['quantity_available'] = requestParameters.quantityAvailable;
+        }
+
+        if (requestParameters.isDeleted !== undefined) {
+            queryParameters['is_deleted'] = requestParameters.isDeleted;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['page_size'] = requestParameters.pageSize;
+        }
+
+        if (requestParameters.sortOn !== undefined) {
+            queryParameters['sort_on'] = requestParameters.sortOn;
+        }
+
+        if (requestParameters.sortDesc !== undefined) {
+            queryParameters['sort_desc'] = requestParameters.sortDesc;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/products`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
+    }
+
+    /**
+     * Searchproducts
+     */
+    async searchProducts(requestParameters: SearchProductsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchProductsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Updateproduct
+     */
+    async updateProductRaw(requestParameters: UpdateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProductReturn>> {
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling updateProduct.');
+        }
+
+        if (requestParameters.productBase === null || requestParameters.productBase === undefined) {
+            throw new runtime.RequiredError('productBase','Required parameter requestParameters.productBase was null or undefined when calling updateProduct.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/products/{product_uuid}`.replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ProductBaseToJSON(requestParameters.productBase),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProductReturnFromJSON(jsonValue));
+    }
+
+    /**
+     * Updateproduct
+     */
+    async updateProduct(requestParameters: UpdateProductRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProductReturn> {
+        const response = await this.updateProductRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

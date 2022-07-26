@@ -15,33 +15,23 @@
 
 import * as runtime from '../runtime';
 import type {
-  Contact,
-  ContactResponse,
-  CreateTicket,
-  GetAppointment403Response,
+  CreateReview,
   HTTPValidationError,
-  TicketResponse,
-  TicketsResponse,
+  UpdateReview,
 } from '../models';
 import {
-    ContactFromJSON,
-    ContactToJSON,
-    ContactResponseFromJSON,
-    ContactResponseToJSON,
-    CreateTicketFromJSON,
-    CreateTicketToJSON,
-    GetAppointment403ResponseFromJSON,
-    GetAppointment403ResponseToJSON,
+    CreateReviewFromJSON,
+    CreateReviewToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    TicketResponseFromJSON,
-    TicketResponseToJSON,
-    TicketsResponseFromJSON,
-    TicketsResponseToJSON,
+    UpdateReviewFromJSON,
+    UpdateReviewToJSON,
 } from '../models';
 
-export interface CreateContactRequest {
-    contact: Contact;
+export interface CreateReviewRequest {
+    entityType: string;
+    entityUuid: string;
+    createReview: CreateReview;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -50,10 +40,10 @@ export interface CreateContactRequest {
     ehelplyData?: string;
 }
 
-export interface CreateTicketRequest {
-    projectUuid: string;
-    memberUuid: string;
-    createTicket: CreateTicket;
+export interface DeleteReviewRequest {
+    entityType: string;
+    entityUuid: string;
+    reviewUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -62,9 +52,10 @@ export interface CreateTicketRequest {
     ehelplyData?: string;
 }
 
-export interface ListTicketsRequest {
-    projectUuid: string;
-    memberUuid: string;
+export interface GetReviewRequest {
+    entityType: string;
+    entityUuid: string;
+    reviewUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -73,11 +64,9 @@ export interface ListTicketsRequest {
     ehelplyData?: string;
 }
 
-export interface UpdateTicketRequest {
-    projectUuid: string;
-    memberUuid: string;
-    ticketId: string;
-    createTicket: CreateTicket;
+export interface SearchReviewsRequest {
+    entityType: string;
+    entityUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -86,10 +75,11 @@ export interface UpdateTicketRequest {
     ehelplyData?: string;
 }
 
-export interface ViewTicketRequest {
-    projectUuid: string;
-    memberUuid: string;
-    ticketId: string;
+export interface UpdateReviewRequest {
+    entityType: string;
+    entityUuid: string;
+    reviewUuid: string;
+    updateReview: UpdateReview;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -99,16 +89,18 @@ export interface ViewTicketRequest {
 }
 
 /**
- * SupportApi - interface
+ * ReviewsApi - interface
  * 
  * @export
- * @interface SupportApiInterface
+ * @interface ReviewsApiInterface
  */
-export interface SupportApiInterface {
+export interface ReviewsApiInterface {
     /**
      * 
-     * @summary Createcontact
-     * @param {Contact} contact 
+     * @summary Create
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {CreateReview} createReview 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -117,21 +109,21 @@ export interface SupportApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SupportApiInterface
+     * @memberof ReviewsApiInterface
      */
-    createContactRaw(requestParameters: CreateContactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ContactResponse>>;
+    createReviewRaw(requestParameters: CreateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
 
     /**
-     * Createcontact
+     * Create
      */
-    createContact(requestParameters: CreateContactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ContactResponse>;
+    createReview(requestParameters: CreateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
     /**
      * 
-     * @summary Createticket
-     * @param {string} projectUuid 
-     * @param {string} memberUuid 
-     * @param {CreateTicket} createTicket 
+     * @summary Deletereview
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -140,20 +132,21 @@ export interface SupportApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SupportApiInterface
+     * @memberof ReviewsApiInterface
      */
-    createTicketRaw(requestParameters: CreateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>>;
+    deleteReviewRaw(requestParameters: DeleteReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
 
     /**
-     * Createticket
+     * Deletereview
      */
-    createTicket(requestParameters: CreateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse>;
+    deleteReview(requestParameters: DeleteReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
     /**
      * 
-     * @summary Listtickets
-     * @param {string} projectUuid 
-     * @param {string} memberUuid 
+     * @summary Getreview
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -162,22 +155,20 @@ export interface SupportApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SupportApiInterface
+     * @memberof ReviewsApiInterface
      */
-    listTicketsRaw(requestParameters: ListTicketsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TicketsResponse>>>;
+    getReviewRaw(requestParameters: GetReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
 
     /**
-     * Listtickets
+     * Getreview
      */
-    listTickets(requestParameters: ListTicketsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TicketsResponse>>;
+    getReview(requestParameters: GetReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
     /**
      * 
-     * @summary Updateticket
-     * @param {string} projectUuid 
-     * @param {string} memberUuid 
-     * @param {string} ticketId 
-     * @param {CreateTicket} createTicket 
+     * @summary Searchreview
+     * @param {string} entityType 
+     * @param {string} entityUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -186,21 +177,22 @@ export interface SupportApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SupportApiInterface
+     * @memberof ReviewsApiInterface
      */
-    updateTicketRaw(requestParameters: UpdateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>>;
+    searchReviewsRaw(requestParameters: SearchReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
 
     /**
-     * Updateticket
+     * Searchreview
      */
-    updateTicket(requestParameters: UpdateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse>;
+    searchReviews(requestParameters: SearchReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
     /**
      * 
-     * @summary Viewticket
-     * @param {string} projectUuid 
-     * @param {string} memberUuid 
-     * @param {string} ticketId 
+     * @summary Updatereview
+     * @param {string} entityType 
+     * @param {string} entityUuid 
+     * @param {string} reviewUuid 
+     * @param {UpdateReview} updateReview 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -209,28 +201,36 @@ export interface SupportApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SupportApiInterface
+     * @memberof ReviewsApiInterface
      */
-    viewTicketRaw(requestParameters: ViewTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>>;
+    updateReviewRaw(requestParameters: UpdateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
 
     /**
-     * Viewticket
+     * Updatereview
      */
-    viewTicket(requestParameters: ViewTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse>;
+    updateReview(requestParameters: UpdateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
 }
 
 /**
  * 
  */
-export class SupportApi extends runtime.BaseAPI implements SupportApiInterface {
+export class ReviewsApi extends runtime.BaseAPI implements ReviewsApiInterface {
 
     /**
-     * Createcontact
+     * Create
      */
-    async createContactRaw(requestParameters: CreateContactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ContactResponse>> {
-        if (requestParameters.contact === null || requestParameters.contact === undefined) {
-            throw new runtime.RequiredError('contact','Required parameter requestParameters.contact was null or undefined when calling createContact.');
+    async createReviewRaw(requestParameters: CreateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.entityType === null || requestParameters.entityType === undefined) {
+            throw new runtime.RequiredError('entityType','Required parameter requestParameters.entityType was null or undefined when calling createReview.');
+        }
+
+        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
+            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling createReview.');
+        }
+
+        if (requestParameters.createReview === null || requestParameters.createReview === undefined) {
+            throw new runtime.RequiredError('createReview','Required parameter requestParameters.createReview was null or undefined when calling createReview.');
         }
 
         const queryParameters: any = {};
@@ -264,99 +264,38 @@ export class SupportApi extends runtime.BaseAPI implements SupportApiInterface {
         }
 
         const response = await this.request({
-            path: `/sam/support/contact`,
+            path: `/products/reviews/types/{entity_type}/entities/{entity_uuid}`.replace(`{${"entity_type"}}`, encodeURIComponent(String(requestParameters.entityType))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ContactToJSON(requestParameters.contact),
+            body: CreateReviewToJSON(requestParameters.createReview),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ContactResponseFromJSON(jsonValue));
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
-     * Createcontact
+     * Create
      */
-    async createContact(requestParameters: CreateContactRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ContactResponse> {
-        const response = await this.createContactRaw(requestParameters, initOverrides);
+    async createReview(requestParameters: CreateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.createReviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Createticket
+     * Deletereview
      */
-    async createTicketRaw(requestParameters: CreateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>> {
-        if (requestParameters.projectUuid === null || requestParameters.projectUuid === undefined) {
-            throw new runtime.RequiredError('projectUuid','Required parameter requestParameters.projectUuid was null or undefined when calling createTicket.');
+    async deleteReviewRaw(requestParameters: DeleteReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.entityType === null || requestParameters.entityType === undefined) {
+            throw new runtime.RequiredError('entityType','Required parameter requestParameters.entityType was null or undefined when calling deleteReview.');
         }
 
-        if (requestParameters.memberUuid === null || requestParameters.memberUuid === undefined) {
-            throw new runtime.RequiredError('memberUuid','Required parameter requestParameters.memberUuid was null or undefined when calling createTicket.');
+        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
+            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling deleteReview.');
         }
 
-        if (requestParameters.createTicket === null || requestParameters.createTicket === undefined) {
-            throw new runtime.RequiredError('createTicket','Required parameter requestParameters.createTicket was null or undefined when calling createTicket.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets`.replace(`{${"project_uuid"}}`, encodeURIComponent(String(requestParameters.projectUuid))).replace(`{${"member_uuid"}}`, encodeURIComponent(String(requestParameters.memberUuid))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateTicketToJSON(requestParameters.createTicket),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TicketResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Createticket
-     */
-    async createTicket(requestParameters: CreateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse> {
-        const response = await this.createTicketRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Listtickets
-     */
-    async listTicketsRaw(requestParameters: ListTicketsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TicketsResponse>>> {
-        if (requestParameters.projectUuid === null || requestParameters.projectUuid === undefined) {
-            throw new runtime.RequiredError('projectUuid','Required parameter requestParameters.projectUuid was null or undefined when calling listTickets.');
-        }
-
-        if (requestParameters.memberUuid === null || requestParameters.memberUuid === undefined) {
-            throw new runtime.RequiredError('memberUuid','Required parameter requestParameters.memberUuid was null or undefined when calling listTickets.');
+        if (requestParameters.reviewUuid === null || requestParameters.reviewUuid === undefined) {
+            throw new runtime.RequiredError('reviewUuid','Required parameter requestParameters.reviewUuid was null or undefined when calling deleteReview.');
         }
 
         const queryParameters: any = {};
@@ -388,41 +327,161 @@ export class SupportApi extends runtime.BaseAPI implements SupportApiInterface {
         }
 
         const response = await this.request({
-            path: `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets`.replace(`{${"project_uuid"}}`, encodeURIComponent(String(requestParameters.projectUuid))).replace(`{${"member_uuid"}}`, encodeURIComponent(String(requestParameters.memberUuid))),
+            path: `/products/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`.replace(`{${"entity_type"}}`, encodeURIComponent(String(requestParameters.entityType))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))).replace(`{${"review_uuid"}}`, encodeURIComponent(String(requestParameters.reviewUuid))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Deletereview
+     */
+    async deleteReview(requestParameters: DeleteReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteReviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getreview
+     */
+    async getReviewRaw(requestParameters: GetReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.entityType === null || requestParameters.entityType === undefined) {
+            throw new runtime.RequiredError('entityType','Required parameter requestParameters.entityType was null or undefined when calling getReview.');
+        }
+
+        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
+            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling getReview.');
+        }
+
+        if (requestParameters.reviewUuid === null || requestParameters.reviewUuid === undefined) {
+            throw new runtime.RequiredError('reviewUuid','Required parameter requestParameters.reviewUuid was null or undefined when calling getReview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`.replace(`{${"entity_type"}}`, encodeURIComponent(String(requestParameters.entityType))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))).replace(`{${"review_uuid"}}`, encodeURIComponent(String(requestParameters.reviewUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TicketsResponseFromJSON));
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
-     * Listtickets
+     * Getreview
      */
-    async listTickets(requestParameters: ListTicketsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TicketsResponse>> {
-        const response = await this.listTicketsRaw(requestParameters, initOverrides);
+    async getReview(requestParameters: GetReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.getReviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Updateticket
+     * Searchreview
      */
-    async updateTicketRaw(requestParameters: UpdateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>> {
-        if (requestParameters.projectUuid === null || requestParameters.projectUuid === undefined) {
-            throw new runtime.RequiredError('projectUuid','Required parameter requestParameters.projectUuid was null or undefined when calling updateTicket.');
+    async searchReviewsRaw(requestParameters: SearchReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.entityType === null || requestParameters.entityType === undefined) {
+            throw new runtime.RequiredError('entityType','Required parameter requestParameters.entityType was null or undefined when calling searchReviews.');
         }
 
-        if (requestParameters.memberUuid === null || requestParameters.memberUuid === undefined) {
-            throw new runtime.RequiredError('memberUuid','Required parameter requestParameters.memberUuid was null or undefined when calling updateTicket.');
+        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
+            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling searchReviews.');
         }
 
-        if (requestParameters.ticketId === null || requestParameters.ticketId === undefined) {
-            throw new runtime.RequiredError('ticketId','Required parameter requestParameters.ticketId was null or undefined when calling updateTicket.');
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
         }
 
-        if (requestParameters.createTicket === null || requestParameters.createTicket === undefined) {
-            throw new runtime.RequiredError('createTicket','Required parameter requestParameters.createTicket was null or undefined when calling updateTicket.');
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/products/reviews/types/{entity_type}/entities/{entity_uuid}`.replace(`{${"entity_type"}}`, encodeURIComponent(String(requestParameters.entityType))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Searchreview
+     */
+    async searchReviews(requestParameters: SearchReviewsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.searchReviewsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Updatereview
+     */
+    async updateReviewRaw(requestParameters: UpdateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters.entityType === null || requestParameters.entityType === undefined) {
+            throw new runtime.RequiredError('entityType','Required parameter requestParameters.entityType was null or undefined when calling updateReview.');
+        }
+
+        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
+            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling updateReview.');
+        }
+
+        if (requestParameters.reviewUuid === null || requestParameters.reviewUuid === undefined) {
+            throw new runtime.RequiredError('reviewUuid','Required parameter requestParameters.reviewUuid was null or undefined when calling updateReview.');
+        }
+
+        if (requestParameters.updateReview === null || requestParameters.updateReview === undefined) {
+            throw new runtime.RequiredError('updateReview','Required parameter requestParameters.updateReview was null or undefined when calling updateReview.');
         }
 
         const queryParameters: any = {};
@@ -456,83 +515,21 @@ export class SupportApi extends runtime.BaseAPI implements SupportApiInterface {
         }
 
         const response = await this.request({
-            path: `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets/{ticket_id}`.replace(`{${"project_uuid"}}`, encodeURIComponent(String(requestParameters.projectUuid))).replace(`{${"member_uuid"}}`, encodeURIComponent(String(requestParameters.memberUuid))).replace(`{${"ticket_id"}}`, encodeURIComponent(String(requestParameters.ticketId))),
+            path: `/products/reviews/types/{entity_type}/entities/{entity_uuid}/reviews/{review_uuid}`.replace(`{${"entity_type"}}`, encodeURIComponent(String(requestParameters.entityType))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))).replace(`{${"review_uuid"}}`, encodeURIComponent(String(requestParameters.reviewUuid))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateTicketToJSON(requestParameters.createTicket),
+            body: UpdateReviewToJSON(requestParameters.updateReview),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TicketResponseFromJSON(jsonValue));
+        return new runtime.TextApiResponse(response) as any;
     }
 
     /**
-     * Updateticket
+     * Updatereview
      */
-    async updateTicket(requestParameters: UpdateTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse> {
-        const response = await this.updateTicketRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Viewticket
-     */
-    async viewTicketRaw(requestParameters: ViewTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TicketResponse>> {
-        if (requestParameters.projectUuid === null || requestParameters.projectUuid === undefined) {
-            throw new runtime.RequiredError('projectUuid','Required parameter requestParameters.projectUuid was null or undefined when calling viewTicket.');
-        }
-
-        if (requestParameters.memberUuid === null || requestParameters.memberUuid === undefined) {
-            throw new runtime.RequiredError('memberUuid','Required parameter requestParameters.memberUuid was null or undefined when calling viewTicket.');
-        }
-
-        if (requestParameters.ticketId === null || requestParameters.ticketId === undefined) {
-            throw new runtime.RequiredError('ticketId','Required parameter requestParameters.ticketId was null or undefined when calling viewTicket.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/sam/support/projects/{project_uuid}/members/{member_uuid}/tickets/{ticket_id}`.replace(`{${"project_uuid"}}`, encodeURIComponent(String(requestParameters.projectUuid))).replace(`{${"member_uuid"}}`, encodeURIComponent(String(requestParameters.memberUuid))).replace(`{${"ticket_id"}}`, encodeURIComponent(String(requestParameters.ticketId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TicketResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Viewticket
-     */
-    async viewTicket(requestParameters: ViewTicketRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TicketResponse> {
-        const response = await this.viewTicketRaw(requestParameters, initOverrides);
+    async updateReview(requestParameters: UpdateReviewRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateReviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
