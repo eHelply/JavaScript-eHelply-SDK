@@ -16,37 +16,49 @@ import { exists, mapValues } from '../runtime';
 /**
  * Detailed meta based on Notes
  * @export
- * @interface DetailedMetaCreate
+ * @interface DetailedMetaGet
  */
-export interface DetailedMetaCreate {
+export interface DetailedMetaGet {
     /**
      * 
      * @type {string}
-     * @memberof DetailedMetaCreate
+     * @memberof DetailedMetaGet
      */
     summary?: string;
     /**
      * 
      * @type {string}
-     * @memberof DetailedMetaCreate
+     * @memberof DetailedMetaGet
      */
     description?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof DetailedMetaGet
+     */
+    summaryHistory?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof DetailedMetaGet
+     */
+    descriptionHistory?: Array<string>;
 }
 
 /**
- * Check if a given object implements the DetailedMetaCreate interface.
+ * Check if a given object implements the DetailedMetaGet interface.
  */
-export function instanceOfDetailedMetaCreate(value: object): boolean {
+export function instanceOfDetailedMetaGet(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DetailedMetaCreateFromJSON(json: any): DetailedMetaCreate {
-    return DetailedMetaCreateFromJSONTyped(json, false);
+export function DetailedMetaGetFromJSON(json: any): DetailedMetaGet {
+    return DetailedMetaGetFromJSONTyped(json, false);
 }
 
-export function DetailedMetaCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): DetailedMetaCreate {
+export function DetailedMetaGetFromJSONTyped(json: any, ignoreDiscriminator: boolean): DetailedMetaGet {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -54,10 +66,12 @@ export function DetailedMetaCreateFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'summary': !exists(json, 'summary') ? undefined : json['summary'],
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'summaryHistory': !exists(json, 'summary_history') ? undefined : json['summary_history'],
+        'descriptionHistory': !exists(json, 'description_history') ? undefined : json['description_history'],
     };
 }
 
-export function DetailedMetaCreateToJSON(value?: DetailedMetaCreate | null): any {
+export function DetailedMetaGetToJSON(value?: DetailedMetaGet | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -68,6 +82,8 @@ export function DetailedMetaCreateToJSON(value?: DetailedMetaCreate | null): any
         
         'summary': value.summary,
         'description': value.description,
+        'summary_history': value.summaryHistory,
+        'description_history': value.descriptionHistory,
     };
 }
 

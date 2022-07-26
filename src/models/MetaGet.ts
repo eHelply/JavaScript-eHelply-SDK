@@ -13,18 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BasicMetaCreate } from './BasicMetaCreate';
+import type { BasicMeta } from './BasicMeta';
 import {
-    BasicMetaCreateFromJSON,
-    BasicMetaCreateFromJSONTyped,
-    BasicMetaCreateToJSON,
-} from './BasicMetaCreate';
-import type { DetailedMetaCreate } from './DetailedMetaCreate';
+    BasicMetaFromJSON,
+    BasicMetaFromJSONTyped,
+    BasicMetaToJSON,
+} from './BasicMeta';
+import type { DatesMeta } from './DatesMeta';
 import {
-    DetailedMetaCreateFromJSON,
-    DetailedMetaCreateFromJSONTyped,
-    DetailedMetaCreateToJSON,
-} from './DetailedMetaCreate';
+    DatesMetaFromJSON,
+    DatesMetaFromJSONTyped,
+    DatesMetaToJSON,
+} from './DatesMeta';
+import type { DetailedMetaGet } from './DetailedMetaGet';
+import {
+    DetailedMetaGetFromJSON,
+    DetailedMetaGetFromJSONTyped,
+    DetailedMetaGetToJSON,
+} from './DetailedMetaGet';
 import type { Field } from './Field';
 import {
     FieldFromJSON,
@@ -47,76 +53,93 @@ import {
 /**
  * Meta
  * @export
- * @interface MetaCreate
+ * @interface MetaGet
  */
-export interface MetaCreate {
+export interface MetaGet {
     /**
      * 
-     * @type {BasicMetaCreate}
-     * @memberof MetaCreate
+     * @type {string}
+     * @memberof MetaGet
      */
-    basic?: BasicMetaCreate;
+    uuid: string;
     /**
      * 
-     * @type {DetailedMetaCreate}
-     * @memberof MetaCreate
+     * @type {BasicMeta}
+     * @memberof MetaGet
      */
-    detailed?: DetailedMetaCreate;
+    basic: BasicMeta;
+    /**
+     * 
+     * @type {DetailedMetaGet}
+     * @memberof MetaGet
+     */
+    detailed: DetailedMetaGet;
     /**
      * 
      * @type {MetaCustom}
-     * @memberof MetaCreate
+     * @memberof MetaGet
      */
     custom?: MetaCustom;
     /**
      * 
+     * @type {DatesMeta}
+     * @memberof MetaGet
+     */
+    dates?: DatesMeta;
+    /**
+     * 
      * @type {Array<Field>}
-     * @memberof MetaCreate
+     * @memberof MetaGet
      */
     fields?: Array<Field>;
     /**
      * 
      * @type {Array<MetaChildren>}
-     * @memberof MetaCreate
+     * @memberof MetaGet
      */
     children?: Array<MetaChildren>;
     /**
      * 
      * @type {string}
-     * @memberof MetaCreate
+     * @memberof MetaGet
      */
     parentUuid?: string;
 }
 
 /**
- * Check if a given object implements the MetaCreate interface.
+ * Check if a given object implements the MetaGet interface.
  */
-export function instanceOfMetaCreate(value: object): boolean {
+export function instanceOfMetaGet(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "uuid" in value;
+    isInstance = isInstance && "basic" in value;
+    isInstance = isInstance && "detailed" in value;
 
     return isInstance;
 }
 
-export function MetaCreateFromJSON(json: any): MetaCreate {
-    return MetaCreateFromJSONTyped(json, false);
+export function MetaGetFromJSON(json: any): MetaGet {
+    return MetaGetFromJSONTyped(json, false);
 }
 
-export function MetaCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): MetaCreate {
+export function MetaGetFromJSONTyped(json: any, ignoreDiscriminator: boolean): MetaGet {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'basic': !exists(json, 'basic') ? undefined : BasicMetaCreateFromJSON(json['basic']),
-        'detailed': !exists(json, 'detailed') ? undefined : DetailedMetaCreateFromJSON(json['detailed']),
+        'uuid': json['uuid'],
+        'basic': BasicMetaFromJSON(json['basic']),
+        'detailed': DetailedMetaGetFromJSON(json['detailed']),
         'custom': !exists(json, 'custom') ? undefined : MetaCustomFromJSON(json['custom']),
+        'dates': !exists(json, 'dates') ? undefined : DatesMetaFromJSON(json['dates']),
         'fields': !exists(json, 'fields') ? undefined : ((json['fields'] as Array<any>).map(FieldFromJSON)),
         'children': !exists(json, 'children') ? undefined : ((json['children'] as Array<any>).map(MetaChildrenFromJSON)),
         'parentUuid': !exists(json, 'parent_uuid') ? undefined : json['parent_uuid'],
     };
 }
 
-export function MetaCreateToJSON(value?: MetaCreate | null): any {
+export function MetaGetToJSON(value?: MetaGet | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -125,9 +148,11 @@ export function MetaCreateToJSON(value?: MetaCreate | null): any {
     }
     return {
         
-        'basic': BasicMetaCreateToJSON(value.basic),
-        'detailed': DetailedMetaCreateToJSON(value.detailed),
+        'uuid': value.uuid,
+        'basic': BasicMetaToJSON(value.basic),
+        'detailed': DetailedMetaGetToJSON(value.detailed),
         'custom': MetaCustomToJSON(value.custom),
+        'dates': DatesMetaToJSON(value.dates),
         'fields': value.fields === undefined ? undefined : ((value.fields as Array<any>).map(FieldToJSON)),
         'children': value.children === undefined ? undefined : ((value.children as Array<any>).map(MetaChildrenToJSON)),
         'parent_uuid': value.parentUuid,
