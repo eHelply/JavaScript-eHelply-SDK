@@ -15,22 +15,25 @@
 
 import * as runtime from '../runtime';
 import type {
-  AppointmentBase,
-  AppointmentResponse,
+  CatalogBase,
+  CatalogReturn,
   HTTPValidationError,
+  Page,
 } from '../models';
 import {
-    AppointmentBaseFromJSON,
-    AppointmentBaseToJSON,
-    AppointmentResponseFromJSON,
-    AppointmentResponseToJSON,
+    CatalogBaseFromJSON,
+    CatalogBaseToJSON,
+    CatalogReturnFromJSON,
+    CatalogReturnToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
+    PageFromJSON,
+    PageToJSON,
 } from '../models';
 
-export interface AttachEntityToAppointmentRequest {
-    appointmentUuid: string;
-    entityUuid: string;
+export interface AttachProductToCatalogRequest {
+    catalogUuid: string;
+    productUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -39,8 +42,8 @@ export interface AttachEntityToAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface CreateAppointmentRequest {
-    appointmentBase: AppointmentBase;
+export interface CreateCatalogRequest {
+    catalogBase: CatalogBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -49,8 +52,8 @@ export interface CreateAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface DeleteAppointmentRequest {
-    appointmentUuid: string;
+export interface DeleteCatalogRequest {
+    catalogUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -59,9 +62,9 @@ export interface DeleteAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface DetachEntityFromAppointmentRequest {
-    appointmentUuid: string;
-    entityUuid: string;
+export interface DetachProductFromCatalogRequest {
+    catalogUuid: string;
+    productUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -70,8 +73,9 @@ export interface DetachEntityFromAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface GetAppointmentRequest {
-    appointmentUuid: string;
+export interface GetCatalogRequest {
+    catalogUuid: string;
+    withMeta?: boolean;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -80,18 +84,13 @@ export interface GetAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface SearchAppointmentRequest {
-    placeUuid?: string;
-    excludeCancelled?: boolean;
-    isDeleted?: boolean;
-    startRange?: string;
-    endRange?: string;
+export interface SearchCatalogProductsRequest {
+    catalogUuid: string;
+    withMeta?: boolean;
     page?: number;
     pageSize?: number;
     sortOn?: string;
     sortDesc?: boolean;
-    search?: string;
-    searchOn?: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -100,14 +99,13 @@ export interface SearchAppointmentRequest {
     ehelplyData?: string;
 }
 
-export interface SearchAppointmentEntitiesRequest {
-    appointmentUuid: string;
+export interface SearchCatalogsRequest {
+    withMeta?: boolean;
+    name?: string;
     page?: number;
     pageSize?: number;
     sortOn?: string;
     sortDesc?: boolean;
-    search?: string;
-    searchOn?: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -116,22 +114,9 @@ export interface SearchAppointmentEntitiesRequest {
     ehelplyData?: string;
 }
 
-export interface SearchEntityAppointmentsRequest {
-    entityUuid: string;
-    startDate?: string;
-    endDate?: string;
-    includeCancelled?: boolean;
-    xAccessToken?: string;
-    xSecretToken?: string;
-    authorization?: string;
-    ehelplyActiveParticipant?: string;
-    ehelplyProject?: string;
-    ehelplyData?: string;
-}
-
-export interface UpdateAppointmentRequest {
-    appointmentUuid: string;
-    appointmentBase: AppointmentBase;
+export interface UpdateCatalogRequest {
+    catalogUuid: string;
+    catalogBase: CatalogBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -141,17 +126,17 @@ export interface UpdateAppointmentRequest {
 }
 
 /**
- * DefaultApi - interface
+ * CatalogsApi - interface
  * 
  * @export
- * @interface DefaultApiInterface
+ * @interface CatalogsApiInterface
  */
-export interface DefaultApiInterface {
+export interface CatalogsApiInterface {
     /**
      * 
-     * @summary Attach Entity To Appointment
-     * @param {string} appointmentUuid 
-     * @param {string} entityUuid 
+     * @summary Addproducttocatalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -160,19 +145,19 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    attachEntityToAppointmentRaw(requestParameters: AttachEntityToAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
+    attachProductToCatalogRaw(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
 
     /**
-     * Attach Entity To Appointment
+     * Addproducttocatalog
      */
-    attachEntityToAppointment(requestParameters: AttachEntityToAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
+    attachProductToCatalog(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
 
     /**
      * 
-     * @summary Create Appointment
-     * @param {AppointmentBase} appointmentBase 
+     * @summary Createcatalog
+     * @param {CatalogBase} catalogBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -181,19 +166,19 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    createAppointmentRaw(requestParameters: CreateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>>;
+    createCatalogRaw(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
 
     /**
-     * Create Appointment
+     * Createcatalog
      */
-    createAppointment(requestParameters: CreateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse>;
+    createCatalog(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn>;
 
     /**
      * 
-     * @summary Delete Appointment
-     * @param {string} appointmentUuid 
+     * @summary Deletecatalog
+     * @param {string} catalogUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -202,20 +187,20 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    deleteAppointmentRaw(requestParameters: DeleteAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
+    deleteCatalogRaw(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
 
     /**
-     * Delete Appointment
+     * Deletecatalog
      */
-    deleteAppointment(requestParameters: DeleteAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
+    deleteCatalog(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
 
     /**
      * 
-     * @summary Detach Entity From Appointment
-     * @param {string} appointmentUuid 
-     * @param {string} entityUuid 
+     * @summary Removeproductfromcatalog
+     * @param {string} catalogUuid 
+     * @param {string} productUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -224,19 +209,20 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    detachEntityFromAppointmentRaw(requestParameters: DetachEntityFromAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
+    detachProductFromCatalogRaw(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>>;
 
     /**
-     * Detach Entity From Appointment
+     * Removeproductfromcatalog
      */
-    detachEntityFromAppointment(requestParameters: DetachEntityFromAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
+    detachProductFromCatalog(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean>;
 
     /**
      * 
-     * @summary Get Appointment
-     * @param {string} appointmentUuid 
+     * @summary Getcatalog
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -245,29 +231,24 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    getAppointmentRaw(requestParameters: GetAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>>;
+    getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
 
     /**
-     * Get Appointment
+     * Getcatalog
      */
-    getAppointment(requestParameters: GetAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse>;
+    getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn>;
 
     /**
      * 
-     * @summary Search Appointment
-     * @param {string} [placeUuid] 
-     * @param {boolean} [excludeCancelled] 
-     * @param {boolean} [isDeleted] 
-     * @param {string} [startRange] 
-     * @param {string} [endRange] 
+     * @summary Searchcatalogproducts
+     * @param {string} catalogUuid 
+     * @param {boolean} [withMeta] 
      * @param {number} [page] 
      * @param {number} [pageSize] 
      * @param {string} [sortOn] 
      * @param {boolean} [sortDesc] 
-     * @param {string} [search] 
-     * @param {string} [searchOn] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -276,25 +257,24 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    searchAppointmentRaw(requestParameters: SearchAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    searchCatalogProductsRaw(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
-     * Search Appointment
+     * Searchcatalogproducts
      */
-    searchAppointment(requestParameters: SearchAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    searchCatalogProducts(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
      * 
-     * @summary Search Appointment Entities
-     * @param {string} appointmentUuid 
+     * @summary Searchcatalogs
+     * @param {boolean} [withMeta] 
+     * @param {string} [name] 
      * @param {number} [page] 
      * @param {number} [pageSize] 
      * @param {string} [sortOn] 
      * @param {boolean} [sortDesc] 
-     * @param {string} [search] 
-     * @param {string} [searchOn] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -303,22 +283,20 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    searchAppointmentEntitiesRaw(requestParameters: SearchAppointmentEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    searchCatalogsRaw(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
-     * Search Appointment Entities
+     * Searchcatalogs
      */
-    searchAppointmentEntities(requestParameters: SearchAppointmentEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    searchCatalogs(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
      * 
-     * @summary Get Entities Appointments
-     * @param {string} entityUuid 
-     * @param {string} [startDate] 
-     * @param {string} [endDate] 
-     * @param {boolean} [includeCancelled] 
+     * @summary Updatecatalog
+     * @param {string} catalogUuid 
+     * @param {CatalogBase} catalogBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -327,54 +305,32 @@ export interface DefaultApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApiInterface
+     * @memberof CatalogsApiInterface
      */
-    searchEntityAppointmentsRaw(requestParameters: SearchEntityAppointmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    updateCatalogRaw(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
 
     /**
-     * Get Entities Appointments
+     * Updatecatalog
      */
-    searchEntityAppointments(requestParameters: SearchEntityAppointmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
-
-    /**
-     * 
-     * @summary Update Appointment
-     * @param {string} appointmentUuid 
-     * @param {AppointmentBase} appointmentBase 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    updateAppointmentRaw(requestParameters: UpdateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>>;
-
-    /**
-     * Update Appointment
-     */
-    updateAppointment(requestParameters: UpdateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse>;
+    updateCatalog(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn>;
 
 }
 
 /**
  * 
  */
-export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
+export class CatalogsApi extends runtime.BaseAPI implements CatalogsApiInterface {
 
     /**
-     * Attach Entity To Appointment
+     * Addproducttocatalog
      */
-    async attachEntityToAppointmentRaw(requestParameters: AttachEntityToAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling attachEntityToAppointment.');
+    async attachProductToCatalogRaw(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling attachProductToCatalog.');
         }
 
-        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
-            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling attachEntityToAppointment.');
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling attachProductToCatalog.');
         }
 
         const queryParameters: any = {};
@@ -406,7 +362,7 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}/entities/{entity_uuid}`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))),
+            path: `/products/catalogs/{catalog_uuid}/products/{product_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))).replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -416,19 +372,19 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
     }
 
     /**
-     * Attach Entity To Appointment
+     * Addproducttocatalog
      */
-    async attachEntityToAppointment(requestParameters: AttachEntityToAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
-        const response = await this.attachEntityToAppointmentRaw(requestParameters, initOverrides);
+    async attachProductToCatalog(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
+        const response = await this.attachProductToCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Create Appointment
+     * Createcatalog
      */
-    async createAppointmentRaw(requestParameters: CreateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>> {
-        if (requestParameters.appointmentBase === null || requestParameters.appointmentBase === undefined) {
-            throw new runtime.RequiredError('appointmentBase','Required parameter requestParameters.appointmentBase was null or undefined when calling createAppointment.');
+    async createCatalogRaw(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
+        if (requestParameters.catalogBase === null || requestParameters.catalogBase === undefined) {
+            throw new runtime.RequiredError('catalogBase','Required parameter requestParameters.catalogBase was null or undefined when calling createCatalog.');
         }
 
         const queryParameters: any = {};
@@ -462,30 +418,30 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments`,
+            path: `/products/catalogs`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: AppointmentBaseToJSON(requestParameters.appointmentBase),
+            body: CatalogBaseToJSON(requestParameters.catalogBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AppointmentResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
     }
 
     /**
-     * Create Appointment
+     * Createcatalog
      */
-    async createAppointment(requestParameters: CreateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse> {
-        const response = await this.createAppointmentRaw(requestParameters, initOverrides);
+    async createCatalog(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn> {
+        const response = await this.createCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Delete Appointment
+     * Deletecatalog
      */
-    async deleteAppointmentRaw(requestParameters: DeleteAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling deleteAppointment.');
+    async deleteCatalogRaw(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling deleteCatalog.');
         }
 
         const queryParameters: any = {};
@@ -517,7 +473,7 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))),
+            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -527,23 +483,23 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
     }
 
     /**
-     * Delete Appointment
+     * Deletecatalog
      */
-    async deleteAppointment(requestParameters: DeleteAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
-        const response = await this.deleteAppointmentRaw(requestParameters, initOverrides);
+    async deleteCatalog(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
+        const response = await this.deleteCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Detach Entity From Appointment
+     * Removeproductfromcatalog
      */
-    async detachEntityFromAppointmentRaw(requestParameters: DetachEntityFromAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling detachEntityFromAppointment.');
+    async detachProductFromCatalogRaw(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<boolean>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling detachProductFromCatalog.');
         }
 
-        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
-            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling detachEntityFromAppointment.');
+        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
+            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling detachProductFromCatalog.');
         }
 
         const queryParameters: any = {};
@@ -575,7 +531,7 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}/entities/{entity_uuid}`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))).replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))),
+            path: `/products/catalogs/{catalog_uuid}/products/{product_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))).replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -585,22 +541,26 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
     }
 
     /**
-     * Detach Entity From Appointment
+     * Removeproductfromcatalog
      */
-    async detachEntityFromAppointment(requestParameters: DetachEntityFromAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
-        const response = await this.detachEntityFromAppointmentRaw(requestParameters, initOverrides);
+    async detachProductFromCatalog(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<boolean> {
+        const response = await this.detachProductFromCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Get Appointment
+     * Getcatalog
      */
-    async getAppointmentRaw(requestParameters: GetAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling getAppointment.');
+    async getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling getCatalog.');
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -629,47 +589,35 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))),
+            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AppointmentResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
     }
 
     /**
-     * Get Appointment
+     * Getcatalog
      */
-    async getAppointment(requestParameters: GetAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse> {
-        const response = await this.getAppointmentRaw(requestParameters, initOverrides);
+    async getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn> {
+        const response = await this.getCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Search Appointment
+     * Searchcatalogproducts
      */
-    async searchAppointmentRaw(requestParameters: SearchAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async searchCatalogProductsRaw(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling searchCatalogProducts.');
+        }
+
         const queryParameters: any = {};
 
-        if (requestParameters.placeUuid !== undefined) {
-            queryParameters['place_uuid'] = requestParameters.placeUuid;
-        }
-
-        if (requestParameters.excludeCancelled !== undefined) {
-            queryParameters['exclude_cancelled'] = requestParameters.excludeCancelled;
-        }
-
-        if (requestParameters.isDeleted !== undefined) {
-            queryParameters['is_deleted'] = requestParameters.isDeleted;
-        }
-
-        if (requestParameters.startRange !== undefined) {
-            queryParameters['start_range'] = requestParameters.startRange;
-        }
-
-        if (requestParameters.endRange !== undefined) {
-            queryParameters['end_range'] = requestParameters.endRange;
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
         }
 
         if (requestParameters.page !== undefined) {
@@ -688,14 +636,6 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
             queryParameters['sort_desc'] = requestParameters.sortDesc;
         }
 
-        if (requestParameters.search !== undefined) {
-            queryParameters['search'] = requestParameters.search;
-        }
-
-        if (requestParameters.searchOn !== undefined) {
-            queryParameters['search_on'] = requestParameters.searchOn;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
@@ -723,32 +663,36 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments`,
+            path: `/products/catalogs/{catalog_uuid}/products`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
     }
 
     /**
-     * Search Appointment
+     * Searchcatalogproducts
      */
-    async searchAppointment(requestParameters: SearchAppointmentRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.searchAppointmentRaw(requestParameters, initOverrides);
+    async searchCatalogProducts(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchCatalogProductsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Search Appointment Entities
+     * Searchcatalogs
      */
-    async searchAppointmentEntitiesRaw(requestParameters: SearchAppointmentEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling searchAppointmentEntities.');
+    async searchCatalogsRaw(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.withMeta !== undefined) {
+            queryParameters['with_meta'] = requestParameters.withMeta;
         }
 
-        const queryParameters: any = {};
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
 
         if (requestParameters.page !== undefined) {
             queryParameters['page'] = requestParameters.page;
@@ -766,14 +710,6 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
             queryParameters['sort_desc'] = requestParameters.sortDesc;
         }
 
-        if (requestParameters.search !== undefined) {
-            queryParameters['search'] = requestParameters.search;
-        }
-
-        if (requestParameters.searchOn !== undefined) {
-            queryParameters['search_on'] = requestParameters.searchOn;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
@@ -801,99 +737,33 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}/entities`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))),
+            path: `/products/catalogs`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
     }
 
     /**
-     * Search Appointment Entities
+     * Searchcatalogs
      */
-    async searchAppointmentEntities(requestParameters: SearchAppointmentEntitiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.searchAppointmentEntitiesRaw(requestParameters, initOverrides);
+    async searchCatalogs(requestParameters: SearchCatalogsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchCatalogsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Get Entities Appointments
+     * Updatecatalog
      */
-    async searchEntityAppointmentsRaw(requestParameters: SearchEntityAppointmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.entityUuid === null || requestParameters.entityUuid === undefined) {
-            throw new runtime.RequiredError('entityUuid','Required parameter requestParameters.entityUuid was null or undefined when calling searchEntityAppointments.');
+    async updateCatalogRaw(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
+        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
+            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling updateCatalog.');
         }
 
-        const queryParameters: any = {};
-
-        if (requestParameters.startDate !== undefined) {
-            queryParameters['start_date'] = requestParameters.startDate;
-        }
-
-        if (requestParameters.endDate !== undefined) {
-            queryParameters['end_date'] = requestParameters.endDate;
-        }
-
-        if (requestParameters.includeCancelled !== undefined) {
-            queryParameters['include_cancelled'] = requestParameters.includeCancelled;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/appointments/appointments/entities/{entity_uuid}/appointments`.replace(`{${"entity_uuid"}}`, encodeURIComponent(String(requestParameters.entityUuid))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Get Entities Appointments
-     */
-    async searchEntityAppointments(requestParameters: SearchEntityAppointmentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.searchEntityAppointmentsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Update Appointment
-     */
-    async updateAppointmentRaw(requestParameters: UpdateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AppointmentResponse>> {
-        if (requestParameters.appointmentUuid === null || requestParameters.appointmentUuid === undefined) {
-            throw new runtime.RequiredError('appointmentUuid','Required parameter requestParameters.appointmentUuid was null or undefined when calling updateAppointment.');
-        }
-
-        if (requestParameters.appointmentBase === null || requestParameters.appointmentBase === undefined) {
-            throw new runtime.RequiredError('appointmentBase','Required parameter requestParameters.appointmentBase was null or undefined when calling updateAppointment.');
+        if (requestParameters.catalogBase === null || requestParameters.catalogBase === undefined) {
+            throw new runtime.RequiredError('catalogBase','Required parameter requestParameters.catalogBase was null or undefined when calling updateCatalog.');
         }
 
         const queryParameters: any = {};
@@ -927,21 +797,21 @@ export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
         }
 
         const response = await this.request({
-            path: `/appointments/appointments/{appointment_uuid}`.replace(`{${"appointment_uuid"}}`, encodeURIComponent(String(requestParameters.appointmentUuid))),
+            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: AppointmentBaseToJSON(requestParameters.appointmentBase),
+            body: CatalogBaseToJSON(requestParameters.catalogBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AppointmentResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
     }
 
     /**
-     * Update Appointment
+     * Updatecatalog
      */
-    async updateAppointment(requestParameters: UpdateAppointmentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AppointmentResponse> {
-        const response = await this.updateAppointmentRaw(requestParameters, initOverrides);
+    async updateCatalog(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CatalogReturn> {
+        const response = await this.updateCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

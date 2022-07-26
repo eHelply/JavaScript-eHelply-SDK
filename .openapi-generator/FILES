@@ -4,6 +4,7 @@
 README.md
 package.json
 src/apis/BillingApi.ts
+src/apis/CatalogsApi.ts
 src/apis/CategoryApi.ts
 src/apis/CompaniesApi.ts
 src/apis/DefaultApi.ts
@@ -12,7 +13,9 @@ src/apis/MetaApi.ts
 src/apis/MonitorApi.ts
 src/apis/NotesApi.ts
 src/apis/PlacesApi.ts
+src/apis/ProductsApi.ts
 src/apis/ProjectsApi.ts
+src/apis/ReviewsApi.ts
 src/apis/SecurityApi.ts
 src/apis/StaffApi.ts
 src/apis/SupportApi.ts
