@@ -13,24 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Basic } from './Basic';
+import type { BasicMeta } from './BasicMeta';
 import {
-    BasicFromJSON,
-    BasicFromJSONTyped,
-    BasicToJSON,
-} from './Basic';
+    BasicMetaFromJSON,
+    BasicMetaFromJSONTyped,
+    BasicMetaToJSON,
+} from './BasicMeta';
 import type { DatesMeta } from './DatesMeta';
 import {
     DatesMetaFromJSON,
     DatesMetaFromJSONTyped,
     DatesMetaToJSON,
 } from './DatesMeta';
-import type { Detailed } from './Detailed';
+import type { DetailedMetaGet } from './DetailedMetaGet';
 import {
-    DetailedFromJSON,
-    DetailedFromJSONTyped,
-    DetailedToJSON,
-} from './Detailed';
+    DetailedMetaGetFromJSON,
+    DetailedMetaGetFromJSONTyped,
+    DetailedMetaGetToJSON,
+} from './DetailedMetaGet';
 import type { Field } from './Field';
 import {
     FieldFromJSON,
@@ -51,93 +51,95 @@ import {
 } from './MetaCustom';
 
 /**
- * A meta from DynamoDB
+ * Meta
  * @export
- * @interface MetaDynamo
+ * @interface MetaGet
  */
-export interface MetaDynamo {
+export interface MetaGet {
     /**
      * 
-     * @type {Basic}
-     * @memberof MetaDynamo
+     * @type {string}
+     * @memberof MetaGet
      */
-    basic?: Basic;
+    uuid: string;
     /**
      * 
-     * @type {Detailed}
-     * @memberof MetaDynamo
+     * @type {BasicMeta}
+     * @memberof MetaGet
      */
-    detailed?: Detailed;
+    basic: BasicMeta;
+    /**
+     * 
+     * @type {DetailedMetaGet}
+     * @memberof MetaGet
+     */
+    detailed: DetailedMetaGet;
     /**
      * 
      * @type {MetaCustom}
-     * @memberof MetaDynamo
+     * @memberof MetaGet
      */
     custom?: MetaCustom;
     /**
      * 
      * @type {DatesMeta}
-     * @memberof MetaDynamo
+     * @memberof MetaGet
      */
     dates?: DatesMeta;
     /**
      * 
      * @type {Array<Field>}
-     * @memberof MetaDynamo
+     * @memberof MetaGet
      */
     fields?: Array<Field>;
     /**
      * 
      * @type {Array<MetaChildren>}
-     * @memberof MetaDynamo
+     * @memberof MetaGet
      */
     children?: Array<MetaChildren>;
     /**
      * 
      * @type {string}
-     * @memberof MetaDynamo
+     * @memberof MetaGet
      */
     parentUuid?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MetaDynamo
-     */
-    uuid: string;
 }
 
 /**
- * Check if a given object implements the MetaDynamo interface.
+ * Check if a given object implements the MetaGet interface.
  */
-export function instanceOfMetaDynamo(value: object): boolean {
+export function instanceOfMetaGet(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "uuid" in value;
+    isInstance = isInstance && "basic" in value;
+    isInstance = isInstance && "detailed" in value;
 
     return isInstance;
 }
 
-export function MetaDynamoFromJSON(json: any): MetaDynamo {
-    return MetaDynamoFromJSONTyped(json, false);
+export function MetaGetFromJSON(json: any): MetaGet {
+    return MetaGetFromJSONTyped(json, false);
 }
 
-export function MetaDynamoFromJSONTyped(json: any, ignoreDiscriminator: boolean): MetaDynamo {
+export function MetaGetFromJSONTyped(json: any, ignoreDiscriminator: boolean): MetaGet {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'basic': !exists(json, 'basic') ? undefined : BasicFromJSON(json['basic']),
-        'detailed': !exists(json, 'detailed') ? undefined : DetailedFromJSON(json['detailed']),
+        'uuid': json['uuid'],
+        'basic': BasicMetaFromJSON(json['basic']),
+        'detailed': DetailedMetaGetFromJSON(json['detailed']),
         'custom': !exists(json, 'custom') ? undefined : MetaCustomFromJSON(json['custom']),
         'dates': !exists(json, 'dates') ? undefined : DatesMetaFromJSON(json['dates']),
         'fields': !exists(json, 'fields') ? undefined : ((json['fields'] as Array<any>).map(FieldFromJSON)),
         'children': !exists(json, 'children') ? undefined : ((json['children'] as Array<any>).map(MetaChildrenFromJSON)),
         'parentUuid': !exists(json, 'parent_uuid') ? undefined : json['parent_uuid'],
-        'uuid': json['uuid'],
     };
 }
 
-export function MetaDynamoToJSON(value?: MetaDynamo | null): any {
+export function MetaGetToJSON(value?: MetaGet | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -146,14 +148,14 @@ export function MetaDynamoToJSON(value?: MetaDynamo | null): any {
     }
     return {
         
-        'basic': BasicToJSON(value.basic),
-        'detailed': DetailedToJSON(value.detailed),
+        'uuid': value.uuid,
+        'basic': BasicMetaToJSON(value.basic),
+        'detailed': DetailedMetaGetToJSON(value.detailed),
         'custom': MetaCustomToJSON(value.custom),
         'dates': DatesMetaToJSON(value.dates),
         'fields': value.fields === undefined ? undefined : ((value.fields as Array<any>).map(FieldToJSON)),
         'children': value.children === undefined ? undefined : ((value.children as Array<any>).map(MetaChildrenToJSON)),
         'parent_uuid': value.parentUuid,
-        'uuid': value.uuid,
     };
 }
 

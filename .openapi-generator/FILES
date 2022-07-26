@@ -56,6 +56,7 @@ src/models/DatesMeta.ts
 src/models/Detailed.ts
 src/models/DetailedMeta.ts
 src/models/DetailedMetaCreate.ts
+src/models/DetailedMetaGet.ts
 src/models/Email.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
@@ -73,6 +74,7 @@ src/models/MetaChildren.ts
 src/models/MetaCreate.ts
 src/models/MetaCustom.ts
 src/models/MetaDynamo.ts
+src/models/MetaGet.ts
 src/models/MetaSlugger.ts
 src/models/NoteBase.ts
 src/models/NoteDynamoHistoryResponse.ts
