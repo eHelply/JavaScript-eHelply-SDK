@@ -15,24 +15,24 @@
 
 import * as runtime from '../runtime';
 import type {
-  CategoryBase,
-  CategoryDb,
   HTTPValidationError,
   Page,
+  TagBase,
+  TagDb,
 } from '../models';
 import {
-    CategoryBaseFromJSON,
-    CategoryBaseToJSON,
-    CategoryDbFromJSON,
-    CategoryDbToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     PageFromJSON,
     PageToJSON,
+    TagBaseFromJSON,
+    TagBaseToJSON,
+    TagDbFromJSON,
+    TagDbToJSON,
 } from '../models';
 
-export interface CreateCategoryPlacesCategoriesPostRequest {
-    categoryBase: CategoryBase;
+export interface CreateTagRequest {
+    tagBase: TagBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -41,8 +41,8 @@ export interface CreateCategoryPlacesCategoriesPostRequest {
     ehelplyData?: string;
 }
 
-export interface DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest {
-    categoryUuid: string;
+export interface GetTagRequest {
+    tagUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -51,21 +51,9 @@ export interface DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest {
     ehelplyData?: string;
 }
 
-export interface GetCategoryPlacesCategoriesCategoryUuidGetRequest {
-    categoryUuid: string;
-    withMeta?: boolean;
-    xAccessToken?: string;
-    xSecretToken?: string;
-    authorization?: string;
-    ehelplyActiveParticipant?: string;
-    ehelplyProject?: string;
-    ehelplyData?: string;
-}
-
-export interface SearchCategoriesPlacesCategoriesGetRequest {
+export interface SearchTagRequest {
     projectUuid?: string;
     name?: string;
-    withMeta?: boolean;
     page?: number;
     pageSize?: number;
     sortOn?: string;
@@ -78,9 +66,9 @@ export interface SearchCategoriesPlacesCategoriesGetRequest {
     ehelplyData?: string;
 }
 
-export interface UpdateCategoryPlacesCategoriesCategoryUuidPutRequest {
-    categoryUuid: string;
-    categoryBase: CategoryBase;
+export interface UpdateTagRequest {
+    tagUuid: string;
+    tagBase: TagBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -90,16 +78,16 @@ export interface UpdateCategoryPlacesCategoriesCategoryUuidPutRequest {
 }
 
 /**
- * CategoryApi - interface
+ * TagsApi - interface
  * 
  * @export
- * @interface CategoryApiInterface
+ * @interface TagsApiInterface
  */
-export interface CategoryApiInterface {
+export interface TagsApiInterface {
     /**
-     * Creates a category
-     * @summary Create Category
-     * @param {CategoryBase} categoryBase 
+     * Creates a tag
+     * @summary Createtag
+     * @param {TagBase} tagBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -108,20 +96,20 @@ export interface CategoryApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CategoryApiInterface
+     * @memberof TagsApiInterface
      */
-    createCategoryPlacesCategoriesPostRaw(requestParameters: CreateCategoryPlacesCategoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryDb>>;
+    createTagRaw(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagDb>>;
 
     /**
-     * Creates a category
-     * Create Category
+     * Creates a tag
+     * Createtag
      */
-    createCategoryPlacesCategoriesPost(requestParameters: CreateCategoryPlacesCategoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryDb>;
+    createTag(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagDb>;
 
     /**
-     * Deletes the category with the given ID and returns True if successful
-     * @summary Delete Category
-     * @param {string} categoryUuid 
+     * Gets the tag member information given the tag ID
+     * @summary Gettag
+     * @param {string} tagUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -130,45 +118,21 @@ export interface CategoryApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CategoryApiInterface
+     * @memberof TagsApiInterface
      */
-    deleteCategoryPlacesCategoriesCategoryUuidDeleteRaw(requestParameters: DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    getTagRaw(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>>;
 
     /**
-     * Deletes the category with the given ID and returns True if successful
-     * Delete Category
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    deleteCategoryPlacesCategoriesCategoryUuidDelete(requestParameters: DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
-
-    /**
-     * Gets the category information given the category ID
-     * @summary Get Category
-     * @param {string} categoryUuid 
-     * @param {boolean} [withMeta] 
-     * @param {string} [xAccessToken] 
-     * @param {string} [xSecretToken] 
-     * @param {string} [authorization] 
-     * @param {string} [ehelplyActiveParticipant] 
-     * @param {string} [ehelplyProject] 
-     * @param {string} [ehelplyData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CategoryApiInterface
-     */
-    getCategoryPlacesCategoriesCategoryUuidGetRaw(requestParameters: GetCategoryPlacesCategoriesCategoryUuidGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryBase>>;
-
-    /**
-     * Gets the category information given the category ID
-     * Get Category
-     */
-    getCategoryPlacesCategoriesCategoryUuidGet(requestParameters: GetCategoryPlacesCategoriesCategoryUuidGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryBase>;
+    getTag(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase>;
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
-     * @summary Search Categories
+     * @summary Searchtag
      * @param {string} [projectUuid] 
      * @param {string} [name] 
-     * @param {boolean} [withMeta] 
      * @param {number} [page] 
      * @param {number} [pageSize] 
      * @param {string} [sortOn] 
@@ -181,21 +145,21 @@ export interface CategoryApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CategoryApiInterface
+     * @memberof TagsApiInterface
      */
-    searchCategoriesPlacesCategoriesGetRaw(requestParameters: SearchCategoriesPlacesCategoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
+    searchTagRaw(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
-     * Search Categories
+     * Searchtag
      */
-    searchCategoriesPlacesCategoriesGet(requestParameters: SearchCategoriesPlacesCategoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
+    searchTag(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
-     * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
-     * @summary Update Category
-     * @param {string} categoryUuid 
-     * @param {CategoryBase} categoryBase 
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * @summary Updatetag
+     * @param {string} tagUuid 
+     * @param {TagBase} tagBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -204,30 +168,30 @@ export interface CategoryApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CategoryApiInterface
+     * @memberof TagsApiInterface
      */
-    updateCategoryPlacesCategoriesCategoryUuidPutRaw(requestParameters: UpdateCategoryPlacesCategoriesCategoryUuidPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryBase>>;
+    updateTagRaw(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>>;
 
     /**
-     * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
-     * Update Category
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
      */
-    updateCategoryPlacesCategoriesCategoryUuidPut(requestParameters: UpdateCategoryPlacesCategoriesCategoryUuidPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryBase>;
+    updateTag(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase>;
 
 }
 
 /**
  * 
  */
-export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface {
+export class TagsApi extends runtime.BaseAPI implements TagsApiInterface {
 
     /**
-     * Creates a category
-     * Create Category
+     * Creates a tag
+     * Createtag
      */
-    async createCategoryPlacesCategoriesPostRaw(requestParameters: CreateCategoryPlacesCategoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryDb>> {
-        if (requestParameters.categoryBase === null || requestParameters.categoryBase === undefined) {
-            throw new runtime.RequiredError('categoryBase','Required parameter requestParameters.categoryBase was null or undefined when calling createCategoryPlacesCategoriesPost.');
+    async createTagRaw(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagDb>> {
+        if (requestParameters.tagBase === null || requestParameters.tagBase === undefined) {
+            throw new runtime.RequiredError('tagBase','Required parameter requestParameters.tagBase was null or undefined when calling createTag.');
         }
 
         const queryParameters: any = {};
@@ -261,32 +225,32 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
         }
 
         const response = await this.request({
-            path: `/places/categories`,
+            path: `/places/tags`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CategoryBaseToJSON(requestParameters.categoryBase),
+            body: TagBaseToJSON(requestParameters.tagBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryDbFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagDbFromJSON(jsonValue));
     }
 
     /**
-     * Creates a category
-     * Create Category
+     * Creates a tag
+     * Createtag
      */
-    async createCategoryPlacesCategoriesPost(requestParameters: CreateCategoryPlacesCategoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryDb> {
-        const response = await this.createCategoryPlacesCategoriesPostRaw(requestParameters, initOverrides);
+    async createTag(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagDb> {
+        const response = await this.createTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Deletes the category with the given ID and returns True if successful
-     * Delete Category
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    async deleteCategoryPlacesCategoriesCategoryUuidDeleteRaw(requestParameters: DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.categoryUuid === null || requestParameters.categoryUuid === undefined) {
-            throw new runtime.RequiredError('categoryUuid','Required parameter requestParameters.categoryUuid was null or undefined when calling deleteCategoryPlacesCategoriesCategoryUuidDelete.');
+    async getTagRaw(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>> {
+        if (requestParameters.tagUuid === null || requestParameters.tagUuid === undefined) {
+            throw new runtime.RequiredError('tagUuid','Required parameter requestParameters.tagUuid was null or undefined when calling getTag.');
         }
 
         const queryParameters: any = {};
@@ -318,89 +282,29 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
         }
 
         const response = await this.request({
-            path: `/places/categories/{category_uuid}`.replace(`{${"category_uuid"}}`, encodeURIComponent(String(requestParameters.categoryUuid))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Deletes the category with the given ID and returns True if successful
-     * Delete Category
-     */
-    async deleteCategoryPlacesCategoriesCategoryUuidDelete(requestParameters: DeleteCategoryPlacesCategoriesCategoryUuidDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.deleteCategoryPlacesCategoriesCategoryUuidDeleteRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Gets the category information given the category ID
-     * Get Category
-     */
-    async getCategoryPlacesCategoriesCategoryUuidGetRaw(requestParameters: GetCategoryPlacesCategoriesCategoryUuidGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryBase>> {
-        if (requestParameters.categoryUuid === null || requestParameters.categoryUuid === undefined) {
-            throw new runtime.RequiredError('categoryUuid','Required parameter requestParameters.categoryUuid was null or undefined when calling getCategoryPlacesCategoriesCategoryUuidGet.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.withMeta !== undefined) {
-            queryParameters['with_meta'] = requestParameters.withMeta;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/places/categories/{category_uuid}`.replace(`{${"category_uuid"}}`, encodeURIComponent(String(requestParameters.categoryUuid))),
+            path: `/places/tags/{tag_uuid}`.replace(`{${"tag_uuid"}}`, encodeURIComponent(String(requestParameters.tagUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryBaseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagBaseFromJSON(jsonValue));
     }
 
     /**
-     * Gets the category information given the category ID
-     * Get Category
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    async getCategoryPlacesCategoriesCategoryUuidGet(requestParameters: GetCategoryPlacesCategoriesCategoryUuidGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryBase> {
-        const response = await this.getCategoryPlacesCategoriesCategoryUuidGetRaw(requestParameters, initOverrides);
+    async getTag(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase> {
+        const response = await this.getTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
-     * Search Categories
+     * Searchtag
      */
-    async searchCategoriesPlacesCategoriesGetRaw(requestParameters: SearchCategoriesPlacesCategoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+    async searchTagRaw(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
         const queryParameters: any = {};
 
         if (requestParameters.projectUuid !== undefined) {
@@ -409,10 +313,6 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
 
         if (requestParameters.name !== undefined) {
             queryParameters['name'] = requestParameters.name;
-        }
-
-        if (requestParameters.withMeta !== undefined) {
-            queryParameters['with_meta'] = requestParameters.withMeta;
         }
 
         if (requestParameters.page !== undefined) {
@@ -458,7 +358,7 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
         }
 
         const response = await this.request({
-            path: `/places/categories`,
+            path: `/places/tags`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -469,24 +369,24 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
 
     /**
      * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
-     * Search Categories
+     * Searchtag
      */
-    async searchCategoriesPlacesCategoriesGet(requestParameters: SearchCategoriesPlacesCategoriesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
-        const response = await this.searchCategoriesPlacesCategoriesGetRaw(requestParameters, initOverrides);
+    async searchTag(requestParameters: SearchTagRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
-     * Update Category
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
      */
-    async updateCategoryPlacesCategoriesCategoryUuidPutRaw(requestParameters: UpdateCategoryPlacesCategoriesCategoryUuidPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CategoryBase>> {
-        if (requestParameters.categoryUuid === null || requestParameters.categoryUuid === undefined) {
-            throw new runtime.RequiredError('categoryUuid','Required parameter requestParameters.categoryUuid was null or undefined when calling updateCategoryPlacesCategoriesCategoryUuidPut.');
+    async updateTagRaw(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>> {
+        if (requestParameters.tagUuid === null || requestParameters.tagUuid === undefined) {
+            throw new runtime.RequiredError('tagUuid','Required parameter requestParameters.tagUuid was null or undefined when calling updateTag.');
         }
 
-        if (requestParameters.categoryBase === null || requestParameters.categoryBase === undefined) {
-            throw new runtime.RequiredError('categoryBase','Required parameter requestParameters.categoryBase was null or undefined when calling updateCategoryPlacesCategoriesCategoryUuidPut.');
+        if (requestParameters.tagBase === null || requestParameters.tagBase === undefined) {
+            throw new runtime.RequiredError('tagBase','Required parameter requestParameters.tagBase was null or undefined when calling updateTag.');
         }
 
         const queryParameters: any = {};
@@ -520,22 +420,22 @@ export class CategoryApi extends runtime.BaseAPI implements CategoryApiInterface
         }
 
         const response = await this.request({
-            path: `/places/categories/{category_uuid}`.replace(`{${"category_uuid"}}`, encodeURIComponent(String(requestParameters.categoryUuid))),
+            path: `/places/tags/{tag_uuid}`.replace(`{${"tag_uuid"}}`, encodeURIComponent(String(requestParameters.tagUuid))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: CategoryBaseToJSON(requestParameters.categoryBase),
+            body: TagBaseToJSON(requestParameters.tagBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryBaseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagBaseFromJSON(jsonValue));
     }
 
     /**
-     * Update category with given info, only updating the fields supplied. Category Uuid must be sent however.
-     * Update Category
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
      */
-    async updateCategoryPlacesCategoriesCategoryUuidPut(requestParameters: UpdateCategoryPlacesCategoriesCategoryUuidPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CategoryBase> {
-        const response = await this.updateCategoryPlacesCategoriesCategoryUuidPutRaw(requestParameters, initOverrides);
+    async updateTag(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase> {
+        const response = await this.updateTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -20,6 +20,7 @@ src/apis/SecurityApi.ts
 src/apis/StaffApi.ts
 src/apis/SupportApi.ts
 src/apis/TagApi.ts
+src/apis/TagsApi.ts
 src/apis/UsersApi.ts
 src/apis/index.ts
 src/index.ts

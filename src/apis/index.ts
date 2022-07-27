@@ -17,4 +17,5 @@ export * from './SecurityApi';
 export * from './StaffApi';
 export * from './SupportApi';
 export * from './TagApi';
+export * from './TagsApi';
 export * from './UsersApi';
