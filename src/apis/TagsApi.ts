@@ -16,23 +16,23 @@
 import * as runtime from '../runtime';
 import type {
   HTTPValidationError,
-  NoteBase,
-  NoteDynamoHistoryResponse,
-  NoteDynamoResponse,
+  Page,
+  TagBase,
+  TagDb,
 } from '../models';
 import {
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    NoteBaseFromJSON,
-    NoteBaseToJSON,
-    NoteDynamoHistoryResponseFromJSON,
-    NoteDynamoHistoryResponseToJSON,
-    NoteDynamoResponseFromJSON,
-    NoteDynamoResponseToJSON,
+    PageFromJSON,
+    PageToJSON,
+    TagBaseFromJSON,
+    TagBaseToJSON,
+    TagDbFromJSON,
+    TagDbToJSON,
 } from '../models';
 
-export interface CreateNoteRequest {
-    noteBase: NoteBase;
+export interface CreateTagRequest {
+    tagBase: TagBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -41,9 +41,8 @@ export interface CreateNoteRequest {
     ehelplyData?: string;
 }
 
-export interface DeleteNoteRequest {
-    noteId: string;
-    method?: string;
+export interface GetTagRequest {
+    tagUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -52,10 +51,13 @@ export interface DeleteNoteRequest {
     ehelplyData?: string;
 }
 
-export interface GetNoteRequest {
-    noteId: string;
-    history?: number;
-    historyContent?: boolean;
+export interface SearchTagRequest {
+    projectUuid?: string;
+    name?: string;
+    page?: number;
+    pageSize?: number;
+    sortOn?: string;
+    sortDesc?: boolean;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -64,9 +66,9 @@ export interface GetNoteRequest {
     ehelplyData?: string;
 }
 
-export interface UpdateNoteRequest {
-    noteId: string;
-    noteBase: NoteBase;
+export interface UpdateTagRequest {
+    tagUuid: string;
+    tagBase: TagBase;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -76,16 +78,16 @@ export interface UpdateNoteRequest {
 }
 
 /**
- * NotesApi - interface
+ * TagsApi - interface
  * 
  * @export
- * @interface NotesApiInterface
+ * @interface TagsApiInterface
  */
-export interface NotesApiInterface {
+export interface TagsApiInterface {
     /**
-     * 
-     * @summary Create Note
-     * @param {NoteBase} noteBase 
+     * Creates a tag
+     * @summary Createtag
+     * @param {TagBase} tagBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -94,20 +96,20 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof TagsApiInterface
      */
-    createNoteRaw(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>>;
+    createTagRaw(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagDb>>;
 
     /**
-     * Create Note
+     * Creates a tag
+     * Createtag
      */
-    createNote(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoResponse>;
+    createTag(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagDb>;
 
     /**
-     * 
-     * @summary Delete Note
-     * @param {string} noteId 
-     * @param {string} [method] 
+     * Gets the tag member information given the tag ID
+     * @summary Gettag
+     * @param {string} tagUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -116,21 +118,25 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof TagsApiInterface
      */
-    deleteNoteRaw(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    getTagRaw(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>>;
 
     /**
-     * Delete Note
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    deleteNote(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    getTag(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase>;
 
     /**
-     * 
-     * @summary Get Note
-     * @param {string} noteId 
-     * @param {number} [history] 
-     * @param {boolean} [historyContent] 
+     * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
+     * @summary Searchtag
+     * @param {string} [projectUuid] 
+     * @param {string} [name] 
+     * @param {number} [page] 
+     * @param {number} [pageSize] 
+     * @param {string} [sortOn] 
+     * @param {boolean} [sortDesc] 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -139,20 +145,21 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof TagsApiInterface
      */
-    getNoteRaw(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoHistoryResponse>>;
+    searchTagRaw(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>>;
 
     /**
-     * Get Note
+     * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
+     * Searchtag
      */
-    getNote(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoHistoryResponse>;
+    searchTag(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page>;
 
     /**
-     * 
-     * @summary Update Note
-     * @param {string} noteId 
-     * @param {NoteBase} noteBase 
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * @summary Updatetag
+     * @param {string} tagUuid 
+     * @param {TagBase} tagBase 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -161,28 +168,30 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof TagsApiInterface
      */
-    updateNoteRaw(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>>;
+    updateTagRaw(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>>;
 
     /**
-     * Update Note
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
      */
-    updateNote(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoResponse>;
+    updateTag(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase>;
 
 }
 
 /**
  * 
  */
-export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
+export class TagsApi extends runtime.BaseAPI implements TagsApiInterface {
 
     /**
-     * Create Note
+     * Creates a tag
+     * Createtag
      */
-    async createNoteRaw(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>> {
-        if (requestParameters.noteBase === null || requestParameters.noteBase === undefined) {
-            throw new runtime.RequiredError('noteBase','Required parameter requestParameters.noteBase was null or undefined when calling createNote.');
+    async createTagRaw(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagDb>> {
+        if (requestParameters.tagBase === null || requestParameters.tagBase === undefined) {
+            throw new runtime.RequiredError('tagBase','Required parameter requestParameters.tagBase was null or undefined when calling createTag.');
         }
 
         const queryParameters: any = {};
@@ -216,37 +225,35 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
         }
 
         const response = await this.request({
-            path: `/notes/notes`,
+            path: `/places/tags`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: NoteBaseToJSON(requestParameters.noteBase),
+            body: TagBaseToJSON(requestParameters.tagBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagDbFromJSON(jsonValue));
     }
 
     /**
-     * Create Note
+     * Creates a tag
+     * Createtag
      */
-    async createNote(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoResponse> {
-        const response = await this.createNoteRaw(requestParameters, initOverrides);
+    async createTag(requestParameters: CreateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagDb> {
+        const response = await this.createTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Delete Note
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    async deleteNoteRaw(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling deleteNote.');
+    async getTagRaw(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>> {
+        if (requestParameters.tagUuid === null || requestParameters.tagUuid === undefined) {
+            throw new runtime.RequiredError('tagUuid','Required parameter requestParameters.tagUuid was null or undefined when calling getTag.');
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.method !== undefined) {
-            queryParameters['method'] = requestParameters.method;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -275,95 +282,111 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
         }
 
         const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Delete Note
-     */
-    async deleteNote(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.deleteNoteRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Get Note
-     */
-    async getNoteRaw(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoHistoryResponse>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling getNote.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.history !== undefined) {
-            queryParameters['history'] = requestParameters.history;
-        }
-
-        if (requestParameters.historyContent !== undefined) {
-            queryParameters['history_content'] = requestParameters.historyContent;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
+            path: `/places/tags/{tag_uuid}`.replace(`{${"tag_uuid"}}`, encodeURIComponent(String(requestParameters.tagUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoHistoryResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagBaseFromJSON(jsonValue));
     }
 
     /**
-     * Get Note
+     * Gets the tag member information given the tag ID
+     * Gettag
      */
-    async getNote(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoHistoryResponse> {
-        const response = await this.getNoteRaw(requestParameters, initOverrides);
+    async getTag(requestParameters: GetTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase> {
+        const response = await this.getTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Update Note
+     * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
+     * Searchtag
      */
-    async updateNoteRaw(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling updateNote.');
+    async searchTagRaw(requestParameters: SearchTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Page>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.projectUuid !== undefined) {
+            queryParameters['project_uuid'] = requestParameters.projectUuid;
         }
 
-        if (requestParameters.noteBase === null || requestParameters.noteBase === undefined) {
-            throw new runtime.RequiredError('noteBase','Required parameter requestParameters.noteBase was null or undefined when calling updateNote.');
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['page_size'] = requestParameters.pageSize;
+        }
+
+        if (requestParameters.sortOn !== undefined) {
+            queryParameters['sort_on'] = requestParameters.sortOn;
+        }
+
+        if (requestParameters.sortDesc !== undefined) {
+            queryParameters['sort_desc'] = requestParameters.sortDesc;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/places/tags`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
+    }
+
+    /**
+     * TODO Item return format: ``` {     uuid                                **type:** string     project_uuid                        **type:** string or None      name                                **type:** string or None      meta                                **type:** dict or None      created_at                          **type:** string or None      updated_at                          **type:** string or None      deleted_at                          **type:** string or None  } ```
+     * Searchtag
+     */
+    async searchTag(requestParameters: SearchTagRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Page> {
+        const response = await this.searchTagRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
+     */
+    async updateTagRaw(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TagBase>> {
+        if (requestParameters.tagUuid === null || requestParameters.tagUuid === undefined) {
+            throw new runtime.RequiredError('tagUuid','Required parameter requestParameters.tagUuid was null or undefined when calling updateTag.');
+        }
+
+        if (requestParameters.tagBase === null || requestParameters.tagBase === undefined) {
+            throw new runtime.RequiredError('tagBase','Required parameter requestParameters.tagBase was null or undefined when calling updateTag.');
         }
 
         const queryParameters: any = {};
@@ -397,21 +420,22 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
         }
 
         const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
+            path: `/places/tags/{tag_uuid}`.replace(`{${"tag_uuid"}}`, encodeURIComponent(String(requestParameters.tagUuid))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: NoteBaseToJSON(requestParameters.noteBase),
+            body: TagBaseToJSON(requestParameters.tagBase),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TagBaseFromJSON(jsonValue));
     }
 
     /**
-     * Update Note
+     * Update tag with given info, only updating the fields supplied. Tag Uuid must be sent however.
+     * Updatetag
      */
-    async updateNote(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NoteDynamoResponse> {
-        const response = await this.updateNoteRaw(requestParameters, initOverrides);
+    async updateTag(requestParameters: UpdateTagRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TagBase> {
+        const response = await this.updateTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
