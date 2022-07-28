@@ -64,12 +64,12 @@ src/models/DetailedMetaGet.ts
 src/models/Email.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
+src/models/GetAppointment403Response.ts
 src/models/GetProjectCredential.ts
 src/models/GetSecret.ts
 src/models/GetServiceServiceWithSpecsResponse.ts
 src/models/GetServiceSpecResponse.ts
 src/models/GetServiceSpecsResponse.ts
-src/models/GetServicesWithSpecs403Response.ts
 src/models/HTTPValidationError.ts
 src/models/HeartbeatResponse.ts
 src/models/KpiResponse.ts
