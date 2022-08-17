@@ -52,6 +52,7 @@ src/models/ContactMethod.ts
 src/models/ContactResponse.ts
 src/models/CreateKeyResponse.ts
 src/models/CreateProjectCredential.ts
+src/models/CreateProjectInvoice.ts
 src/models/CreateReview.ts
 src/models/CreateTicket.ts
 src/models/Credential.ts
@@ -61,18 +62,25 @@ src/models/Detailed.ts
 src/models/DetailedMeta.ts
 src/models/DetailedMetaCreate.ts
 src/models/DetailedMetaGet.ts
+src/models/Discount.ts
 src/models/Email.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
 src/models/GetAppointment403Response.ts
+src/models/GetInvoiceResponse.ts
 src/models/GetProjectCredential.ts
+src/models/GetProjectInvoiceHistory.ts
+src/models/GetProjectInvoiceResponse.ts
 src/models/GetSecret.ts
 src/models/GetServiceServiceWithSpecsResponse.ts
 src/models/GetServiceSpecResponse.ts
 src/models/GetServiceSpecsResponse.ts
+src/models/GetTransactionResponse.ts
 src/models/HTTPValidationError.ts
 src/models/HeartbeatResponse.ts
+src/models/History.ts
 src/models/KpiResponse.ts
+src/models/LineItem.ts
 src/models/LoggingDynamo.ts
 src/models/MetaChildren.ts
 src/models/MetaCreate.ts
@@ -80,6 +88,7 @@ src/models/MetaCustom.ts
 src/models/MetaDynamo.ts
 src/models/MetaGet.ts
 src/models/MetaSlugger.ts
+src/models/Note.ts
 src/models/NoteBase.ts
 src/models/NoteDynamoHistoryResponse.ts
 src/models/NoteDynamoResponse.ts
@@ -112,6 +121,7 @@ src/models/ResponseAddmembertoproject.ts
 src/models/ResponseArchiveproject.ts
 src/models/ResponseCreatekey.ts
 src/models/ResponseCreateprojectcredential.ts
+src/models/ResponseCreateprojectinvoice.ts
 src/models/ResponseDeletekey.ts
 src/models/ResponseDeleteprojectcredential.ts
 src/models/ResponseDeleteusagetype.ts
@@ -136,6 +146,7 @@ src/models/StripeAccountResponse.ts
 src/models/StripeCustomerSecretResponse.ts
 src/models/TagBase.ts
 src/models/TagDb.ts
+src/models/Tax.ts
 src/models/TicketResponse.ts
 src/models/TicketsResponse.ts
 src/models/UpdateProjectCredentialRequest.ts
