@@ -52,6 +52,7 @@ src/models/ContactMethod.ts
 src/models/ContactResponse.ts
 src/models/CreateKeyResponse.ts
 src/models/CreateProjectCredential.ts
+src/models/CreateProjectCredit.ts
 src/models/CreateProjectInvoice.ts
 src/models/CreateReview.ts
 src/models/CreateTicket.ts
@@ -106,6 +107,7 @@ src/models/PlaceBase.ts
 src/models/PlaceResponse.ts
 src/models/ProductBase.ts
 src/models/ProductReturn.ts
+src/models/ProjectCreditResponse.ts
 src/models/ProjectDB.ts
 src/models/ProjectsProjectCreate.ts
 src/models/ProjectsProjectGet.ts
