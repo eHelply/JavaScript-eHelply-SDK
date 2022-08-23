@@ -3,11 +3,11 @@
 .openapi-generator-ignore
 README.md
 package.json
+src/apis/AppointmentsApi.ts
 src/apis/BillingApi.ts
 src/apis/CatalogsApi.ts
 src/apis/CategoryApi.ts
 src/apis/CompaniesApi.ts
-src/apis/DefaultApi.ts
 src/apis/LoggingApi.ts
 src/apis/MetaApi.ts
 src/apis/MonitorApi.ts
