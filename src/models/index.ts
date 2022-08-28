@@ -105,6 +105,7 @@ export * from './ResponseDeleteprojectcredential';
 export * from './ResponseDeleteusagetype';
 export * from './ResponseGeneratetoken';
 export * from './ResponseRemovememberfromproject';
+export * from './ResponseRevokeprojectcredit';
 export * from './ResponseUpdateprojectcredential';
 export * from './SecurityCreateToken';
 export * from './SecurityEncryptionKeyGet';

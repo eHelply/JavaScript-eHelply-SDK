@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface AlarmAcknowledge
+ * @interface ResponseRevokeprojectcredit
  */
-export interface AlarmAcknowledge {
+export interface ResponseRevokeprojectcredit {
     /**
      * 
      * @type {string}
-     * @memberof AlarmAcknowledge
+     * @memberof ResponseRevokeprojectcredit
      */
-    acknowledgerUuid: string;
+    message?: string;
 }
 
-export function AlarmAcknowledgeFromJSON(json: any): AlarmAcknowledge {
-    return AlarmAcknowledgeFromJSONTyped(json, false);
+export function ResponseRevokeprojectcreditFromJSON(json: any): ResponseRevokeprojectcredit {
+    return ResponseRevokeprojectcreditFromJSONTyped(json, false);
 }
 
-export function AlarmAcknowledgeFromJSONTyped(json: any, ignoreDiscriminator: boolean): AlarmAcknowledge {
+export function ResponseRevokeprojectcreditFromJSONTyped(json: any, ignoreDiscriminator: boolean): ResponseRevokeprojectcredit {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'acknowledgerUuid': json['acknowledger_uuid'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function AlarmAcknowledgeToJSON(value?: AlarmAcknowledge | null): any {
+export function ResponseRevokeprojectcreditToJSON(value?: ResponseRevokeprojectcredit | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function AlarmAcknowledgeToJSON(value?: AlarmAcknowledge | null): any {
     }
     return {
         
-        'acknowledger_uuid': value.acknowledgerUuid,
+        'message': value.message,
     };
 }
 
