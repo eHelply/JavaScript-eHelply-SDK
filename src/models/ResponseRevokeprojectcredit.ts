@@ -14,34 +14,34 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Meta slugger
+ * 
  * @export
- * @interface MetaSlugger
+ * @interface ResponseRevokeprojectcredit
  */
-export interface MetaSlugger {
+export interface ResponseRevokeprojectcredit {
     /**
      * 
      * @type {string}
-     * @memberof MetaSlugger
+     * @memberof ResponseRevokeprojectcredit
      */
-    name: string;
+    message?: string;
 }
 
-export function MetaSluggerFromJSON(json: any): MetaSlugger {
-    return MetaSluggerFromJSONTyped(json, false);
+export function ResponseRevokeprojectcreditFromJSON(json: any): ResponseRevokeprojectcredit {
+    return ResponseRevokeprojectcreditFromJSONTyped(json, false);
 }
 
-export function MetaSluggerFromJSONTyped(json: any, ignoreDiscriminator: boolean): MetaSlugger {
+export function ResponseRevokeprojectcreditFromJSONTyped(json: any, ignoreDiscriminator: boolean): ResponseRevokeprojectcredit {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': json['name'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function MetaSluggerToJSON(value?: MetaSlugger | null): any {
+export function ResponseRevokeprojectcreditToJSON(value?: ResponseRevokeprojectcredit | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function MetaSluggerToJSON(value?: MetaSlugger | null): any {
     }
     return {
         
-        'name': value.name,
+        'message': value.message,
     };
 }
 

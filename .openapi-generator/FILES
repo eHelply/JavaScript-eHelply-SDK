@@ -129,6 +129,7 @@ src/models/ResponseDeleteprojectcredential.ts
 src/models/ResponseDeleteusagetype.ts
 src/models/ResponseGeneratetoken.ts
 src/models/ResponseRemovememberfromproject.ts
+src/models/ResponseRevokeprojectcredit.ts
 src/models/ResponseUpdateprojectcredential.ts
 src/models/SecurityCreateToken.ts
 src/models/SecurityEncryptionKeyGet.ts
