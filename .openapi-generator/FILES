@@ -42,7 +42,7 @@ src/models/BasicMetaCreate.ts
 src/models/CatalogBase.ts
 src/models/CatalogReturn.ts
 src/models/CategoryBase.ts
-src/models/CategoryDb.ts
+src/models/CategoryResponse.ts
 src/models/Company.ts
 src/models/CompanyBase.ts
 src/models/CompanyResponse.ts
@@ -141,14 +141,13 @@ src/models/Selection.ts
 src/models/ServiceCreate.ts
 src/models/ServiceMessageResponse.ts
 src/models/ServiceResponse.ts
-src/models/StaffCreate.ts
-src/models/StaffDb.ts
+src/models/StaffBase.ts
 src/models/StaffResponse.ts
 src/models/StatsVitalsResponse.ts
 src/models/StripeAccountResponse.ts
 src/models/StripeCustomerSecretResponse.ts
 src/models/TagBase.ts
-src/models/TagDb.ts
+src/models/TagResponse.ts
 src/models/Tax.ts
 src/models/TicketResponse.ts
 src/models/TicketsResponse.ts
