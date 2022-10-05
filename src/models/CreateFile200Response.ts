@@ -14,41 +14,34 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Basic meta
+ * 
  * @export
- * @interface BasicMeta
+ * @interface CreateFile200Response
  */
-export interface BasicMeta {
+export interface CreateFile200Response {
     /**
      * 
      * @type {string}
-     * @memberof BasicMeta
+     * @memberof CreateFile200Response
      */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BasicMeta
-     */
-    slug?: string;
+    message?: string;
 }
 
-export function BasicMetaFromJSON(json: any): BasicMeta {
-    return BasicMetaFromJSONTyped(json, false);
+export function CreateFile200ResponseFromJSON(json: any): CreateFile200Response {
+    return CreateFile200ResponseFromJSONTyped(json, false);
 }
 
-export function BasicMetaFromJSONTyped(json: any, ignoreDiscriminator: boolean): BasicMeta {
+export function CreateFile200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateFile200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function BasicMetaToJSON(value?: BasicMeta | null): any {
+export function CreateFile200ResponseToJSON(value?: CreateFile200Response | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -57,8 +50,7 @@ export function BasicMetaToJSON(value?: BasicMeta | null): any {
     }
     return {
         
-        'name': value.name,
-        'slug': value.slug,
+        'message': value.message,
     };
 }
 

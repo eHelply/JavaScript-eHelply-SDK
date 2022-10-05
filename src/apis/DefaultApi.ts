@@ -15,22 +15,25 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateFile200Response,
+    CreateFile200ResponseFromJSON,
+    CreateFile200ResponseToJSON,
+    DeleteFile200Response,
+    DeleteFile200ResponseFromJSON,
+    DeleteFile200ResponseToJSON,
+    GetAppointment403Response,
+    GetAppointment403ResponseFromJSON,
+    GetAppointment403ResponseToJSON,
     HTTPValidationError,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    NoteBase,
-    NoteBaseFromJSON,
-    NoteBaseToJSON,
-    NoteDynamoHistoryResponse,
-    NoteDynamoHistoryResponseFromJSON,
-    NoteDynamoHistoryResponseToJSON,
-    NoteDynamoResponse,
-    NoteDynamoResponseFromJSON,
-    NoteDynamoResponseToJSON,
+    UpdateFile200Response,
+    UpdateFile200ResponseFromJSON,
+    UpdateFile200ResponseToJSON,
 } from '../models';
 
-export interface CreateNoteRequest {
-    noteBase: NoteBase;
+export interface CreateFileRequest {
+    file: Blob;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -39,9 +42,8 @@ export interface CreateNoteRequest {
     ehelplyData?: string;
 }
 
-export interface DeleteNoteRequest {
-    noteId: string;
-    method?: string;
+export interface DeleteFileRequest {
+    fileUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -50,10 +52,8 @@ export interface DeleteNoteRequest {
     ehelplyData?: string;
 }
 
-export interface GetNoteRequest {
-    noteId: string;
-    history?: number;
-    historyContent?: boolean;
+export interface GetFileRequest {
+    fileUuid: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -62,9 +62,9 @@ export interface GetNoteRequest {
     ehelplyData?: string;
 }
 
-export interface UpdateNoteRequest {
-    noteId: string;
-    noteBase: NoteBase;
+export interface UpdateFileRequest {
+    fileUuid: string;
+    file: Blob;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -74,16 +74,16 @@ export interface UpdateNoteRequest {
 }
 
 /**
- * NotesApi - interface
+ * DefaultApi - interface
  * 
  * @export
- * @interface NotesApiInterface
+ * @interface DefaultApiInterface
  */
-export interface NotesApiInterface {
+export interface DefaultApiInterface {
     /**
      * 
-     * @summary Create Note
-     * @param {NoteBase} noteBase 
+     * @summary Createfile
+     * @param {Blob} file 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -92,20 +92,19 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof DefaultApiInterface
      */
-    createNoteRaw(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>>;
+    createFileRaw(requestParameters: CreateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateFile200Response>>;
 
     /**
-     * Create Note
+     * Createfile
      */
-    createNote(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoResponse>;
+    createFile(requestParameters: CreateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateFile200Response>;
 
     /**
      * 
-     * @summary Delete Note
-     * @param {string} noteId 
-     * @param {string} [method] 
+     * @summary Deletefile
+     * @param {string} fileUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -114,21 +113,19 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof DefaultApiInterface
      */
-    deleteNoteRaw(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<any>>;
+    deleteFileRaw(requestParameters: DeleteFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFile200Response>>;
 
     /**
-     * Delete Note
+     * Deletefile
      */
-    deleteNote(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<any>;
+    deleteFile(requestParameters: DeleteFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFile200Response>;
 
     /**
      * 
-     * @summary Get Note
-     * @param {string} noteId 
-     * @param {number} [history] 
-     * @param {boolean} [historyContent] 
+     * @summary Getfile
+     * @param {string} fileUuid 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -137,20 +134,20 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof DefaultApiInterface
      */
-    getNoteRaw(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoHistoryResponse>>;
+    getFileRaw(requestParameters: GetFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Blob>>;
 
     /**
-     * Get Note
+     * Getfile
      */
-    getNote(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoHistoryResponse>;
+    getFile(requestParameters: GetFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Blob>;
 
     /**
      * 
-     * @summary Update Note
-     * @param {string} noteId 
-     * @param {NoteBase} noteBase 
+     * @summary Updatefile
+     * @param {string} fileUuid 
+     * @param {Blob} file 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -159,35 +156,33 @@ export interface NotesApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof NotesApiInterface
+     * @memberof DefaultApiInterface
      */
-    updateNoteRaw(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>>;
+    updateFileRaw(requestParameters: UpdateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdateFile200Response>>;
 
     /**
-     * Update Note
+     * Updatefile
      */
-    updateNote(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoResponse>;
+    updateFile(requestParameters: UpdateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdateFile200Response>;
 
 }
 
 /**
  * 
  */
-export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
+export class DefaultApi extends runtime.BaseAPI implements DefaultApiInterface {
 
     /**
-     * Create Note
+     * Createfile
      */
-    async createNoteRaw(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>> {
-        if (requestParameters.noteBase === null || requestParameters.noteBase === undefined) {
-            throw new runtime.RequiredError('noteBase','Required parameter requestParameters.noteBase was null or undefined when calling createNote.');
+    async createFileRaw(requestParameters: CreateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CreateFile200Response>> {
+        if (requestParameters.file === null || requestParameters.file === undefined) {
+            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling createFile.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
             headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
@@ -213,38 +208,54 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
             headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
         }
 
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters.file !== undefined) {
+            formParams.append('file', requestParameters.file as any);
+        }
+
         const response = await this.request({
-            path: `/notes/notes`,
+            path: `/files/files`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: NoteBaseToJSON(requestParameters.noteBase),
+            body: formParams,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateFile200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Create Note
+     * Createfile
      */
-    async createNote(requestParameters: CreateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoResponse> {
-        const response = await this.createNoteRaw(requestParameters, initOverrides);
+    async createFile(requestParameters: CreateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CreateFile200Response> {
+        const response = await this.createFileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Delete Note
+     * Deletefile
      */
-    async deleteNoteRaw(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling deleteNote.');
+    async deleteFileRaw(requestParameters: DeleteFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFile200Response>> {
+        if (requestParameters.fileUuid === null || requestParameters.fileUuid === undefined) {
+            throw new runtime.RequiredError('fileUuid','Required parameter requestParameters.fileUuid was null or undefined when calling deleteFile.');
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.method !== undefined) {
-            queryParameters['method'] = requestParameters.method;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -273,40 +284,32 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
         }
 
         const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
+            path: `/files/files/{file_uuid}`.replace(`{${"file_uuid"}}`, encodeURIComponent(String(requestParameters.fileUuid))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteFile200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Delete Note
+     * Deletefile
      */
-    async deleteNote(requestParameters: DeleteNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<any> {
-        const response = await this.deleteNoteRaw(requestParameters, initOverrides);
+    async deleteFile(requestParameters: DeleteFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFile200Response> {
+        const response = await this.deleteFileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Get Note
+     * Getfile
      */
-    async getNoteRaw(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoHistoryResponse>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling getNote.');
+    async getFileRaw(requestParameters: GetFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Blob>> {
+        if (requestParameters.fileUuid === null || requestParameters.fileUuid === undefined) {
+            throw new runtime.RequiredError('fileUuid','Required parameter requestParameters.fileUuid was null or undefined when calling getFile.');
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.history !== undefined) {
-            queryParameters['history'] = requestParameters.history;
-        }
-
-        if (requestParameters.historyContent !== undefined) {
-            queryParameters['history_content'] = requestParameters.historyContent;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -335,40 +338,38 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
         }
 
         const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
+            path: `/files/files/{file_uuid}`.replace(`{${"file_uuid"}}`, encodeURIComponent(String(requestParameters.fileUuid))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoHistoryResponseFromJSON(jsonValue));
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
-     * Get Note
+     * Getfile
      */
-    async getNote(requestParameters: GetNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoHistoryResponse> {
-        const response = await this.getNoteRaw(requestParameters, initOverrides);
+    async getFile(requestParameters: GetFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Blob> {
+        const response = await this.getFileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Update Note
+     * Updatefile
      */
-    async updateNoteRaw(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<NoteDynamoResponse>> {
-        if (requestParameters.noteId === null || requestParameters.noteId === undefined) {
-            throw new runtime.RequiredError('noteId','Required parameter requestParameters.noteId was null or undefined when calling updateNote.');
+    async updateFileRaw(requestParameters: UpdateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<UpdateFile200Response>> {
+        if (requestParameters.fileUuid === null || requestParameters.fileUuid === undefined) {
+            throw new runtime.RequiredError('fileUuid','Required parameter requestParameters.fileUuid was null or undefined when calling updateFile.');
         }
 
-        if (requestParameters.noteBase === null || requestParameters.noteBase === undefined) {
-            throw new runtime.RequiredError('noteBase','Required parameter requestParameters.noteBase was null or undefined when calling updateNote.');
+        if (requestParameters.file === null || requestParameters.file === undefined) {
+            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling updateFile.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
 
         if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
             headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
@@ -394,22 +395,42 @@ export class NotesApi extends runtime.BaseAPI implements NotesApiInterface {
             headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
         }
 
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters.file !== undefined) {
+            formParams.append('file', requestParameters.file as any);
+        }
+
         const response = await this.request({
-            path: `/notes/notes/{note_id}`.replace(`{${"note_id"}}`, encodeURIComponent(String(requestParameters.noteId))),
+            path: `/files/files/{file_uuid}`.replace(`{${"file_uuid"}}`, encodeURIComponent(String(requestParameters.fileUuid))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: NoteBaseToJSON(requestParameters.noteBase),
+            body: formParams,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => NoteDynamoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateFile200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Update Note
+     * Updatefile
      */
-    async updateNote(requestParameters: UpdateNoteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<NoteDynamoResponse> {
-        const response = await this.updateNoteRaw(requestParameters, initOverrides);
+    async updateFile(requestParameters: UpdateFileRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<UpdateFile200Response> {
+        const response = await this.updateFileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

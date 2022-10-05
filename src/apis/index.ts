@@ -5,6 +5,7 @@ export * from './BillingApi';
 export * from './CatalogsApi';
 export * from './CategoryApi';
 export * from './CompaniesApi';
+export * from './DefaultApi';
 export * from './LoggingApi';
 export * from './MetaApi';
 export * from './MonitorApi';
