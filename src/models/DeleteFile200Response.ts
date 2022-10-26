@@ -16,22 +16,22 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ResponseUpdateprojectcredential
+ * @interface DeleteFile200Response
  */
-export interface ResponseUpdateprojectcredential {
+export interface DeleteFile200Response {
     /**
      * 
      * @type {string}
-     * @memberof ResponseUpdateprojectcredential
+     * @memberof DeleteFile200Response
      */
     message?: string;
 }
 
-export function ResponseUpdateprojectcredentialFromJSON(json: any): ResponseUpdateprojectcredential {
-    return ResponseUpdateprojectcredentialFromJSONTyped(json, false);
+export function DeleteFile200ResponseFromJSON(json: any): DeleteFile200Response {
+    return DeleteFile200ResponseFromJSONTyped(json, false);
 }
 
-export function ResponseUpdateprojectcredentialFromJSONTyped(json: any, ignoreDiscriminator: boolean): ResponseUpdateprojectcredential {
+export function DeleteFile200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteFile200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -41,7 +41,7 @@ export function ResponseUpdateprojectcredentialFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function ResponseUpdateprojectcredentialToJSON(value?: ResponseUpdateprojectcredential | null): any {
+export function DeleteFile200ResponseToJSON(value?: DeleteFile200Response | null): any {
     if (value === undefined) {
         return undefined;
     }
