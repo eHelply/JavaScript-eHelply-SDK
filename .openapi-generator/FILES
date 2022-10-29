@@ -149,6 +149,12 @@ src/models/Selection.ts
 src/models/ServiceCreate.ts
 src/models/ServiceMessageResponse.ts
 src/models/ServiceResponse.ts
+src/models/ServiceSuperStackMeta.ts
+src/models/ServiceSuperStackMetaFaq.ts
+src/models/ServiceSuperStackMetaFeature.ts
+src/models/ServiceSuperStackMetaGettingStarted.ts
+src/models/ServiceSuperStackMetaGettingStartedEndpointTeaser.ts
+src/models/ServiceSuperStackMetaUseCase.ts
 src/models/Slugger.ts
 src/models/StaffBase.ts
 src/models/StaffResponse.ts
