@@ -16,53 +16,46 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface LineItem
+ * @interface FactCreate
  */
-export interface LineItem {
+export interface FactCreate {
     /**
      * 
      * @type {string}
-     * @memberof LineItem
+     * @memberof FactCreate
      */
     name: string;
     /**
      * 
-     * @type {number}
-     * @memberof LineItem
+     * @type {object}
+     * @memberof FactCreate
      */
-    quantity: number;
+    data: object;
     /**
      * 
-     * @type {number}
-     * @memberof LineItem
+     * @type {boolean}
+     * @memberof FactCreate
      */
-    unitPrice: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof LineItem
-     */
-    total: number;
+    _public: boolean;
 }
 
-export function LineItemFromJSON(json: any): LineItem {
-    return LineItemFromJSONTyped(json, false);
+export function FactCreateFromJSON(json: any): FactCreate {
+    return FactCreateFromJSONTyped(json, false);
 }
 
-export function LineItemFromJSONTyped(json: any, ignoreDiscriminator: boolean): LineItem {
+export function FactCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): FactCreate {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'name': json['name'],
-        'quantity': json['quantity'],
-        'unitPrice': json['unit_price'],
-        'total': json['total'],
+        'data': json['data'],
+        '_public': json['public'],
     };
 }
 
-export function LineItemToJSON(value?: LineItem | null): any {
+export function FactCreateToJSON(value?: FactCreate | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -72,9 +65,8 @@ export function LineItemToJSON(value?: LineItem | null): any {
     return {
         
         'name': value.name,
-        'quantity': value.quantity,
-        'unit_price': value.unitPrice,
-        'total': value.total,
+        'data': value.data,
+        'public': value._public,
     };
 }
 

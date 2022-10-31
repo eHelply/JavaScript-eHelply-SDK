@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface AlarmIgnore
+ * @interface DeleteFact200Response
  */
-export interface AlarmIgnore {
+export interface DeleteFact200Response {
     /**
      * 
      * @type {string}
-     * @memberof AlarmIgnore
+     * @memberof DeleteFact200Response
      */
-    ignorerUuid: string;
+    message?: string;
 }
 
-export function AlarmIgnoreFromJSON(json: any): AlarmIgnore {
-    return AlarmIgnoreFromJSONTyped(json, false);
+export function DeleteFact200ResponseFromJSON(json: any): DeleteFact200Response {
+    return DeleteFact200ResponseFromJSONTyped(json, false);
 }
 
-export function AlarmIgnoreFromJSONTyped(json: any, ignoreDiscriminator: boolean): AlarmIgnore {
+export function DeleteFact200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteFact200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'ignorerUuid': json['ignorer_uuid'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
+export function DeleteFact200ResponseToJSON(value?: DeleteFact200Response | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
     }
     return {
         
-        'ignorer_uuid': value.ignorerUuid,
+        'message': value.message,
     };
 }
 

@@ -16,32 +16,46 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface AlarmIgnore
+ * @interface Fact
  */
-export interface AlarmIgnore {
+export interface Fact {
     /**
      * 
      * @type {string}
-     * @memberof AlarmIgnore
+     * @memberof Fact
      */
-    ignorerUuid: string;
+    name: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof Fact
+     */
+    data: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Fact
+     */
+    _public: boolean;
 }
 
-export function AlarmIgnoreFromJSON(json: any): AlarmIgnore {
-    return AlarmIgnoreFromJSONTyped(json, false);
+export function FactFromJSON(json: any): Fact {
+    return FactFromJSONTyped(json, false);
 }
 
-export function AlarmIgnoreFromJSONTyped(json: any, ignoreDiscriminator: boolean): AlarmIgnore {
+export function FactFromJSONTyped(json: any, ignoreDiscriminator: boolean): Fact {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'ignorerUuid': json['ignorer_uuid'],
+        'name': json['name'],
+        'data': json['data'],
+        '_public': json['public'],
     };
 }
 
-export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
+export function FactToJSON(value?: Fact | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +64,9 @@ export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
     }
     return {
         
-        'ignorer_uuid': value.ignorerUuid,
+        'name': value.name,
+        'data': value.data,
+        'public': value._public,
     };
 }
 

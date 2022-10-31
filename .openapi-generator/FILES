@@ -9,6 +9,7 @@ src/apis/CatalogsApi.ts
 src/apis/CategoryApi.ts
 src/apis/CompaniesApi.ts
 src/apis/ContentApi.ts
+src/apis/FactsApi.ts
 src/apis/FieldsApi.ts
 src/apis/LoggingApi.ts
 src/apis/MetaApi.ts
@@ -66,6 +67,7 @@ src/models/CreateTicket.ts
 src/models/Credential.ts
 src/models/CustomList.ts
 src/models/DatesMeta.ts
+src/models/DeleteFact200Response.ts
 src/models/DeleteField200Response.ts
 src/models/DeleteFile200Response.ts
 src/models/DeleteMeta200Response.ts
@@ -75,6 +77,8 @@ src/models/DetailedMeta.ts
 src/models/DetailedMetaCreate.ts
 src/models/Discount.ts
 src/models/Email.ts
+src/models/Fact.ts
+src/models/FactCreate.ts
 src/models/Field.ts
 src/models/FieldDynamo.ts
 src/models/GetAppointment403Response.ts
@@ -139,6 +143,7 @@ src/models/ResponseGeneratetoken.ts
 src/models/ResponseRemovememberfromproject.ts
 src/models/ResponseRevokeprojectcredit.ts
 src/models/ResponseUpdateprojectcredential.ts
+src/models/SaveFact200Response.ts
 src/models/SecurityCreateToken.ts
 src/models/SecurityEncryptionKeyGet.ts
 src/models/SecurityEncryptionKeyResponse.ts

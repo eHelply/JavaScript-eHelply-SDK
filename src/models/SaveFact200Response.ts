@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface AlarmIgnore
+ * @interface SaveFact200Response
  */
-export interface AlarmIgnore {
+export interface SaveFact200Response {
     /**
      * 
      * @type {string}
-     * @memberof AlarmIgnore
+     * @memberof SaveFact200Response
      */
-    ignorerUuid: string;
+    message?: string;
 }
 
-export function AlarmIgnoreFromJSON(json: any): AlarmIgnore {
-    return AlarmIgnoreFromJSONTyped(json, false);
+export function SaveFact200ResponseFromJSON(json: any): SaveFact200Response {
+    return SaveFact200ResponseFromJSONTyped(json, false);
 }
 
-export function AlarmIgnoreFromJSONTyped(json: any, ignoreDiscriminator: boolean): AlarmIgnore {
+export function SaveFact200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): SaveFact200Response {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'ignorerUuid': json['ignorer_uuid'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
-export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
+export function SaveFact200ResponseToJSON(value?: SaveFact200Response | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +50,7 @@ export function AlarmIgnoreToJSON(value?: AlarmIgnore | null): any {
     }
     return {
         
-        'ignorer_uuid': value.ignorerUuid,
+        'message': value.message,
     };
 }
 
