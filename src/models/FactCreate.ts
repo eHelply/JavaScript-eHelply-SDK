@@ -14,41 +14,48 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * User email information
+ * 
  * @export
- * @interface UserEmail
+ * @interface FactCreate
  */
-export interface UserEmail {
+export interface FactCreate {
     /**
      * 
      * @type {string}
-     * @memberof UserEmail
+     * @memberof FactCreate
      */
-    address?: string;
+    name: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof FactCreate
+     */
+    data: object;
     /**
      * 
      * @type {boolean}
-     * @memberof UserEmail
+     * @memberof FactCreate
      */
-    verified?: boolean;
+    _public: boolean;
 }
 
-export function UserEmailFromJSON(json: any): UserEmail {
-    return UserEmailFromJSONTyped(json, false);
+export function FactCreateFromJSON(json: any): FactCreate {
+    return FactCreateFromJSONTyped(json, false);
 }
 
-export function UserEmailFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserEmail {
+export function FactCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): FactCreate {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'address': !exists(json, 'address') ? undefined : json['address'],
-        'verified': !exists(json, 'verified') ? undefined : json['verified'],
+        'name': json['name'],
+        'data': json['data'],
+        '_public': json['public'],
     };
 }
 
-export function UserEmailToJSON(value?: UserEmail | null): any {
+export function FactCreateToJSON(value?: FactCreate | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -57,8 +64,9 @@ export function UserEmailToJSON(value?: UserEmail | null): any {
     }
     return {
         
-        'address': value.address,
-        'verified': value.verified,
+        'name': value.name,
+        'data': value.data,
+        'public': value._public,
     };
 }
 

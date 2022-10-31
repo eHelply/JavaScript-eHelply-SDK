@@ -15,23 +15,28 @@
 
 import * as runtime from '../runtime';
 import {
-    CatalogBase,
-    CatalogBaseFromJSON,
-    CatalogBaseToJSON,
-    CatalogReturn,
-    CatalogReturnFromJSON,
-    CatalogReturnToJSON,
+    DeleteFact200Response,
+    DeleteFact200ResponseFromJSON,
+    DeleteFact200ResponseToJSON,
+    Fact,
+    FactFromJSON,
+    FactToJSON,
+    FactCreate,
+    FactCreateFromJSON,
+    FactCreateToJSON,
+    GetAppointment403Response,
+    GetAppointment403ResponseFromJSON,
+    GetAppointment403ResponseToJSON,
     HTTPValidationError,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    Page,
-    PageFromJSON,
-    PageToJSON,
+    SaveFact200Response,
+    SaveFact200ResponseFromJSON,
+    SaveFact200ResponseToJSON,
 } from '../models';
 
-export interface AttachProductToCatalogRequest {
-    catalogUuid: string;
-    productUuid: string;
+export interface DeleteFactRequest {
+    factName: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -40,8 +45,8 @@ export interface AttachProductToCatalogRequest {
     ehelplyData?: string;
 }
 
-export interface CreateCatalogRequest {
-    catalogBase: CatalogBase;
+export interface DeleteFact0Request {
+    factName: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -50,8 +55,8 @@ export interface CreateCatalogRequest {
     ehelplyData?: string;
 }
 
-export interface DeleteCatalogRequest {
-    catalogUuid: string;
+export interface GetFactRequest {
+    factName: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -60,9 +65,8 @@ export interface DeleteCatalogRequest {
     ehelplyData?: string;
 }
 
-export interface DetachProductFromCatalogRequest {
-    catalogUuid: string;
-    productUuid: string;
+export interface GetFact0Request {
+    factName: string;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -71,9 +75,7 @@ export interface DetachProductFromCatalogRequest {
     ehelplyData?: string;
 }
 
-export interface GetCatalogRequest {
-    catalogUuid: string;
-    withMeta?: boolean;
+export interface GetFactsRequest {
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -82,13 +84,7 @@ export interface GetCatalogRequest {
     ehelplyData?: string;
 }
 
-export interface SearchCatalogProductsRequest {
-    catalogUuid: string;
-    withMeta?: boolean;
-    page?: number;
-    pageSize?: number;
-    sortOn?: string;
-    sortDesc?: boolean;
+export interface GetFacts0Request {
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -97,13 +93,8 @@ export interface SearchCatalogProductsRequest {
     ehelplyData?: string;
 }
 
-export interface SearchCatalogsRequest {
-    withMeta?: boolean;
-    name?: string;
-    page?: number;
-    pageSize?: number;
-    sortOn?: string;
-    sortDesc?: boolean;
+export interface SaveFactRequest {
+    factCreate: FactCreate;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -112,9 +103,8 @@ export interface SearchCatalogsRequest {
     ehelplyData?: string;
 }
 
-export interface UpdateCatalogRequest {
-    catalogUuid: string;
-    catalogBase: CatalogBase;
+export interface SaveFact0Request {
+    factCreate: FactCreate;
     xAccessToken?: string;
     xSecretToken?: string;
     authorization?: string;
@@ -124,17 +114,16 @@ export interface UpdateCatalogRequest {
 }
 
 /**
- * CatalogsApi - interface
+ * FactsApi - interface
  * 
  * @export
- * @interface CatalogsApiInterface
+ * @interface FactsApiInterface
  */
-export interface CatalogsApiInterface {
+export interface FactsApiInterface {
     /**
      * 
-     * @summary Addproducttocatalog
-     * @param {string} catalogUuid 
-     * @param {string} productUuid 
+     * @summary Deletefact
+     * @param {string} factName 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -143,19 +132,19 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    attachProductToCatalogRaw(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>>;
+    deleteFactRaw(requestParameters: DeleteFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFact200Response>>;
 
     /**
-     * Addproducttocatalog
+     * Deletefact
      */
-    attachProductToCatalog(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean>;
+    deleteFact(requestParameters: DeleteFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFact200Response>;
 
     /**
      * 
-     * @summary Createcatalog
-     * @param {CatalogBase} catalogBase 
+     * @summary Deletefact
+     * @param {string} factName 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -164,19 +153,19 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    createCatalogRaw(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
+    deleteFact_1Raw(requestParameters: DeleteFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFact200Response>>;
 
     /**
-     * Createcatalog
+     * Deletefact
      */
-    createCatalog(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn>;
+    deleteFact_1(requestParameters: DeleteFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFact200Response>;
 
     /**
      * 
-     * @summary Deletecatalog
-     * @param {string} catalogUuid 
+     * @summary Getfact
+     * @param {string} factName 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -185,20 +174,19 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    deleteCatalogRaw(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>>;
+    getFactRaw(requestParameters: GetFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Fact>>;
 
     /**
-     * Deletecatalog
+     * Getfact
      */
-    deleteCatalog(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean>;
+    getFact(requestParameters: GetFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Fact>;
 
     /**
      * 
-     * @summary Removeproductfromcatalog
-     * @param {string} catalogUuid 
-     * @param {string} productUuid 
+     * @summary Getfact
+     * @param {string} factName 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -207,20 +195,18 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    detachProductFromCatalogRaw(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>>;
+    getFact_2Raw(requestParameters: GetFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Fact>>;
 
     /**
-     * Removeproductfromcatalog
+     * Getfact
      */
-    detachProductFromCatalog(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean>;
+    getFact_2(requestParameters: GetFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Fact>;
 
     /**
      * 
-     * @summary Getcatalog
-     * @param {string} catalogUuid 
-     * @param {boolean} [withMeta] 
+     * @summary Getfacts
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -229,24 +215,18 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
+    getFactsRaw(requestParameters: GetFactsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<Fact>>>;
 
     /**
-     * Getcatalog
+     * Getfacts
      */
-    getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn>;
+    getFacts(requestParameters: GetFactsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<Fact>>;
 
     /**
      * 
-     * @summary Searchcatalogproducts
-     * @param {string} catalogUuid 
-     * @param {boolean} [withMeta] 
-     * @param {number} [page] 
-     * @param {number} [pageSize] 
-     * @param {string} [sortOn] 
-     * @param {boolean} [sortDesc] 
+     * @summary Getfacts
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -255,24 +235,19 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    searchCatalogProductsRaw(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Page>>;
+    getFacts_3Raw(requestParameters: GetFacts0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<Fact>>>;
 
     /**
-     * Searchcatalogproducts
+     * Getfacts
      */
-    searchCatalogProducts(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Page>;
+    getFacts_3(requestParameters: GetFacts0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<Fact>>;
 
     /**
      * 
-     * @summary Searchcatalogs
-     * @param {boolean} [withMeta] 
-     * @param {string} [name] 
-     * @param {number} [page] 
-     * @param {number} [pageSize] 
-     * @param {string} [sortOn] 
-     * @param {boolean} [sortDesc] 
+     * @summary Savefact
+     * @param {FactCreate} factCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -281,20 +256,19 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    searchCatalogsRaw(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Page>>;
+    saveFactRaw(requestParameters: SaveFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<SaveFact200Response>>;
 
     /**
-     * Searchcatalogs
+     * Savefact
      */
-    searchCatalogs(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Page>;
+    saveFact(requestParameters: SaveFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<SaveFact200Response>;
 
     /**
      * 
-     * @summary Updatecatalog
-     * @param {string} catalogUuid 
-     * @param {CatalogBase} catalogBase 
+     * @summary Savefact
+     * @param {FactCreate} factCreate 
      * @param {string} [xAccessToken] 
      * @param {string} [xSecretToken] 
      * @param {string} [authorization] 
@@ -303,32 +277,28 @@ export interface CatalogsApiInterface {
      * @param {string} [ehelplyData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof CatalogsApiInterface
+     * @memberof FactsApiInterface
      */
-    updateCatalogRaw(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>>;
+    saveFact_4Raw(requestParameters: SaveFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<SaveFact200Response>>;
 
     /**
-     * Updatecatalog
+     * Savefact
      */
-    updateCatalog(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn>;
+    saveFact_4(requestParameters: SaveFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<SaveFact200Response>;
 
 }
 
 /**
  * 
  */
-export class CatalogsApi extends runtime.BaseAPI implements CatalogsApiInterface {
+export class FactsApi extends runtime.BaseAPI implements FactsApiInterface {
 
     /**
-     * Addproducttocatalog
+     * Deletefact
      */
-    async attachProductToCatalogRaw(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling attachProductToCatalog.');
-        }
-
-        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
-            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling attachProductToCatalog.');
+    async deleteFactRaw(requestParameters: DeleteFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFact200Response>> {
+        if (requestParameters.factName === null || requestParameters.factName === undefined) {
+            throw new runtime.RequiredError('factName','Required parameter requestParameters.factName was null or undefined when calling deleteFact.');
         }
 
         const queryParameters: any = {};
@@ -360,29 +330,291 @@ export class CatalogsApi extends runtime.BaseAPI implements CatalogsApiInterface
         }
 
         const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}/products/{product_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))).replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
+            path: `/sam/facts/facts/{fact_name}`.replace(`{${"fact_name"}}`, encodeURIComponent(String(requestParameters.factName))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.TextApiResponse(response) as any;
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteFact200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Addproducttocatalog
+     * Deletefact
      */
-    async attachProductToCatalog(requestParameters: AttachProductToCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean> {
-        const response = await this.attachProductToCatalogRaw(requestParameters, initOverrides);
+    async deleteFact(requestParameters: DeleteFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFact200Response> {
+        const response = await this.deleteFactRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Createcatalog
+     * Deletefact
      */
-    async createCatalogRaw(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
-        if (requestParameters.catalogBase === null || requestParameters.catalogBase === undefined) {
-            throw new runtime.RequiredError('catalogBase','Required parameter requestParameters.catalogBase was null or undefined when calling createCatalog.');
+    async deleteFact_1Raw(requestParameters: DeleteFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<DeleteFact200Response>> {
+        if (requestParameters.factName === null || requestParameters.factName === undefined) {
+            throw new runtime.RequiredError('factName','Required parameter requestParameters.factName was null or undefined when calling deleteFact_1.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/sam/facts/facts/{fact_name}`.replace(`{${"fact_name"}}`, encodeURIComponent(String(requestParameters.factName))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteFact200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Deletefact
+     */
+    async deleteFact_1(requestParameters: DeleteFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<DeleteFact200Response> {
+        const response = await this.deleteFact_1Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getfact
+     */
+    async getFactRaw(requestParameters: GetFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Fact>> {
+        if (requestParameters.factName === null || requestParameters.factName === undefined) {
+            throw new runtime.RequiredError('factName','Required parameter requestParameters.factName was null or undefined when calling getFact.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/sam/facts/facts/{fact_name}`.replace(`{${"fact_name"}}`, encodeURIComponent(String(requestParameters.factName))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FactFromJSON(jsonValue));
+    }
+
+    /**
+     * Getfact
+     */
+    async getFact(requestParameters: GetFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Fact> {
+        const response = await this.getFactRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getfact
+     */
+    async getFact_2Raw(requestParameters: GetFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Fact>> {
+        if (requestParameters.factName === null || requestParameters.factName === undefined) {
+            throw new runtime.RequiredError('factName','Required parameter requestParameters.factName was null or undefined when calling getFact_2.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/sam/facts/facts/{fact_name}`.replace(`{${"fact_name"}}`, encodeURIComponent(String(requestParameters.factName))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FactFromJSON(jsonValue));
+    }
+
+    /**
+     * Getfact
+     */
+    async getFact_2(requestParameters: GetFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Fact> {
+        const response = await this.getFact_2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getfacts
+     */
+    async getFactsRaw(requestParameters: GetFactsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<Fact>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/sam/facts/facts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(FactFromJSON));
+    }
+
+    /**
+     * Getfacts
+     */
+    async getFacts(requestParameters: GetFactsRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<Fact>> {
+        const response = await this.getFactsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Getfacts
+     */
+    async getFacts_3Raw(requestParameters: GetFacts0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<Fact>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
+            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
+        }
+
+        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
+            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
+        }
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['authorization'] = String(requestParameters.authorization);
+        }
+
+        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
+            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
+        }
+
+        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
+            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
+        }
+
+        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
+            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
+        }
+
+        const response = await this.request({
+            path: `/sam/facts/facts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(FactFromJSON));
+    }
+
+    /**
+     * Getfacts
+     */
+    async getFacts_3(requestParameters: GetFacts0Request = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<Fact>> {
+        const response = await this.getFacts_3Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Savefact
+     */
+    async saveFactRaw(requestParameters: SaveFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<SaveFact200Response>> {
+        if (requestParameters.factCreate === null || requestParameters.factCreate === undefined) {
+            throw new runtime.RequiredError('factCreate','Required parameter requestParameters.factCreate was null or undefined when calling saveFact.');
         }
 
         const queryParameters: any = {};
@@ -416,352 +648,30 @@ export class CatalogsApi extends runtime.BaseAPI implements CatalogsApiInterface
         }
 
         const response = await this.request({
-            path: `/products/catalogs`,
+            path: `/sam/facts/facts`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CatalogBaseToJSON(requestParameters.catalogBase),
+            body: FactCreateToJSON(requestParameters.factCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => SaveFact200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Createcatalog
+     * Savefact
      */
-    async createCatalog(requestParameters: CreateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn> {
-        const response = await this.createCatalogRaw(requestParameters, initOverrides);
+    async saveFact(requestParameters: SaveFactRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<SaveFact200Response> {
+        const response = await this.saveFactRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Deletecatalog
+     * Savefact
      */
-    async deleteCatalogRaw(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling deleteCatalog.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Deletecatalog
-     */
-    async deleteCatalog(requestParameters: DeleteCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean> {
-        const response = await this.deleteCatalogRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Removeproductfromcatalog
-     */
-    async detachProductFromCatalogRaw(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<boolean>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling detachProductFromCatalog.');
-        }
-
-        if (requestParameters.productUuid === null || requestParameters.productUuid === undefined) {
-            throw new runtime.RequiredError('productUuid','Required parameter requestParameters.productUuid was null or undefined when calling detachProductFromCatalog.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}/products/{product_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))).replace(`{${"product_uuid"}}`, encodeURIComponent(String(requestParameters.productUuid))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     * Removeproductfromcatalog
-     */
-    async detachProductFromCatalog(requestParameters: DetachProductFromCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<boolean> {
-        const response = await this.detachProductFromCatalogRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Getcatalog
-     */
-    async getCatalogRaw(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling getCatalog.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.withMeta !== undefined) {
-            queryParameters['with_meta'] = requestParameters.withMeta;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
-    }
-
-    /**
-     * Getcatalog
-     */
-    async getCatalog(requestParameters: GetCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn> {
-        const response = await this.getCatalogRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Searchcatalogproducts
-     */
-    async searchCatalogProductsRaw(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Page>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling searchCatalogProducts.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.withMeta !== undefined) {
-            queryParameters['with_meta'] = requestParameters.withMeta;
-        }
-
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
-        }
-
-        if (requestParameters.pageSize !== undefined) {
-            queryParameters['page_size'] = requestParameters.pageSize;
-        }
-
-        if (requestParameters.sortOn !== undefined) {
-            queryParameters['sort_on'] = requestParameters.sortOn;
-        }
-
-        if (requestParameters.sortDesc !== undefined) {
-            queryParameters['sort_desc'] = requestParameters.sortDesc;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}/products`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
-    }
-
-    /**
-     * Searchcatalogproducts
-     */
-    async searchCatalogProducts(requestParameters: SearchCatalogProductsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Page> {
-        const response = await this.searchCatalogProductsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Searchcatalogs
-     */
-    async searchCatalogsRaw(requestParameters: SearchCatalogsRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Page>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.withMeta !== undefined) {
-            queryParameters['with_meta'] = requestParameters.withMeta;
-        }
-
-        if (requestParameters.name !== undefined) {
-            queryParameters['name'] = requestParameters.name;
-        }
-
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
-        }
-
-        if (requestParameters.pageSize !== undefined) {
-            queryParameters['page_size'] = requestParameters.pageSize;
-        }
-
-        if (requestParameters.sortOn !== undefined) {
-            queryParameters['sort_on'] = requestParameters.sortOn;
-        }
-
-        if (requestParameters.sortDesc !== undefined) {
-            queryParameters['sort_desc'] = requestParameters.sortDesc;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.xAccessToken !== undefined && requestParameters.xAccessToken !== null) {
-            headerParameters['x-access-token'] = String(requestParameters.xAccessToken);
-        }
-
-        if (requestParameters.xSecretToken !== undefined && requestParameters.xSecretToken !== null) {
-            headerParameters['x-secret-token'] = String(requestParameters.xSecretToken);
-        }
-
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['authorization'] = String(requestParameters.authorization);
-        }
-
-        if (requestParameters.ehelplyActiveParticipant !== undefined && requestParameters.ehelplyActiveParticipant !== null) {
-            headerParameters['ehelply-active-participant'] = String(requestParameters.ehelplyActiveParticipant);
-        }
-
-        if (requestParameters.ehelplyProject !== undefined && requestParameters.ehelplyProject !== null) {
-            headerParameters['ehelply-project'] = String(requestParameters.ehelplyProject);
-        }
-
-        if (requestParameters.ehelplyData !== undefined && requestParameters.ehelplyData !== null) {
-            headerParameters['ehelply-data'] = String(requestParameters.ehelplyData);
-        }
-
-        const response = await this.request({
-            path: `/products/catalogs`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PageFromJSON(jsonValue));
-    }
-
-    /**
-     * Searchcatalogs
-     */
-    async searchCatalogs(requestParameters: SearchCatalogsRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Page> {
-        const response = await this.searchCatalogsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Updatecatalog
-     */
-    async updateCatalogRaw(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<CatalogReturn>> {
-        if (requestParameters.catalogUuid === null || requestParameters.catalogUuid === undefined) {
-            throw new runtime.RequiredError('catalogUuid','Required parameter requestParameters.catalogUuid was null or undefined when calling updateCatalog.');
-        }
-
-        if (requestParameters.catalogBase === null || requestParameters.catalogBase === undefined) {
-            throw new runtime.RequiredError('catalogBase','Required parameter requestParameters.catalogBase was null or undefined when calling updateCatalog.');
+    async saveFact_4Raw(requestParameters: SaveFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<SaveFact200Response>> {
+        if (requestParameters.factCreate === null || requestParameters.factCreate === undefined) {
+            throw new runtime.RequiredError('factCreate','Required parameter requestParameters.factCreate was null or undefined when calling saveFact_4.');
         }
 
         const queryParameters: any = {};
@@ -795,21 +705,21 @@ export class CatalogsApi extends runtime.BaseAPI implements CatalogsApiInterface
         }
 
         const response = await this.request({
-            path: `/products/catalogs/{catalog_uuid}`.replace(`{${"catalog_uuid"}}`, encodeURIComponent(String(requestParameters.catalogUuid))),
-            method: 'PUT',
+            path: `/sam/facts/facts`,
+            method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CatalogBaseToJSON(requestParameters.catalogBase),
+            body: FactCreateToJSON(requestParameters.factCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CatalogReturnFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => SaveFact200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Updatecatalog
+     * Savefact
      */
-    async updateCatalog(requestParameters: UpdateCatalogRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<CatalogReturn> {
-        const response = await this.updateCatalogRaw(requestParameters, initOverrides);
+    async saveFact_4(requestParameters: SaveFact0Request, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<SaveFact200Response> {
+        const response = await this.saveFact_4Raw(requestParameters, initOverrides);
         return await response.value();
     }
 

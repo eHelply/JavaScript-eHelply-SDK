@@ -6,6 +6,7 @@ export * from './CatalogsApi';
 export * from './CategoryApi';
 export * from './CompaniesApi';
 export * from './ContentApi';
+export * from './FactsApi';
 export * from './FieldsApi';
 export * from './LoggingApi';
 export * from './MetaApi';

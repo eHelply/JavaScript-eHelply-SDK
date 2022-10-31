@@ -16,32 +16,46 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ResponseUpdateprojectcredential
+ * @interface Fact
  */
-export interface ResponseUpdateprojectcredential {
+export interface Fact {
     /**
      * 
      * @type {string}
-     * @memberof ResponseUpdateprojectcredential
+     * @memberof Fact
      */
-    message?: string;
+    name: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof Fact
+     */
+    data: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Fact
+     */
+    _public: boolean;
 }
 
-export function ResponseUpdateprojectcredentialFromJSON(json: any): ResponseUpdateprojectcredential {
-    return ResponseUpdateprojectcredentialFromJSONTyped(json, false);
+export function FactFromJSON(json: any): Fact {
+    return FactFromJSONTyped(json, false);
 }
 
-export function ResponseUpdateprojectcredentialFromJSONTyped(json: any, ignoreDiscriminator: boolean): ResponseUpdateprojectcredential {
+export function FactFromJSONTyped(json: any, ignoreDiscriminator: boolean): Fact {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'message': !exists(json, 'message') ? undefined : json['message'],
+        'name': json['name'],
+        'data': json['data'],
+        '_public': json['public'],
     };
 }
 
-export function ResponseUpdateprojectcredentialToJSON(value?: ResponseUpdateprojectcredential | null): any {
+export function FactToJSON(value?: Fact | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -50,7 +64,9 @@ export function ResponseUpdateprojectcredentialToJSON(value?: ResponseUpdateproj
     }
     return {
         
-        'message': value.message,
+        'name': value.name,
+        'data': value.data,
+        'public': value._public,
     };
 }
 
