@@ -30,7 +30,7 @@ export * from './CreateField200Response';
 export * from './CreateFile200Response';
 export * from './CreateKeyResponse';
 export * from './CreateMeta200Response';
-export * from './CreateNote200Response';
+export * from './CreateNoteResponse';
 export * from './CreateProjectCredential';
 export * from './CreateProjectCredit';
 export * from './CreateProjectInvoice';

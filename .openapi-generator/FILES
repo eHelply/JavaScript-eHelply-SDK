@@ -57,7 +57,7 @@ src/models/CreateField200Response.ts
 src/models/CreateFile200Response.ts
 src/models/CreateKeyResponse.ts
 src/models/CreateMeta200Response.ts
-src/models/CreateNote200Response.ts
+src/models/CreateNoteResponse.ts
 src/models/CreateProjectCredential.ts
 src/models/CreateProjectCredit.ts
 src/models/CreateProjectInvoice.ts
